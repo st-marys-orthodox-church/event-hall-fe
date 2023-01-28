@@ -1,4 +1,4 @@
-# Event Hall Readme
+# Event Hall Frontend
 
 ### Installation
 - Run `yarn`
