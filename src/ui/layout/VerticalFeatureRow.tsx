@@ -13,10 +13,11 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
   const verticalFeatureClass = className(
     'mt-20',
     'flex',
-    'flex-wrap',
+    'flex-col sm:flex-row',
     'items-center',
+    'gap-2',
     {
-      'flex-row-reverse': props.reverse,
+      'sm:flex-row-reverse': props.reverse,
     }
   );
 
@@ -24,12 +25,12 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
 
   return (
     <div className={`${verticalFeatureClass}`}>
-      <div className={`w-full sm:w-1/2 sm:px-6 ${props.reverse ? 'text-right' : 'text-left'}`}>
+      <div className={`w-full px-2 text-center ${props.reverse ? 'sm:text-right' : 'sm:text-left'}`}>
         <h3 className="text-3xl text-gray-900 font-semibold">{props.title}</h3>
         <div className="mt-6 text-xl">{props.description}</div>
       </div>
 
-      <div className="w-full sm:w-1/2 p-6">
+      <div className="w-full p-2">
         <img src={`${router.basePath}${props.image}`} alt={props.imageAlt} className="rounded" />
       </div>
     </div>

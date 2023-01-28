@@ -21,7 +21,7 @@ const Hero = () => {
     >
       <Section className="w-full" yPadding="py-16">
         <header>
-          <Card className="flex flex-col lg:flex-row gap-3 lg:gap-6 justify-between p-3 md:p-4">
+          <Card className="flex flex-col lg:flex-row gap-3 lg:gap-6 justify-between p-3 md:p-4 pb-2">
             <div className="flex flex-col gap-3 w-full">
               <h3 className="text-2xl font-bold uppercase">
                 {width > breakpoint
@@ -57,7 +57,7 @@ const Hero = () => {
               </div>
             </div>
             <div className="flex flex-col-reverse sm:flex-row justify-end lg:flex-col gap-3">
-              <Link href="/gallery">
+              <Link href="/packages">
               <Button className="whitespace-nowrap" size="large">
                 See Our Packages
               </Button>

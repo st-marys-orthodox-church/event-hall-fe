@@ -4,8 +4,10 @@ import { useWindowSize, useDropdown } from "../../hooks"
 import { Section } from "../layout/Section"
 import { Logo } from "./Logo"
 import MenuIcon from '@mui/icons-material/Menu';
+import { useAppContext } from "../../stores/Global"
 
 export const Navbar = () => {
+  const { handleOpenModal } = useAppContext();
   const {width} = useWindowSize();
   const {open, handleClick, handleClose, anchorEl} = useDropdown();
 
@@ -42,7 +44,7 @@ export const Navbar = () => {
           </li>
         ))}
           <li>
-            <Button variant="contained" className="bg-blue-500 hover:bg-blue-600 ml-1">
+            <Button variant="contained" className="bg-blue-500 hover:bg-blue-600 ml-1" onClick={handleOpenModal}>
               Contact Us
             </Button>
           </li>
@@ -72,11 +74,11 @@ export const Navbar = () => {
             >
               {links.map((el, i) => (
                 <Link href={el.link} key={`nav-dropdown-${i}`}>
-              <MenuItem className="justify-end" onClick={handleClose}>
+              <MenuItem className="justify-end pl-10" onClick={handleClose}>
               {el.text}
             </MenuItem></Link>
               ))}
-              <MenuItem onClick={handleClose} className="text-blue-500">
+              <MenuItem onClick={handleOpenModal} className="text-blue-500 pl-10">
               Contact Us
             </MenuItem>
             </Menu>

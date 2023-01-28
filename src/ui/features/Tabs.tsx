@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Section } from '../layout/Section';
+import { useRouter } from 'next/router';
 
 interface ITabPanelProps {
   children?: React.ReactNode;
@@ -18,6 +19,7 @@ interface ITabProps {
     }>;
     title?: string;
     description?: string;
+    withRouter?: boolean;
 }
 
 function TabPanel(props: ITabPanelProps) {
@@ -48,12 +50,21 @@ function a11yProps(index: number) {
 }
 
 export function BasicTabs(props:ITabProps) {
+  const router = useRouter();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     if(process.env.NEXT_PUBLIC_DEV) console.log("handleChange", event)
     setValue(newValue);
   };
+
+  React.useEffect(() => {
+    if(props.withRouter) {
+      const tabNum = router.query.tab ? Number(router.query.tab) : 0;
+      setValue(tabNum);
+      if(router.asPath.includes('?')) router.push({ pathname: '/packages' }, undefined, { shallow: true })
+    }
+  }, [])
 
   return (
     <Section title={props.title} description={props.description}>

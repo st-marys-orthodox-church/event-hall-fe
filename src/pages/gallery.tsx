@@ -10,6 +10,7 @@ const Packages = () => (
 
         <Template topPad>
         <GalleryGrid 
+            title="Gallery"
             images={GALLERY_PHOTOS}
         />
         </Template>

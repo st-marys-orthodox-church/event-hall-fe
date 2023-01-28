@@ -43,7 +43,12 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
         <p className="pt-2">{el.description}</p>
         </div>
         {el.cta && (
-          <Button onClick={el.cta.action ? el.cta.action : () => push(el.cta?.link || '')}>
+          <Button onClick={el.cta.action ? el.cta.action : () => push({
+            pathname: el.cta?.link || '',
+            query: {
+              tab: i
+            }
+          })}>
             {el.cta.text}
           </Button>
         )}
