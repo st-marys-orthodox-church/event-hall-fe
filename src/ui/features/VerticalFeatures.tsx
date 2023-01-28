@@ -6,13 +6,13 @@ const VerticalFeatures = () => (
     <VerticalFeatureRow
       title="Your title here"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum, nunc non posuere consectetur, justo erat semper enim, non hendrerit dui odio id enim."
-      image="/photos/hero-temp.jpg"
+      image="/photos/about-1.jpeg"
       imageAlt="First feature alt text"
     />
     <VerticalFeatureRow
       title="Your title here"
       description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse bibendum, nunc non posuere consectetur, justo erat semper enim, non hendrerit dui odio id enim."
-      image="/photos/hero-temp.jpg"
+      image="/photos/about-2.jpeg"
       imageAlt="Second feature alt text"
       reverse
     />

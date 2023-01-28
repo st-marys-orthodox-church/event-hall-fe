@@ -17,7 +17,7 @@ const Hero = () => {
   const { width, breakpoint } = useWindowSize();
   return (
     <div
-      className={`bg-[url('/photos/hero-temp.jpg')] bg-cover h-screen flex items-end w-full`}
+      className={`bg-[url('/photos/hero-bg.jpeg')] bg-cover h-screen flex items-end w-full`}
     >
       <Section className="w-full" yPadding="py-16">
         <header>
@@ -59,7 +59,7 @@ const Hero = () => {
             <div className="flex flex-col-reverse sm:flex-row justify-end lg:flex-col gap-3">
               <Link href="/packages">
               <Button className="whitespace-nowrap" size="large">
-                See Our Packages
+                See Packages
               </Button>
               </Link>
               <Button

@@ -28,17 +28,17 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
     description={description}
     className={``}
   >
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
     {list && list.map((el, i) => (
       <Card 
         className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4"
-        key={`card-grid-${el.title}-${i}`}
+        key={`card-grid-${i}`}
       >
         <div>
         <h4 className="text-xl font-semibold">{el.title}</h4>
         {el.price && (<span className="text-neutral-600">{el.price}</span>)}
         {el.img && (
-        <img src={el.img} alt={el.title} className="rounded mt-2" />
+        <img src={el.img} alt={el.title} className="rounded mt-2 h-60 object-cover w-full" />
         )}
         <p className="pt-2">{el.description}</p>
         </div>
