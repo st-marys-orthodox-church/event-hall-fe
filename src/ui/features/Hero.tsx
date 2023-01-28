@@ -7,6 +7,7 @@ import {
   Select,
   TextField,
 } from '@mui/material';
+import Link from 'next/link';
 
 import { useWindowSize } from '../../hooks/UseWindowDimensions';
 import { getFutureDates } from '../../utils/Helpers';
@@ -56,9 +57,11 @@ const Hero = () => {
               </div>
             </div>
             <div className="flex flex-col-reverse sm:flex-row justify-end lg:flex-col gap-3">
+              <Link href="/gallery">
               <Button className="whitespace-nowrap" size="large">
                 See Our Packages
               </Button>
+              </Link>
               <Button
                 className="whitespace-nowrap bg-blue-500 hover:bg-blue-600"
                 variant="contained"

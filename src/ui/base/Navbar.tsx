@@ -12,11 +12,11 @@ export const Navbar = () => {
   const links = [
     {
       text: 'Gallery',
-      link: '#gallery'
+      link: '/gallery'
     },
     {
       text: 'Packages',
-      link: '#packages'
+      link: '/packages'
     }
   ]
     return (

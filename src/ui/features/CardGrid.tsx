@@ -1,5 +1,5 @@
 import { Button, Card } from '@mui/material';
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Section } from '../layout/Section';
 
 export type ICardGridListItemProps = {
@@ -8,8 +8,9 @@ export type ICardGridListItemProps = {
   price?: string;
   description: string;
   cta?: {
-    action: any;
+    action?: any;
     text: string;
+    link?: string;
   };
 }
 
@@ -20,6 +21,7 @@ type ICardGridProps = {
 }
 
 const CardGrid = ({ title, description, list }: ICardGridProps) => {
+  const {push} = useRouter();
   return (
   <Section
     title={title}
@@ -33,15 +35,15 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
         key={`card-grid-${el.title}-${i}`}
       >
         <div>
-        <h4 className="text-lg font-semibold">{el.title}</h4>
-        {el.price && (<span className="text-sm text-neutral-600">{el.price}</span>)}
+        <h4 className="text-xl font-semibold">{el.title}</h4>
+        {el.price && (<span className="text-neutral-600">{el.price}</span>)}
         {el.img && (
-        <Image src={el.img} />
+        <img src={el.img} alt={el.title} className="rounded mt-2" />
         )}
-        <p>{el.description}</p>
+        <p className="pt-2">{el.description}</p>
         </div>
         {el.cta && (
-          <Button onClick={el.cta.action}>
+          <Button onClick={el.cta.action ? el.cta.action : () => push(el.cta?.link || '')}>
             {el.cta.text}
           </Button>
         )}

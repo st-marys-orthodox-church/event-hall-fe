@@ -4,6 +4,7 @@ import { Navbar } from './Navbar';
 
 type ITemplateProps = {
     children: ReactNode;
+    topPad?: boolean;
 }
 
 export const Template = (props: ITemplateProps) => {
@@ -12,6 +13,7 @@ export const Template = (props: ITemplateProps) => {
         <div className="bg-neutral-100 shadow-md fixed w-full z-50">
         <Navbar />
         </div>
+        {props.topPad && (<div className="h-[76.5px]" />)}
         {props.children}
         <Footer />
         </>
