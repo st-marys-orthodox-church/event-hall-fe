@@ -71,8 +71,8 @@ export const Navbar = () => {
               anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
               {links.map((el, i) => (
-                <Link href={el.link}>
-              <MenuItem key={`nav-dropdown-${i}`} className="justify-end" onClick={handleClose}>
+                <Link href={el.link} key={`nav-dropdown-${i}`}>
+              <MenuItem className="justify-end" onClick={handleClose}>
               {el.text}
             </MenuItem></Link>
               ))}
