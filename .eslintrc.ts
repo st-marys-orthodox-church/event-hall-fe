@@ -1,4 +1,4 @@
-{
+module.exports = {
   // Configuration for JavaScript files
   "extends": [
     "airbnb-base",
@@ -24,7 +24,8 @@
         "plugin:prettier/recommended"
       ],
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": __dirname
       },
       "rules": {
         "prettier/prettier": [
