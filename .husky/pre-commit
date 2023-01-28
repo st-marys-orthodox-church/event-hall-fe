@@ -2,4 +2,6 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # Disable concurent to run build-types after ESLint in lint-staged
-yarn lint-staged
+eslint --fix
+yarn build-types
+prettier --write
