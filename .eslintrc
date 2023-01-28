@@ -1,4 +1,4 @@
-module.exports = {
+{
   // Configuration for JavaScript files
   "extends": [
     "airbnb-base",
@@ -25,7 +25,6 @@ module.exports = {
       ],
       "parserOptions": {
         "project": "./tsconfig.json",
-        "tsconfigRootDir": __dirname
       },
       "rules": {
         "prettier/prettier": [
