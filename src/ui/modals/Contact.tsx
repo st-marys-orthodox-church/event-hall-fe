@@ -5,7 +5,8 @@ import Fade from '@mui/material/Fade';
 import CloseIcon from '@mui/icons-material/Close'
 import { useAppContext } from '../../stores/Global';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
-import { getFutureDates } from '../../utils/Helpers';
+import { DesktopDatePicker } from '@mui/x-date-pickers';
+import { useContactForm } from '../../hooks';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -19,6 +20,8 @@ const style = {
 
 export function ContactModal() {
     const { handleCloseModal, modalOpen } = useAppContext();
+    const { contactForm, updateContactForm } = useContactForm();
+
   return (
     <>
       <Modal
@@ -32,7 +35,7 @@ export function ContactModal() {
           <Box sx={style}>
             <div className="p-4 bg-neutral-100 rounded mx-4 max-w-2xl w-full flex flex-col gap-4">
                 <div className="flex justify-between">
-                    <h5 className="text-2xl font-semibold">Send us a message!</h5>
+                    <h5 className="text-2xl font-semibold">Send a message!</h5>
                     <Button className="min-w-0" onClick={handleCloseModal}>
                         <CloseIcon />
                     </Button>
@@ -42,27 +45,20 @@ export function ContactModal() {
                 <FormControl fullWidth>
                   <TextField
                     id="contact-form-name"
-                    value={''}
+                    value={contactForm.name}
                     label="Full Name"
-                    onChange={() => {}}
+                    onChange={(e) => updateContactForm('name', e.target.value)}
                     variant="outlined"
                   />
                 </FormControl>
                 <FormControl fullWidth>
-                  <InputLabel id="contact-form-date">Date</InputLabel>
-                  <Select
-                    labelId="contact-form-date"
-                    id="contact-form-date"
-                    value={''}
-                    label="Date"
-                    onChange={() => {}}
-                  >
-                    {getFutureDates(new Date(), 14).map((el, i) => (
-                      <MenuItem key={`date-dropdown-${i}`} value={el}>
-                        {el}
-                      </MenuItem>
-                    ))}
-                  </Select>
+                <DesktopDatePicker
+          label="Date"
+          inputFormat="MM/DD/YYYY"
+          value={contactForm.date}
+          onChange={(e) => updateContactForm('name', e)}
+          renderInput={(params) => <TextField {...params} />}
+        />
                 </FormControl>
               </div>
                 <FormControl fullWidth>
@@ -70,9 +66,9 @@ export function ContactModal() {
                   <Select
                     labelId="contact-modal-package"
                     id="contact-modal-package"
-                    value={''}
+                    value={contactForm.message}
                     label="Package Interested In"
-                    onChange={() => {}}
+                    onChange={(e) => updateContactForm('message', e.target.value)}
                   >
                     {[1, 2, 3].map((el, i) => (
                       <MenuItem key={`date-dropdown-${i}`} value={el}>
@@ -95,7 +91,7 @@ export function ContactModal() {
               </div>
               <div className="flex justify-end">
                 <Button variant="contained" className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto">
-                    Send Message
+                    Send
                 </Button>
               </div>
             </div>

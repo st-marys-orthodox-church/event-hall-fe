@@ -27,11 +27,11 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
     <div className={`${verticalFeatureClass}`}>
       <div className={`w-full px-2 text-center ${props.reverse ? 'sm:text-right' : 'sm:text-left'}`}>
         <h3 className="text-3xl text-gray-900 font-semibold">{props.title}</h3>
-        <div className="mt-6 text-xl">{props.description}</div>
+        <div className="mt-6 text-lg">{props.description}</div>
       </div>
 
       <div className="w-full p-2">
-        <img src={`${router.basePath}${props.image}`} alt={props.imageAlt} className="rounded" />
+        <img src={`${router.basePath}${props.image}`} alt={props.imageAlt} className="rounded max-h-80 w-full" />
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 import { Button, Card } from '@mui/material';
 import { useRouter } from 'next/router';
+import { ReactNode } from 'react';
 import { Section } from '../layout/Section';
 
 export type ICardGridListItemProps = {
   title: string;
   img?: `${string}`
   price?: string;
-  description: string;
+  description: string | ReactNode;
   cta?: {
     action?: any;
     text: string;
@@ -40,7 +41,7 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
         {el.img && (
         <img src={el.img} alt={el.title} className="rounded mt-2 h-60 object-cover w-full" />
         )}
-        <p className="pt-2">{el.description}</p>
+        <div className="pt-2">{el.description}</div>
         </div>
         {el.cta && (
           <Button onClick={el.cta.action ? el.cta.action : () => push({

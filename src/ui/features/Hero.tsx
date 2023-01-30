@@ -2,22 +2,20 @@ import {
   Button,
   Card,
   FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   TextField,
 } from '@mui/material';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import Link from 'next/link';
-
+import { useContactForm } from '../../hooks';
 import { useWindowSize } from '../../hooks/UseWindowDimensions';
-import { getFutureDates } from '../../utils/Helpers';
 import { Section } from '../layout/Section';
 
 const Hero = () => {
   const { width, breakpoint } = useWindowSize();
+  const { contactForm, updateContactForm } = useContactForm();
   return (
     <div
-      className={`bg-[url('/photos/hero-bg.jpeg')] bg-cover h-screen flex items-end w-full`}
+      className={`bg-[url('/photos/hero-bg.jpeg')] bg-cover bg-center h-screen flex items-end w-full `}
     >
       <Section className="w-full" yPadding="py-16">
         <header>
@@ -32,27 +30,21 @@ const Hero = () => {
                 <FormControl fullWidth>
                   <TextField
                     id="hero-name"
-                    value={''}
+                    value={contactForm.name}
                     label="Full Name"
-                    onChange={() => {}}
+                    onChange={(e) => updateContactForm('name', e.target.value)}
                     variant="outlined"
+                    size='medium'
                   />
                 </FormControl>
                 <FormControl fullWidth>
-                  <InputLabel id="hero-date">Date</InputLabel>
-                  <Select
-                    labelId="hero-date"
-                    id="hero-date"
-                    value={''}
-                    label="Date"
-                    onChange={() => {}}
-                  >
-                    {getFutureDates(new Date(), 14).map((el, i) => (
-                      <MenuItem key={`date-dropdown-${i}`} value={el}>
-                        {el}
-                      </MenuItem>
-                    ))}
-                  </Select>
+                  <DesktopDatePicker
+          label="Date"
+          inputFormat="MM/DD/YYYY"
+          value={contactForm.date}
+          onChange={(e) => updateContactForm('date', e)}
+          renderInput={(params) => <TextField {...params} />}
+        />
                 </FormControl>
               </div>
             </div>
@@ -67,7 +59,7 @@ const Hero = () => {
                 variant="contained"
                 size="large"
               >
-                Send Interest
+                Send Inquiry
               </Button>
             </div>
           </Card>

@@ -6,7 +6,7 @@ import { Logo } from './Logo';
 
 const Footer = () => (
   <div className="bg-gray-100">
-    <Section>
+    <Section yPadding='py-8'>
       <CenteredSection
         logo={<Logo />}
       >

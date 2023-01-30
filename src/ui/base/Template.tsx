@@ -13,7 +13,7 @@ export const Template = (props: ITemplateProps) => {
         <div className="bg-neutral-100 shadow-md fixed w-full z-50">
         <Navbar />
         </div>
-        {props.topPad && (<div className="h-[76.5px]" />)}
+        {props.topPad && (<div className="h-[68.5px]" />)}
         {props.children}
         <Footer />
         </>

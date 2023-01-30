@@ -11,7 +11,7 @@ const Logo = (props: ILogoProps) => {
 
   return (
     <span className={`text-gray-900 inline-flex items-center ${fontStyle}`}>
-      {AppConfig.site_name}
+      {AppConfig.site_name.split(' ')[0]}
     </span>
   );
 };
