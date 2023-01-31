@@ -69,7 +69,7 @@ export function BasicTabs(props:ITabProps) {
   return (
     <Section title={props.title} description={props.description}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" variant="fullWidth">
+        <Tabs value={value} onChange={handleChange} aria-label="tabs" variant="fullWidth">
             {props.tabs && props.tabs.map((el, i) => (
                 <Tab key={`tab-${i}`} label={el.name} {...a11yProps(i)} />
             ))}

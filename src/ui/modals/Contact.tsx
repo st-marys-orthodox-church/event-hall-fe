@@ -41,59 +41,71 @@ export function ContactModal() {
                     </Button>
                 </div>
                 <div className="flex flex-col gap-3">
-                <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
-                <FormControl fullWidth>
-                  <TextField
-                    id="contact-form-name"
-                    value={contactForm.name}
-                    label="Full Name"
-                    onChange={(e) => updateContactForm('name', e.target.value)}
-                    variant="outlined"
-                  />
-                </FormControl>
-                <FormControl fullWidth>
-                <DesktopDatePicker
-          label="Date"
-          inputFormat="MM/DD/YYYY"
-          value={contactForm.date}
-          onChange={(e) => updateContactForm('name', e)}
-          renderInput={(params) => <TextField {...params} />}
-        />
-                </FormControl>
-              </div>
-                <FormControl fullWidth>
-                  <InputLabel id="contact-modal-package">Package Interested In</InputLabel>
-                  <Select
-                    labelId="contact-modal-package"
-                    id="contact-modal-package"
-                    value={contactForm.message}
-                    label="Package Interested In"
-                    onChange={(e) => updateContactForm('message', e.target.value)}
-                  >
-                    {[1, 2, 3].map((el, i) => (
-                      <MenuItem key={`date-dropdown-${i}`} value={el}>
-                        {`Package ${el}`}
-                      </MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
-                <FormControl fullWidth>
-                  <TextField
-                    id="contact-form-message"
-                    value={''}
-                    label="Message"
-                    onChange={() => {}}
-                    variant="outlined"
-                    multiline
-                    minRows={3}
-                  />
-                </FormControl>
-              </div>
-              <div className="flex justify-end">
-                <Button variant="contained" className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto">
-                    Send
-                </Button>
-              </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
+                    <FormControl fullWidth>
+                      <TextField
+                        id="contact-form-name"
+                        value={contactForm.name}
+                        label="Full Name"
+                        onChange={(e) => updateContactForm('name', e.target.value)}
+                        variant="outlined"
+                      />
+                    </FormControl>
+                    <FormControl fullWidth>
+                      <DesktopDatePicker
+                        label="Date"
+                        inputFormat="MM/DD/YYYY"
+                        value={contactForm.date}
+                        onChange={(e) => updateContactForm('name', e)}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </FormControl>
+                  </div>
+                  <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
+                    <FormControl fullWidth>
+                      <InputLabel id="contact-modal-package">Package Interested In</InputLabel>
+                      <Select
+                        labelId="contact-modal-package"
+                        id="contact-modal-package"
+                        value={contactForm.message}
+                        label="Package Interested In"
+                        onChange={(e) => updateContactForm('message', e.target.value)}
+                      >
+                        {[1, 2, 3].map((el, i) => (
+                          <MenuItem key={`date-dropdown-${i}`} value={el}>
+                            {`Package ${el}`}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <FormControl fullWidth >
+                      <TextField
+                        type="number"
+                        id="contact-form-cap"
+                        value={contactForm.cap}
+                        label="Amount of People"
+                        onChange={(e) => updateContactForm('cap', e.target.value)}
+                        variant="outlined"
+                      />
+                    </FormControl>
+                  </div>
+                  <FormControl fullWidth>
+                    <TextField
+                      id="contact-form-message"
+                      value={''}
+                      label="Message"
+                      onChange={() => {}}
+                      variant="outlined"
+                      multiline
+                      minRows={3}
+                    />
+                  </FormControl>
+                </div>
+                <div className="flex justify-end">
+                  <Button variant="contained" className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto">
+                      Send
+                  </Button>
+                </div>
             </div>
           </Box>
         </Fade>
