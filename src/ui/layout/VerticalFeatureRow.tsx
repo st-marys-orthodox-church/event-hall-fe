@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 type IVerticalFeatureRowProps = {
   title: string;
-  description: string;
+  description: string | React.ReactNode;
   image: string;
   imageAlt: string;
   reverse?: boolean;
@@ -25,7 +25,7 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
 
   return (
     <div className={`${verticalFeatureClass}`}>
-      <div className={`w-full px-2 text-center ${props.reverse ? 'sm:text-right' : 'sm:text-left'}`}>
+      <div className={`w-full px-2 text-center sm:text-left`}>
         <h3 className="text-3xl text-gray-900 font-semibold">{props.title}</h3>
         <div className="mt-6 text-lg">{props.description}</div>
       </div>

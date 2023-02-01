@@ -13,6 +13,11 @@
       }
     ]
   },
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "tsconfigRootDir": ".",
+    "sourceType": "module"
+  },
   "overrides": [
     // Configuration for TypeScript files
     {
@@ -23,9 +28,6 @@
         "next/core-web-vitals",
         "plugin:prettier/recommended"
       ],
-      "parserOptions": {
-        "project": "./tsconfig.json",
-      },
       "rules": {
         "prettier/prettier": "off",
         "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable

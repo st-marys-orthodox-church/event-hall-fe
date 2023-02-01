@@ -12,7 +12,7 @@ type IBannerProps = {
 const Banner = ({ color, full, children }: IBannerProps) => {
   const {handleOpenModal} = useAppContext();
   const bgClass = color || 'bg-primary-100'
-  const fullClass = full ? 'max-w-none px-0 rounded-none' : '';
+  const fullClass = full ? '!max-w-none !px-0 rounded-none' : '';
   return (
   <Section className={fullClass}>
     {children ? (
