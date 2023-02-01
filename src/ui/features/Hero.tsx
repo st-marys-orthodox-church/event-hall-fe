@@ -12,7 +12,7 @@ const Hero = () => {
       className={`bg-[url('/photos/hero-bg.JPG')] bg-cover bg-center h-screen flex items-center w-full`}
     >
       <Section
-        className="w-full flex flex-col gap-3 items-center justify-center"
+        className="w-full flex flex-col gap-3 items-center justify-center !max-w-none !px-0"
         yPadding="py-16"
       >
         <div className="flex items-center gap-3 text-white">
@@ -34,7 +34,7 @@ const Hero = () => {
             </a>
           </Link>
         </div>
-        <header className="backdrop-brightness-75 rounded-md text-center py-4 px-8 w-fit">
+        <header className="backdrop-brightness-75 text-center py-4 w-full">
           <h3 className="text-4xl text-white font-bold tracking-wide">
             {width > 600 ? (
               `Fellowship Event Hall`
