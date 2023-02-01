@@ -2,7 +2,7 @@ type IGalleryImgProps = {
   src: string;
   width: number;
   height: number;
-}
+};
 
 export const GALLERY_PHOTOS: IGalleryImgProps[] = [
   {
@@ -28,12 +28,12 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
   {
     src: 'https://i.imgur.com/WLiiqYQ.jpg',
     width: 4,
-    height: 3
+    height: 3,
   },
   {
     src: 'https://i.imgur.com/AGlvxI4.jpg',
     width: 6,
-    height: 3
+    height: 3,
   },
   {
     src: 'https://i.imgur.com/7IRrMHO.jpg',
@@ -43,7 +43,7 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
   {
     src: 'https://i.imgur.com/X4e1Ha1.jpg',
     width: 4,
-    height: 3
+    height: 3,
   },
   {
     src: 'https://i.imgur.com/6nAJplD.jpg',
@@ -83,26 +83,26 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
   {
     src: 'https://i.imgur.com/DB3sRpf.jpg',
     width: 4,
-    height: 3
+    height: 3,
   },
   {
     src: 'https://i.imgur.com/7r6dEdZ.jpg',
     width: 4,
-    height: 3
+    height: 3,
   },
   {
     src: 'https://i.imgur.com/GbY9d67.jpg',
     width: 4,
-    height: 2
+    height: 2,
   },
   {
     src: 'https://i.imgur.com/d6oVq2s.jpg',
     width: 4,
-    height: 3
+    height: 3,
   },
   {
     src: 'https://i.imgur.com/fL5qyjB.jpg',
     width: 4,
-    height: 2
-  }
+    height: 2,
+  },
 ];
