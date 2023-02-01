@@ -13,6 +13,9 @@
       }
     ]
   },
+  "parserOptions": {
+    "project": ["tsconfig.json"]
+  },
   "overrides": [
     // Configuration for TypeScript files
     {

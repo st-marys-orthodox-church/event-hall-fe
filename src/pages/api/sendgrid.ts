@@ -1,11 +1,11 @@
-import sendgrid from "@sendgrid/mail";
-import type { NextApiRequest, NextApiResponse } from 'next'
+import sendgrid from '@sendgrid/mail';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
-sendgrid.setApiKey((process.env.SENDGRID_API_KEY as string));
+sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   try {
-    console.log("REQ.BODY", req.body);
+    console.log('REQ.BODY', req.body);
     // await sendgrid.send({
     //   to: "mannuarora7000@gmail.com", // Your email where you'll receive emails
     //   from: "manuarorawork@gmail.com", // your website email address here
@@ -17,7 +17,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
     return res.status(error.statusCode || 500).json({ error: error.message });
   }
 
-  return res.status(200).json({ error: "" });
+  return res.status(200).json({ error: '' });
 }
 
 export default sendEmail;

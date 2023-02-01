@@ -31,7 +31,11 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
       </div>
 
       <div className="w-full p-2">
-        <img src={`${router.basePath}${props.image}`} alt={props.imageAlt} className="rounded max-h-80 w-full" />
+        <img
+          src={`${router.basePath}${props.image}`}
+          alt={props.imageAlt}
+          className="rounded max-h-80 w-full"
+        />
       </div>
     </div>
   );

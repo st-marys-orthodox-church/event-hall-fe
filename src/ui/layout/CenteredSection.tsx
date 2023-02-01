@@ -16,11 +16,12 @@ const CenteredSection = (props: ICenteredSectionProps) => (
       </ul>
     </nav>
 
-
     <div className="mt-8 text-sm">
-    <div className="section-copyright">
-    <span>© Copyright {new Date().getFullYear()} {AppConfig.title}. </span>
-  </div>
+      <div className="section-copyright">
+        <span>
+          © Copyright {new Date().getFullYear()} {AppConfig.title}.{' '}
+        </span>
+      </div>
     </div>
 
     <style jsx>
@@ -36,35 +37,35 @@ const CenteredSection = (props: ICenteredSectionProps) => (
           @apply underline;
         }
         .section-icon-list :global(a:not(:last-child)) {
-              @apply mr-3;
-            }
+          @apply mr-3;
+        }
 
-            .section-icon-list :global(a) {
-              @apply text-gray-500;
-            }
+        .section-icon-list :global(a) {
+          @apply text-gray-500;
+        }
 
-            .section-icon-list :global(a:hover) {
-              @apply text-gray-700;
-            }
+        .section-icon-list :global(a:hover) {
+          @apply text-gray-700;
+        }
 
-            .section-icon-list :global(svg) {
-              @apply fill-current w-5 h-5;
-            }
-            .section-icon-list :global(a:not(:last-child)) {
-              @apply mr-3;
-            }
+        .section-icon-list :global(svg) {
+          @apply fill-current w-5 h-5;
+        }
+        .section-icon-list :global(a:not(:last-child)) {
+          @apply mr-3;
+        }
 
-            .section-icon-list :global(a) {
-              @apply text-gray-500;
-            }
+        .section-icon-list :global(a) {
+          @apply text-gray-500;
+        }
 
-            .section-icon-list :global(a:hover) {
-              @apply text-gray-700;
-            }
+        .section-icon-list :global(a:hover) {
+          @apply text-gray-700;
+        }
 
-            .section-icon-list :global(svg) {
-              @apply fill-current w-5 h-5;
-            }
+        .section-icon-list :global(svg) {
+          @apply fill-current w-5 h-5;
+        }
       `}
     </style>
   </div>

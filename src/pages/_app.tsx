@@ -10,13 +10,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   const AnyComponent = Component as any;
   return (
     <LocalizationProvider dateAdapter={AdapterMoment}>
-
-    <AppWrapper>
-      <AnyComponent {...pageProps} />
-      <ContactModal />
-    </AppWrapper>
-    </ LocalizationProvider>
-  )
+      <AppWrapper>
+        <AnyComponent {...pageProps} />
+        <ContactModal />
+      </AppWrapper>
+    </LocalizationProvider>
+  );
 };
 
 export default MyApp;

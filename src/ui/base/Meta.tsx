@@ -3,7 +3,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { AppConfig } from '../../utils/AppConfig';
 
-
 type IMetaProps = {
   title: string;
   description: string;
