@@ -9,7 +9,7 @@ const Hero = () => {
   const { width } = useWindowSize();
   return (
     <div
-      className={`bg-[url('/photos/hero-bg.jpeg')] bg-cover bg-center h-screen flex items-center w-full`}
+      className={`bg-[url('/photos/hero-bg.JPG')] bg-cover bg-center h-screen flex items-center w-full`}
     >
       <Section
         className="w-full flex flex-col gap-3 items-center justify-center"

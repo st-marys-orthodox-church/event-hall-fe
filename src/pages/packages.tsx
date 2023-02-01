@@ -64,7 +64,7 @@ const Packages = () => {
                     ]}
                   />
                   <img
-                    src="/photos/tier-3.jpeg"
+                    src="/photos/tier-3.jpg"
                     alt="Package 3"
                     className={imgClass}
                   />

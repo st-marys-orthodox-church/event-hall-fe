@@ -58,7 +58,7 @@ const VerticalFeatures = () => (
           </p>
         </>
       }
-      image="/photos/about-2.jpeg"
+      image="/photos/about-2.jpg"
       imageAlt="Second feature alt text"
       reverse
     />

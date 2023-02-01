@@ -31,7 +31,7 @@ export const PACKAGES_LIST: ICardGridListItemProps[] = [
       bullets: ['Event Hall', 'Tables', 'Decorations', 'Food', 'Drinks'],
     }),
     price: '~ $5000',
-    img: '/photos/tier-3.jpeg',
+    img: '/photos/tier-3.jpg',
     cta: { text: 'Learn More', link: '/packages' },
   },
 ];
