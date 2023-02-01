@@ -13,11 +13,6 @@
       }
     ]
   },
-  "parserOptions": {
-    "project": "tsconfig.json",
-    "tsconfigRootDir": ".",
-    "sourceType": "module"
-  },
   "overrides": [
     // Configuration for TypeScript files
     {
