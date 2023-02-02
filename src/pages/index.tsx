@@ -21,17 +21,17 @@ const Index = () => (
         <div className="grid grid-cols-1 sm:grid-cols-3 justify-center gap-6">
           <NumberDisplay
             text="Capacity"
-            value="400"
+            value="250"
             icon={<People fontSize="large" />}
           />
           <NumberDisplay
             text="Square Feet"
-            value="3000"
+            value="5000"
             icon={<DesignServices fontSize="large" />}
           />
           <NumberDisplay
             text="Rates"
-            value="$1K - $6k"
+            value="$2K - $10k"
             icon={<LocalOffer fontSize="large" />}
           />
         </div>
