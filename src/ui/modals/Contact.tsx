@@ -27,7 +27,7 @@ const style = {
 
 export function ContactModal() {
   const { handleCloseModal, modalOpen } = useAppContext();
-  const { contactForm, updateContactForm } = useContactForm();
+  const { contactForm, updateContactForm, handleSubmit, isLoading } = useContactForm();
 
   return (
     <>
@@ -49,7 +49,7 @@ export function ContactModal() {
               </div>
               <div className="flex flex-col gap-3">
                 <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
-                  <FormControl fullWidth>
+                  <FormControl fullWidth required>
                     <TextField
                       id="contact-form-name"
                       value={contactForm.name}
@@ -58,30 +58,43 @@ export function ContactModal() {
                         updateContactForm('name', e.target.value)
                       }
                       variant="outlined"
+                      required
                     />
                   </FormControl>
-                  <FormControl fullWidth>
-                    <DesktopDatePicker
-                      label="Date"
-                      inputFormat="MM/DD/YYYY"
-                      value={contactForm.date}
-                      onChange={(e) => updateContactForm('name', e)}
-                      renderInput={(params) => <TextField {...params} />}
+                  <FormControl fullWidth required>
+                    <TextField
+                      required
+                      type="text"
+                      id="contact-form-email"
+                      value={contactForm.email}
+                      label="Email"
+                      onChange={(e) => updateContactForm('email', e.target.value)}
+                      variant="outlined"
                     />
                   </FormControl>
                 </div>
                 <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
-                  <FormControl fullWidth>
+                  <FormControl fullWidth required>
+                    <DesktopDatePicker
+                      label="Date"
+                      inputFormat="MM/DD/YYYY"
+                      value={contactForm.date}
+                      onChange={(e) => updateContactForm('date', e.toDate())}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </FormControl>
+                  <FormControl fullWidth required>
                     <InputLabel id="contact-modal-package">
-                      Package Interested In
+                      Select Package
                     </InputLabel>
                     <Select
+                      required
                       labelId="contact-modal-package"
                       id="contact-modal-package"
-                      value={contactForm.message}
-                      label="Package Interested In"
+                      value={contactForm.package}
+                      label="Select Package"
                       onChange={(e) =>
-                        updateContactForm('message', e.target.value)
+                        updateContactForm('package', e.target.value)
                       }
                     >
                       {[1, 2, 3].map((el, i) => (
@@ -91,8 +104,9 @@ export function ContactModal() {
                       ))}
                     </Select>
                   </FormControl>
-                  <FormControl fullWidth>
+                  <FormControl fullWidth required>
                     <TextField
+                      required
                       type="number"
                       id="contact-form-cap"
                       value={contactForm.cap}
@@ -102,15 +116,16 @@ export function ContactModal() {
                     />
                   </FormControl>
                 </div>
-                <FormControl fullWidth>
+                <FormControl fullWidth required>
                   <TextField
                     id="contact-form-message"
-                    value={''}
+                    value={contactForm.message}
                     label="Message"
-                    onChange={() => {}}
+                    onChange={(e) => updateContactForm('message', e.target.value)}
                     variant="outlined"
                     multiline
                     minRows={3}
+                    required
                   />
                 </FormControl>
               </div>
@@ -118,8 +133,9 @@ export function ContactModal() {
                 <Button
                   variant="contained"
                   className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto"
+                  onClick={handleSubmit}
                 >
-                  Send
+                  {isLoading ? 'Sending' : 'Send'}
                 </Button>
               </div>
             </div>
