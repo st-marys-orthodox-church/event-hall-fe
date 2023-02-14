@@ -18,33 +18,30 @@ const Index = () => (
       <Hero />
       <VerticalFeatures />
       <Banner full>
-      <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-        <h4 className="text-center text-3xl font-semibold mb-4">Details</h4>
+        <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+          <h4 className="text-center text-3xl font-semibold mb-4">Details</h4>
         </AnimationOnScroll>
         <div className="grid grid-cols-1 sm:grid-cols-3 justify-center gap-6">
-        <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-
-          <NumberDisplay
-            text="Capacity"
-            value="250"
-            icon={<People fontSize="large" />}
-          />
+          <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <NumberDisplay
+              text="Capacity"
+              value="250"
+              icon={<People fontSize="large" />}
+            />
           </AnimationOnScroll>
           <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-
-          <NumberDisplay
-            text="Square Feet"
-            value="5000"
-            icon={<DesignServices fontSize="large" />}
-          />
+            <NumberDisplay
+              text="Square Feet"
+              value="5000"
+              icon={<DesignServices fontSize="large" />}
+            />
           </AnimationOnScroll>
           <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-
-          <NumberDisplay
-            text="Rates"
-            value="$2K - $10k"
-            icon={<LocalOffer fontSize="large" />}
-          />
+            <NumberDisplay
+              text="Rates"
+              value="$2K - $10k"
+              icon={<LocalOffer fontSize="large" />}
+            />
           </AnimationOnScroll>
         </div>
       </Banner>

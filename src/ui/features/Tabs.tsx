@@ -33,11 +33,7 @@ function TabPanel(props: ITabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -83,24 +79,24 @@ export function BasicTabs(props: ITabProps) {
         </Tabs>
       </Box>
       <Box className="min-h-[320px]">
-      {props.tabs &&
-        props.tabs.map((el, i) => (
-          <Transition
-          show={i === value}
-          enter="transition-opacity duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="transition-opacity duration-150"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          key={`tab-panel-${i}`}
-        >
-          <TabPanel key={`tab-panel-${i}`} value={value} index={i}>
-            {el.children || <></>}
-          </TabPanel>
-        </Transition>
-        ))}
-        </Box>
+        {props.tabs &&
+          props.tabs.map((el, i) => (
+            <Transition
+              show={i === value}
+              enter="transition-opacity duration-500"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="transition-opacity duration-150"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+              key={`tab-panel-${i}`}
+            >
+              <TabPanel key={`tab-panel-${i}`} value={value} index={i}>
+                {el.children || <></>}
+              </TabPanel>
+            </Transition>
+          ))}
+      </Box>
     </Section>
   );
 }

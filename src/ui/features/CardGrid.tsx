@@ -29,42 +29,45 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {list &&
           list.map((el, i) => (
-            <AnimationOnScroll animateIn="animate__fadeInUp" delay={i * 150} key={`card-grid-${i}`} animateOnce>
-            <Card
-              className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4 h-full"
+            <AnimationOnScroll
+              animateIn="animate__fadeInUp"
+              delay={i * 150}
+              key={`card-grid-${i}`}
+              animateOnce
             >
-              <div>
-                <h4 className="text-xl font-semibold">{el.title}</h4>
-                {el.price && (
-                  <span className="text-neutral-600">{el.price}</span>
+              <Card className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4 h-full">
+                <div>
+                  <h4 className="text-xl font-semibold">{el.title}</h4>
+                  {el.price && (
+                    <span className="text-neutral-600">{el.price}</span>
+                  )}
+                  {el.img && (
+                    <img
+                      src={el.img}
+                      alt={el.title}
+                      className="rounded mt-2 h-60 object-cover w-full"
+                    />
+                  )}
+                  <div className="pt-2">{el.description}</div>
+                </div>
+                {el.cta && (
+                  <Button
+                    onClick={
+                      el.cta.action
+                        ? el.cta.action
+                        : () =>
+                            push({
+                              pathname: el.cta?.link || '',
+                              query: {
+                                tab: i,
+                              },
+                            })
+                    }
+                  >
+                    {el.cta.text}
+                  </Button>
                 )}
-                {el.img && (
-                  <img
-                    src={el.img}
-                    alt={el.title}
-                    className="rounded mt-2 h-60 object-cover w-full"
-                  />
-                )}
-                <div className="pt-2">{el.description}</div>
-              </div>
-              {el.cta && (
-                <Button
-                  onClick={
-                    el.cta.action
-                      ? el.cta.action
-                      : () =>
-                          push({
-                            pathname: el.cta?.link || '',
-                            query: {
-                              tab: i,
-                            },
-                          })
-                  }
-                >
-                  {el.cta.text}
-                </Button>
-              )}
-            </Card>
+              </Card>
             </AnimationOnScroll>
           ))}
       </div>

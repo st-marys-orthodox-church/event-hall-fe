@@ -5,7 +5,7 @@ import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import '../styles/global.css';
 import { ContactModal } from '../ui/modals/Contact';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import "animate.css/animate.min.css";
+import 'animate.css/animate.min.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const AnyComponent = Component as any;
