@@ -1,6 +1,7 @@
 import { Button, Card } from '@mui/material';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { Section } from '../layout/Section';
 
 export type ICardGridListItemProps = {
@@ -28,9 +29,9 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {list &&
           list.map((el, i) => (
+            <AnimationOnScroll animateIn="animate__fadeInUp" delay={i * 150} key={`card-grid-${i}`} animateOnce>
             <Card
-              className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4"
-              key={`card-grid-${i}`}
+              className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4 h-full"
             >
               <div>
                 <h4 className="text-xl font-semibold">{el.title}</h4>
@@ -64,6 +65,7 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
                 </Button>
               )}
             </Card>
+            </AnimationOnScroll>
           ))}
       </div>
     </Section>

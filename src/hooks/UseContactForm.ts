@@ -8,7 +8,7 @@ export const useContactForm = () => {
     message: '',
     cap: '',
     email: '',
-    package: ''
+    package: '',
   });
 
   const updateContactForm = (
@@ -24,25 +24,25 @@ export const useContactForm = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsLoading(true);
-      const res = await fetch("/api/sendgrid", {
-        body: JSON.stringify(contactForm),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-      setIsLoading(false)
+    const res = await fetch('/api/sendgrid', {
+      body: JSON.stringify(contactForm),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
+    setIsLoading(false);
 
-      const { error } = await res.json();
-      if (error) {
-        console.error(error);
-      }
+    const { error } = await res.json();
+    if (error) {
+      console.error(error);
+    }
   };
 
   return {
     contactForm,
     updateContactForm,
     handleSubmit,
-    isLoading
+    isLoading,
   };
 };

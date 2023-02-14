@@ -8,6 +8,7 @@ import { CardGrid } from '../ui/features/CardGrid';
 import { PACKAGES_LIST } from '../utils/Constants';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
 import { People, DesignServices, LocalOffer } from '@mui/icons-material';
+import { AnimationOnScroll } from 'react-animation-on-scroll';
 
 const Index = () => (
   <div className="antialiased text-neutral-900">
@@ -17,23 +18,34 @@ const Index = () => (
       <Hero />
       <VerticalFeatures />
       <Banner full>
+      <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
         <h4 className="text-center text-3xl font-semibold mb-4">Details</h4>
+        </AnimationOnScroll>
         <div className="grid grid-cols-1 sm:grid-cols-3 justify-center gap-6">
+        <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+
           <NumberDisplay
             text="Capacity"
             value="250"
             icon={<People fontSize="large" />}
           />
+          </AnimationOnScroll>
+          <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+
           <NumberDisplay
             text="Square Feet"
             value="5000"
             icon={<DesignServices fontSize="large" />}
           />
+          </AnimationOnScroll>
+          <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+
           <NumberDisplay
             text="Rates"
             value="$2K - $10k"
             icon={<LocalOffer fontSize="large" />}
           />
+          </AnimationOnScroll>
         </div>
       </Banner>
       <CardGrid

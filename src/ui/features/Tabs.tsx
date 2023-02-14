@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Section } from '../layout/Section';
 import { useRouter } from 'next/router';
+import { Transition } from '@headlessui/react';
 
 interface ITabPanelProps {
   children?: React.ReactNode;
@@ -35,7 +35,7 @@ function TabPanel(props: ITabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -82,12 +82,25 @@ export function BasicTabs(props: ITabProps) {
             ))}
         </Tabs>
       </Box>
+      <Box className="min-h-[320px]">
       {props.tabs &&
         props.tabs.map((el, i) => (
+          <Transition
+          show={i === value}
+          enter="transition-opacity duration-500"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-150"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+          key={`tab-panel-${i}`}
+        >
           <TabPanel key={`tab-panel-${i}`} value={value} index={i}>
             {el.children || <></>}
           </TabPanel>
+        </Transition>
         ))}
+        </Box>
     </Section>
   );
 }

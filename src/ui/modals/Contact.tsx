@@ -27,7 +27,8 @@ const style = {
 
 export function ContactModal() {
   const { handleCloseModal, modalOpen } = useAppContext();
-  const { contactForm, updateContactForm, handleSubmit, isLoading } = useContactForm();
+  const { contactForm, updateContactForm, handleSubmit, isLoading } =
+    useContactForm();
 
   return (
     <>
@@ -68,7 +69,9 @@ export function ContactModal() {
                       id="contact-form-email"
                       value={contactForm.email}
                       label="Email"
-                      onChange={(e) => updateContactForm('email', e.target.value)}
+                      onChange={(e) =>
+                        updateContactForm('email', e.target.value)
+                      }
                       variant="outlined"
                     />
                   </FormControl>
@@ -121,7 +124,9 @@ export function ContactModal() {
                     id="contact-form-message"
                     value={contactForm.message}
                     label="Message"
-                    onChange={(e) => updateContactForm('message', e.target.value)}
+                    onChange={(e) =>
+                      updateContactForm('message', e.target.value)
+                    }
                     variant="outlined"
                     multiline
                     minRows={3}
