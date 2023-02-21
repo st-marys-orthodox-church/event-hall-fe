@@ -7,7 +7,6 @@ import FadeIn from '../components/FadeIn';
 import Image from 'next/image';
 
 const Hero = () => {
-
   return (
     <div
       className={`bg-[url('/photos/hero-bg.JPG')] bg-cover bg-center h-screen flex items-center w-full`}
