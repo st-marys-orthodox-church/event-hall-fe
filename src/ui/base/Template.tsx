@@ -1,4 +1,6 @@
+import { useRouter } from 'next/router';
 import React, { ReactNode } from 'react';
+import FadeIn from '../components/FadeIn';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 
@@ -8,11 +10,15 @@ type ITemplateProps = {
 };
 
 export const Template = (props: ITemplateProps) => {
+  const { pathname } = useRouter();
+  console.log(pathname);
   return (
     <>
-      <div className="bg-neutral-100 shadow-md fixed w-full z-50">
-        <Navbar />
-      </div>
+      <FadeIn disabled={pathname !== '/'}>
+        <div className="bg-white shadow-md fixed w-full z-50">
+          <Navbar />
+        </div>
+      </FadeIn>
       {props.topPad && <div className="h-[68.5px]" />}
       {props.children}
       <Footer />

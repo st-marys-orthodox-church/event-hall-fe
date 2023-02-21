@@ -22,9 +22,9 @@ export const Navbar = () => {
     },
   ];
   return (
-    <Section yPadding="py-2 md:py-4">
+    <Section yPadding="py">
       <div className="flex flex-wrap justify-between items-center">
-        <div>
+        <div className="pt-2">
           <Link href="/">
             <a>{<Logo xl />}</a>
           </Link>
