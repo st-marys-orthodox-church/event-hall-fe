@@ -39,20 +39,12 @@ const Hero = () => {
 
             <header className="text-center py-4 w-full">
               <h3 className="text-4xl text-white font-bold tracking-wide leading-none">
-                {/* {width > 600 ? (
-                  `Fellowship Event Hall`
-                ) : (
-                  <>
-                    Fellowship
-                    <br />
-                    Event Hall
-                  </>
-                )} */}
                 <Image
                   src={`/logos/logo-words-tp.png`}
                   alt="Fellowship Event Hall - Host Events"
                   width="420"
                   height="90"
+                  className="brightness-[10]"
                 />
               </h3>
               <span className="text-xl font-semibold italic text-white">
