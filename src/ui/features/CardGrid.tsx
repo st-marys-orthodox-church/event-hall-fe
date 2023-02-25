@@ -8,7 +8,7 @@ export type ICardGridListItemProps = {
   title: string;
   img?: `${string}`;
   price?: string;
-  description: string | ReactNode;
+  description?: string | ReactNode;
   cta?: {
     action?: any;
     text: string;
@@ -37,15 +37,17 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
             >
               <Card className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4 h-full">
                 <div>
-                  <h4 className="text-xl font-semibold">{el.title}</h4>
-                  {el.price && (
-                    <span className="text-neutral-600">{el.price}</span>
-                  )}
+                  <div className="flex items-center justify-between">
+                    <h4 className="text-xl font-semibold">{el.title}</h4>
+                    {el.price && (
+                      <span className="text-neutral-600">{el.price}</span>
+                    )}
+                  </div>
                   {el.img && (
                     <img
                       src={el.img}
                       alt={el.title}
-                      className="rounded mt-2 h-60 object-cover w-full"
+                      className="rounded mt-2 h-60 object-cover w-full object-top"
                     />
                   )}
                   <div className="pt-2">{el.description}</div>
