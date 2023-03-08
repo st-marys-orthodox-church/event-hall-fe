@@ -11,6 +11,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  CircularProgress
 } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
 import { useContactForm } from '../../hooks';
@@ -27,7 +28,7 @@ const style = {
 
 export function ContactModal() {
   const { handleCloseModal, modalOpen } = useAppContext();
-  const { contactForm, updateContactForm, handleSubmit, isLoading } =
+  const { contactForm, updateContactForm, handleSubmit, isLoading, isError, isSuccess, determineMessage, determineButtonColor } =
     useContactForm();
 
   return (
@@ -137,10 +138,11 @@ export function ContactModal() {
               <div className="flex justify-end">
                 <Button
                   variant="contained"
-                  className="bg-blue-500 hover:bg-blue-600 w-full md:w-auto"
+                  className={`${determineButtonColor()} w-full md:w-auto flex items-center gap-2`}
                   onClick={handleSubmit}
+                  disabled={isSuccess || isError || isLoading}
                 >
-                  {isLoading ? 'Sending' : 'Send'}
+                  {determineMessage()} {isLoading && <CircularProgress size={16} />}
                 </Button>
               </div>
             </div>

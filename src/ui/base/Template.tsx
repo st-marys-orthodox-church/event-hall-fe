@@ -11,7 +11,6 @@ type ITemplateProps = {
 
 export const Template = (props: ITemplateProps) => {
   const { pathname } = useRouter();
-  console.log(pathname);
   return (
     <>
       <FadeIn disabled={pathname !== '/'}>
