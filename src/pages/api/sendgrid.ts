@@ -5,19 +5,21 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   try {
-    if(process.env.NEXT_PUBLIC_DEV) {
+    if (process.env.NEXT_PUBLIC_DEV) {
       console.log('REQ.BODY', req.body);
     } else {
       await sendgrid.send({
-        to: "saintmaryro.org@gmail.com", // Your email where you'll receive emails
-        from: "saintmaryro.org@gmail.com", // your website email address here
+        to: 'saintmaryro.org@gmail.com', // Your email where you'll receive emails
+        from: 'saintmaryro.org@gmail.com', // your website email address here
         subject: `Inquiry for Fellowship Event Hall`,
         html: `
           <div>
             <h1>New Inquiry from ${req.body.name}</h1>
             <div style="color: #7f7f7f; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
               <span>Email Address: ${req.body.email}</span>
-              <span>Date Sent: ${new Date(req.body.date).toLocaleString()}</span>
+              <span>Date Sent: ${new Date(
+                req.body.date
+              ).toLocaleString()}</span>
             </div>
             <div style="display: flex; flex-direction: column; margin-top: 32px; gap: 6px;">
               <span>Package: ${req.body.package}</span>

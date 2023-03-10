@@ -16,7 +16,11 @@ export const Template = (props: ITemplateProps) => {
   return (
     <>
       <FadeIn disabled={pathname !== '/'}>
-        <div className={`bg-white shadow-md ${scrollY > 0 ? 'fixed' : 'absolute'} w-full z-50`}>
+        <div
+          className={`bg-white shadow-md ${
+            scrollY > 0 ? 'fixed' : 'absolute'
+          } w-full z-50`}
+        >
           <Navbar />
         </div>
       </FadeIn>

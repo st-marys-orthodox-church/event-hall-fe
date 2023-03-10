@@ -71,9 +71,9 @@ export const useContactForm = () => {
   };
 
   useEffect(() => {
-    if(isSuccess || isError) {
-    const timeout = setTimeout(() => {
-      handleCloseModal();
+    if (isSuccess || isError) {
+      const timeout = setTimeout(() => {
+        handleCloseModal();
         setIsError(false);
         setIsSuccess(false);
       }, 3000);
