@@ -12,17 +12,17 @@ const Logo = (props: ILogoProps) => {
     : 'font-semibold text-xl';
 
   const renderLogo = () => {
-    if (width > breakpoint) return 'logo-tp.png';
-    return 'logo-words.jpg';
+    if (width > breakpoint) return ['logo-tp.png', '240', '60'];
+    return ['logo-words.png', '180', '50'];
   };
 
   return (
     <span className={`text-gray-900 inline-flex items-center ${fontStyle}`}>
       <Image
-        src={`/logos/${renderLogo()}`}
+        src={`/logos/${renderLogo()[0]}`}
         alt="Fellowship Event Hall - Host Events"
-        width="240"
-        height="60"
+        width={renderLogo()[1]}
+        height={renderLogo()[2]}
       />
     </span>
   );

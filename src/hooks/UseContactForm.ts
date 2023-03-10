@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useAppContext } from '../stores/Global';
 
 export const useContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
+  const { handleCloseModal } = useAppContext();
   const [contactForm, setContactForm] = useState<any>({
     name: '',
     date: null,
@@ -23,27 +25,28 @@ export const useContactForm = () => {
     });
   };
 
-  const clearForm = () => setContactForm({
-    name: '',
-    date: null,
-    message: '',
-    cap: '',
-    email: '',
-    package: '',
-  });
+  const clearForm = () =>
+    setContactForm({
+      name: '',
+      date: null,
+      message: '',
+      cap: '',
+      email: '',
+      package: '',
+    });
 
   const determineMessage = () => {
-    if(isLoading) return 'Sending';
-    if(isSuccess) return 'Successfully Sent'
-    if(isError) return 'Error Sending Message'
-    return 'Send'
-  }
+    if (isLoading) return 'Sending';
+    if (isSuccess) return 'Successfully Sent';
+    if (isError) return 'Error Sending Message';
+    return 'Send';
+  };
 
   const determineButtonColor = () => {
-    if(isSuccess) return '!bg-green-400 !text-neutral-100';
-    if(isError) return '!bg-red-400 !text-neutral-100';
-    return 'bg-blue-500 hover:bg-blue-600'
-  }
+    if (isSuccess) return '!bg-green-400 !text-neutral-100';
+    if (isError) return '!bg-red-400 !text-neutral-100';
+    return 'bg-blue-500 hover:bg-blue-600';
+  };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -59,7 +62,7 @@ export const useContactForm = () => {
 
     const { error } = await res.json();
     if (error) {
-      setIsError(true)
+      setIsError(true);
       console.error(error);
     } else {
       setIsSuccess(true);
@@ -68,13 +71,16 @@ export const useContactForm = () => {
   };
 
   useEffect(() => {
+    if(isSuccess || isError) {
     const timeout = setTimeout(() => {
-      setIsError(false);
-      setIsSuccess(false);
-    }, 3000)
-
-    return (() => clearTimeout(timeout))
-  }, [isSuccess, isError])
+      handleCloseModal();
+        setIsError(false);
+        setIsSuccess(false);
+      }, 3000);
+      return () => clearTimeout(timeout);
+    }
+    return () => {};
+  }, [isSuccess, isError]);
 
   return {
     contactForm,
@@ -85,6 +91,6 @@ export const useContactForm = () => {
     isError,
     isSuccess,
     determineMessage,
-    determineButtonColor
+    determineButtonColor,
   };
 };

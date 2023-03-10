@@ -7,11 +7,8 @@ import { useAppContext } from '../../stores/Global';
 import {
   Button,
   FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
   TextField,
-  CircularProgress
+  CircularProgress,
 } from '@mui/material';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
 import { useContactForm } from '../../hooks';
@@ -28,8 +25,16 @@ const style = {
 
 export function ContactModal() {
   const { handleCloseModal, modalOpen } = useAppContext();
-  const { contactForm, updateContactForm, handleSubmit, isLoading, isError, isSuccess, determineMessage, determineButtonColor } =
-    useContactForm();
+  const {
+    contactForm,
+    updateContactForm,
+    handleSubmit,
+    isLoading,
+    isError,
+    isSuccess,
+    determineMessage,
+    determineButtonColor,
+  } = useContactForm();
 
   return (
     <>
@@ -87,7 +92,7 @@ export function ContactModal() {
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </FormControl>
-                  <FormControl fullWidth required>
+                  {/* <FormControl fullWidth required>
                     <InputLabel id="contact-modal-package">
                       Select Package
                     </InputLabel>
@@ -107,7 +112,7 @@ export function ContactModal() {
                         </MenuItem>
                       ))}
                     </Select>
-                  </FormControl>
+                  </FormControl> */}
                   <FormControl fullWidth required>
                     <TextField
                       required
@@ -142,7 +147,8 @@ export function ContactModal() {
                   onClick={handleSubmit}
                   disabled={isSuccess || isError || isLoading}
                 >
-                  {determineMessage()} {isLoading && <CircularProgress size={16} />}
+                  {determineMessage()}{' '}
+                  {isLoading && <CircularProgress size={16} />}
                 </Button>
               </div>
             </div>
