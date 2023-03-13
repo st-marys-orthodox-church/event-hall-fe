@@ -6,28 +6,59 @@ sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY as string);
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   try {
     // if (process.env.NEXT_PUBLIC_DEV) {
-      console.log('REQ.BODY', req.body);
+    console.log('REQ.BODY', req.body);
     // } else {
-      await sendgrid.send({
-        to: 'eventhall@saintmaryro.org', // Your email where you'll receive emails
-        from: 'eventhall@saintmaryro.org', // your website email address here
-        subject: `Inquiry for Fellowship Event Hall`,
-        html: `
-          <div>
-            <h1>New Inquiry from ${req.body.name}</h1>
-            <div style="color: #7f7f7f; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
-              <span>Email Address: ${req.body.email}</span><br />
-              <span>Date Sent: ${new Date(
-                req.body.date
-              ).toLocaleString()}</span>
-            </div>
-            <div style="display: flex; flex-direction: column; margin-top: 32px; gap: 6px;">
-              <span>Capacity: ${req.body.cap}</span><br />
-              <span>Message: ${req.body.message}</span>
-            </div>
-          </div>
-        `,
-      });
+    await sendgrid.send({
+      to: 'eventhall@saintmaryro.org', // Your email where you'll receive emails
+      from: 'eventhall@saintmaryro.org', // your website email address here
+      subject: `Inquiry for Fellowship Event Hall`,
+      // html: `
+      //     <div>
+      //       <h1>New Inquiry from ${req.body.name}</h1>
+      //       <div style="color: #7f7f7f; font-size: 12px; display: flex; flex-direction: column; gap: 6px;">
+      //         <span>Email Address: ${req.body.email}</span>
+      //         <br />
+      //         <span>Date Sent: ${new Date(
+      //           req.body.date
+      //         ).toLocaleString()}</span>
+      //       </div>
+      //       <div style="display: flex; flex-direction: column; margin-top: 32px; gap: 6px;">
+      //         <span>Capacity: ${req.body.cap}</span>
+      //         <br />
+      //         <span>Message: ${req.body.message}</span>
+      //       </div>
+      //     </div>
+      //   `,
+        html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+        
+          <title>The HTML5 Herald</title>
+          <meta name="description" content="The HTML5 Herald">
+          <meta name="author" content="Suave Tech">
+        <meta http-equiv="Content-Type" content="text/html charset=UTF-8" />
+        
+          <link rel="stylesheet" href="css/styles.css?v=1.0">
+        
+        </head>
+        
+        <body>
+          <div class="img-container" style="display: flex;justify-content: center;align-items: center;border-radius: 5px;overflow: hidden; font-family: 'helvetica', 'ui-sans';">              
+                </div>
+                <div class="container" style="margin-left: 20px;margin-right: 20px;">
+                <h3>You've got a new mail from ${req.body.name}, their email is: ✉️${req.body.email} </h3>
+                <div style="font-size: 16px;">
+                <p>Capacity:</p>
+                <p>${req.body.cap}</p>
+                <p>Message:</p>
+                <p>${req.body.message}</p>
+                <br>
+                </div>
+                </div>
+        </body>
+        </html>`,
+    });
     // }
   } catch (error: any) {
     console.log(error);
