@@ -6,13 +6,13 @@ sendgrid.setApiKey(process.env.NEXT_PUBLIC_SENDGRID_API_KEY as string);
 async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   try {
     if (process.env.NEXT_PUBLIC_DEV) {
-    console.log('REQ.BODY', req.body);
+      console.log('REQ.BODY', req.body);
     } else {
-    await sendgrid.send({
-      to: 'eventhall@saintmaryro.org', // Your email where you'll receive emails
-      from: 'eventhall@saintmaryro.org', // your website email address here
-      subject: `Inquiry for Fellowship Event Hall`,
-      html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+      await sendgrid.send({
+        to: 'eventhall@saintmaryro.org', // Your email where you'll receive emails
+        from: 'eventhall@saintmaryro.org', // your website email address here
+        subject: `Inquiry for Fellowship Event Hall`,
+        html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html lang="en">
         <head>
           <meta charset="utf-8">
@@ -41,7 +41,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
                 </div>
         </body>
         </html>`,
-    });
+      });
     }
   } catch (error: any) {
     console.log(error);
