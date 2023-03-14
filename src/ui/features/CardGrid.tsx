@@ -20,9 +20,10 @@ type ICardGridProps = {
   title?: string;
   description?: string;
   list: ICardGridListItemProps[];
+  seeall?: boolean;
 };
 
-const CardGrid = ({ title, description, list }: ICardGridProps) => {
+const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
   const { push } = useRouter();
   return (
     <Section title={title} description={description} className={``}>
@@ -73,6 +74,11 @@ const CardGrid = ({ title, description, list }: ICardGridProps) => {
             </AnimationOnScroll>
           ))}
       </div>
+      {seeall && (
+        <div className="flex justify-center w-full mt-6">
+          <Button className="!px-4" onClick={() => push({pathname: '/packages'})}>See All Our Packages</Button>
+        </div>
+      )}
     </Section>
   );
 };

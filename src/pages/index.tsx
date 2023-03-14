@@ -49,6 +49,7 @@ const Index = () => (
         title="Packages"
         description="Learn more about what we can offer you"
         list={PACKAGES_LIST}
+        seeall
       />
       <Banner />
     </Template>

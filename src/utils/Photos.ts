@@ -21,11 +21,6 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
     height: 3,
   },
   {
-    src: 'https://i.imgur.com/be6TyyV.jpg',
-    width: 4,
-    height: 3,
-  },
-  {
     src: 'https://i.imgur.com/WLiiqYQ.jpg',
     width: 4,
     height: 3,

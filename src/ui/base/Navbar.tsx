@@ -16,10 +16,10 @@ export const Navbar = () => {
       text: 'Gallery',
       link: '/gallery',
     },
-    // {
-    //   text: 'Packages',
-    //   link: '/packages',
-    // },
+    {
+      text: 'Packages',
+      link: '/packages',
+    },
   ];
   return (
     <Section yPadding="py">
