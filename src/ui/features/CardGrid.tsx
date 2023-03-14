@@ -76,7 +76,12 @@ const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
       </div>
       {seeall && (
         <div className="flex justify-center w-full mt-6">
-          <Button className="!px-4" onClick={() => push({pathname: '/packages'})}>See All Our Packages</Button>
+          <Button
+            className="!px-4"
+            onClick={() => push({ pathname: '/packages' })}
+          >
+            See All Our Packages
+          </Button>
         </div>
       )}
     </Section>
