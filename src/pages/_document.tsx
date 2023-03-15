@@ -9,26 +9,26 @@ class MyDocument extends Document {
     return (
       <Html lang={AppConfig.locale}>
         <Head>
-        <NextSeo
-      title={AppConfig.site_name}
-      description={AppConfig.description}
-      canonical="https://www.canonical.ie/"
-      openGraph={{
-        url: AppConfig.url,
-        title: AppConfig.site_name,
-        description: AppConfig.description,
-        images: [
-          {
-            url: 'https://events.saintmaryro.org/logos/logo.jpg',
-            width: 1558,
-            height: 414,
-            alt: 'Fellowship Event Hall',
-            type: 'image/jpg',
-          },
-        ],
-        siteName: AppConfig.site_name,
-      }}
-    />
+          <NextSeo
+            title={AppConfig.site_name}
+            description={AppConfig.description}
+            canonical="https://www.canonical.ie/"
+            openGraph={{
+              url: AppConfig.url,
+              title: AppConfig.site_name,
+              description: AppConfig.description,
+              images: [
+                {
+                  url: 'https://events.saintmaryro.org/logos/logo.jpg',
+                  width: 1558,
+                  height: 414,
+                  alt: 'Fellowship Event Hall',
+                  type: 'image/jpg',
+                },
+              ],
+              siteName: AppConfig.site_name,
+            }}
+          />
         </Head>
         <body>
           <Main />
