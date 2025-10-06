@@ -4,7 +4,7 @@ import { ICardGridListItemProps } from '../ui/features/CardGrid';
 export const SOCIALS = {
   FB: 'https://www.facebook.com/bisericasfantamariadacula',
   IG: 'https://www.instagram.com/fellowshipstmary/',
-  // dud pr2
+  // dud pr3
 };
 
 export const PACKAGES_LIST: ICardGridListItemProps[] = [
