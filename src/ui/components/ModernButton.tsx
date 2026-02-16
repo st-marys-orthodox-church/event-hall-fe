@@ -2,15 +2,15 @@ import { Button as MuiButton, ButtonProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { ReactNode } from 'react';
 
-interface ModernButtonProps extends ButtonProps {
+interface ModernButtonProps extends Omit<ButtonProps, 'variant'> {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'small' | 'medium' | 'large';
 }
 
 const StyledButton = styled(MuiButton, {
-  shouldForwardProp: (prop) => prop !== 'variant' && prop !== 'size',
-})<ModernButtonProps>(({ theme, variant = 'primary', size = 'medium' }) => ({
+  shouldForwardProp: (prop) => prop !== 'buttonVariant' && prop !== 'size',
+})<ModernButtonProps>(({ buttonVariant = 'primary', size = 'medium' }) => ({
   borderRadius: '12px',
   textTransform: 'none' as const,
   fontWeight: 600,
@@ -32,7 +32,7 @@ const StyledButton = styled(MuiButton, {
     fontSize: '1.125rem',
   }),
 
-  ...(variant === 'primary' && {
+  ...(buttonVariant === 'primary' && {
     background: 'linear-gradient(135deg, #7c9885 0%, #9db5a0 50%, #7c9885 100%)',
     color: '#ffffff',
     boxShadow: '0 4px 14px rgba(124, 152, 133, 0.4)',
@@ -47,7 +47,7 @@ const StyledButton = styled(MuiButton, {
     },
   }),
 
-  ...(variant === 'secondary' && {
+  ...(buttonVariant === 'secondary' && {
     background: 'linear-gradient(135deg, #c9a86c 0%, #d4b87a 50%, #c9a86c 100%)',
     color: '#ffffff',
     boxShadow: '0 4px 14px rgba(201, 168, 108, 0.4)',
@@ -62,7 +62,7 @@ const StyledButton = styled(MuiButton, {
     },
   }),
 
-  ...(variant === 'outline' && {
+  ...(buttonVariant === 'outline' && {
     background: 'transparent',
     color: '#7c9885',
     border: '2px solid #7c9885',
@@ -76,7 +76,7 @@ const StyledButton = styled(MuiButton, {
     },
   }),
 
-  ...(variant === 'ghost' && {
+  ...(buttonVariant === 'ghost' && {
     background: 'transparent',
     color: '#7c9885',
     '&:hover': {

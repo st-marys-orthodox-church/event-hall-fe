@@ -87,7 +87,7 @@ const Packages = () => {
             <AnimationOnScroll animateIn="animate__fadeInUp" delay={150} animateOnce>
               <div className="bg-white rounded-3xl shadow-lg p-8 md:p-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
-                  What's Included in Every Package
+                  What&apos;s Included in Every Package
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {includedItems.map((item, index) => (
@@ -144,7 +144,7 @@ const Packages = () => {
                   Contact us today to schedule a tour and discuss how we can make your special occasion unforgettable.
                 </p>
                 <ModernButton
-                  variant="primary"
+                  buttonVariant="primary"
                   size="large"
                   onClick={handleOpenModal}
                 >

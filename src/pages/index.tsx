@@ -5,7 +5,7 @@ import { Meta } from '../ui/base/Meta';
 import { Hero } from '../ui/features/Hero';
 import { Template } from '../ui/base/Template';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
-import { People, DesignServices, LocalOffer, Calendar, Award, Heart } from '@mui/icons-material';
+import { People, DesignServices, LocalOffer, Event, EmojiEvents, Favorite } from '@mui/icons-material';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
 import { ModernButton } from '../ui/components/ModernButton';
@@ -102,10 +102,10 @@ const Index = () => {
                 Ready to Host Your Event?
               </h3>
               <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Let us help you create unforgettable memories at St. Mary's Event Hall
+                Let us help you create unforgettable memories at St. Mary&apos;s Event Hall
               </p>
               <ModernButton
-                variant="secondary"
+                buttonVariant="secondary"
                 size="large"
                 onClick={() => push('/packages')}
               >
@@ -122,21 +122,21 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-16 h-16 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                    <Calendar className="w-8 h-8 text-[#7c9885]" />
+                    <Event className="w-8 h-8 text-[#7c9885]" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-800">Flexible Booking</h4>
                   <p className="text-stone-600">Easy scheduling with multiple date options</p>
                 </div>
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-16 h-16 rounded-full bg-[#c9a86c]/10 flex items-center justify-center">
-                    <Award className="w-8 h-8 text-[#c9a86c]" />
+                    <EmojiEvents className="w-8 h-8 text-[#c9a86c]" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-800">Award Winning</h4>
                   <p className="text-stone-600">Highly rated venue in Dacula area</p>
                 </div>
                 <div className="flex flex-col items-center gap-3">
                   <div className="w-16 h-16 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                    <Heart className="w-8 h-8 text-[#7c9885]" />
+                    <Favorite className="w-8 h-8 text-[#7c9885]" />
                   </div>
                   <h4 className="text-xl font-bold text-stone-800">Made with Love</h4>
                   <p className="text-stone-600">Personal attention to every detail</p>

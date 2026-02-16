@@ -8,15 +8,17 @@ type IBannerProps = {
   full?: boolean;
   color?: `bg-${string}`;
   children?: ReactNode;
+  className?: string;
 };
-const Banner = ({ color, full, children }: IBannerProps) => {
+const Banner = ({ color, full, children, className }: IBannerProps) => {
   const { handleOpenModal } = useAppContext();
   const bgClass = color || 'bg-primary-100';
   const fullClass = full ? '!max-w-none !px-0 rounded-none' : '';
+  const customClass = className || '';
   return (
     <Section className={fullClass}>
       {children ? (
-        <div className={`p-4 sm:p-12 ${bgClass}`}>{children}</div>
+        <div className={`p-4 sm:p-12 ${bgClass} ${customClass}`}>{children}</div>
       ) : (
         <div
           className={`text-center flex flex-col p-4 sm:text-left sm:flex-row sm:items-center sm:justify-between sm:p-12 rounded-md ${bgClass}`}

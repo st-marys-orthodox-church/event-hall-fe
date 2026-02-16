@@ -59,14 +59,14 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Link href="/gallery">
                 <a>
-                  <ModernButton variant="primary" size="large">
+                  <ModernButton buttonVariant="primary" size="large">
                     View Gallery
                   </ModernButton>
                 </a>
               </Link>
               <Link href="/packages">
                 <a>
-                  <ModernButton variant="outline" size="large">
+                  <ModernButton buttonVariant="outline" size="large">
                     Explore Packages
                   </ModernButton>
                 </a>
