@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { Section } from '../layout/Section';
 import { ModernButton } from '../components/ModernButton';
-import { Check, Users } from '@mui/icons-material';
+import { Check, People } from '@mui/icons-material';
 import { ReactNode } from 'react';
 
 export type IPackageItemProps = {
@@ -62,7 +62,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
           {/* Header */}
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-[#7c9885]">
-              <Users className="w-5 h-5" />
+              <People className="w-5 h-5" />
               <span className="text-sm font-medium uppercase tracking-wider">
                 Capacity: {pkg.capacity}
               </span>
@@ -103,7 +103,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
           {/* CTA */}
           <div className="pt-4">
             <ModernButton
-              variant={pkg.popular ? 'secondary' : 'primary'}
+              buttonVariant={pkg.popular ? 'secondary' : 'primary'}
               size="large"
               onClick={() => push({ pathname: '/packages', query: { package: index } })}
               fullWidth

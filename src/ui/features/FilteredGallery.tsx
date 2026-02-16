@@ -3,7 +3,6 @@ import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
 import { Section } from '../layout/Section';
 import { GALLERY_CATEGORIES, IGalleryCategory, IGalleryImgProps } from '../../utils/Photos';
-import { ModernButton } from '../components/ModernButton';
 
 type IFilteredGalleryProps = {
   images: IGalleryImgProps[];
@@ -27,7 +26,7 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
     return props.images.filter((img) => img.category === activeCategory);
   }, [props.images, activeCategory]);
 
-  const openLightbox = useCallback((event: any, { index }: { index: number }) => {
+  const openLightbox = useCallback((_event: any, { index }: { index: number }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
   }, []);
