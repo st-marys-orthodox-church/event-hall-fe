@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 const HERO_IMAGES = [
   '/photos/hero-bg.JPG',
-  '/photos/tier-1.jpeg',
-  '/photos/tier-2.jpeg',
+  '/photos/tier-3.jpg',
+  '/photos/about-2.jpg',
   '/photos/about-1.jpeg',
 ];
 
