@@ -5,6 +5,7 @@ import { SOCIALS } from '../../utils/Constants';
 import { Section } from '../layout/Section';
 import FadeIn from '../components/FadeIn';
 import Image from 'next/image';
+import { WhatsAppButton } from '../components/WhatsAppButton';
 
 const Hero = () => {
   return (
@@ -54,17 +55,23 @@ const Hero = () => {
               </span>
             </header>
 
-            <Link href="/gallery">
-              <a>
-                <Button
-                  className="whitespace-nowrap bg-blue-500 hover:bg-blue-600 w-fit"
-                  variant="contained"
-                  size="large"
-                >
-                  Gallery
-                </Button>
-              </a>
-            </Link>
+            <div className="flex flex-col sm:flex-row items-center gap-3 mt-4">
+              <Link href="/gallery">
+                <a>
+                  <Button
+                    className="whitespace-nowrap bg-blue-500 hover:bg-blue-600 w-fit"
+                    variant="contained"
+                    size="large"
+                  >
+                    Gallery
+                  </Button>
+                </a>
+              </Link>
+              <WhatsAppButton 
+                size="large"
+                className="whitespace-nowrap w-fit"
+              />
+            </div>
           </div>
         </FadeIn>
       </Section>

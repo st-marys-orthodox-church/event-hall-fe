@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 import { Section } from '../layout/Section';
 import { Logo } from './Logo';
-import { Instagram, Facebook } from '@mui/icons-material';
-import { SOCIALS } from '../../utils/Constants';
+import { Instagram, Facebook, WhatsApp } from '@mui/icons-material';
+import { SOCIALS, generateWhatsAppUrl } from '../../utils/Constants';
 
 const Footer = () => (
   <div className="bg-gray-100">
@@ -29,7 +29,7 @@ const Footer = () => (
           <Logo />
           <div className="flex flex-col items-center md:items-end gap-2">
             <span className="text-yellow-800 font-bold">
-              Follow us on our socials:
+              Connect with us:
             </span>
             <div className="flex md:flex-col items-center gap-4 md:gap-2">
               <Link href={SOCIALS.FB} target="_blank">
@@ -41,6 +41,12 @@ const Footer = () => (
               <Link href={SOCIALS.IG} target="_blank">
                 <a className="hover:text-primary-700 transition duration-150 text-sm">
                   Instagram <Instagram />
+                </a>
+              </Link>
+
+              <Link href={generateWhatsAppUrl()} target="_blank">
+                <a className="hover:text-green-600 transition duration-150 text-sm text-green-600">
+                  WhatsApp <WhatsApp />
                 </a>
               </Link>
             </div>
