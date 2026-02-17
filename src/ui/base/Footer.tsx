@@ -32,16 +32,12 @@ const Footer = () => (
               Follow us on our socials:
             </span>
             <div className="flex md:flex-col items-center gap-4 md:gap-2">
-              <Link href={SOCIALS.FB} target="_blank">
-                <a className="hover:text-primary-700 transition duration-150 text-sm">
-                  Facebook <Facebook />
-                </a>
+              <Link href={SOCIALS.FB} target="_blank" className="hover:text-primary-700 transition duration-150 text-sm">
+                Facebook <Facebook />
               </Link>
 
-              <Link href={SOCIALS.IG} target="_blank">
-                <a className="hover:text-primary-700 transition duration-150 text-sm">
-                  Instagram <Instagram />
-                </a>
+              <Link href={SOCIALS.IG} target="_blank" className="hover:text-primary-700 transition duration-150 text-sm">
+                Instagram <Instagram />
               </Link>
             </div>
           </div>
