@@ -28,7 +28,7 @@ export const Navbar = () => {
       <div className="flex flex-wrap justify-between items-center">
         <div className="pt-2">
           <Link href="/">
-            <a>{<Logo xl />}</a>
+            <Logo xl />
           </Link>
         </div>
 
@@ -37,7 +37,7 @@ export const Navbar = () => {
             <ul className="two-columns flex items-center gap-1 font-medium text-xl text-gray-800">
               {links.map((el, i) => (
                 <li key={`nav-item-${i}`}>
-                  <Link href={el.link}>
+                  <Link href={el.link} legacyBehavior>
                     <Button className="text-neutral-900">{el.text}</Button>
                   </Link>
                 </li>
@@ -87,7 +87,7 @@ export const Navbar = () => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               >
                 {links.map((el, i) => (
-                  <Link href={el.link} key={`nav-dropdown-${i}`}>
+                  <Link href={el.link} key={`nav-dropdown-${i}`} legacyBehavior>
                     <MenuItem
                       className="justify-end pl-10"
                       onClick={handleClose}
@@ -107,7 +107,7 @@ export const Navbar = () => {
                 </MenuItem>
                 <MenuItem
                   onClick={handleOpenModal}
-                  className="text-blue-500 pl-10"
+                  className="text-brand-green pl-10"
                 >
                   Contact Form
                 </MenuItem>
