@@ -19,6 +19,7 @@ const StyledButton = styled(MuiButton, {
   position: 'relative',
   overflow: 'hidden',
   willChange: 'transform, box-shadow',
+  boxSizing: 'border-box',
   
   ...(size === 'small' && {
     padding: '8px 16px',
@@ -29,7 +30,7 @@ const StyledButton = styled(MuiButton, {
     fontSize: '0.9375rem',
   }),
   ...(size === 'large' && {
-    padding: '12px 28px',
+    padding: '10px 26px',
     fontSize: '1rem',
   }),
 
