@@ -1,17 +1,21 @@
 import { AppConfig } from '../utils/AppConfig';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
-import { GalleryGrid } from '../ui/features/Gallery';
+import { FilteredGallery } from '../ui/features/FilteredGallery';
 import { GALLERY_PHOTOS } from '../utils/Photos';
 
-const Packages = () => (
-  <div className="antialiased text-neutral-900">
-    <Meta title={AppConfig.title} description={AppConfig.description} />
+const GalleryPage = () => (
+  <div className="antialiased text-stone-800">
+    <Meta title={`Gallery - ${AppConfig.title}`} description="Browse our event hall gallery. View photos of weddings, celebrations, and events held at St. Mary's Orthodox Church event hall in Dacula, GA." />
 
     <Template topPad>
-      <GalleryGrid title="Gallery" images={GALLERY_PHOTOS} />
+      <FilteredGallery 
+        title="Our Gallery" 
+        description="Explore our beautiful event hall through photos of past events, setups, and details"
+        images={GALLERY_PHOTOS} 
+      />
     </Template>
   </div>
 );
 
-export default Packages;
+export default GalleryPage;
