@@ -45,7 +45,7 @@ export const useContactForm = () => {
   const determineButtonColor = () => {
     if (isSuccess) return '!bg-green-400 !text-neutral-100';
     if (isError) return '!bg-red-400 !text-neutral-100';
-    return 'bg-blue-500 hover:bg-blue-600';
+    return 'bg-brand-green hover:bg-brand-green-dark';
   };
 
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {

@@ -43,7 +43,7 @@ export const Navbar = () => {
               <li>
                 <Button
                   variant="contained"
-                  className="bg-blue-500 hover:bg-blue-600 ml-1"
+                  className="bg-brand-green hover:bg-brand-green-dark ml-1"
                   onClick={handleOpenModal}
                 >
                   Contact Us
@@ -85,7 +85,7 @@ export const Navbar = () => {
                 ))}
                 <MenuItem
                   onClick={handleOpenModal}
-                  className="text-blue-500 pl-10"
+                  className="text-brand-green pl-10"
                 >
                   Contact Us
                 </MenuItem>

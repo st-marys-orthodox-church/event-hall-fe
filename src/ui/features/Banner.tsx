@@ -32,7 +32,7 @@ const Banner = ({ color, full, children, className }: IBannerProps) => {
 
           <div className="whitespace-no-wrap mt-3 sm:mt-0 sm:ml-2">
             <Button
-              className="whitespace-nowrap bg-blue-500 hover:bg-blue-600"
+              className="whitespace-nowrap bg-brand-green hover:bg-brand-green-dark"
               variant="contained"
               size="large"
               onClick={handleOpenModal}

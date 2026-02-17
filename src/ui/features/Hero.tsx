@@ -59,7 +59,7 @@ const Hero = () => {
                 </ModernButton>
               </Link>
               <Link href="/packages">
-                <ModernButton buttonVariant="outline" size="large">
+                <ModernButton buttonVariant="outlineLight" size="large">
                   Explore Packages
                 </ModernButton>
               </Link>
