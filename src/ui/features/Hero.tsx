@@ -5,17 +5,19 @@ import { Section } from '../layout/Section';
 import FadeIn from '../components/FadeIn';
 import Image from 'next/image';
 import { ModernButton } from '../components/ModernButton';
+import { HeroCarousel } from '../components/HeroCarousel';
 
 const Hero = () => {
   return (
-    <div
-      className={`relative bg-[url('/photos/hero-bg.JPG')] bg-cover bg-center h-screen flex items-center w-full`}
-    >
+    <div className="relative h-screen flex items-center w-full">
+      {/* Background Carousel */}
+      <HeroCarousel />
+      
       {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50 z-[1]" />
       
       <Section
-        className="relative z-10 w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0"
+        className="relative z-[2] w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0"
         yPadding="py-16"
       >
         <FadeIn>
