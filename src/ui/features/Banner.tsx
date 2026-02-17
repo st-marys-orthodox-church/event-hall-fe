@@ -27,7 +27,7 @@ const Banner = ({ color, full, children, className }: IBannerProps) => {
             <div className="text-gray-900">
               {'Interested in booking your next event with us?'}
             </div>
-            <div className="text-primary-500">{'Reach out to us today.'}</div>
+            <div className="text-brand-green">{'Reach out to us today.'}</div>
           </div>
 
           <div className="whitespace-no-wrap mt-3 sm:mt-0 sm:ml-2">
