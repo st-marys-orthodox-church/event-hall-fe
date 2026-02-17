@@ -15,17 +15,17 @@ export const Template = (props: ITemplateProps) => {
   const { scrollY } = useWindowSize();
   return (
     <>
-      <FadeIn disabled={pathname !== '/'}>
-        <div
-          className={`bg-white shadow-md ${
-            scrollY > 0 ? 'fixed' : 'absolute'
-          } w-full z-50`}
-        >
-          <Navbar />
-        </div>
-      </FadeIn>
+      <div
+        className={`bg-white shadow-md ${
+          scrollY > 0 ? 'fixed' : 'absolute'
+        } w-full z-50`}
+      >
+        <Navbar />
+      </div>
       {props.topPad && <div className="h-[68.5px]" />}
-      {props.children}
+      <main className="opacity-100">
+        {props.children}
+      </main>
       <Footer />
     </>
   );

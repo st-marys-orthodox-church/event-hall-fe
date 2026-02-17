@@ -95,7 +95,7 @@ const Index = () => {
         />
 
         {/* CTA Banner */}
-        <Banner className="bg-gradient-to-r from-[#7c9885] to-[#9db5a0]">
+        <Banner className="bg-gradient-to-r from-[#7c9885] to-[#9db5a0] rounded-3xl shadow-lg">
           <div className="text-center text-white py-8">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <h3 className="text-3xl md:text-4xl font-bold mb-4">
