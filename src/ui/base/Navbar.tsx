@@ -23,6 +23,11 @@ export const Navbar = () => {
       link: '/packages',
     },
   ];
+
+  // Brand green color for consistency
+  const brandGreen = '#7c9885';
+  const brandGreenDark = '#6b8574';
+
   return (
     <Section yPadding="py">
       <div className="flex flex-wrap justify-between items-center">
@@ -44,32 +49,66 @@ export const Navbar = () => {
               ))}
               <li className="flex items-center gap-2">
                 <Button
-                  href={generateWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="contained"
-                  className="bg-[#25D366] hover:bg-[#128C7E] text-white normal-case"
-                  startIcon={<WhatsAppIcon />}
-                  size="small"
-                >
-                  WhatsApp
-                </Button>
-                <Button
                   variant="outlined"
-                  className="ml-1 normal-case"
+                  className="normal-case"
                   onClick={handleOpenModal}
                 >
-                  Contact
+                  Contact Us
                 </Button>
+                <Tooltip title="Chat on WhatsApp">
+                  <IconButton
+                    href={generateWhatsAppUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    size="small"
+                    sx={{
+                      backgroundColor: brandGreen,
+                      color: 'white',
+                      width: 40,
+                      height: 40,
+                      '&:hover': {
+                        backgroundColor: brandGreenDark,
+                      },
+                    }}
+                  >
+                    <WhatsAppIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
               </li>
             </ul>
           ) : (
-            <>
+            <div className="flex items-center gap-1">
+              <Button
+                variant="outlined"
+                size="small"
+                className="normal-case text-sm"
+                onClick={handleOpenModal}
+              >
+                Contact Us
+              </Button>
+              <Tooltip title="Chat on WhatsApp">
+                <IconButton
+                  href={generateWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  size="small"
+                  sx={{
+                    backgroundColor: brandGreen,
+                    color: 'white',
+                    width: 36,
+                    height: 36,
+                    '&:hover': {
+                      backgroundColor: brandGreenDark,
+                    },
+                  }}
+                >
+                  <WhatsAppIcon fontSize="small" />
+                </IconButton>
+              </Tooltip>
               <Tooltip title="Navigation">
                 <IconButton
                   onClick={handleClick}
                   size="small"
-                  sx={{ ml: 2 }}
                   aria-controls={open ? 'navbar-menu' : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
@@ -97,22 +136,13 @@ export const Navbar = () => {
                   </Link>
                 ))}
                 <MenuItem
-                  component="a"
-                  href={generateWhatsAppUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-600 pl-10"
-                >
-                  💬 WhatsApp
-                </MenuItem>
-                <MenuItem
                   onClick={handleOpenModal}
                   className="text-brand-green pl-10"
                 >
                   Contact Form
                 </MenuItem>
               </Menu>
-            </>
+            </div>
           )}
         </nav>
 

@@ -6,7 +6,6 @@ import FadeIn from '../components/FadeIn';
 import Image from 'next/image';
 import { ModernButton } from '../components/ModernButton';
 import { HeroCarousel } from '../components/HeroCarousel';
-import { WhatsAppButton } from '../components/WhatsAppButton';
 
 const Hero = () => {
   return (
@@ -55,7 +54,7 @@ const Hero = () => {
             </header>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 items-center">
               <Link href="/gallery">
                 <ModernButton buttonVariant="primary" size="large">
                   View Gallery
@@ -66,10 +65,6 @@ const Hero = () => {
                   Explore Packages
                 </ModernButton>
               </Link>
-              <WhatsAppButton 
-                size="large"
-                className="whitespace-nowrap w-fit"
-              />
             </div>
           </div>
         </FadeIn>
