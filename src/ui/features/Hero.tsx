@@ -54,7 +54,7 @@ const Hero = () => {
             </header>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4">
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 items-center">
               <Link href="/gallery">
                 <ModernButton buttonVariant="primary" size="large">
                   View Gallery

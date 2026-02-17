@@ -15,13 +15,15 @@ const Logo = (props: ILogoProps) => {
     return ['logo-words.png', '140', '38'];
   };
 
+  const [logoSrc, logoWidth, logoHeight] = renderLogo();
+
   return (
     <span className={`text-gray-900 inline-flex items-center ${fontStyle}`}>
       <Image
-        src={`/logos/${renderLogo()[0]}`}
+        src={`/logos/${logoSrc}`}
         alt="Fellowship Event Hall - Host Events"
-        width={renderLogo()[1]}
-        height={renderLogo()[2]}
+        width={logoWidth}
+        height={logoHeight}
       />
     </span>
   );

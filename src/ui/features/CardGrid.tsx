@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { Section } from '../layout/Section';
+import { WhatsAppButton } from '../components/WhatsAppButton';
 
 export type ICardGridListItemProps = {
   title: string;
@@ -54,21 +55,33 @@ const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
                   <div className="pt-2">{el.description}</div>
                 </div>
                 {el.cta && (
-                  <Button
-                    onClick={
-                      el.cta.action
-                        ? el.cta.action
-                        : () =>
-                            push({
-                              pathname: el.cta?.link || '',
-                              query: {
-                                tab: i,
-                              },
-                            })
-                    }
-                  >
-                    {el.cta.text}
-                  </Button>
+                  <div className="flex flex-col gap-2">
+                    <Button
+                      onClick={
+                        el.cta.action
+                          ? el.cta.action
+                          : () =>
+                              push({
+                                pathname: el.cta?.link || '',
+                                query: {
+                                  tab: i,
+                                },
+                              })
+                      }
+                    >
+                      {el.cta.text}
+                    </Button>
+                    {/* WhatsApp Quick Quote */}
+                    <WhatsAppButton
+                      size="small"
+                      variant="outlined"
+                      fullWidth
+                      showIcon={false}
+                      guests={el.title.replace(/\D/g, '')} // Extract number from title (e.g., "50 People" -> "50")
+                    >
+                      Get Quote via WhatsApp
+                    </WhatsAppButton>
+                  </div>
                 )}
               </Card>
             </AnimationOnScroll>

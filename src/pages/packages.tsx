@@ -2,9 +2,12 @@ import { AppConfig } from '../utils/AppConfig';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { Section } from '../ui/layout/Section';
+import { Button, Divider } from '@mui/material';
 import { ModernButton } from '../ui/components/ModernButton';
+import { WhatsAppButton } from '../ui/components/WhatsAppButton';
 import { useAppContext } from '../stores/Global';
 import { Info, Check } from '@mui/icons-material';
+import { EVENT_TYPES } from '../utils/Constants';
 
 const Packages = () => {
   const { handleOpenModal } = useAppContext();
@@ -95,6 +98,43 @@ const Packages = () => {
                     <span className="font-medium text-stone-700">{item}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            <Divider className="my-6" />
+
+            {/* WhatsApp Quick Quote Section */}
+            <div className="bg-green-50 rounded-lg p-6 border border-green-100">
+              <h4 className="text-xl font-semibold text-center mb-2 text-green-800">
+                Get a Quick Quote via WhatsApp
+              </h4>
+              <p className="text-center text-neutral-600 mb-4 text-sm">
+                Click your event type below for an instant quote request
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <WhatsAppButton
+                  eventType={EVENT_TYPES.WEDDING}
+                  size="medium"
+                  className="w-full sm:w-auto"
+                >
+                  💍 Wedding Quote
+                </WhatsAppButton>
+                <WhatsAppButton
+                  eventType={EVENT_TYPES.CORPORATE}
+                  size="medium"
+                  variant="outlined"
+                  className="w-full sm:w-auto"
+                >
+                  💼 Corporate Quote
+                </WhatsAppButton>
+                <WhatsAppButton
+                  eventType={EVENT_TYPES.BIRTHDAY}
+                  size="medium"
+                  variant="outlined"
+                  className="w-full sm:w-auto"
+                >
+                  🎉 Birthday Quote
+                </WhatsAppButton>
               </div>
             </div>
 
