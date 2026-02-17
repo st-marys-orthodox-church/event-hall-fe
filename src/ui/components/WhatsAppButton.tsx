@@ -3,7 +3,7 @@ import { Button, ButtonProps } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 // WhatsApp Business Configuration - keep local to avoid circular dependency
-const WHATSAPP_PHONE = '1234567890'; // TODO: Replace with actual number
+const WHATSAPP_PHONE = '14049848686'; // St. Mary's WhatsApp Business
 
 // Helper to generate WhatsApp click-to-chat URL
 const generateWhatsAppUrl = (options?: {
