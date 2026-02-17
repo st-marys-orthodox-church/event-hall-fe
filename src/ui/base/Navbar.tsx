@@ -4,7 +4,9 @@ import { useWindowSize, useDropdown } from '../../hooks';
 import { Section } from '../layout/Section';
 import { Logo } from './Logo';
 import MenuIcon from '@mui/icons-material/Menu';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useAppContext } from '../../stores/Global';
+import { generateWhatsAppUrl } from '../../utils/Constants';
 
 export const Navbar = () => {
   const { handleOpenModal } = useAppContext();
@@ -40,13 +42,24 @@ export const Navbar = () => {
                   </Link>
                 </li>
               ))}
-              <li>
+              <li className="flex items-center gap-2">
                 <Button
+                  href={generateWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   variant="contained"
-                  className="bg-blue-500 hover:bg-blue-600 ml-1"
+                  className="bg-[#25D366] hover:bg-[#128C7E] text-white normal-case"
+                  startIcon={<WhatsAppIcon />}
+                  size="small"
+                >
+                  WhatsApp
+                </Button>
+                <Button
+                  variant="outlined"
+                  className="ml-1 normal-case"
                   onClick={handleOpenModal}
                 >
-                  Contact Us
+                  Contact
                 </Button>
               </li>
             </ul>
@@ -84,10 +97,19 @@ export const Navbar = () => {
                   </Link>
                 ))}
                 <MenuItem
+                  component="a"
+                  href={generateWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-green-600 pl-10"
+                >
+                  💬 WhatsApp
+                </MenuItem>
+                <MenuItem
                   onClick={handleOpenModal}
                   className="text-blue-500 pl-10"
                 >
-                  Contact Us
+                  Contact Form
                 </MenuItem>
               </Menu>
             </>

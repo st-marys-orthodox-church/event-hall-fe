@@ -18,8 +18,8 @@ export const GalleryGrid = (props: IGalleryGridProps) => {
   const AnyModalGateway = ModalGateway as any;
   const AnyModal = Modal as any;
 
-  const openLightbox = useCallback((event, { index }) => {
-    if (process.env.NEXT_PUBLIC_DEV) console.log('openLightbox', event);
+  const openLightbox = useCallback((_event: any, { index }: { index: number }) => {
+    if (process.env.NEXT_PUBLIC_DEV) console.log('openLightbox', _event);
     setCurrentImage(index);
     setViewerIsOpen(true);
   }, []);
