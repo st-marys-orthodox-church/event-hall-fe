@@ -11,54 +11,51 @@ interface ModernButtonProps extends Omit<ButtonProps, 'variant'> {
 const StyledButton = styled(MuiButton, {
   shouldForwardProp: (prop) => prop !== 'buttonVariant' && prop !== 'size',
 })<ModernButtonProps>(({ buttonVariant = 'primary', size = 'medium' }) => ({
-  borderRadius: '12px',
+  borderRadius: '10px',
   textTransform: 'none' as const,
   fontWeight: 600,
-  letterSpacing: '0.025em',
-  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  letterSpacing: '0.02em',
+  transition: 'all 0.25s ease-out',
   position: 'relative',
   overflow: 'hidden',
+  willChange: 'transform, box-shadow',
   
   ...(size === 'small' && {
-    padding: '10px 20px',
+    padding: '8px 16px',
     fontSize: '0.875rem',
   }),
   ...(size === 'medium' && {
-    padding: '14px 28px',
-    fontSize: '1rem',
+    padding: '10px 20px',
+    fontSize: '0.9375rem',
   }),
   ...(size === 'large' && {
-    padding: '18px 36px',
-    fontSize: '1.125rem',
+    padding: '12px 28px',
+    fontSize: '1rem',
   }),
 
   ...(buttonVariant === 'primary' && {
-    background: 'linear-gradient(135deg, #7c9885 0%, #9db5a0 50%, #7c9885 100%)',
+    background: 'linear-gradient(135deg, #7c9885 0%, #9db5a0 100%)',
     color: '#ffffff',
-    boxShadow: '0 4px 14px rgba(124, 152, 133, 0.4)',
+    boxShadow: '0 2px 8px rgba(124, 152, 133, 0.35)',
     '&:hover': {
-      background: 'linear-gradient(135deg, #6b8574 0%, #8ca58f 50%, #6b8574 100%)',
-      boxShadow: '0 6px 20px rgba(124, 152, 133, 0.5)',
-      transform: 'translateY(-2px)',
+      background: 'linear-gradient(135deg, #6b8574 0%, #8ca58f 100%)',
+      boxShadow: '0 4px 12px rgba(124, 152, 133, 0.45)',
     },
     '&:active': {
-      transform: 'translateY(0)',
-      boxShadow: '0 2px 8px rgba(124, 152, 133, 0.4)',
+      boxShadow: '0 1px 4px rgba(124, 152, 133, 0.35)',
     },
   }),
 
   ...(buttonVariant === 'secondary' && {
-    background: 'linear-gradient(135deg, #c9a86c 0%, #d4b87a 50%, #c9a86c 100%)',
+    background: 'linear-gradient(135deg, #c9a86c 0%, #d4b87a 100%)',
     color: '#ffffff',
-    boxShadow: '0 4px 14px rgba(201, 168, 108, 0.4)',
+    boxShadow: '0 2px 8px rgba(201, 168, 108, 0.35)',
     '&:hover': {
-      background: 'linear-gradient(135deg, #b8975f 0%, #c9a86c 50%, #b8975f 100%)',
-      boxShadow: '0 6px 20px rgba(201, 168, 108, 0.5)',
-      transform: 'translateY(-2px)',
+      background: 'linear-gradient(135deg, #b8975f 0%, #c9a86c 100%)',
+      boxShadow: '0 4px 12px rgba(201, 168, 108, 0.45)',
     },
     '&:active': {
-      transform: 'translateY(0)',
-      boxShadow: '0 2px 8px rgba(201, 168, 108, 0.4)',
+      boxShadow: '0 1px 4px rgba(201, 168, 108, 0.35)',
     },
   }),
 
@@ -67,27 +64,25 @@ const StyledButton = styled(MuiButton, {
     color: '#7c9885',
     border: '2px solid #7c9885',
     '&:hover': {
-      background: 'rgba(124, 152, 133, 0.08)',
+      background: 'rgba(124, 152, 133, 0.1)',
       borderColor: '#6b8574',
-      transform: 'translateY(-2px)',
     },
     '&:active': {
-      transform: 'translateY(0)',
+      background: 'rgba(124, 152, 133, 0.15)',
     },
   }),
 
   ...(buttonVariant === 'outlineLight' && {
-    background: 'rgba(255, 255, 255, 0.15)',
+    background: 'rgba(255, 255, 255, 0.12)',
     color: '#ffffff',
-    border: '2px solid rgba(255, 255, 255, 0.8)',
+    border: '2px solid rgba(255, 255, 255, 0.9)',
     backdropFilter: 'blur(4px)',
     '&:hover': {
-      background: 'rgba(255, 255, 255, 0.25)',
+      background: 'rgba(255, 255, 255, 0.2)',
       borderColor: '#ffffff',
-      transform: 'translateY(-2px)',
     },
     '&:active': {
-      transform: 'translateY(0)',
+      background: 'rgba(255, 255, 255, 0.25)',
     },
   }),
 
@@ -95,28 +90,12 @@ const StyledButton = styled(MuiButton, {
     background: 'transparent',
     color: '#7c9885',
     '&:hover': {
-      background: 'rgba(124, 152, 133, 0.08)',
-      transform: 'translateY(-2px)',
+      background: 'rgba(124, 152, 133, 0.1)',
     },
     '&:active': {
-      transform: 'translateY(0)',
+      background: 'rgba(124, 152, 133, 0.15)',
     },
   }),
-
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: '-100%',
-    width: '100%',
-    height: '100%',
-    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-    transition: 'left 0.5s',
-  },
-
-  '&:hover::before': {
-    left: '100%',
-  },
 }));
 
 export const ModernButton = ({ children, ...props }: ModernButtonProps) => {
