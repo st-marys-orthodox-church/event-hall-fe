@@ -22,16 +22,12 @@ const Hero = () => {
           <div className="w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0">
             {/* Social Links */}
             <div className="flex items-center gap-4 text-white/90">
-              <Link href={SOCIALS.FB} target="_blank">
-                <a className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110">
-                  <Facebook className="w-6 h-6" />
-                </a>
+              <Link href={SOCIALS.FB} target="_blank" className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110">
+                <Facebook className="w-6 h-6" />
               </Link>
 
-              <Link href={SOCIALS.IG} target="_blank">
-                <a className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110">
-                  <Instagram className="w-6 h-6" />
-                </a>
+              <Link href={SOCIALS.IG} target="_blank" className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110">
+                <Instagram className="w-6 h-6" />
               </Link>
             </div>
 
@@ -58,18 +54,14 @@ const Hero = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-4">
               <Link href="/gallery">
-                <a>
-                  <ModernButton buttonVariant="primary" size="large">
-                    View Gallery
-                  </ModernButton>
-                </a>
+                <ModernButton buttonVariant="primary" size="large">
+                  View Gallery
+                </ModernButton>
               </Link>
               <Link href="/packages">
-                <a>
-                  <ModernButton buttonVariant="outline" size="large">
-                    Explore Packages
-                  </ModernButton>
-                </a>
+                <ModernButton buttonVariant="outline" size="large">
+                  Explore Packages
+                </ModernButton>
               </Link>
             </div>
 
