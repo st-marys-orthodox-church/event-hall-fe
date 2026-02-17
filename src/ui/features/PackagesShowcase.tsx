@@ -32,7 +32,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
       animateOnce
     >
       <div
-        className={`relative flex flex-col lg:flex-row items-center gap-8 lg:gap-16 p-8 lg:p-12 rounded-3xl bg-gradient-to-br from-white via-stone-50 to-stone-100 border border-stone-200 shadow-lg hover:shadow-xl transition-all duration-500 ${
+        className={`relative flex flex-col lg:flex-row items-center gap-6 lg:gap-12 p-6 lg:p-8 rounded-3xl bg-gradient-to-br from-white via-stone-50 to-stone-100 border border-stone-200 shadow-lg hover:shadow-xl transition-all duration-500 ${
           pkg.popular ? 'ring-2 ring-[#c9a86c] ring-offset-4' : ''
         }`}
       >
@@ -67,11 +67,11 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
                 Capacity: {pkg.capacity}
               </span>
             </div>
-            <h3 className="text-3xl lg:text-4xl font-bold text-stone-800">
+            <h3 className="text-2xl lg:text-3xl font-bold text-stone-800">
               {pkg.title}
             </h3>
             <div className="flex items-baseline gap-1">
-              <span className="text-4xl lg:text-5xl font-bold text-[#7c9885]">
+              <span className="text-3xl lg:text-4xl font-bold text-[#7c9885]">
                 {pkg.price}
               </span>
               <span className="text-stone-500">/event</span>
@@ -120,7 +120,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
 const PackagesShowcase = ({ title, description, packages }: IPackagesShowcaseProps) => {
   return (
     <Section title={title} description={description} className="!py-20">
-      <div className="flex flex-col gap-12 lg:gap-16">
+      <div className="flex flex-col gap-6 lg:gap-10">
         {packages.map((pkg, index) => (
           <PackageItem key={`package-${index}`} pkg={pkg} index={index} />
         ))}
