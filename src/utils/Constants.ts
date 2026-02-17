@@ -23,7 +23,7 @@ export const SOCIALS = {
 // TODO: Replace with actual business number when provided by Zero
 // Format: country code + phone number without spaces or special characters (e.g., 14165551234 for US)
 export const WHATSAPP_CONFIG = {
-  phoneNumber: 'REDACTED_PHONE', // St. Mary's WhatsApp Business (+1 404-984-8686)
+  phoneNumber: '14049186165', // St. Mary's WhatsApp Business (+1-404-918-6165)
   defaultMessage: "Hi St. Mary's! I'm interested in booking your event hall.",
 };
 
