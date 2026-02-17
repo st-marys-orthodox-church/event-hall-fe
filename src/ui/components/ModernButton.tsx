@@ -64,6 +64,9 @@ const StyledButton = styled(MuiButton, {
     background: 'transparent',
     color: '#7c9885',
     border: '2px solid #7c9885',
+    ...(size === 'small' && { padding: '6px 16px' }),
+    ...(size === 'medium' && { padding: '8px 20px' }),
+    ...(size === 'large' && { padding: '8px 26px' }),
     '&:hover': {
       background: 'rgba(124, 152, 133, 0.1)',
       borderColor: '#6b8574',
@@ -78,6 +81,9 @@ const StyledButton = styled(MuiButton, {
     color: '#ffffff',
     border: '2px solid rgba(255, 255, 255, 0.9)',
     backdropFilter: 'blur(4px)',
+    ...(size === 'small' && { padding: '6px 16px' }),
+    ...(size === 'medium' && { padding: '8px 20px' }),
+    ...(size === 'large' && { padding: '8px 26px' }),
     '&:hover': {
       background: 'rgba(255, 255, 255, 0.2)',
       borderColor: '#ffffff',
