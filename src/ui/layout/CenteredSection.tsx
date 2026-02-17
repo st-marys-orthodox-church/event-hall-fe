@@ -30,7 +30,7 @@ const CenteredSection = (props: ICenteredSectionProps) => (
           @apply mx-4;
         }
         .section-copyright :global(a) {
-          @apply text-primary-500;
+          @apply text-brand-green;
         }
 
         .section-copyright :global(a:hover) {
