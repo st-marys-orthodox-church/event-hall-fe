@@ -1,19 +1,18 @@
 import Image from 'next/image';
-import { useWindowSize } from '../../hooks';
 
 type ILogoProps = {
   xl?: boolean;
 };
 
 const Logo = (props: ILogoProps) => {
-  const { width, breakpoint } = useWindowSize();
   const fontStyle = props.xl
     ? 'font-semibold text-2xl'
     : 'font-semibold text-xl';
 
+  // Always use cursive words logo, smaller size
   const renderLogo = () => {
-    if (width > breakpoint) return ['logo-tp.png', 240, 60] as const;
-    return ['logo-words.png', 180, 50] as const;
+    if (props.xl) return ['logo-words.png', '160', '44'];
+    return ['logo-words.png', '140', '38'];
   };
 
   const [logoSrc, logoWidth, logoHeight] = renderLogo();
