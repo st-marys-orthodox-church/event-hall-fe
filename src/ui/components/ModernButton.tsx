@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 interface ModernButtonProps extends Omit<ButtonProps, 'variant'> {
   children: ReactNode;
-  buttonVariant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  buttonVariant?: 'primary' | 'secondary' | 'outline' | 'outlineLight' | 'ghost';
   size?: 'small' | 'medium' | 'large';
 }
 
@@ -69,6 +69,21 @@ const StyledButton = styled(MuiButton, {
     '&:hover': {
       background: 'rgba(124, 152, 133, 0.08)',
       borderColor: '#6b8574',
+      transform: 'translateY(-2px)',
+    },
+    '&:active': {
+      transform: 'translateY(0)',
+    },
+  }),
+
+  ...(buttonVariant === 'outlineLight' && {
+    background: 'rgba(255, 255, 255, 0.15)',
+    color: '#ffffff',
+    border: '2px solid rgba(255, 255, 255, 0.8)',
+    backdropFilter: 'blur(4px)',
+    '&:hover': {
+      background: 'rgba(255, 255, 255, 0.25)',
+      borderColor: '#ffffff',
       transform: 'translateY(-2px)',
     },
     '&:active': {
