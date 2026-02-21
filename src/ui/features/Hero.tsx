@@ -1,6 +1,4 @@
-import { Facebook, Instagram } from '@mui/icons-material';
 import Link from 'next/link';
-import { SOCIALS } from '../../utils/Constants';
 import { Section } from '../layout/Section';
 import FadeIn from '../components/FadeIn';
 import Image from 'next/image';
@@ -22,17 +20,6 @@ const Hero = () => {
       >
         <FadeIn>
           <div className="w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0">
-            {/* Social Links */}
-            <div className="flex items-center gap-4 text-white/90">
-              <Link href={SOCIALS.FB} target="_blank" className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110">
-                <Facebook className="w-6 h-6" />
-              </Link>
-
-              <Link href={SOCIALS.IG} target="_blank" className="p-2 rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 hover:scale-110">
-                <Instagram className="w-6 h-6" />
-              </Link>
-            </div>
-
             {/* Main Content */}
             <header className="text-center py-6 w-full max-w-4xl mx-auto px-4">
               <h3 className="text-4xl md:text-5xl text-white font-bold tracking-wide leading-tight mb-4 drop-shadow-lg">
