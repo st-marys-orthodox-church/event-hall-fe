@@ -19,11 +19,10 @@ export const SOCIALS = {
   IG: 'https://www.instagram.com/fellowshipstmary/',
 };
 
-// WhatsApp Business Configuration
-// TODO: Replace with actual business number when provided by Zero
+// WhatsApp Business Configuration - uses environment variable for security
 // Format: country code + phone number without spaces or special characters (e.g., 14165551234 for US)
 export const WHATSAPP_CONFIG = {
-  phoneNumber: '14049848686', // St. Mary's WhatsApp Business (+1 404-984-8686)
+  phoneNumber: process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '',
   defaultMessage: "Hi St. Mary's! I'm interested in booking your event hall.",
 };
 
