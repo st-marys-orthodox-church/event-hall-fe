@@ -43,6 +43,14 @@ const Footer = () => {
                 </Link>
 
                 <Link
+                  href={SOCIALS.IG_CHURCH}
+                  target="_blank"
+                  className="hover:text-brand-gold transition-colors duration-300 text-sm inline-flex items-center gap-2"
+                >
+                  <Instagram fontSize="small" /> {t('footer.instagramChurch')}
+                </Link>
+
+                <Link
                   href={generateWhatsAppUrl()}
                   target="_blank"
                   className="hover:text-brand-gold transition-colors duration-300 text-sm text-brand-green inline-flex items-center gap-2"

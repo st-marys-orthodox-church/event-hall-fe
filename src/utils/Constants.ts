@@ -1,6 +1,7 @@
 export const SOCIALS = {
   FB: 'https://www.facebook.com/bisericasfantamariadacula',
-  IG: 'https://www.instagram.com/fellowshipstmary/',
+  IG: 'https://www.instagram.com/fellowshipeventhall/',
+  IG_CHURCH: 'https://www.instagram.com/fellowshipstmary/',
 };
 
 // WhatsApp Business Configuration - uses environment variable for security
@@ -14,6 +15,7 @@ export const WHATSAPP_CONFIG = {
 // button labels shown to users are translated separately via i18n.
 export const EVENT_TYPES = {
   WEDDING: 'Wedding',
+  QUINCEANERA: 'Quinceañera',
   CORPORATE: 'Corporate Event',
   BIRTHDAY: 'Birthday Party',
   OTHER: 'Other Event',

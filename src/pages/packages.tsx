@@ -161,6 +161,13 @@ const Packages = () => {
                 <WhatsAppButton eventType={EVENT_TYPES.WEDDING} size="medium">
                   {t('quickQuote.weddingButton')}
                 </WhatsAppButton>
+                <WhatsAppButton
+                  eventType={EVENT_TYPES.QUINCEANERA}
+                  size="medium"
+                  variant="outlined"
+                >
+                  {t('quickQuote.quinceaneraButton')}
+                </WhatsAppButton>
                 <WhatsAppButton eventType={EVENT_TYPES.CORPORATE} size="medium" variant="outlined">
                   {t('quickQuote.corporateButton')}
                 </WhatsAppButton>

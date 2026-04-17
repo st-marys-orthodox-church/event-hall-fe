@@ -9,7 +9,12 @@ const postalAddress = {
   addressCountry: AppConfig.address.country,
 };
 
-const sameAs = [AppConfig.facebook, AppConfig.instagram, AppConfig.twitter].filter(Boolean);
+const sameAs = [
+  AppConfig.facebook,
+  AppConfig.instagram,
+  AppConfig.instagramChurch,
+  AppConfig.twitter,
+].filter(Boolean);
 
 const GOOGLE_MAPS_URL =
   'https://www.google.com/maps/place/Saint+Mary%27s+Fellowship+Hall/@33.9922444,-83.8865512,17z';
