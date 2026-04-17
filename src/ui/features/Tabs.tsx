@@ -54,6 +54,7 @@ export function BasicTabs(props: ITabProps) {
     setValue(newValue);
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: read initial router state once on mount
   React.useEffect(() => {
     if (props.withRouter) {
       const tabNum = router.query.tab ? Number(router.query.tab) : 0;
@@ -67,28 +68,28 @@ export function BasicTabs(props: ITabProps) {
     <Section title={props.title} description={props.description}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="tabs" variant="fullWidth">
-          {props.tabs &&
-            props.tabs.map((el, i) => <Tab key={`tab-${i}`} label={el.name} {...a11yProps(i)} />)}
+          {props.tabs?.map((el, i) => (
+            <Tab key={`tab-${i}`} label={el.name} {...a11yProps(i)} />
+          ))}
         </Tabs>
       </Box>
       <Box className="min-h-[320px]">
-        {props.tabs &&
-          props.tabs.map((el, i) => (
-            <Transition
-              show={i === value}
-              enter="transition-opacity duration-500"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="transition-opacity duration-150"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-              key={`tab-panel-${i}`}
-            >
-              <TabPanel key={`tab-panel-${i}`} value={value} index={i}>
-                {el.children || <></>}
-              </TabPanel>
-            </Transition>
-          ))}
+        {props.tabs?.map((el, i) => (
+          <Transition
+            show={i === value}
+            enter="transition-opacity duration-500"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+            key={`tab-panel-${i}`}
+          >
+            <TabPanel key={`tab-panel-${i}`} value={value} index={i}>
+              {el.children}
+            </TabPanel>
+          </Transition>
+        ))}
       </Box>
     </Section>
   );

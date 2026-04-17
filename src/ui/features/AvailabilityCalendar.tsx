@@ -38,8 +38,8 @@ const addMonths = ({ year, month }: MonthKey, n: number): MonthKey => {
 };
 
 const isoToMonthKey = (iso: string): MonthKey => {
-  const [y, m] = iso.split('-').map(Number);
-  return { year: y, month: m - 1 };
+  const parts = iso.split('-');
+  return { year: Number(parts[0]), month: Number(parts[1]) - 1 };
 };
 
 const buildMonthCells = (year: number, month: number) => {

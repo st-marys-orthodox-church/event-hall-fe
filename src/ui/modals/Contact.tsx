@@ -28,7 +28,7 @@ const style = {
 };
 
 export function ContactModal() {
-  const { handleCloseModal, modalOpen } = useAppContext();
+  const { handleCloseModal, modalOpen, prefilledDate } = useAppContext();
   const { width } = useWindowSize();
   const isMobile = width < 768;
 
@@ -49,6 +49,13 @@ export function ContactModal() {
   React.useEffect(() => {
     setShowForm(!isMobile);
   }, [isMobile]);
+
+  React.useEffect(() => {
+    if (modalOpen && prefilledDate) {
+      updateContactForm('date', prefilledDate);
+      setShowForm(true);
+    }
+  }, [modalOpen, prefilledDate, updateContactForm]);
 
   const toggleForm = () => {
     setShowForm((prev) => !prev);
@@ -133,10 +140,9 @@ export function ContactModal() {
                     <FormControl fullWidth required>
                       <DesktopDatePicker
                         label="Date"
-                        inputFormat="MM/DD/YYYY"
+                        format="MM/DD/YYYY"
                         value={contactForm.date}
                         onChange={(e) => updateContactForm('date', e?.toDate() || null)}
-                        renderInput={(params) => <TextField {...params} />}
                       />
                     </FormControl>
                     <FormControl fullWidth required>

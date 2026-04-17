@@ -9,7 +9,7 @@ export const AppConfig = {
   instagram: 'https://www.instagram.com/fellowshipstmary/',
   twitter: '',
   facebook: 'https://www.facebook.com/bisericasfantamariadacula',
-  telephone: '+1-404-984-8686',
+  telephone: '+1-‭404-518-1042‬',
   email: 'events@saintmaryro.org',
   address: {
     street: '2875 Winder Hwy',

@@ -9,7 +9,7 @@ You write copy for **Fellowship Event Hall**, a modern event venue in Dacula, GA
 ## Venue facts (always accurate, never invent)
 
 - Address: 2875 Winder Hwy, Dacula, GA 30019
-- Phone / WhatsApp: +1-404-984-8686
+- Phone / WhatsApp: +1-‭404-518-1042‬
 - Email: events@saintmaryro.org
 - Capacity: up to 300 guests
 - Size: ~5,000 sq ft

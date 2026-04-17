@@ -48,7 +48,11 @@ export const Navbar = () => {
                 </li>
               ))}
               <li className="flex items-center gap-2">
-                <Button variant="outlined" className="normal-case" onClick={handleOpenModal}>
+                <Button
+                  variant="outlined"
+                  className="normal-case"
+                  onClick={() => handleOpenModal()}
+                >
                   Contact Us
                 </Button>
                 <Tooltip title="Chat on WhatsApp">
@@ -78,7 +82,7 @@ export const Navbar = () => {
                 variant="outlined"
                 size="small"
                 className="normal-case text-sm"
-                onClick={handleOpenModal}
+                onClick={() => handleOpenModal()}
               >
                 Contact Us
               </Button>
@@ -132,7 +136,7 @@ export const Navbar = () => {
                     {el.text}
                   </MenuItem>
                 ))}
-                <MenuItem onClick={handleOpenModal} className="text-brand-green pl-10">
+                <MenuItem onClick={() => handleOpenModal()} className="text-brand-green pl-10">
                   Contact Form
                 </MenuItem>
               </Menu>

@@ -3,13 +3,15 @@ import { type ReactNode, createContext, useContext, useState } from 'react';
 // Types
 type IStoreProps = {
   modalOpen: boolean;
-  handleOpenModal: () => void;
+  prefilledDate: Date | null;
+  handleOpenModal: (date?: Date) => void;
   handleCloseModal: () => void;
 };
 
 // Context
 const AppContext = createContext<IStoreProps>({
   modalOpen: false,
+  prefilledDate: null,
   handleCloseModal() {},
   handleOpenModal() {},
 });
@@ -17,13 +19,21 @@ const AppContext = createContext<IStoreProps>({
 // Wrapper
 export function AppWrapper(props: { children: ReactNode }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const handleOpenModal = () => setModalOpen(true);
-  const handleCloseModal = () => setModalOpen(false);
+  const [prefilledDate, setPrefilledDate] = useState<Date | null>(null);
+  const handleOpenModal = (date?: Date) => {
+    setPrefilledDate(date instanceof Date ? date : null);
+    setModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setPrefilledDate(null);
+  };
 
   return (
     <AppContext.Provider
       value={{
         modalOpen,
+        prefilledDate,
         handleOpenModal,
         handleCloseModal,
       }}

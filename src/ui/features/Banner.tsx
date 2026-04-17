@@ -33,7 +33,7 @@ const Banner = ({ color, full, children, className }: IBannerProps) => {
               className="whitespace-nowrap bg-brand-green hover:bg-brand-green-dark"
               variant="contained"
               size="large"
-              onClick={handleOpenModal}
+              onClick={() => handleOpenModal()}
             >
               Contact Us
             </Button>

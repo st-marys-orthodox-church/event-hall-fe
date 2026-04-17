@@ -63,6 +63,7 @@ const Meta = (props: IMetaProps) => {
           <script
             key={`jsonld-${i}`}
             type="application/ld+json"
+            // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD requires raw HTML injection for structured data
             dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
           />
         ))}

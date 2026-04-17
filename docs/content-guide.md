@@ -11,8 +11,8 @@ These are the canonical facts about the venue. Any copy that references these sh
 | Name | Fellowship Event Hall |
 | Also known as | Saint Mary's Fellowship Hall |
 | Address | 2875 Winder Hwy, Dacula, GA 30019 |
-| Phone | +1-404-984-8686 |
-| WhatsApp | +1-404-984-8686 (same) |
+| Phone | +1-‭404-518-1042‬ |
+| WhatsApp | +1-‭404-518-1042‬ (same) |
 | Email | events@saintmaryro.org |
 | Website | https://events.saintmaryro.org |
 | Capacity | Up to 300 guests |

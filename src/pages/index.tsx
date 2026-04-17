@@ -12,10 +12,12 @@ import {
 } from '@mui/icons-material';
 import Link from 'next/link';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
+import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
 import { Banner } from '../ui/features/Banner';
 import { Hero } from '../ui/features/Hero';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
@@ -111,6 +113,7 @@ const FAQ_ITEMS = [
 ];
 
 const Index = () => {
+  const { handleOpenModal } = useAppContext();
   const jsonLd = [
     localBusinessJsonLd(),
     eventVenueJsonLd(),
@@ -180,6 +183,27 @@ const Index = () => {
           description="Choose the perfect package for your event. All packages include tables, chairs, tablecloths, and chair covers."
           packages={PACKAGES_DATA}
         />
+
+        {/* Availability Calendar */}
+        <section aria-labelledby="availability-heading" className="py-16 bg-stone-50">
+          <div className="max-w-5xl mx-auto px-4">
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <div className="text-center mb-10">
+                <h2
+                  id="availability-heading"
+                  className="text-3xl md:text-4xl font-bold text-stone-800 mb-2"
+                >
+                  Check Availability
+                </h2>
+                <p className="text-stone-600 max-w-2xl mx-auto">
+                  See open dates at a glance. Tap any available day to start an inquiry — we&apos;ll
+                  follow up within one business day.
+                </p>
+              </div>
+              <AvailabilityCalendar onDateSelect={(date) => handleOpenModal(date)} />
+            </AnimationOnScroll>
+          </div>
+        </section>
 
         {/* CTA Banner */}
         <Banner className="bg-gradient-to-r from-[#7c9885] to-[#9db5a0] rounded-3xl shadow-lg">

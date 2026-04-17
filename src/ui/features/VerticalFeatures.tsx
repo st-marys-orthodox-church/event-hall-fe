@@ -2,7 +2,7 @@ import { Section } from '../layout/Section';
 import { VerticalFeatureRow } from '../layout/VerticalFeatureRow';
 
 const VerticalFeatures = () => (
-  <Section yPadding="pt-4 pb-8">
+  <Section yPadding="pt-4 pb-12">
     <VerticalFeatureRow
       title="Our Story"
       description={

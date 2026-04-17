@@ -11,7 +11,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       await sendgrid.send({
         to: 'events@saintmaryro.org', // Your email where you'll receive emails
         from: 'events@saintmaryro.org', // your website email address here
-        subject: `Inquiry for Fellowship Event Hall`,
+        subject: 'Inquiry for Fellowship Event Hall',
         html: `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
         <html lang="en">
         <head>

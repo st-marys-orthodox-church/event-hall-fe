@@ -188,7 +188,7 @@ const Packages = () => {
                 Contact us today to schedule a tour and discuss how we can make your special
                 occasion unforgettable.
               </p>
-              <ModernButton buttonVariant="primary" size="large" onClick={handleOpenModal}>
+              <ModernButton buttonVariant="primary" size="large" onClick={() => handleOpenModal()}>
                 Get in Touch
               </ModernButton>
             </div>

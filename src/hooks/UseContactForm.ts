@@ -71,6 +71,7 @@ export const useContactForm = () => {
     }
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: handleCloseModal is a stable context callback
   useEffect(() => {
     if (isSuccess || isError) {
       const timeout = setTimeout(() => {

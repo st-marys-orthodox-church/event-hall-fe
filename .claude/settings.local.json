@@ -27,7 +27,14 @@
       "Bash(/Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/node_modules/.pnpm/lefthook-darwin-arm64@1.13.6/node_modules/lefthook-darwin-arm64/bin/lefthook install *)",
       "Bash(git config *)",
       "Bash(rm -rf .husky)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(pnpm biome *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/)",
+      "Bash(pnpm build-types *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3001/)",
+      "Bash(curl -s http://localhost:3001/)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"next dev\")"
     ]
   }
 }

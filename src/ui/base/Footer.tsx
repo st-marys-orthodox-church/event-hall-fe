@@ -24,7 +24,7 @@ const Footer = () => (
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
+          />
         </div>
         <div className="flex flex-col items-center md:items-end justify-between gap-4 mt-4">
           <Logo />
