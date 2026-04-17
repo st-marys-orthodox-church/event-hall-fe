@@ -294,9 +294,7 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
         >
           <ChevronLeft />
         </button>
-        <p className="text-sm text-stone-500 font-medium">
-          Click any available date to start an inquiry
-        </p>
+        <p className="text-sm text-stone-500 font-medium">Click any available date to start</p>
         <button
           type="button"
           onClick={goNext}
