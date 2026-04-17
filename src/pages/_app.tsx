@@ -4,6 +4,7 @@ import { AppWrapper } from '../stores/Global';
 
 import '../styles/global.css';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import { display, sans } from '../styles/fonts';
 import { ContactModal } from '../ui/modals/Contact';
 import 'animate.css/animate.min.css';
 import { MuiThemeProvider } from '../styles/theme';
@@ -14,8 +15,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <MuiThemeProvider>
       <LocalizationProvider dateAdapter={AdapterMoment}>
         <AppWrapper>
-          <AnyComponent {...pageProps} />
-          <ContactModal />
+          <div className={`${sans.variable} ${display.variable}`}>
+            <AnyComponent {...pageProps} />
+            <ContactModal />
+          </div>
         </AppWrapper>
       </LocalizationProvider>
     </MuiThemeProvider>

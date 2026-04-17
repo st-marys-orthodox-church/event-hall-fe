@@ -1,8 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
+  :root {
+    --font-sans: "Inter", system-ui, sans-serif;
+    --font-display: "Cormorant Garamond", Georgia, serif;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
   img {
     margin: auto;
+  }
+}
+
+@layer utilities {
+  .gold-rule {
+    position: relative;
+  }
+  .gold-rule::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: #c9a86c;
+    margin: 1rem auto 0;
+  }
+  .gold-rule-left::after {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
   }
 }

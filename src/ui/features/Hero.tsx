@@ -7,22 +7,21 @@ import { Section } from '../layout/Section';
 
 const Hero = () => {
   return (
-    <div className="relative h-screen flex items-center w-full">
-      {/* Background Carousel */}
+    <div className="relative h-screen flex items-center w-full overflow-hidden">
       <HeroCarousel />
 
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/50 z-[1]" />
+      {/* Layered overlay — vignette + warm tint for depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 z-[1]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(0,0,0,0.45)_100%)] z-[1]" />
 
       <Section
         className="relative z-[2] w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0"
         yPadding="py-16"
       >
         <FadeIn>
-          <div className="w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0">
-            {/* Main Content */}
+          <div className="w-full flex flex-col gap-8 items-center justify-center !max-w-none !px-0">
             <header className="text-center py-6 w-full max-w-4xl mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl text-white font-bold tracking-wide leading-tight mb-4 drop-shadow-lg">
+              <h1 className="text-4xl md:text-5xl text-white tracking-wide leading-tight mb-6 drop-shadow-lg">
                 <div className="flex flex-col items-center justify-center">
                   <Image
                     src="/logos/fellowship-wordmark-minimal-white.svg"
@@ -45,17 +44,16 @@ const Hero = () => {
                   Fellowship Event Hall — Wedding & Banquet Venue in Dacula, GA
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl font-medium italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
+
+              <div className="mx-auto w-16 h-px bg-[#c9a86c]/80 mb-6" />
+
+              <p className="text-xl md:text-2xl font-display italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
                 An elegant event hall suited for all your special occasions
-                <br />
-                <span className="text-lg not-italic font-normal text-white/80">
-                  Located in Dacula, GA
-                </span>
               </p>
+              <p className="mt-3 eyebrow text-white/75">Located in Dacula, GA</p>
             </header>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mt-4 items-center">
+            <div className="flex flex-col sm:flex-row gap-4 mt-2 items-center">
               <ModernButton component={Link} href="/gallery" buttonVariant="primary" size="large">
                 View Gallery
               </ModernButton>
@@ -72,12 +70,24 @@ const Hero = () => {
         </FadeIn>
       </Section>
 
-      {/* Scroll Indicator - positioned at bottom of hero */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 animate-bounce z-[2]">
-        <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-white/70 rounded-full" />
+      {/* Refined scroll indicator — thin line + dot */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] flex flex-col items-center gap-2">
+        <span className="eyebrow text-white/70 text-[0.65rem]">Scroll</span>
+        <div className="relative w-px h-12 bg-white/25 overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-4 bg-white/80 animate-[scrollLine_2.4s_cubic-bezier(0.22,1,0.36,1)_infinite]" />
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes scrollLine {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(300%);
+          }
+        }
+      `}</style>
     </div>
   );
 };

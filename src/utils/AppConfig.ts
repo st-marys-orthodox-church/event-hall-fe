@@ -6,6 +6,10 @@ export const AppConfig = {
   locale: 'en',
   url: 'https://events.saintmaryro.org',
   logo: 'https://events.saintmaryro.org/logos/logo.jpg',
+  ogImage: 'https://events.saintmaryro.org/og-image.jpg',
+  ogImageAlt:
+    'Fellowship Event Hall in Dacula, GA — elegant reception setup with chandeliers, white linens, and floral centerpieces',
+  themeColor: '#7c9885',
   instagram: 'https://www.instagram.com/fellowshipstmary/',
   twitter: '',
   facebook: 'https://www.facebook.com/bisericasfantamariadacula',

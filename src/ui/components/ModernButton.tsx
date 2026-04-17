@@ -8,88 +8,96 @@ interface ModernButtonProps extends Omit<ButtonProps, 'variant'> {
   size?: 'small' | 'medium' | 'large';
 }
 
+const REFINED = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
 const StyledButton = styled(MuiButton, {
   shouldForwardProp: (prop) => prop !== 'buttonVariant' && prop !== 'size',
 })<ModernButtonProps>(({ buttonVariant = 'primary', size = 'medium' }) => ({
-  borderRadius: '10px',
-  textTransform: 'none' as const,
-  fontWeight: 600,
-  letterSpacing: '0.02em',
-  transition: 'all 0.25s ease-out',
+  borderRadius: '2px',
+  textTransform: 'uppercase' as const,
+  fontWeight: 500,
+  letterSpacing: '0.14em',
+  transition: `all 0.35s ${REFINED}`,
   position: 'relative',
   overflow: 'hidden',
   willChange: 'transform, box-shadow',
   boxSizing: 'border-box',
 
   ...(size === 'small' && {
-    padding: '8px 16px',
-    fontSize: '0.875rem',
+    padding: '9px 18px',
+    fontSize: '0.75rem',
   }),
   ...(size === 'medium' && {
-    padding: '10px 20px',
-    fontSize: '0.9375rem',
+    padding: '11px 24px',
+    fontSize: '0.8125rem',
   }),
   ...(size === 'large' && {
-    padding: '10px 26px',
-    fontSize: '1rem',
+    padding: '14px 32px',
+    fontSize: '0.875rem',
   }),
 
   ...(buttonVariant === 'primary' && {
-    background: 'linear-gradient(135deg, #7c9885 0%, #9db5a0 100%)',
+    background: '#7c9885',
     color: '#ffffff',
-    boxShadow: '0 2px 8px rgba(124, 152, 133, 0.35)',
+    boxShadow: '0 10px 24px -14px rgba(15, 23, 23, 0.45)',
     '&:hover': {
-      background: 'linear-gradient(135deg, #6b8574 0%, #8ca58f 100%)',
-      boxShadow: '0 4px 12px rgba(124, 152, 133, 0.45)',
+      background: '#6b8574',
+      boxShadow: '0 14px 30px -14px rgba(15, 23, 23, 0.55)',
+      transform: 'translateY(-1px)',
     },
     '&:active': {
-      boxShadow: '0 1px 4px rgba(124, 152, 133, 0.35)',
+      transform: 'translateY(0)',
+      boxShadow: '0 6px 18px -14px rgba(15, 23, 23, 0.45)',
     },
   }),
 
   ...(buttonVariant === 'secondary' && {
-    background: 'linear-gradient(135deg, #c9a86c 0%, #d4b87a 100%)',
+    background: '#c9a86c',
     color: '#ffffff',
-    boxShadow: '0 2px 8px rgba(201, 168, 108, 0.35)',
+    boxShadow: '0 10px 24px -14px rgba(15, 23, 23, 0.45)',
     '&:hover': {
-      background: 'linear-gradient(135deg, #b8975f 0%, #c9a86c 100%)',
-      boxShadow: '0 4px 12px rgba(201, 168, 108, 0.45)',
+      background: '#b8975f',
+      boxShadow: '0 14px 30px -14px rgba(15, 23, 23, 0.55)',
+      transform: 'translateY(-1px)',
     },
     '&:active': {
-      boxShadow: '0 1px 4px rgba(201, 168, 108, 0.35)',
+      transform: 'translateY(0)',
+      boxShadow: '0 6px 18px -14px rgba(15, 23, 23, 0.45)',
     },
   }),
 
   ...(buttonVariant === 'outline' && {
     background: 'transparent',
-    color: '#7c9885',
-    border: '2px solid #7c9885',
-    ...(size === 'small' && { padding: '6px 16px' }),
-    ...(size === 'medium' && { padding: '8px 20px' }),
-    ...(size === 'large' && { padding: '8px 26px' }),
+    color: '#3a4c41',
+    border: '1px solid #7c9885',
+    ...(size === 'small' && { padding: '8px 18px' }),
+    ...(size === 'medium' && { padding: '10px 24px' }),
+    ...(size === 'large' && { padding: '13px 32px' }),
     '&:hover': {
-      background: 'rgba(124, 152, 133, 0.1)',
-      borderColor: '#6b8574',
+      background: '#7c9885',
+      borderColor: '#7c9885',
+      color: '#ffffff',
     },
     '&:active': {
-      background: 'rgba(124, 152, 133, 0.15)',
+      background: '#6b8574',
+      borderColor: '#6b8574',
     },
   }),
 
   ...(buttonVariant === 'outlineLight' && {
-    background: 'rgba(255, 255, 255, 0.12)',
+    background: 'transparent',
     color: '#ffffff',
-    border: '2px solid rgba(255, 255, 255, 0.9)',
-    backdropFilter: 'blur(4px)',
-    ...(size === 'small' && { padding: '6px 16px' }),
-    ...(size === 'medium' && { padding: '8px 20px' }),
-    ...(size === 'large' && { padding: '8px 26px' }),
+    border: '1px solid rgba(255, 255, 255, 0.75)',
+    ...(size === 'small' && { padding: '8px 18px' }),
+    ...(size === 'medium' && { padding: '10px 24px' }),
+    ...(size === 'large' && { padding: '13px 32px' }),
     '&:hover': {
-      background: 'rgba(255, 255, 255, 0.2)',
+      background: 'rgba(255, 255, 255, 0.95)',
       borderColor: '#ffffff',
+      color: '#1f2a23',
     },
     '&:active': {
-      background: 'rgba(255, 255, 255, 0.25)',
+      background: 'rgba(255, 255, 255, 0.9)',
     },
   }),
 
@@ -97,10 +105,10 @@ const StyledButton = styled(MuiButton, {
     background: 'transparent',
     color: '#7c9885',
     '&:hover': {
-      background: 'rgba(124, 152, 133, 0.1)',
+      background: 'rgba(124, 152, 133, 0.08)',
     },
     '&:active': {
-      background: 'rgba(124, 152, 133, 0.15)',
+      background: 'rgba(124, 152, 133, 0.14)',
     },
   }),
 }));

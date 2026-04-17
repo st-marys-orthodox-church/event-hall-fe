@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { useScrollParallax } from '../../hooks';
 import { ModernButton } from '../components/ModernButton';
 import { Section } from '../layout/Section';
 
@@ -24,83 +25,85 @@ type IPackagesShowcaseProps = {
 
 const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) => {
   const isEven = index % 2 === 0;
+  const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.15, max: 60 });
 
   return (
-    <AnimationOnScroll animateIn="animate__fadeInUp" delay={index * 200} animateOnce>
+    <AnimationOnScroll animateIn="animate__fadeInUp" delay={index * 150} animateOnce>
       <div
-        className={`relative flex flex-col lg:flex-row items-center gap-6 lg:gap-12 p-6 lg:p-8 rounded-3xl bg-gradient-to-br from-white via-stone-50 to-stone-100 border border-stone-200 shadow-lg hover:shadow-xl transition-all duration-500 ${
-          pkg.popular ? 'ring-2 ring-[#c9a86c] ring-offset-4' : ''
+        className={`relative flex flex-col lg:flex-row items-stretch gap-8 lg:gap-16 py-10 lg:py-14 border-t border-stone-200 ${
+          pkg.popular ? 'bg-gradient-to-br from-[#7c9885]/[0.03] to-[#c9a86c]/[0.04]' : ''
         }`}
       >
-        {/* Popular Badge */}
         {pkg.popular && (
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r from-[#c9a86c] to-[#d4b87a] text-white text-sm font-semibold rounded-full shadow-lg">
-            Most Popular
+          <div className="absolute top-10 right-0 lg:right-auto lg:left-0">
+            <span className="eyebrow text-[#c9a86c] bg-white px-3 py-1 border border-[#c9a86c]/40">
+              Most Popular
+            </span>
           </div>
         )}
 
-        {/* Image Section */}
         {pkg.img && (
           <div className={`w-full lg:w-1/2 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-            <div className="relative group overflow-hidden rounded-2xl h-64 lg:h-80">
-              <Image
-                src={pkg.img}
-                alt={`${pkg.title} package — event setup for ${pkg.capacity} at Fellowship Event Hall in Dacula, GA`}
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div ref={ref} className="relative group overflow-hidden h-72 lg:h-96 shadow-luxe">
+              <div
+                className="absolute -inset-y-10 inset-x-0 will-change-transform"
+                style={{ transform: `translate3d(0, ${offset}px, 0)` }}
+              >
+                <Image
+                  src={pkg.img}
+                  alt={`${pkg.title} package — event setup for ${pkg.capacity} at Fellowship Event Hall in Dacula, GA`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-[1200ms] ease-refined group-hover:scale-[1.04]"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-transparent pointer-events-none" />
             </div>
           </div>
         )}
 
-        {/* Content Section */}
         <div
-          className={`w-full lg:w-1/2 flex flex-col gap-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
+          className={`w-full lg:w-1/2 flex flex-col justify-center gap-6 ${
+            isEven ? 'lg:order-2' : 'lg:order-1'
+          }`}
         >
-          {/* Header */}
-          <div className="space-y-2">
+          <div className="space-y-3">
             <div className="flex items-center gap-2 text-[#7c9885]">
-              <People className="w-5 h-5" />
-              <span className="text-sm font-medium uppercase tracking-wider">
-                Capacity: {pkg.capacity}
-              </span>
+              <People className="w-4 h-4" />
+              <span className="eyebrow">Capacity · {pkg.capacity}</span>
             </div>
-            <h3 className="text-2xl lg:text-3xl font-bold text-stone-800">{pkg.title}</h3>
-            <div className="flex items-baseline gap-1">
-              <span className="text-3xl lg:text-4xl font-bold text-[#7c9885]">{pkg.price}</span>
-              <span className="text-stone-500">/event</span>
+            <h3 className="font-display text-4xl lg:text-5xl text-stone-900 leading-tight">
+              {pkg.title}
+            </h3>
+            <div className="flex items-baseline gap-2 pt-1">
+              <span className="font-display text-4xl lg:text-5xl text-[#7c9885] font-medium">
+                {pkg.price}
+              </span>
+              <span className="text-stone-500 text-sm tracking-wide">/ event</span>
             </div>
           </div>
 
-          {/* Description */}
           {pkg.description && (
-            <p className="text-stone-600 text-lg leading-relaxed">{pkg.description}</p>
+            <p className="text-stone-600 text-lg leading-relaxed max-w-xl">{pkg.description}</p>
           )}
 
-          {/* Features */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 pt-2 max-w-xl">
             {pkg.features.map((feature, idx) => (
               <div key={idx} className="flex items-center gap-3 text-stone-700">
-                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                  <Check className="w-4 h-4 text-[#7c9885]" />
-                </div>
-                <span className="text-sm font-medium">{feature}</span>
+                <Check className="w-4 h-4 text-[#c9a86c] flex-shrink-0" />
+                <span className="text-sm">{feature}</span>
               </div>
             ))}
           </div>
 
-          {/* CTA */}
           <div className="pt-4">
             <ModernButton
               component={Link}
               href={`/packages?package=${index}`}
-              buttonVariant={pkg.popular ? 'secondary' : 'primary'}
+              buttonVariant={pkg.popular ? 'secondary' : 'outline'}
               size="large"
-              fullWidth
             >
-              Book This Package
+              Inquire About This Package
             </ModernButton>
           </div>
         </div>
@@ -111,8 +114,24 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
 
 const PackagesShowcase = ({ title, description, packages }: IPackagesShowcaseProps) => {
   return (
-    <Section title={title} description={description} className="!py-20">
-      <div className="flex flex-col gap-6 lg:gap-10">
+    <Section className="!py-24 !max-w-6xl">
+      {(title || description) && (
+        <div className="text-center mb-8">
+          <span className="eyebrow text-[#c9a86c]">Packages</span>
+          {title && (
+            <h2 className="mt-3 font-display text-4xl md:text-5xl text-stone-900 leading-tight">
+              {title}
+            </h2>
+          )}
+          <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+          {description && (
+            <p className="mt-5 text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+              {description}
+            </p>
+          )}
+        </div>
+      )}
+      <div className="flex flex-col">
         {packages.map((pkg, index) => (
           <PackageItem key={`package-${index}`} pkg={pkg} index={index} />
         ))}

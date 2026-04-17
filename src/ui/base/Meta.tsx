@@ -8,7 +8,18 @@ type IMetaProps = {
   description: string;
   canonical?: string;
   ogType?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const inferImageType = (url: string) => {
+  const ext = (url.split('?')[0] ?? '').split('.').pop()?.toLowerCase();
+  if (ext === 'png') return 'image/png';
+  if (ext === 'webp') return 'image/webp';
+  if (ext === 'gif') return 'image/gif';
+  return 'image/jpeg';
 };
 
 const normalizePath = (path: string) => {
@@ -20,6 +31,9 @@ const normalizePath = (path: string) => {
 const Meta = (props: IMetaProps) => {
   const router = useRouter();
   const canonical = props.canonical ?? `${AppConfig.url}${normalizePath(router.asPath)}`;
+  const ogImage = props.ogImage ?? AppConfig.ogImage;
+  const ogImageAlt = props.ogImageAlt ?? AppConfig.ogImageAlt;
+  const ogImageType = inferImageType(ogImage);
   const jsonLdItems = props.jsonLd
     ? Array.isArray(props.jsonLd)
       ? props.jsonLd
@@ -31,6 +45,7 @@ const Meta = (props: IMetaProps) => {
       <Head>
         <meta charSet="UTF-8" key="charset" />
         <meta name="viewport" content="width=device-width,initial-scale=1" key="viewport" />
+        <meta name="theme-color" content={AppConfig.themeColor} key="theme-color" />
         <link rel="preconnect" href="https://www.google.com" key="preconnect-google" />
         <link
           rel="preconnect"
@@ -72,6 +87,13 @@ const Meta = (props: IMetaProps) => {
         title={props.title}
         description={props.description}
         canonical={canonical}
+        noindex={props.noindex}
+        nofollow={props.noindex}
+        robotsProps={{
+          maxImagePreview: 'large',
+          maxSnippet: -1,
+          maxVideoPreview: -1,
+        }}
         openGraph={{
           type: props.ogType ?? 'website',
           title: props.title,
@@ -81,10 +103,11 @@ const Meta = (props: IMetaProps) => {
           site_name: AppConfig.site_name,
           images: [
             {
-              url: AppConfig.logo,
+              url: ogImage,
               width: 1200,
               height: 630,
-              alt: AppConfig.site_name,
+              alt: ogImageAlt,
+              type: ogImageType,
             },
           ],
         }}
