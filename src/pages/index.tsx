@@ -17,7 +17,6 @@ import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
-import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
 import { Banner } from '../ui/features/Banner';
 import { Hero } from '../ui/features/Hero';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
@@ -108,7 +107,7 @@ const FAQ_ITEMS = [
   {
     question: 'How do we book a tour or check availability?',
     answer:
-      'Private venue tours are available by appointment. Use the contact form, send a WhatsApp message, or email events@saintmaryro.org and we will follow up promptly with open dates.',
+      'Private venue tours are available by appointment. Use the contact form or send a WhatsApp message and we will follow up promptly with open dates.',
   },
 ];
 
@@ -185,7 +184,7 @@ const Index = () => {
         />
 
         {/* Availability Calendar */}
-        <section aria-labelledby="availability-heading" className="py-16 bg-stone-50">
+        {/* <section aria-labelledby="availability-heading" className="py-16 bg-stone-50">
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-10">
@@ -203,7 +202,7 @@ const Index = () => {
               <AvailabilityCalendar onDateSelect={(date) => handleOpenModal(date)} />
             </AnimationOnScroll>
           </div>
-        </section>
+        </section> */}
 
         {/* CTA Banner */}
         <Banner className="bg-gradient-to-r from-[#7c9885] to-[#9db5a0] rounded-3xl shadow-lg">
