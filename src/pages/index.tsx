@@ -12,12 +12,11 @@ import {
 } from '@mui/icons-material';
 import Link from 'next/link';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
-import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
-import { Banner } from '../ui/features/Banner';
+import { Faq } from '../ui/features/Faq';
 import { Hero } from '../ui/features/Hero';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
 import { VerticalFeatures } from '../ui/features/VerticalFeatures';
@@ -112,7 +111,6 @@ const FAQ_ITEMS = [
 ];
 
 const Index = () => {
-  const { handleOpenModal } = useAppContext();
   const jsonLd = [
     localBusinessJsonLd(),
     eventVenueJsonLd(),
@@ -141,40 +139,48 @@ const Index = () => {
         {/* Features Section */}
         <VerticalFeatures />
 
-        {/* Stats Banner */}
-        <Banner full className="bg-gradient-to-br from-[#7c9885]/10 via-stone-100 to-[#c9a86c]/10">
-          <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-            <h2 className="text-center text-3xl md:text-4xl font-bold text-stone-800 mb-2">
-              Why Choose Our Dacula Event Venue
-            </h2>
-            <p className="text-center text-stone-600 mb-10 max-w-2xl mx-auto">
-              Creating memorable experiences for your special occasions
-            </p>
-          </AnimationOnScroll>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-center gap-8 max-w-5xl mx-auto">
-            <AnimationOnScroll animateIn="animate__fadeInUp" delay={0} animateOnce>
-              <NumberDisplay
-                text="Guest Capacity"
-                value="250"
-                icon={<People fontSize="large" className="text-[#7c9885]" />}
-              />
+        {/* Stats Banner — flattened, editorial */}
+        <section className="relative py-24 bg-stone-100">
+          <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#c9a86c]/40 to-transparent" />
+          <div className="max-w-5xl mx-auto px-4">
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <div className="text-center mb-14">
+                <span className="eyebrow text-[#c9a86c]">The Venue</span>
+                <h2 className="mt-3 font-display text-4xl md:text-5xl text-stone-900">
+                  Why Choose Our Dacula Event Venue
+                </h2>
+                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+                <p className="mt-5 text-stone-600 max-w-2xl mx-auto leading-relaxed">
+                  Creating memorable experiences for your special occasions
+                </p>
+              </div>
             </AnimationOnScroll>
-            <AnimationOnScroll animateIn="animate__fadeInUp" delay={150} animateOnce>
-              <NumberDisplay
-                text="Square Feet"
-                value="5,000"
-                icon={<DesignServices fontSize="large" className="text-[#c9a86c]" />}
-              />
-            </AnimationOnScroll>
-            <AnimationOnScroll animateIn="animate__fadeInUp" delay={300} animateOnce>
-              <NumberDisplay
-                text="Packages"
-                value="$2K-$4K"
-                icon={<LocalOffer fontSize="large" className="text-[#7c9885]" />}
-              />
-            </AnimationOnScroll>
+            <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-stone-300/70 max-w-4xl mx-auto">
+              <AnimationOnScroll animateIn="animate__fadeInUp" delay={0} animateOnce>
+                <NumberDisplay
+                  text="Guest Capacity"
+                  value="250"
+                  icon={<People fontSize="large" className="text-[#7c9885]" />}
+                />
+              </AnimationOnScroll>
+              <AnimationOnScroll animateIn="animate__fadeInUp" delay={150} animateOnce>
+                <NumberDisplay
+                  text="Square Feet"
+                  value="5,000"
+                  icon={<DesignServices fontSize="large" className="text-[#c9a86c]" />}
+                />
+              </AnimationOnScroll>
+              <AnimationOnScroll animateIn="animate__fadeInUp" delay={300} animateOnce>
+                <NumberDisplay
+                  text="Packages"
+                  value="$2K–$4K"
+                  icon={<LocalOffer fontSize="large" className="text-[#7c9885]" />}
+                />
+              </AnimationOnScroll>
+            </div>
           </div>
-        </Banner>
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#c9a86c]/40 to-transparent" />
+        </section>
 
         {/* Packages Section */}
         <PackagesShowcase
@@ -183,109 +189,97 @@ const Index = () => {
           packages={PACKAGES_DATA}
         />
 
-        {/* Availability Calendar */}
-        {/* <section aria-labelledby="availability-heading" className="py-16 bg-stone-50">
-          <div className="max-w-5xl mx-auto px-4">
+        {/* CTA Banner — full bleed dark */}
+        <section className="relative py-24 bg-stone-900 text-white overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#7c9885]/25 via-transparent to-[#c9a86c]/20" />
+          <div className="relative max-w-3xl mx-auto px-6 text-center">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <div className="text-center mb-10">
-                <h2
-                  id="availability-heading"
-                  className="text-3xl md:text-4xl font-bold text-stone-800 mb-2"
-                >
-                  Check Availability
-                </h2>
-                <p className="text-stone-600 max-w-2xl mx-auto">
-                  See open dates at a glance. Tap any available day to start an inquiry — we&apos;ll
-                  follow up within one business day.
-                </p>
-              </div>
-              <AvailabilityCalendar onDateSelect={(date) => handleOpenModal(date)} />
-            </AnimationOnScroll>
-          </div>
-        </section> */}
-
-        {/* CTA Banner */}
-        <Banner className="bg-gradient-to-r from-[#7c9885] to-[#9db5a0] rounded-3xl shadow-lg">
-          <div className="text-center text-white py-8">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              <span className="eyebrow text-[#c9a86c]">Book Your Date</span>
+              <h2 className="mt-3 font-display text-4xl md:text-5xl leading-tight">
                 Ready to Book Your Dacula Wedding or Event?
               </h2>
-              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Let us help you create unforgettable memories at St. Mary&apos;s Event Hall
+              <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+              <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto leading-relaxed">
+                Let us help you create unforgettable memories at St. Mary&apos;s Event Hall.
               </p>
-              <ModernButton
-                component={Link}
-                href="/packages"
-                buttonVariant="secondary"
-                size="large"
-              >
-                View All Packages
-              </ModernButton>
+              <div className="mt-10">
+                <ModernButton
+                  component={Link}
+                  href="/packages"
+                  buttonVariant="secondary"
+                  size="large"
+                >
+                  View All Packages
+                </ModernButton>
+              </div>
             </AnimationOnScroll>
           </div>
-        </Banner>
+        </section>
 
-        {/* Trust Badges */}
-        <div className="py-16 bg-white">
+        {/* Trust Badges — flat, editorial */}
+        <div className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                    <Event className="w-8 h-8 text-[#7c9885]" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                {[
+                  {
+                    icon: <Event className="w-7 h-7 text-[#7c9885]" />,
+                    title: 'Flexible Booking',
+                    text: 'Easy scheduling with multiple date options',
+                  },
+                  {
+                    icon: <EmojiEvents className="w-7 h-7 text-[#c9a86c]" />,
+                    title: 'Award Winning',
+                    text: 'Highly rated venue in the Dacula area',
+                  },
+                  {
+                    icon: <Favorite className="w-7 h-7 text-[#7c9885]" />,
+                    title: 'Made with Love',
+                    text: 'Personal attention to every detail',
+                  },
+                ].map((b) => (
+                  <div key={b.title} className="flex flex-col items-center gap-4">
+                    <div className="w-14 h-14 flex items-center justify-center border border-stone-200">
+                      {b.icon}
+                    </div>
+                    <h3 className="font-display text-2xl text-stone-900">{b.title}</h3>
+                    <p className="text-stone-600 max-w-xs">{b.text}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-stone-800">Flexible Booking</h3>
-                  <p className="text-stone-600">Easy scheduling with multiple date options</p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 rounded-full bg-[#c9a86c]/10 flex items-center justify-center">
-                    <EmojiEvents className="w-8 h-8 text-[#c9a86c]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-stone-800">Award Winning</h3>
-                  <p className="text-stone-600">Highly rated venue in Dacula area</p>
-                </div>
-                <div className="flex flex-col items-center gap-3">
-                  <div className="w-16 h-16 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                    <Favorite className="w-8 h-8 text-[#7c9885]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-stone-800">Made with Love</h3>
-                  <p className="text-stone-600">Personal attention to every detail</p>
-                </div>
+                ))}
               </div>
             </AnimationOnScroll>
           </div>
         </div>
 
-        {/* Visit Us — NAP section for local SEO */}
-        <section aria-labelledby="visit-us-heading" className="py-16 bg-stone-50">
+        {/* Visit Us — NAP section, flattened */}
+        <section aria-labelledby="visit-us-heading" className="py-20 bg-stone-50">
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <div className="text-center mb-10">
+              <div className="text-center mb-14">
+                <span className="eyebrow text-[#c9a86c]">Visit</span>
                 <h2
                   id="visit-us-heading"
-                  className="text-3xl md:text-4xl font-bold text-stone-800 mb-2"
+                  className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
                 >
                   Visit Fellowship Event Hall
                 </h2>
-                <p className="text-stone-600 max-w-2xl mx-auto">
+                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+                <p className="mt-5 text-stone-600 max-w-2xl mx-auto leading-relaxed">
                   Conveniently located in Dacula, Georgia — serving Gwinnett County, Lawrenceville,
                   Buford, Hoschton, and the North Atlanta metro area.
                 </p>
               </div>
               <div
-                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-stone-300/70"
                 itemScope
                 itemType="https://schema.org/EventVenue"
               >
                 <meta itemProp="name" content={AppConfig.site_name} />
-                <div className="flex flex-col items-center text-center gap-3 p-6 bg-white rounded-2xl shadow-sm">
-                  <div className="w-12 h-12 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                    <LocationOn className="text-[#7c9885]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-stone-800">Address</h3>
+                <div className="flex flex-col items-center text-center gap-3 py-8 md:py-4 px-6">
+                  <LocationOn className="text-[#7c9885]" fontSize="medium" />
+                  <h3 className="font-display text-xl text-stone-900">Address</h3>
                   <address
-                    className="not-italic text-stone-600"
+                    className="not-italic text-stone-600 leading-relaxed"
                     itemProp="address"
                     itemScope
                     itemType="https://schema.org/PostalAddress"
@@ -302,16 +296,14 @@ const Index = () => {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-[#7c9885] hover:underline"
+                    className="eyebrow text-[#7c9885] hover:text-[#6b8574] transition-colors mt-1"
                   >
-                    Get Directions
+                    Get Directions →
                   </a>
                 </div>
-                <div className="flex flex-col items-center text-center gap-3 p-6 bg-white rounded-2xl shadow-sm">
-                  <div className="w-12 h-12 rounded-full bg-[#c9a86c]/10 flex items-center justify-center">
-                    <Phone className="text-[#c9a86c]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-stone-800">Contact</h3>
+                <div className="flex flex-col items-center text-center gap-3 py-8 md:py-4 px-6">
+                  <Phone className="text-[#c9a86c]" fontSize="medium" />
+                  <h3 className="font-display text-xl text-stone-900">Contact</h3>
                   <a
                     href={`tel:${AppConfig.telephone.replace(/[^\d+]/g, '')}`}
                     className="text-stone-600 hover:text-[#7c9885] transition"
@@ -327,12 +319,10 @@ const Index = () => {
                     <Email fontSize="small" /> {AppConfig.email}
                   </a>
                 </div>
-                <div className="flex flex-col items-center text-center gap-3 p-6 bg-white rounded-2xl shadow-sm">
-                  <div className="w-12 h-12 rounded-full bg-[#7c9885]/10 flex items-center justify-center">
-                    <Schedule className="text-[#7c9885]" />
-                  </div>
-                  <h3 className="text-lg font-bold text-stone-800">Tours by Appointment</h3>
-                  <p className="text-stone-600">
+                <div className="flex flex-col items-center text-center gap-3 py-8 md:py-4 px-6">
+                  <Schedule className="text-[#7c9885]" fontSize="medium" />
+                  <h3 className="font-display text-xl text-stone-900">Tours by Appointment</h3>
+                  <p className="text-stone-600 leading-relaxed">
                     We schedule private venue tours by appointment — reach out to find a time that
                     works for you.
                   </p>
@@ -342,38 +332,25 @@ const Index = () => {
           </div>
         </section>
 
-        {/* FAQ — FAQPage JSON-LD emitted via <Meta jsonLd> */}
-        <section aria-labelledby="faq-heading" className="py-16 bg-white">
+        {/* FAQ */}
+        <section aria-labelledby="faq-heading" className="py-20 bg-white">
           <div className="max-w-3xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <div className="text-center mb-10">
-                <h2 id="faq-heading" className="text-3xl md:text-4xl font-bold text-stone-800 mb-2">
+              <div className="text-center mb-12">
+                <span className="eyebrow text-[#c9a86c]">FAQ</span>
+                <h2
+                  id="faq-heading"
+                  className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
+                >
                   Frequently Asked Questions
                 </h2>
-                <p className="text-stone-600">
+                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+                <p className="mt-5 text-stone-600">
                   Everything you need to know before booking your Dacula event.
                 </p>
               </div>
-              <div className="flex flex-col gap-4">
-                {FAQ_ITEMS.map((item) => (
-                  <details
-                    key={item.question}
-                    className="group bg-stone-50 rounded-2xl p-5 shadow-sm open:shadow-md transition"
-                  >
-                    <summary className="cursor-pointer list-none flex justify-between items-center gap-4 font-semibold text-stone-800">
-                      {item.question}
-                      <span
-                        aria-hidden
-                        className="text-[#7c9885] text-xl transition-transform group-open:rotate-45"
-                      >
-                        +
-                      </span>
-                    </summary>
-                    <p className="mt-3 text-stone-600 leading-relaxed">{item.answer}</p>
-                  </details>
-                ))}
-              </div>
             </AnimationOnScroll>
+            <Faq items={FAQ_ITEMS} />
           </div>
         </section>
       </Template>

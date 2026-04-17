@@ -1,6 +1,6 @@
 import MenuIcon from '@mui/icons-material/Menu';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { Button, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
+import { IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import Link from 'next/link';
 import { useDropdown, useWindowSize } from '../../hooks';
 import { useAppContext } from '../../stores/Global';
@@ -14,47 +14,39 @@ export const Navbar = () => {
   const { open, handleClick, handleClose, anchorEl } = useDropdown();
 
   const links = [
-    {
-      text: 'Gallery',
-      link: '/gallery',
-    },
-    {
-      text: 'Packages',
-      link: '/packages',
-    },
+    { text: 'Gallery', link: '/gallery' },
+    { text: 'Packages', link: '/packages' },
   ];
 
-  // Brand green color for consistency
-  const brandGreen = '#7c9885';
-  const brandGreenDark = '#6b8574';
-
   return (
-    <Section yPadding="py-1">
-      <div className="flex flex-wrap justify-between items-center">
-        <div className="pt-2">
-          <Link href="/">
-            <Logo />
-          </Link>
-        </div>
+    <Section yPadding="py-3">
+      <div className="flex justify-between items-center gap-6">
+        <Link href="/" className="flex items-center" aria-label="Fellowship Event Hall — Home">
+          <Logo />
+        </Link>
 
         <nav>
           {width > 768 ? (
-            <ul className="two-columns flex items-center gap-1 font-medium text-xl text-gray-800">
+            <ul className="flex items-center gap-8">
               {links.map((el, i) => (
                 <li key={`nav-item-${i}`}>
-                  <Button component={Link} href={el.link} className="text-neutral-900">
+                  <Link
+                    href={el.link}
+                    className="eyebrow text-stone-700 hover:text-[#7c9885] transition-colors duration-300 ease-refined relative group"
+                  >
                     {el.text}
-                  </Button>
+                    <span className="absolute -bottom-1.5 left-0 w-full h-px bg-[#c9a86c] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-refined" />
+                  </Link>
                 </li>
               ))}
-              <li className="flex items-center gap-2">
-                <Button
-                  variant="outlined"
-                  className="normal-case"
+              <li className="flex items-center gap-3 pl-4 border-l border-stone-200">
+                <button
+                  type="button"
                   onClick={() => handleOpenModal()}
+                  className="eyebrow text-stone-700 hover:text-[#7c9885] border border-stone-300 hover:border-[#7c9885] px-4 py-2 transition-colors duration-300 ease-refined"
                 >
                   Contact Us
-                </Button>
+                </button>
                 <Tooltip title="Chat on WhatsApp">
                   <IconButton
                     href={generateWhatsAppUrl()}
@@ -62,12 +54,14 @@ export const Navbar = () => {
                     rel="noopener noreferrer"
                     size="small"
                     sx={{
-                      backgroundColor: brandGreen,
-                      color: 'white',
+                      borderRadius: 0,
+                      color: '#7c9885',
                       width: 40,
                       height: 40,
+                      transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
                       '&:hover': {
-                        backgroundColor: brandGreenDark,
+                        backgroundColor: '#7c9885',
+                        color: 'white',
                       },
                     }}
                   >
@@ -77,15 +71,14 @@ export const Navbar = () => {
               </li>
             </ul>
           ) : (
-            <div className="flex items-center gap-1">
-              <Button
-                variant="outlined"
-                size="small"
-                className="normal-case text-sm"
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
                 onClick={() => handleOpenModal()}
+                className="eyebrow text-stone-700 border border-stone-300 px-3 py-1.5"
               >
-                Contact Us
-              </Button>
+                Contact
+              </button>
               <Tooltip title="Chat on WhatsApp">
                 <IconButton
                   href={generateWhatsAppUrl()}
@@ -93,13 +86,10 @@ export const Navbar = () => {
                   rel="noopener noreferrer"
                   size="small"
                   sx={{
-                    backgroundColor: brandGreen,
-                    color: 'white',
+                    borderRadius: 0,
+                    color: '#7c9885',
                     width: 36,
                     height: 36,
-                    '&:hover': {
-                      backgroundColor: brandGreenDark,
-                    },
                   }}
                 >
                   <WhatsAppIcon fontSize="small" />
@@ -112,8 +102,9 @@ export const Navbar = () => {
                   aria-controls={open ? 'navbar-menu' : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
+                  sx={{ borderRadius: 0 }}
                 >
-                  <MenuIcon fontSize="large" />
+                  <MenuIcon fontSize="medium" />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -124,33 +115,50 @@ export const Navbar = () => {
                 onClick={handleClose}
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                slotProps={{
+                  paper: {
+                    sx: {
+                      borderRadius: 0,
+                      mt: 1,
+                      boxShadow: '0 10px 30px -12px rgba(15, 23, 23, 0.18)',
+                      minWidth: 180,
+                    },
+                  },
+                }}
               >
                 {links.map((el, i) => (
                   <MenuItem
                     component={Link}
                     href={el.link}
                     key={`nav-dropdown-${i}`}
-                    className="justify-end pl-10"
                     onClick={handleClose}
+                    sx={{
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.18em',
+                      fontSize: '0.75rem',
+                      color: '#44403c',
+                      py: 1.25,
+                    }}
                   >
                     {el.text}
                   </MenuItem>
                 ))}
-                <MenuItem onClick={() => handleOpenModal()} className="text-brand-green pl-10">
+                <MenuItem
+                  onClick={() => handleOpenModal()}
+                  sx={{
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.18em',
+                    fontSize: '0.75rem',
+                    color: '#7c9885',
+                    py: 1.25,
+                  }}
+                >
                   Contact Form
                 </MenuItem>
               </Menu>
             </div>
           )}
         </nav>
-
-        <style jsx>
-          {`
-            .two-columns :global(li:not(:first-child)) {
-              @apply mt-0;
-            }
-          `}
-        </style>
       </div>
     </Section>
   );

@@ -1,5 +1,5 @@
 import { Check, Info } from '@mui/icons-material';
-import { Divider } from '@mui/material';
+import Image from 'next/image';
 import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
@@ -53,144 +53,159 @@ const Packages = () => {
         jsonLd={jsonLd}
       />
       <Template topPad>
-        {/* Header */}
-        <div className="bg-gradient-to-br from-[#7c9885] to-[#9db5a0] text-white py-16 md:py-24">
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Event Packages</h1>
-            <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Transparent pricing for your special occasion. All packages include our premium
+        {/* Header — editorial, photograph-backed */}
+        <div className="relative bg-stone-900 text-white py-28 md:py-36 overflow-hidden">
+          <Image
+            src="/photos/tier-3.jpg"
+            alt="Fellowship Event Hall set for a wedding reception"
+            fill
+            priority
+            className="object-cover object-center opacity-55"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/80" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#7c9885]/25 via-transparent to-[#c9a86c]/15" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#c9a86c]/60 to-transparent" />
+          <div className="relative max-w-4xl mx-auto px-4 text-center">
+            <span className="eyebrow text-[#c9a86c]">Pricing</span>
+            <h1 className="mt-4 font-display text-5xl md:text-6xl leading-tight drop-shadow-lg">
+              Event Packages
+            </h1>
+            <div className="mx-auto mt-5 w-16 h-px bg-[#c9a86c]" />
+            <p className="mt-6 text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+              Transparent pricing for your special occasion. Every package includes our premium
               amenities.
             </p>
           </div>
         </div>
 
         <Section>
-          <div className="max-w-6xl mx-auto space-y-12">
-            {/* Pricing Table */}
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
-              <div className="p-8 md:p-12">
-                <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
-                  Capacity & Pricing
+          <div className="max-w-6xl mx-auto space-y-24">
+            {/* Pricing Table — flat, editorial */}
+            <div>
+              <div className="text-center mb-10">
+                <span className="eyebrow text-[#c9a86c]">By Capacity</span>
+                <h2 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
+                  Capacity &amp; Pricing
                 </h2>
+                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+              </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-                  {packageTiers.map((tier, index) => (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-t border-l border-stone-200">
+                {packageTiers.map((tier, index) => (
+                  <div
+                    key={index}
+                    className={`relative flex flex-col items-center justify-center px-6 pb-8 text-center border-r border-b border-stone-200 transition-colors duration-500 ease-refined ${
+                      tier.popular ? 'bg-stone-900 text-white' : 'bg-white hover:bg-stone-100'
+                    }`}
+                  >
+                    <div className="h-7 flex items-center justify-center">
+                      {tier.popular && (
+                        <span className="eyebrow text-[#c9a86c] text-[0.625rem]">Most Popular</span>
+                      )}
+                    </div>
                     <div
-                      key={index}
-                      className={`relative p-6 rounded-2xl text-center transition-all duration-300 hover:scale-105 ${
-                        tier.popular
-                          ? 'bg-gradient-to-br from-[#7c9885] to-[#9db5a0] text-white shadow-lg scale-105'
-                          : 'bg-stone-50 hover:bg-stone-100'
+                      className={`eyebrow mb-4 ${tier.popular ? 'text-white/60' : 'text-stone-500'}`}
+                    >
+                      {tier.capacity}
+                    </div>
+                    <div
+                      className={`font-display text-4xl md:text-5xl font-medium ${
+                        tier.popular ? 'text-white' : 'text-[#7c9885]'
                       }`}
                     >
-                      {tier.popular && (
-                        <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-[#c9a86c] text-white text-xs font-bold rounded-full">
-                          POPULAR
-                        </div>
-                      )}
-                      <div className="text-sm font-medium text-stone-500 mb-2">{tier.capacity}</div>
-                      <div
-                        className={`text-3xl font-bold ${tier.popular ? 'text-white' : 'text-[#7c9885]'}`}
-                      >
-                        {tier.price}
-                      </div>
+                      {tier.price}
                     </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* What's Included */}
-            <div className="bg-white rounded-3xl shadow-lg p-8 md:p-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
-                What&apos;s Included in Every Package
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {includedItems.map((item, index) => (
-                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-stone-50">
-                    <div className="w-8 h-8 rounded-full bg-[#7c9885]/10 flex items-center justify-center flex-shrink-0">
-                      <Check className="w-5 h-5 text-[#7c9885]" />
-                    </div>
-                    <span className="font-medium text-stone-700">{item}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <Divider className="my-6" />
+            {/* What's Included — flat grid */}
+            <div>
+              <div className="text-center mb-10">
+                <span className="eyebrow text-[#c9a86c]">Included</span>
+                <h2 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
+                  What&apos;s Included in Every Package
+                </h2>
+                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6">
+                {includedItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 py-4 border-b border-stone-200"
+                  >
+                    <Check className="w-5 h-5 text-[#c9a86c] flex-shrink-0" />
+                    <span className="text-stone-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            {/* WhatsApp Quick Quote Section */}
-            <div className="bg-green-50 rounded-lg p-6 border border-green-100">
-              <h4 className="text-xl font-semibold text-center mb-2 text-green-800">
+            {/* WhatsApp Quick Quote */}
+            <div className="py-10 border-y border-stone-200 text-center">
+              <span className="eyebrow text-[#c9a86c]">Fast Quote</span>
+              <h3 className="mt-3 font-display text-2xl md:text-3xl text-stone-900">
                 Get a Quick Quote via WhatsApp
-              </h4>
-              <p className="text-center text-neutral-600 mb-4 text-sm">
-                Click your event type below for an instant quote request
+              </h3>
+              <p className="mt-3 text-stone-600 text-sm max-w-xl mx-auto">
+                Select your event type for an instant quote request.
               </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <WhatsAppButton
-                  eventType={EVENT_TYPES.WEDDING}
-                  size="medium"
-                  className="w-full sm:w-auto"
-                >
-                  💍 Wedding Quote
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <WhatsAppButton eventType={EVENT_TYPES.WEDDING} size="medium">
+                  Wedding Quote
                 </WhatsAppButton>
-                <WhatsAppButton
-                  eventType={EVENT_TYPES.CORPORATE}
-                  size="medium"
-                  variant="outlined"
-                  className="w-full sm:w-auto"
-                >
-                  💼 Corporate Quote
+                <WhatsAppButton eventType={EVENT_TYPES.CORPORATE} size="medium" variant="outlined">
+                  Corporate Quote
                 </WhatsAppButton>
-                <WhatsAppButton
-                  eventType={EVENT_TYPES.BIRTHDAY}
-                  size="medium"
-                  variant="outlined"
-                  className="w-full sm:w-auto"
-                >
-                  🎉 Birthday Quote
+                <WhatsAppButton eventType={EVENT_TYPES.BIRTHDAY} size="medium" variant="outlined">
+                  Birthday Quote
                 </WhatsAppButton>
               </div>
             </div>
 
-            {/* Deposits Info */}
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-6 md:p-8">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-                  <Info className="w-6 h-6 text-amber-600" />
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-bold text-amber-900 mb-1">Refundable Deposits</h3>
-                    <p className="text-amber-800">
-                      A <span className="font-bold">$1,500 damage deposit</span> and a{' '}
-                      <span className="font-bold">$1,000 cleaning deposit</span> are required with
-                      each rental. These fees are fully refundable as long as the venue is returned
-                      clean with no damages.
-                    </p>
-                  </div>
-                  <div className="pt-2 border-t border-amber-200">
-                    <p className="text-sm text-amber-700 italic">
-                      <span className="font-bold">Note:</span> Prices are subject to change and
-                      provided for planning purposes only. Please contact us to discuss your
-                      specific event requirements.
-                    </p>
-                  </div>
-                </div>
+            {/* Deposits Info — refined editorial note */}
+            <div className="flex items-start gap-6 pl-6 border-l-2 border-[#c9a86c]">
+              <div className="flex-shrink-0">
+                <Info className="w-6 h-6 text-[#c9a86c]" />
+              </div>
+              <div className="space-y-4">
+                <span className="eyebrow text-[#c9a86c]">Good to Know</span>
+                <h3 className="font-display text-2xl text-stone-900">Refundable Deposits</h3>
+                <p className="text-stone-700 leading-relaxed">
+                  A <span className="font-semibold">$1,500 damage deposit</span> and a{' '}
+                  <span className="font-semibold">$1,000 cleaning deposit</span> are required with
+                  each rental. These fees are fully refundable as long as the venue is returned
+                  clean and undamaged.
+                </p>
+                <p className="text-sm text-stone-500 italic leading-relaxed">
+                  Prices are subject to change and provided for planning purposes only. Please
+                  contact us to discuss your specific event requirements.
+                </p>
               </div>
             </div>
 
             {/* CTA */}
-            <div className="text-center py-8">
-              <h3 className="text-2xl font-bold text-stone-800 mb-4">Ready to Book Your Event?</h3>
-              <p className="text-stone-600 mb-8 max-w-xl mx-auto">
+            <div className="text-center py-12">
+              <span className="eyebrow text-[#c9a86c]">Next Step</span>
+              <h3 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
+                Ready to Book Your Event?
+              </h3>
+              <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+              <p className="mt-5 text-stone-600 max-w-xl mx-auto leading-relaxed">
                 Contact us today to schedule a tour and discuss how we can make your special
                 occasion unforgettable.
               </p>
-              <ModernButton buttonVariant="primary" size="large" onClick={() => handleOpenModal()}>
-                Get in Touch
-              </ModernButton>
+              <div className="mt-8">
+                <ModernButton
+                  buttonVariant="primary"
+                  size="large"
+                  onClick={() => handleOpenModal()}
+                >
+                  Get in Touch
+                </ModernButton>
+              </div>
             </div>
           </div>
         </Section>

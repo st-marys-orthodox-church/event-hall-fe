@@ -6,8 +6,8 @@ import { Section } from '../layout/Section';
 import { Logo } from './Logo';
 
 const Footer = () => (
-  <div className="bg-gray-100">
-    <Section yPadding="py-8">
+  <div className="bg-stone-900 text-stone-300 border-t border-[#c9a86c]/30">
+    <Section yPadding="py-12">
       <div className="w-full px-4 md:px-8 lg:px-12 flex flex-col md:flex-row justify-between gap-4">
         <div className="flex flex-col items-center md:items-start">
           {/* <span className="text-lg text-center md:text-left">
@@ -28,31 +28,31 @@ const Footer = () => (
         </div>
         <div className="flex flex-col items-center md:items-end justify-between gap-4 mt-4">
           <Logo />
-          <div className="flex flex-col items-center md:items-end gap-2">
-            <span className="text-yellow-800 font-bold">Connect with us:</span>
-            <div className="flex md:flex-col items-center gap-4 md:gap-2">
+          <div className="flex flex-col items-center md:items-end gap-3">
+            <span className="eyebrow text-[#c9a86c]">Connect with us</span>
+            <div className="flex md:flex-col items-center md:items-end gap-4 md:gap-2">
               <Link
                 href={SOCIALS.FB}
                 target="_blank"
-                className="hover:text-brand-green transition duration-150 text-sm"
+                className="hover:text-[#c9a86c] transition-colors duration-300 text-sm inline-flex items-center gap-2"
               >
-                Facebook <Facebook />
+                <Facebook fontSize="small" /> Facebook
               </Link>
 
               <Link
                 href={SOCIALS.IG}
                 target="_blank"
-                className="hover:text-brand-green transition duration-150 text-sm"
+                className="hover:text-[#c9a86c] transition-colors duration-300 text-sm inline-flex items-center gap-2"
               >
-                Instagram <Instagram />
+                <Instagram fontSize="small" /> Instagram
               </Link>
 
               <Link
                 href={generateWhatsAppUrl()}
                 target="_blank"
-                className="hover:text-green-600 transition duration-150 text-sm text-green-600"
+                className="hover:text-[#c9a86c] transition-colors duration-300 text-sm text-[#7c9885] inline-flex items-center gap-2"
               >
-                WhatsApp <WhatsApp />
+                <WhatsApp fontSize="small" /> WhatsApp
               </Link>
             </div>
           </div>

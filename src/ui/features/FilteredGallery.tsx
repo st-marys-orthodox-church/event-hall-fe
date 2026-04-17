@@ -38,16 +38,16 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
 
   return (
     <Section title={props.title} description={props.description}>
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
+      <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6 border-y border-stone-200 py-5">
         {GALLERY_CATEGORIES.map((category) => (
           <button
             key={category.key}
             type="button"
             onClick={() => setActiveCategory(category.key)}
-            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+            className={`eyebrow transition-colors duration-300 ease-refined pb-1 border-b ${
               activeCategory === category.key
-                ? 'bg-gradient-to-r from-[#7c9885] to-[#9db5a0] text-white shadow-lg scale-105'
-                : 'bg-stone-100 text-stone-600 hover:bg-stone-200 hover:text-stone-800'
+                ? 'text-[#7c9885] border-[#c9a86c]'
+                : 'text-stone-500 border-transparent hover:text-stone-800'
             }`}
           >
             {category.label}
@@ -55,7 +55,7 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
         ))}
       </div>
 
-      <div className="text-center mb-6 text-stone-500 text-sm">
+      <div className="text-center mb-8 text-stone-500 text-sm">
         Showing {filteredImages.length} {filteredImages.length === 1 ? 'photo' : 'photos'}
         {activeCategory !== 'all' &&
           ` in ${GALLERY_CATEGORIES.find((c) => c.key === activeCategory)?.label}`}
@@ -77,12 +77,14 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
       />
 
       {filteredImages.length === 0 && (
-        <div className="text-center py-16 bg-stone-50 rounded-2xl">
-          <p className="text-stone-500 text-lg">No photos in this category yet.</p>
+        <div className="text-center py-20 border border-stone-200">
+          <p className="text-stone-500 font-display text-xl italic">
+            No photos in this category yet.
+          </p>
           <button
             type="button"
             onClick={() => setActiveCategory('all')}
-            className="mt-4 text-[#7c9885] font-semibold hover:underline"
+            className="mt-5 eyebrow text-[#7c9885] hover:text-[#6b8574] border-b border-[#c9a86c] pb-1"
           >
             View all photos
           </button>

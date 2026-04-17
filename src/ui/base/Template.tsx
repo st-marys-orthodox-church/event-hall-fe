@@ -14,7 +14,13 @@ export const Template = (props: ITemplateProps) => {
   const { scrollY } = useWindowSize();
   return (
     <>
-      <div className={`bg-white shadow-md ${scrollY > 0 ? 'fixed' : 'absolute'} w-full z-50`}>
+      <div
+        className={`w-full z-50 transition-all duration-500 ease-refined ${
+          scrollY > 0
+            ? 'fixed bg-white/95 backdrop-blur-sm shadow-soft border-b border-stone-200/60'
+            : 'absolute bg-white border-b border-stone-200/60'
+        }`}
+      >
         <Navbar />
       </div>
       {props.topPad && <div className="h-[68.5px]" />}

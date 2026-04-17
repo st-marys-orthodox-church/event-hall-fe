@@ -25,7 +25,7 @@ type IPackagesShowcaseProps = {
 
 const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) => {
   const isEven = index % 2 === 0;
-  const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.15, max: 60 });
+  const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.2, max: 160 });
 
   return (
     <AnimationOnScroll animateIn="animate__fadeInUp" delay={index * 150} animateOnce>
@@ -34,19 +34,14 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
           pkg.popular ? 'bg-gradient-to-br from-[#7c9885]/[0.03] to-[#c9a86c]/[0.04]' : ''
         }`}
       >
-        {pkg.popular && (
-          <div className="absolute top-10 right-0 lg:right-auto lg:left-0">
-            <span className="eyebrow text-[#c9a86c] bg-white px-3 py-1 border border-[#c9a86c]/40">
-              Most Popular
-            </span>
-          </div>
-        )}
-
         {pkg.img && (
           <div className={`w-full lg:w-1/2 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}>
-            <div ref={ref} className="relative group overflow-hidden h-72 lg:h-96 shadow-luxe">
+            <div
+              ref={ref}
+              className="relative group overflow-hidden h-72 lg:h-full lg:min-h-[560px] shadow-luxe"
+            >
               <div
-                className="absolute -inset-y-10 inset-x-0 will-change-transform"
+                className="absolute -inset-y-16 inset-x-0 will-change-transform"
                 style={{ transform: `translate3d(0, ${offset}px, 0)` }}
               >
                 <Image
@@ -68,6 +63,12 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageItemProps; index: number }) 
           }`}
         >
           <div className="space-y-3">
+            {pkg.popular && (
+              <div className="inline-flex items-center gap-2 mb-1">
+                <span className="h-px w-6 bg-[#c9a86c]" />
+                <span className="eyebrow text-[#c9a86c]">Most Popular</span>
+              </div>
+            )}
             <div className="flex items-center gap-2 text-[#7c9885]">
               <People className="w-4 h-4" />
               <span className="eyebrow">Capacity · {pkg.capacity}</span>

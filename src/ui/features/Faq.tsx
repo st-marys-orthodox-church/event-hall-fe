@@ -39,7 +39,7 @@ const FaqRow = ({
           className="w-full flex items-center justify-between gap-6 py-6 text-left group"
         >
           <span
-            className={`font-display text-xl md:text-2xl transition-colors duration-500 ease-refined ${
+            className={`text-base md:text-lg font-medium tracking-tight transition-colors duration-500 ease-refined ${
               isOpen ? 'text-[#7c9885]' : 'text-stone-900 group-hover:text-[#7c9885]'
             }`}
           >
@@ -47,14 +47,14 @@ const FaqRow = ({
           </span>
           <span
             aria-hidden
-            className={`relative flex-shrink-0 w-6 h-6 flex items-center justify-center transition-transform duration-500 ease-refined ${
+            className={`relative flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-500 ease-refined ${
               isOpen
                 ? 'rotate-45 text-[#c9a86c]'
                 : 'rotate-0 text-stone-400 group-hover:text-[#c9a86c]'
             }`}
           >
-            <span className="absolute w-5 h-px bg-current" />
-            <span className="absolute h-5 w-px bg-current" />
+            <span className="absolute w-4 h-px bg-current" />
+            <span className="absolute h-4 w-px bg-current" />
           </span>
         </button>
         <div
@@ -66,7 +66,7 @@ const FaqRow = ({
         >
           <div ref={contentRef}>
             <p
-              className={`text-stone-600 leading-relaxed pb-6 pr-10 transition-opacity duration-500 ease-refined ${
+              className={`text-stone-600 text-base leading-relaxed pb-6 pr-10 transition-opacity duration-500 ease-refined ${
                 isOpen ? 'opacity-100' : 'opacity-0'
               }`}
             >
