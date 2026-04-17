@@ -88,9 +88,9 @@ export { MyFeature };
 
 ## What to check before finishing
 
-1. No hardcoded brand copy — site-wide text goes in `src/utils/AppConfig.ts` or constants.
+1. No hardcoded user-facing copy — strings go in `public/locales/en/*.json` and are pulled via `useTranslation`. Venue facts live in `src/utils/AppConfig.ts`; static collections (features, packages, hero slides, nav) live in `src/utils/` and reference i18n keys.
 2. New pages need `<Meta>` with `jsonLd` structured data (see `src/utils/StructuredData.ts`).
 3. All `<img>` tags need descriptive `alt` text.
 4. No nested `<a>` inside `<Link>`.
-5. Tailwind only — no inline `style={{}}` unless a CSS variable or dynamic value is unavoidable.
-6. Run `npm run build-types` after adding new component files.
+5. Tailwind only — no inline `style={{}}` unless a CSS variable or dynamic value is unavoidable. Reuse tokens from `src/utils/DesignTokens.ts` rather than hardcoding hex values.
+6. Run `pnpm build-types` after adding new component files. If you added `en` strings, also run `pnpm i18n:sync`.
