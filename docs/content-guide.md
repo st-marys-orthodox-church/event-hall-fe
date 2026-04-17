@@ -13,6 +13,7 @@ These are the canonical facts about the venue. Any copy that references these sh
 | Address | 2875 Winder Hwy, Dacula, GA 30019 |
 | Phone | +1-‭404-518-1042‬ |
 | WhatsApp | +1-‭404-518-1042‬ (same) |
+| Email | events@saintmaryro.org |
 | Website | https://events.saintmaryro.org |
 | Capacity | Up to 300 guests |
 | Square footage | ~5,000 sq ft |
