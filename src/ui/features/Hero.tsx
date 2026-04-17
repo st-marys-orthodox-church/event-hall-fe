@@ -47,9 +47,9 @@ const Hero = () => {
 
               <div className="mx-auto w-16 h-px bg-brand-gold/80 mb-6" />
 
-              <p className="text-xl md:text-2xl font-display italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
+              <h2 className="text-xl md:text-2xl font-display italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
                 {t('hero.tagline')}
-              </p>
+              </h2>
               <p className="mt-3 eyebrow text-white/75">{t('hero.location')}</p>
             </header>
 
