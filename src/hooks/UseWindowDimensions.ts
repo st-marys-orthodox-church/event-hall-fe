@@ -39,5 +39,5 @@ export const useWindowSize = () => {
     };
   }, []);
 
-  return { ...windowSize, breakpoint, scrollY };
+  return { ...windowSize, breakpoint, scrollY, isMobile: windowSize.width < breakpoint };
 };
