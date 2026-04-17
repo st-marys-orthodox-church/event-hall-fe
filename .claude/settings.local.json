@@ -11,7 +11,13 @@
       "Bash(npx next-sitemap *)",
       "Bash(unzip -l /Users/alo/Desktop/favicon.zip)",
       "Bash(unzip -p /Users/alo/Desktop/favicon.zip site.webmanifest)",
-      "Bash(unzip -o /Users/alo/Desktop/favicon.zip -d .)"
+      "Bash(unzip -o /Users/alo/Desktop/favicon.zip -d .)",
+      "Bash(npm view *)",
+      "Bash(npm uninstall *)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/gallery)",
+      "Bash(curl -s http://localhost:3001/gallery)",
+      "Bash(curl -sL -o /tmp/gallery.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/gallery)",
+      "Read(//tmp/**)"
     ]
   }
 }

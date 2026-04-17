@@ -58,11 +58,7 @@ const Meta = (props: IMetaProps) => {
           key="icon96"
         />
         <link rel="icon" href={`${router.basePath}/favicon.ico`} key="favicon" />
-        <link
-          rel="manifest"
-          href={`${router.basePath}/site.webmanifest`}
-          key="manifest"
-        />
+        <link rel="manifest" href={`${router.basePath}/site.webmanifest`} key="manifest" />
         {jsonLdItems.map((item, i) => (
           <script
             key={`jsonld-${i}`}
