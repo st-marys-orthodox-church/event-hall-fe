@@ -60,7 +60,15 @@
       "Bash(node -e \"const j = require\\('./public/locales/es/packages.json'\\); console.log\\(j.showcase.capacityLabel\\)\")",
       "Bash(node -e \"const j = require\\('./public/locales/es/gallery.json'\\); console.log\\(j.showing_one\\); console.log\\(j.showing_other\\); console.log\\(j.inCategory\\)\")",
       "Bash(node -e \"const j = require\\('./public/locales/ro/packages.json'\\); console.log\\(j.deposits.body\\)\")",
-      "Bash(awk '{print $NF, $5}')"
+      "Bash(awk '{print $NF, $5}')",
+      "Bash(curl -sI https://events.saintmaryro.org/og-image.jpg)",
+      "Bash(curl -sI https://events.saintmaryro.org/favicon.ico)",
+      "Bash(curl -sI https://events.saintmaryro.org/logos/logo.jpg)",
+      "Read(//private/tmp/**)",
+      "Read(//Users/alo/Downloads/**)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg)",
+      "Bash(cp /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg /tmp/og-image-original.jpg)",
+      "Bash(sips -s format jpeg -s formatOptions 82 /tmp/og-image-original.jpg --out /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg)"
     ]
   }
 }
