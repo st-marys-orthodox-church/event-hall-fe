@@ -17,7 +17,17 @@
       "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/gallery)",
       "Bash(curl -s http://localhost:3001/gallery)",
       "Bash(curl -sL -o /tmp/gallery.html -w \"HTTP %{http_code}\\\\n\" http://localhost:3001/gallery)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(pnpm install *)",
+      "Bash(pnpm approve-builds *)",
+      "Bash(pnpm exec *)",
+      "Bash(grep -E \"^pre-\\(commit|push\\)$\")",
+      "Bash(node_modules/.bin/lefthook install *)",
+      "Bash(node -e \"console.log\\(require\\('/Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/node_modules/lefthook/get-exe.js'\\).getExePath\\(\\)\\)\")",
+      "Bash(/Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/node_modules/.pnpm/lefthook-darwin-arm64@1.13.6/node_modules/lefthook-darwin-arm64/bin/lefthook install *)",
+      "Bash(git config *)",
+      "Bash(rm -rf .husky)",
+      "Bash(git checkout *)"
     ]
   }
 }
