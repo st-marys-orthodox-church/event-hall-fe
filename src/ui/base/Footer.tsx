@@ -25,7 +25,7 @@ const Footer = () => {
             <Logo />
             <div className="flex flex-col items-center md:items-end gap-3">
               <span className="eyebrow text-brand-gold">{t('footer.connect')}</span>
-              <div className="flex md:flex-col items-center md:items-end gap-4 md:gap-2">
+              <div className="flex flex-wrap justify-center md:justify-start md:flex-col items-center md:items-end gap-4 md:gap-2">
                 <Link
                   href={SOCIALS.FB}
                   target="_blank"
