@@ -193,7 +193,7 @@ export function ContactModal() {
                         label={t('form.fields.date')}
                         format={t('form.fields.dateFormat')}
                         value={contactForm.date ? moment(contactForm.date) : null}
-                        onChange={(e) => updateContactForm('date', e?.toDate() || null)}
+                        onChange={(e) => updateContactForm('date', e?.toDate() || new Date())}
                         slotProps={{ textField: { sx: fieldSx } }}
                       />
                     </FormControl>
