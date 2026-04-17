@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "logoAltMinimal": "Fellowship Event Hall — espacio para bodas y banquetes en Dacula, Georgia",
+    "logoAltEvents": "Fellowship Event Hall — espacio para bodas y banquetes en Dacula, Georgia",
+    "srOnly": "Fellowship Event Hall — Espacio para bodas y banquetes en Dacula, GA",
+    "tagline": "Un elegante salón de eventos ideal para todas tus ocasiones especiales",
+    "location": "Ubicado en Dacula, GA",
+    "viewGallery": "Ver galería",
+    "explorePackages": "Explorar paquetes",
+    "scroll": "Desplázate",
+    "slides": {
+      "exterior": "Exterior de Fellowship Event Hall — espacio para bodas y banquetes en Dacula, Georgia",
+      "receptionSetup": "Salón principal preparado para una recepción de boda de 150 invitados con mesas redondas y mantelería",
+      "grounds": "Jardines paisajísticos y aparcamiento en las instalaciones de Fellowship Event Hall",
+      "interior": "Interior de Fellowship Event Hall preparado para una celebración"
+    }
+  },
+  "story": {
+    "eyebrow": "El espacio",
+    "ourStory": {
+      "title": "Nuestra historia",
+      "paragraphs": [
+        "Saint Mary's Fellowship Hall en Dacula es una instalación totalmente nueva y un espacio para eventos que pertenece a Saint Mary's Church, al servicio de la comunidad estadounidense-rumana de la zona.",
+        "La propiedad es una expresión de nuestra identidad, una huella de nuestra presencia en la zona y de nuestra contribución a la sociedad multicultural de Gwinnett. También es una expresión de nuestra comunidad en su mejor versión, gracias al sacrificio y la dedicación de un grupo pequeño pero muy activo de miembros."
+      ],
+      "imageAlt": "Interior de Fellowship Event Hall en Dacula, GA con mesas preparadas para una recepción de boda"
+    },
+    "aboutYou": {
+      "title": "Todo gira en torno a ti",
+      "paragraphs": [
+        "Nuestras instalaciones en alquiler destacan en la zona por un aparcamiento nuevo y amplio, hermosas zonas verdes alrededor, privacidad para tus eventos, horarios flexibles, un edificio totalmente nuevo con diseño moderno y múltiples opciones de decoración.",
+        "Es una expresión de nuestra hospitalidad y un lugar donde te sentirás bienvenido."
+      ],
+      "imageAlt": "Vista exterior de Fellowship Event Hall con jardines paisajísticos y aparcamiento en las instalaciones"
+    }
+  },
+  "stats": {
+    "eyebrow": "El espacio",
+    "heading": "Por qué elegir nuestro salón de eventos en Dacula",
+    "subheading": "Creamos experiencias memorables para tus ocasiones especiales",
+    "items": {
+      "capacity": "Capacidad de invitados",
+      "squareFeet": "Pies cuadrados",
+      "packages": "Paquetes"
+    },
+    "values": {
+      "capacity": "250",
+      "squareFeet": "5.000",
+      "packages": "2.000 $–4.000 $"
+    }
+  },
+  "packagesSection": {
+    "title": "Nuestros paquetes",
+    "description": "Elige el paquete perfecto para tu evento. Todos los paquetes incluyen mesas, sillas, manteles y fundas para sillas."
+  },
+  "cta": {
+    "eyebrow": "Siguiente paso",
+    "heading": "¿Listo para reservar tu evento?",
+    "body": "Contáctanos hoy para programar una visita y hablar de cómo podemos hacer que tu ocasión especial sea inolvidable.",
+    "button": "Ponte en contacto"
+  },
+  "trustBadges": {
+    "flexibleBooking": {
+      "title": "Reserva flexible",
+      "text": "Programación sencilla con múltiples opciones de fecha"
+    },
+    "awardWinning": {
+      "title": "Galardonado",
+      "text": "Espacio con excelentes valoraciones en la zona de Dacula"
+    },
+    "madeWithLove": {
+      "title": "Hecho con amor",
+      "text": "Atención personal a cada detalle"
+    }
+  },
+  "visit": {
+    "eyebrow": "Visita",
+    "heading": "Visita Fellowship Event Hall",
+    "subheading": "Convenientemente ubicado en Dacula, Georgia — al servicio de Gwinnett County, Lawrenceville, Buford, Hoschton y el área metropolitana de North Atlanta.",
+    "addressTitle": "Dirección",
+    "getDirections": "Cómo llegar →",
+    "contactTitle": "Contacto",
+    "toursTitle": "Visitas con cita previa",
+    "toursText": "Programamos visitas privadas al espacio con cita previa — contáctanos para encontrar un horario que te convenga."
+  },
+  "faq": {
+    "eyebrow": "Preguntas frecuentes",
+    "heading": "Preguntas frecuentes",
+    "subheading": "Todo lo que necesitas saber antes de reservar tu evento en Dacula.",
+    "items": [
+      {
+        "question": "¿Cuál es la capacidad de invitados de Fellowship Event Hall?",
+        "answer": "Fellowship Event Hall acomoda cómodamente hasta 250 invitados sentados y puede albergar hasta 300 asistentes en recepciones de pie. El espacio tiene aproximadamente 5.000 pies cuadrados."
+      },
+      {
+        "question": "¿Dónde se encuentra Fellowship Event Hall?",
+        "answer": "Estamos ubicados en 2875 Winder Hwy, Dacula, GA 30019 — aproximadamente a 45 minutos al noreste del centro de Atlanta, y cerca de Lawrenceville, Buford, Hoschton, Duluth y Suwanee."
+      },
+      {
+        "question": "¿Hay aparcamiento en las instalaciones?",
+        "answer": "Sí. Nuestra propiedad cuenta con un amplio aparcamiento en las instalaciones con espacio de sobra para tus invitados sin coste adicional."
+      },
+      {
+        "question": "¿Podemos traer nuestro propio catering y alcohol?",
+        "answer": "Sí — el catering externo es bienvenido, y nuestra cocina de preparación está disponible para los proveedores. Se permite el alcohol bajo nuestras pautas estándar de alquiler, que revisaremos contigo antes de la reserva."
+      },
+      {
+        "question": "¿Qué incluye el alquiler?",
+        "answer": "Cada alquiler incluye mesas y sillas, manteles y fundas para sillas, un sistema de sonido básico, aparcamiento en las instalaciones, un coordinador in situ y asistencia en el montaje y la limpieza. Los paquetes superiores añaden mantelería prémium, una suite nupcial, sonido e iluminación mejorados y coordinación dedicada."
+      },
+      {
+        "question": "¿Cómo reservamos una visita o consultamos disponibilidad?",
+        "answer": "Las visitas privadas al espacio están disponibles con cita previa. Usa el formulario de contacto o envíanos un mensaje por WhatsApp y te responderemos rápidamente con las fechas disponibles."
+      }
+    ]
+  }
+}

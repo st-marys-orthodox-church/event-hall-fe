@@ -1,31 +1,33 @@
+import { useTranslation } from 'next-i18next/pages';
 import type { ReactNode } from 'react';
-import { AppConfig } from '../../utils/AppConfig';
 
 type ICenteredSectionProps = {
   logo: ReactNode;
   children: ReactNode;
 };
 
-const CenteredSection = (props: ICenteredSectionProps) => (
-  <div className="text-center">
-    {props.logo}
+const CenteredSection = (props: ICenteredSectionProps) => {
+  const { t } = useTranslation('seo');
+  return (
+    <div className="text-center">
+      {props.logo}
 
-    <nav>
-      <ul className="navbar mt-5 flex flex-row justify-center gap-3 font-medium text-xl text-gray-800">
-        {props.children}
-      </ul>
-    </nav>
+      <nav>
+        <ul className="navbar mt-5 flex flex-row justify-center gap-3 font-medium text-xl text-gray-800">
+          {props.children}
+        </ul>
+      </nav>
 
-    <div className="mt-8 text-sm">
-      <div className="section-copyright">
-        <span>
-          © Copyright {new Date().getFullYear()} {AppConfig.title}.{' '}
-        </span>
+      <div className="mt-8 text-sm">
+        <div className="section-copyright">
+          <span>
+            © Copyright {new Date().getFullYear()} {t('siteName')}.{' '}
+          </span>
+        </div>
       </div>
-    </div>
 
-    <style jsx>
-      {`
+      <style jsx>
+        {`
         .navbar :global(li) {
           @apply mx-4;
         }
@@ -67,8 +69,9 @@ const CenteredSection = (props: ICenteredSectionProps) => (
           @apply fill-current w-5 h-5;
         }
       `}
-    </style>
-  </div>
-);
+      </style>
+    </div>
+  );
+};
 
 export { CenteredSection };

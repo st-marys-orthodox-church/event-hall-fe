@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next/pages';
 import Image from 'next/image';
 import Link from 'next/link';
 import FadeIn from '../components/FadeIn';
@@ -6,8 +7,9 @@ import { ModernButton } from '../components/ModernButton';
 import { Section } from '../layout/Section';
 
 const Hero = () => {
+  const { t } = useTranslation('home');
   return (
-    <div className="relative h-screen flex items-center w-full overflow-hidden">
+    <div className="relative min-h-screen flex items-center w-full overflow-hidden">
       <HeroCarousel />
 
       {/* Layered overlay — vignette + warm tint for depth */}
@@ -25,37 +27,35 @@ const Hero = () => {
                 <div className="flex flex-col items-center justify-center">
                   <Image
                     src="/logos/fellowship-wordmark-minimal-white.svg"
-                    alt="Fellowship Event Hall — wedding and banquet venue in Dacula, Georgia"
+                    alt={t('hero.logoAltMinimal')}
                     width={390}
                     height={110}
-                    className="mx-auto"
+                    className="mx-auto w-full max-w-[300px] sm:max-w-[390px] h-auto"
                     priority
                   />
                   <Image
                     src="/logos/fellowship-wordmark-events-white.svg"
-                    alt="Fellowship Event Hall — wedding and banquet venue in Dacula, Georgia"
+                    alt={t('hero.logoAltEvents')}
                     width={260}
                     height={73}
-                    className="mx-auto"
+                    className="mx-auto w-full max-w-[200px] sm:max-w-[260px] h-auto"
                     priority
                   />
                 </div>
-                <span className="sr-only">
-                  Fellowship Event Hall — Wedding & Banquet Venue in Dacula, GA
-                </span>
+                <span className="sr-only">{t('hero.srOnly')}</span>
               </h1>
 
-              <div className="mx-auto w-16 h-px bg-[#c9a86c]/80 mb-6" />
+              <div className="mx-auto w-16 h-px bg-brand-gold/80 mb-6" />
 
               <p className="text-xl md:text-2xl font-display italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
-                An elegant event hall suited for all your special occasions
+                {t('hero.tagline')}
               </p>
-              <p className="mt-3 eyebrow text-white/75">Located in Dacula, GA</p>
+              <p className="mt-3 eyebrow text-white/75">{t('hero.location')}</p>
             </header>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-2 items-center">
               <ModernButton component={Link} href="/gallery" buttonVariant="primary" size="large">
-                View Gallery
+                {t('hero.viewGallery')}
               </ModernButton>
               <ModernButton
                 component={Link}
@@ -63,7 +63,7 @@ const Hero = () => {
                 buttonVariant="outlineLight"
                 size="large"
               >
-                Explore Packages
+                {t('hero.explorePackages')}
               </ModernButton>
             </div>
           </div>
@@ -71,8 +71,8 @@ const Hero = () => {
       </Section>
 
       {/* Refined scroll indicator — thin line + dot */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] flex flex-col items-center gap-2">
-        <span className="eyebrow text-white/70 text-[0.65rem]">Scroll</span>
+      <div className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-[2] flex-col items-center gap-2">
+        <span className="eyebrow text-white/70 text-[0.65rem]">{t('hero.scroll')}</span>
         <div className="relative w-px h-12 bg-white/25 overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-4 bg-white/80 animate-[scrollLine_2.4s_cubic-bezier(0.22,1,0.36,1)_infinite]" />
         </div>

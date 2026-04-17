@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "logoAltMinimal": "Fellowship Event Hall — locație pentru nunți și banchete în Dacula, Georgia",
+    "logoAltEvents": "Fellowship Event Hall — locație pentru nunți și banchete în Dacula, Georgia",
+    "srOnly": "Fellowship Event Hall — Locație pentru Nunți și Banchete în Dacula, GA",
+    "tagline": "O sală elegantă de evenimente potrivită pentru toate ocaziile speciale",
+    "location": "Situat în Dacula, GA",
+    "viewGallery": "Vezi galeria",
+    "explorePackages": "Explorează pachetele",
+    "scroll": "Derulează",
+    "slides": {
+      "exterior": "Exteriorul Fellowship Event Hall — locație pentru nunți și banchete în Dacula, Georgia",
+      "receptionSetup": "Sala principală pregătită pentru o recepție de nuntă cu 150 de invitați, cu mese rotunde și fețe de masă",
+      "grounds": "Spațiile amenajate și parcarea proprie la Fellowship Event Hall",
+      "interior": "Interiorul Fellowship Event Hall pregătit pentru o sărbătoare"
+    }
+  },
+  "story": {
+    "eyebrow": "Locația",
+    "ourStory": {
+      "title": "Povestea noastră",
+      "paragraphs": [
+        "Saint Mary's Fellowship Hall din Dacula este o locație și o sală de evenimente complet nouă, care aparține Bisericii Saint Mary's ce deservește comunitatea americano-română din zonă.",
+        "Proprietatea este o expresie a identității noastre, o amprentă a prezenței noastre în zonă și a contribuției noastre la societatea multiculturală din Gwinnett. Este, de asemenea, o expresie a comunității noastre la superlativ, prin sacrificiul și dedicarea unui grup mic, dar foarte activ de membri."
+      ],
+      "imageAlt": "Interiorul Fellowship Event Hall din Dacula, GA cu mese aranjate pentru o recepție de nuntă"
+    },
+    "aboutYou": {
+      "title": "Totul este despre tine",
+      "paragraphs": [
+        "Spațiul nostru de închiriat se remarcă în zonă prin parcarea nouă și spațioasă, zona verde frumoasă din jur, intimitate pentru evenimentele tale, program flexibil, clădire nouă cu design modern și multiple opțiuni de decorare.",
+        "Este o expresie a ospitalității noastre și un loc în care te vei simți binevenit."
+      ],
+      "imageAlt": "Vedere exterioară a Fellowship Event Hall ce arată spațiile amenajate și parcarea proprie"
+    }
+  },
+  "stats": {
+    "eyebrow": "Locația",
+    "heading": "De ce să alegi sala noastră de evenimente din Dacula",
+    "subheading": "Creăm experiențe memorabile pentru ocaziile tale speciale",
+    "items": {
+      "capacity": "Capacitate invitați",
+      "squareFeet": "Suprafață (sq ft)",
+      "packages": "Pachete"
+    },
+    "values": {
+      "capacity": "250",
+      "squareFeet": "5.000",
+      "packages": "$2K–$4K"
+    }
+  },
+  "packagesSection": {
+    "title": "Pachetele noastre",
+    "description": "Alege pachetul perfect pentru evenimentul tău. Toate pachetele includ mese, scaune, fețe de masă și huse pentru scaune."
+  },
+  "cta": {
+    "eyebrow": "Pasul următor",
+    "heading": "Ești gata să-ți rezervi evenimentul?",
+    "body": "Contactează-ne astăzi pentru a programa un tur și a discuta cum putem face ocazia ta specială de neuitat.",
+    "button": "Ia legătura"
+  },
+  "trustBadges": {
+    "flexibleBooking": {
+      "title": "Rezervare flexibilă",
+      "text": "Programare ușoară cu multiple opțiuni de date"
+    },
+    "awardWinning": {
+      "title": "Premiată",
+      "text": "Locație foarte bine apreciată în zona Dacula"
+    },
+    "madeWithLove": {
+      "title": "Făcut cu pasiune",
+      "text": "Atenție personală pentru fiecare detaliu"
+    }
+  },
+  "visit": {
+    "eyebrow": "Vizită",
+    "heading": "Vizitează Fellowship Event Hall",
+    "subheading": "Situat convenabil în Dacula, Georgia — deservind Gwinnett County, Lawrenceville, Buford, Hoschton și zona metropolitană North Atlanta.",
+    "addressTitle": "Adresă",
+    "getDirections": "Obține indicații →",
+    "contactTitle": "Contact",
+    "toursTitle": "Tururi cu programare",
+    "toursText": "Organizăm tururi private ale locației pe bază de programare — contactează-ne pentru a găsi un moment potrivit pentru tine."
+  },
+  "faq": {
+    "eyebrow": "Întrebări frecvente",
+    "heading": "Întrebări frecvente",
+    "subheading": "Tot ce trebuie să știi înainte de a rezerva evenimentul tău în Dacula.",
+    "items": [
+      {
+        "question": "Care este capacitatea de invitați a Fellowship Event Hall?",
+        "answer": "Fellowship Event Hall găzduiește confortabil până la 250 de invitați așezați și poate primi până la 300 de participanți pentru recepții în picioare. Spațiul are aproximativ 5.000 de square feet."
+      },
+      {
+        "question": "Unde este situat Fellowship Event Hall?",
+        "answer": "Suntem situați la 2875 Winder Hwy, Dacula, GA 30019 — la aproximativ 45 de minute nord-est de centrul Atlanta și ușor accesibil din Lawrenceville, Buford, Hoschton, Duluth și Suwanee."
+      },
+      {
+        "question": "Există parcare la fața locului?",
+        "answer": "Da. Proprietatea noastră include o parcare mare la fața locului, cu spațiu amplu pentru invitații tăi, fără costuri suplimentare."
+      },
+      {
+        "question": "Putem aduce propriul catering și alcool?",
+        "answer": "Da — cateringul extern este binevenit, iar bucătăria noastră de pregătire este disponibilă furnizorilor. Alcoolul este permis conform regulilor standard de închiriere, pe care le vom parcurge împreună înainte de rezervare."
+      },
+      {
+        "question": "Ce este inclus în închiriere?",
+        "answer": "Fiecare închiriere include mese și scaune, fețe de masă și huse pentru scaune, un sistem audio de bază, parcare la fața locului, un coordonator la fața locului și asistență la aranjare și curățenie. Pachetele superioare adaugă lenjerii premium, o suită pentru mireasă, sistem audio și iluminat îmbunătățit și coordonare dedicată."
+      },
+      {
+        "question": "Cum rezervăm un tur sau verificăm disponibilitatea?",
+        "answer": "Tururile private ale locației sunt disponibile cu programare. Folosește formularul de contact sau trimite un mesaj pe WhatsApp, iar noi îți vom răspunde prompt cu datele disponibile."
+      }
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "title": "Nuestra galería",
+  "description": "Descubre nuestro hermoso salón de eventos a través de fotos de eventos pasados, montajes y detalles",
+  "categories": {
+    "all": "Todas las fotos",
+    "hall": "El salón",
+    "events": "Eventos",
+    "setup": "Montaje",
+    "details": "Detalles"
+  },
+  "showing_one": "Mostrando {{count}} foto",
+  "showing_other": "Mostrando {{count}} fotos",
+  "inCategory": " en {{category}}",
+  "empty": "Aún no hay fotos en esta categoría.",
+  "viewAll": "Ver todas las fotos",
+  "photos": {
+    "hallMain": "Vista del salón principal",
+    "eventSetup": "Montaje del evento",
+    "hallInterior": "Interior del salón",
+    "decorativeDetails": "Detalles decorativos",
+    "eventPanorama": "Panorámica del evento",
+    "tableSetup": "Montaje de mesa",
+    "hallSeating": "Asientos del salón",
+    "eventWide": "Toma amplia del evento",
+    "chairArrangement": "Disposición de las sillas",
+    "closeDetails": "Detalles en primer plano",
+    "hallLighting": "Iluminación del salón",
+    "eventCelebration": "Celebración del evento",
+    "stageSetup": "Montaje del escenario",
+    "tableDecorations": "Decoración de mesas",
+    "hallEntrance": "Entrada del salón",
+    "eventDining": "Cena del evento",
+    "roomConfig": "Configuración de la sala",
+    "centerpiece": "Centro de mesa",
+    "hallOverview": "Vista general del salón"
+  }
+}

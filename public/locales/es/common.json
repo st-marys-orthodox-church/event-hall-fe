@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "gallery": "Galería",
+    "packages": "Paquetes",
+    "contactUs": "Contáctanos",
+    "contact": "Contacto",
+    "contactForm": "Formulario de contacto",
+    "navigation": "Navegación",
+    "homeAriaLabel": "Fellowship Event Hall — Inicio",
+    "language": "Idioma",
+    "languageNames": {
+      "en": "English",
+      "es": "Español",
+      "ro": "Română"
+    }
+  },
+  "whatsapp": {
+    "chat": "Chatea por WhatsApp",
+    "default": "Chatea por WhatsApp"
+  },
+  "footer": {
+    "connect": "Conecta con nosotros",
+    "facebook": "Facebook",
+    "instagram": "Instagram",
+    "whatsapp": "WhatsApp",
+    "mapTitle": "Mapa que muestra Fellowship Event Hall en 2875 Winder Hwy, Dacula, GA 30019"
+  },
+  "logo": {
+    "alt": "Fellowship Event Hall"
+  }
+}

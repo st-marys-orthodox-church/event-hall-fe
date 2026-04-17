@@ -86,6 +86,14 @@ These are the keywords with search intent relevant to this venue. Use them natur
 - event venue with on-site coordinator Dacula
 - event space near Atlanta GA
 
+## Where copy lives
+
+User-facing strings are translated via `next-i18next`. The source of truth is `public/locales/en/*.json` — organised by page (`home`, `packages`, `gallery`, `contact`) plus shared buckets (`common`, `seo`). Edit those, not inline JSX.
+
+- Venue facts (name, address, phone, etc.) live in `src/utils/AppConfig.ts` first, then may be referenced from locale files.
+- Static content collections — features, packages, hero slides, nav items — live in `src/utils/` (`Features.ts`, `Packages.ts`, `HeroSlides.ts`, `Navigation.ts`). These reference i18n keys rather than raw strings.
+- After any change to `en/*.json`, run `pnpm i18n:sync` to refresh `es` and `ro`. With `ANTHROPIC_API_KEY` set the script auto-translates; otherwise new strings appear as `[ES] …` / `[RO] …` until a human translates them.
+
 ## Copy length targets
 
 | Element | Target |

@@ -14,17 +14,6 @@ const sameAs = [AppConfig.facebook, AppConfig.instagram, AppConfig.twitter].filt
 const GOOGLE_MAPS_URL =
   'https://www.google.com/maps/place/Saint+Mary%27s+Fellowship+Hall/@33.9922444,-83.8865512,17z';
 
-const areaServed = [
-  'Dacula, GA',
-  'Lawrenceville, GA',
-  'Buford, GA',
-  'Hoschton, GA',
-  'Duluth, GA',
-  'Suwanee, GA',
-  'Gwinnett County, GA',
-  'North Atlanta metropolitan area',
-].map((name) => ({ '@type': 'Place', name }));
-
 const openingHoursSpecification = [
   {
     '@type': 'OpeningHoursSpecification',
@@ -40,26 +29,40 @@ const openingHoursSpecification = [
   },
 ];
 
-const amenityFeature = [
-  { name: 'On-site parking', value: true },
-  { name: 'Wi-Fi', value: true },
-  { name: 'Sound system', value: true },
-  { name: 'Bridal suite', value: true },
-  { name: 'Prep kitchen', value: true },
-  { name: 'Tables & chairs', value: true },
-  { name: 'Wheelchair accessible', value: true },
-].map((f) => ({
-  '@type': 'LocationFeatureSpecification',
-  name: f.name,
-  value: f.value,
-}));
+const AMENITY_KEYS = [
+  'parking',
+  'wifi',
+  'sound',
+  'bridal',
+  'kitchen',
+  'furniture',
+  'accessibility',
+] as const;
 
-export const eventVenueJsonLd = () => ({
+export type StructuredDataCopy = {
+  siteName: string;
+  description: string;
+  areaServed: string[];
+  amenities: Record<(typeof AMENITY_KEYS)[number], string>;
+  offerCatalogName: string;
+};
+
+const buildAmenityFeature = (copy: StructuredDataCopy) =>
+  AMENITY_KEYS.map((key) => ({
+    '@type': 'LocationFeatureSpecification',
+    name: copy.amenities[key],
+    value: true,
+  }));
+
+const buildAreaServed = (copy: StructuredDataCopy) =>
+  copy.areaServed.map((name) => ({ '@type': 'Place', name }));
+
+export const eventVenueJsonLd = (copy: StructuredDataCopy) => ({
   '@context': 'https://schema.org',
   '@type': 'EventVenue',
   '@id': `${AppConfig.url}/#venue`,
-  name: AppConfig.site_name,
-  description: AppConfig.description,
+  name: copy.siteName,
+  description: copy.description,
   url: AppConfig.url,
   image: AppConfig.ogImage,
   telephone: AppConfig.telephone,
@@ -73,18 +76,18 @@ export const eventVenueJsonLd = () => ({
     longitude: AppConfig.geo.longitude,
   },
   hasMap: GOOGLE_MAPS_URL,
-  areaServed,
+  areaServed: buildAreaServed(copy),
   openingHoursSpecification,
-  amenityFeature,
+  amenityFeature: buildAmenityFeature(copy),
   sameAs,
 });
 
-export const localBusinessJsonLd = () => ({
+export const localBusinessJsonLd = (copy: StructuredDataCopy) => ({
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${AppConfig.url}/#business`,
-  name: AppConfig.site_name,
-  description: AppConfig.description,
+  name: copy.siteName,
+  description: copy.description,
   url: AppConfig.url,
   image: AppConfig.ogImage,
   logo: AppConfig.logo,
@@ -99,9 +102,9 @@ export const localBusinessJsonLd = () => ({
     longitude: AppConfig.geo.longitude,
   },
   hasMap: GOOGLE_MAPS_URL,
-  areaServed,
+  areaServed: buildAreaServed(copy),
   openingHoursSpecification,
-  amenityFeature,
+  amenityFeature: buildAmenityFeature(copy),
   parentOrganization: {
     '@type': 'Church',
     name: 'St. Mary Romanian Orthodox Church',
@@ -132,11 +135,11 @@ type PackageOffer = {
   description?: string;
 };
 
-export const offerCatalogJsonLd = (offers: PackageOffer[]) => ({
+export const offerCatalogJsonLd = (offers: PackageOffer[], offerCatalogName: string) => ({
   '@context': 'https://schema.org',
   '@type': 'OfferCatalog',
   '@id': `${AppConfig.url}/packages/#catalog`,
-  name: `${AppConfig.site_name} — Event Packages`,
+  name: offerCatalogName,
   url: `${AppConfig.url}/packages`,
   itemListElement: offers.map((offer, idx) => ({
     '@type': 'Offer',

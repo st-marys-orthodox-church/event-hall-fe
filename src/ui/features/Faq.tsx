@@ -1,13 +1,11 @@
+import { useTranslation } from 'next-i18next/pages';
 import { useEffect, useRef, useState } from 'react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { EASING, TIMING } from '../../utils/DesignTokens';
 
 type FaqItem = {
   question: string;
   answer: string;
-};
-
-type FaqProps = {
-  items: FaqItem[];
 };
 
 const FaqRow = ({
@@ -30,7 +28,11 @@ const FaqRow = ({
   }, [isOpen]);
 
   return (
-    <AnimationOnScroll animateIn="animate__fadeInUp" delay={index * 80} animateOnce>
+    <AnimationOnScroll
+      animateIn="animate__fadeInUp"
+      delay={index * TIMING.faqStaggerMs}
+      animateOnce
+    >
       <div className="border-b border-stone-200/80">
         <button
           type="button"
@@ -40,7 +42,7 @@ const FaqRow = ({
         >
           <span
             className={`text-base md:text-lg font-medium tracking-tight transition-colors duration-500 ease-refined ${
-              isOpen ? 'text-[#7c9885]' : 'text-stone-900 group-hover:text-[#7c9885]'
+              isOpen ? 'text-brand-green' : 'text-stone-900 group-hover:text-brand-green'
             }`}
           >
             {item.question}
@@ -49,8 +51,8 @@ const FaqRow = ({
             aria-hidden
             className={`relative flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-500 ease-refined ${
               isOpen
-                ? 'rotate-45 text-[#c9a86c]'
-                : 'rotate-0 text-stone-400 group-hover:text-[#c9a86c]'
+                ? 'rotate-45 text-brand-gold'
+                : 'rotate-0 text-stone-400 group-hover:text-brand-gold'
             }`}
           >
             <span className="absolute w-4 h-px bg-current" />
@@ -60,7 +62,7 @@ const FaqRow = ({
         <div
           style={{
             height,
-            transition: 'height 520ms cubic-bezier(0.22, 1, 0.36, 1)',
+            transition: `height 520ms ${EASING.refined}`,
             overflow: 'hidden',
           }}
         >
@@ -79,7 +81,9 @@ const FaqRow = ({
   );
 };
 
-export const Faq = ({ items }: FaqProps) => {
+export const Faq = () => {
+  const { t } = useTranslation('home');
+  const items = (t('faq.items', { returnObjects: true }) as FaqItem[]) || [];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (

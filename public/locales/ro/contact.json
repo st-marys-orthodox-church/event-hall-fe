@@ -1,0 +1,31 @@
+{
+  "modal": {
+    "eyebrow": "Ia legătura",
+    "heading": "Hai să planificăm evenimentul tău",
+    "subheading": "Trimite-ne câteva detalii și îți vom răspunde într-o zi lucrătoare.",
+    "closeAriaLabel": "Închide formularul de contact",
+    "ariaDescribedBy": "formular de contact pentru a rezerva sala de evenimente"
+  },
+  "whatsappSection": {
+    "label": "Cel mai rapid răspuns",
+    "hideForm": "Ascunde formularul de contact",
+    "showForm": "Nu ai WhatsApp?"
+  },
+  "form": {
+    "divider": "Trimite-ne un mesaj",
+    "fields": {
+      "fullName": "Nume complet",
+      "email": "Email",
+      "date": "Data",
+      "dateFormat": "LL/ZZ/AAAA",
+      "guests": "Număr de persoane",
+      "message": "Mesaj"
+    },
+    "buttons": {
+      "send": "Trimite",
+      "sending": "Se trimite",
+      "success": "Trimis cu succes",
+      "error": "Eroare la trimiterea mesajului"
+    }
+  }
+}

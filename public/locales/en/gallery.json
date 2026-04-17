@@ -1,0 +1,37 @@
+{
+  "title": "Our Gallery",
+  "description": "Explore our beautiful event hall through photos of past events, setups, and details",
+  "categories": {
+    "all": "All Photos",
+    "hall": "The Hall",
+    "events": "Events",
+    "setup": "Setup",
+    "details": "Details"
+  },
+  "showing_one": "Showing {{count}} photo",
+  "showing_other": "Showing {{count}} photos",
+  "inCategory": " in {{category}}",
+  "empty": "No photos in this category yet.",
+  "viewAll": "View all photos",
+  "photos": {
+    "hallMain": "Main hall view",
+    "eventSetup": "Event setup",
+    "hallInterior": "Hall interior",
+    "decorativeDetails": "Decorative details",
+    "eventPanorama": "Event panorama",
+    "tableSetup": "Table setup",
+    "hallSeating": "Hall seating",
+    "eventWide": "Event wide shot",
+    "chairArrangement": "Chair arrangement",
+    "closeDetails": "Close-up details",
+    "hallLighting": "Hall lighting",
+    "eventCelebration": "Event celebration",
+    "stageSetup": "Stage setup",
+    "tableDecorations": "Table decorations",
+    "hallEntrance": "Hall entrance",
+    "eventDining": "Event dining",
+    "roomConfig": "Room configuration",
+    "centerpiece": "Centerpiece",
+    "hallOverview": "Hall overview"
+  }
+}

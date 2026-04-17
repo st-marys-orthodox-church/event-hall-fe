@@ -30,8 +30,15 @@ module.exports = {
           green: '#7c9885',
           'green-dark': '#6b8574',
           'green-light': '#9db5a0',
+          'green-deep': '#5e7768',
           gold: '#c9a86c',
           'gold-dark': '#b8975f',
+          'gold-deep': '#8a7340',
+          dark: '#1f2a23',
+        },
+        whatsapp: {
+          DEFAULT: '#25D366',
+          dark: '#128C7E',
         },
         primary: {
           100: '#eef4f0',

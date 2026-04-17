@@ -11,9 +11,11 @@ import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
+import { useTranslation } from 'next-i18next/pages';
 import * as React from 'react';
 import { useContactForm, useWindowSize } from '../../hooks';
 import { useAppContext } from '../../stores/Global';
+import { COLORS, EASING } from '../../utils/DesignTokens';
 import { ModernButton } from '../components/ModernButton';
 import { WhatsAppButton } from '../components/WhatsAppButton';
 
@@ -32,23 +34,23 @@ const fieldSx = {
   '& .MuiOutlinedInput-root': {
     borderRadius: '2px',
     backgroundColor: '#ffffff',
-    transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)',
+    transition: `all 0.3s ${EASING.refined}`,
     '& fieldset': {
-      borderColor: '#e7e5e4',
+      borderColor: COLORS.neutral.outlineBorder,
     },
     '&:hover fieldset': {
-      borderColor: '#c9a86c',
+      borderColor: COLORS.brand.gold,
     },
     '&.Mui-focused fieldset': {
-      borderColor: '#7c9885',
+      borderColor: COLORS.brand.green,
       borderWidth: '1px',
     },
   },
   '& .MuiInputLabel-root': {
     fontSize: '0.875rem',
-    color: '#78716c',
+    color: COLORS.neutral.outlineText,
     '&.Mui-focused': {
-      color: '#7c9885',
+      color: COLORS.brand.green,
     },
   },
 };
@@ -56,6 +58,7 @@ const fieldSx = {
 export function ContactModal() {
   const { handleCloseModal, modalOpen, prefilledDate } = useAppContext();
   const { width } = useWindowSize();
+  const { t } = useTranslation('contact');
   const isMobile = width < 768;
 
   const [showForm, setShowForm] = React.useState(!isMobile);
@@ -85,7 +88,7 @@ export function ContactModal() {
   return (
     <Modal
       aria-labelledby="contact-form"
-      aria-describedby="contact form to book the event hall"
+      aria-describedby={t('modal.ariaDescribedBy')}
       open={modalOpen}
       onClose={handleCloseModal}
       closeAfterTransition
@@ -93,27 +96,30 @@ export function ContactModal() {
     >
       <Fade in={modalOpen}>
         <Box sx={style}>
-          <div className="relative bg-white shadow-luxe mx-4 max-w-2xl w-full flex flex-col max-h-[90vh] overflow-y-auto border-t-2 border-[#c9a86c]">
+          <div className="relative bg-white shadow-luxe mx-4 max-w-2xl w-full flex flex-col max-h-[90vh] overflow-y-auto border-t-2 border-brand-gold">
             {/* Header */}
             <div className="flex justify-between items-start px-8 pt-8 pb-5">
               <div>
-                <span className="eyebrow text-[#c9a86c]">Get in Touch</span>
+                <span className="eyebrow text-brand-gold">{t('modal.eyebrow')}</span>
                 <h2 className="mt-2 font-display text-3xl md:text-4xl text-stone-900 leading-tight">
-                  Let&apos;s plan your event
+                  {t('modal.heading')}
                 </h2>
-                <div className="mt-3 w-10 h-px bg-[#c9a86c]" />
+                <div className="mt-3 w-10 h-px bg-brand-gold" />
                 <p className="mt-3 text-sm text-stone-500 leading-relaxed max-w-sm">
-                  Share a few details and we&apos;ll follow up within one business day.
+                  {t('modal.subheading')}
                 </p>
               </div>
               <IconButton
                 onClick={handleCloseModal}
                 sx={{
                   borderRadius: 0,
-                  color: '#78716c',
-                  '&:hover': { backgroundColor: '#f5f5f4', color: '#1c1917' },
+                  color: COLORS.neutral.outlineText,
+                  '&:hover': {
+                    backgroundColor: COLORS.neutral.darkBg,
+                    color: COLORS.neutral.darkText,
+                  },
                 }}
-                aria-label="Close contact form"
+                aria-label={t('modal.closeAriaLabel')}
               >
                 <CloseIcon />
               </IconButton>
@@ -122,7 +128,9 @@ export function ContactModal() {
             {/* WhatsApp Section */}
             <div className="px-8 pb-6">
               <div className="border border-stone-200 bg-stone-50/60 p-5">
-                <div className="eyebrow text-stone-500 mb-3 text-center">Fastest response</div>
+                <div className="eyebrow text-stone-500 mb-3 text-center">
+                  {t('whatsappSection.label')}
+                </div>
                 <WhatsAppButton
                   fullWidth
                   size="large"
@@ -133,9 +141,9 @@ export function ContactModal() {
                   <button
                     type="button"
                     onClick={toggleForm}
-                    className="eyebrow text-stone-500 hover:text-[#7c9885] transition-colors duration-300 border-b border-transparent hover:border-[#c9a86c] pb-0.5"
+                    className="eyebrow text-stone-500 hover:text-brand-green transition-colors duration-300 border-b border-transparent hover:border-brand-gold pb-0.5"
                   >
-                    {showForm ? 'Hide contact form' : "Don't have WhatsApp?"}
+                    {showForm ? t('whatsappSection.hideForm') : t('whatsappSection.showForm')}
                   </button>
                 </div>
               </div>
@@ -145,9 +153,9 @@ export function ContactModal() {
             <Collapse in={showForm} timeout="auto" unmountOnExit>
               <div className="px-8 pb-8">
                 <div className="flex items-center gap-4 mb-5">
-                  <span className="h-px w-8 bg-[#c9a86c]" />
+                  <span className="h-px w-8 bg-brand-gold" />
                   <Typography className="eyebrow text-stone-600 !tracking-[0.22em]">
-                    Send us a message
+                    {t('form.divider')}
                   </Typography>
                   <span className="flex-1 h-px bg-stone-200" />
                 </div>
@@ -157,7 +165,7 @@ export function ContactModal() {
                       <TextField
                         id="contact-form-name"
                         value={contactForm.name}
-                        label="Full Name"
+                        label={t('form.fields.fullName')}
                         onChange={(e) => updateContactForm('name', e.target.value)}
                         variant="outlined"
                         required
@@ -170,7 +178,7 @@ export function ContactModal() {
                         type="text"
                         id="contact-form-email"
                         value={contactForm.email}
-                        label="Email"
+                        label={t('form.fields.email')}
                         onChange={(e) => updateContactForm('email', e.target.value)}
                         variant="outlined"
                         sx={fieldSx}
@@ -180,8 +188,8 @@ export function ContactModal() {
                   <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
                     <FormControl fullWidth required>
                       <DesktopDatePicker
-                        label="Date"
-                        format="MM/DD/YYYY"
+                        label={t('form.fields.date')}
+                        format={t('form.fields.dateFormat')}
                         value={contactForm.date}
                         onChange={(e) => updateContactForm('date', e?.toDate() || null)}
                         slotProps={{ textField: { sx: fieldSx } }}
@@ -193,7 +201,7 @@ export function ContactModal() {
                         type="number"
                         id="contact-form-cap"
                         value={contactForm.cap}
-                        label="Amount of People"
+                        label={t('form.fields.guests')}
                         onChange={(e) => updateContactForm('cap', e.target.value)}
                         variant="outlined"
                         sx={fieldSx}
@@ -204,7 +212,7 @@ export function ContactModal() {
                     <TextField
                       id="contact-form-message"
                       value={contactForm.message}
-                      label="Message"
+                      label={t('form.fields.message')}
                       onChange={(e) => updateContactForm('message', e.target.value)}
                       variant="outlined"
                       multiline

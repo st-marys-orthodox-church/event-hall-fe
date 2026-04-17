@@ -1,0 +1,42 @@
+{
+  "siteName": "Fellowship Event Hall",
+  "siteTitle": "Fellowship Event Hall",
+  "siteDescription": "Sală elegantă de evenimente de 5.000 sq ft în Dacula, GA. Găzduiește nunți, recepții și banchete pentru până la 250 de invitați. Pachete de la $2,000. Deservim Gwinnett County și North Atlanta.",
+  "ogImageAlt": "Fellowship Event Hall în Dacula, GA — aranjament elegant de recepție cu candelabre, lenjerii albe și aranjamente florale centrale",
+  "home": {
+    "title": "Fellowship Event Hall | Locație pentru Nunți și Banchete în Dacula, GA",
+    "description": "Sală elegantă de evenimente de 5.000 sq ft în Dacula, GA. Găzduiește nunți, recepții și banchete pentru până la 250 de invitați. Pachete de la $2,000. Deservim Gwinnett County și North Atlanta."
+  },
+  "packages": {
+    "title": "Pachete - Fellowship Event Hall",
+    "description": "Vezi pachetele și prețurile sălii noastre de evenimente. Pachetele includ mese, scaune, lenjerii și multe altele. Începând de la $2,000 pentru 50 de invitați."
+  },
+  "gallery": {
+    "title": "Galerie - Fellowship Event Hall",
+    "description": "Răsfoiește galeria sălii noastre de evenimente. Vezi fotografii de la nunți, sărbători și evenimente organizate la sala de evenimente a Bisericii Ortodoxe St. Mary's din Dacula, GA."
+  },
+  "structuredData": {
+    "areaServed": [
+      "Dacula, GA",
+      "Lawrenceville, GA",
+      "Buford, GA",
+      "Hoschton, GA",
+      "Duluth, GA",
+      "Suwanee, GA",
+      "Gwinnett County, GA",
+      "Zona metropolitană North Atlanta"
+    ],
+    "amenities": {
+      "parking": "Parcare la fața locului",
+      "wifi": "Wi-Fi",
+      "sound": "Sistem audio",
+      "bridal": "Suită pentru mireasă",
+      "kitchen": "Bucătărie de pregătire",
+      "furniture": "Mese și scaune",
+      "accessibility": "Accesibil pentru scaune cu rotile"
+    },
+    "packageDescription": "Pachet pentru eveniment care găzduiește până la {{capacity}} la Fellowship Event Hall.",
+    "offerCatalogName": "Fellowship Event Hall — Pachete pentru evenimente",
+    "packageSuffix": "Pachet"
+  }
+}

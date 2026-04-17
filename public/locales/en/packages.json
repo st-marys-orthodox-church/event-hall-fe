@@ -1,0 +1,105 @@
+{
+  "hero": {
+    "eyebrow": "Pricing",
+    "heading": "Event Packages",
+    "subheading": "Transparent pricing for your special occasion. Every package includes our premium amenities.",
+    "imageAlt": "Fellowship Event Hall set for a wedding reception"
+  },
+  "pricingTable": {
+    "eyebrow": "By Capacity",
+    "heading": "Capacity & Pricing",
+    "mostPopular": "Most Popular",
+    "tiers": [
+      { "capacity": "50 People", "price": "$2,000" },
+      { "capacity": "100 People", "price": "$2,500" },
+      { "capacity": "150 People", "price": "$3,000" },
+      { "capacity": "200 People", "price": "$3,500" },
+      { "capacity": "300 People", "price": "$4,000" }
+    ]
+  },
+  "included": {
+    "eyebrow": "Included",
+    "heading": "What's Included in Every Package",
+    "items": [
+      "Tables & Chairs",
+      "Tablecloths & Chair Covers",
+      "Basic Sound System",
+      "Setup & Cleanup Assistance",
+      "On-site Coordinator",
+      "Parking Access"
+    ]
+  },
+  "quickQuote": {
+    "eyebrow": "Fast Quote",
+    "heading": "Get a Quick Quote via WhatsApp",
+    "description": "Select your event type for an instant quote request.",
+    "weddingButton": "Wedding Quote",
+    "corporateButton": "Corporate Quote",
+    "birthdayButton": "Birthday Quote"
+  },
+  "deposits": {
+    "eyebrow": "Good to Know",
+    "heading": "Refundable Deposits",
+    "body": "A <1>{{damage}} damage deposit</1> and a <3>{{cleaning}} cleaning deposit</3> are required with each rental. These fees are fully refundable as long as the venue is returned clean and undamaged.",
+    "disclaimer": "Prices are subject to change and provided for planning purposes only. Please contact us to discuss your specific event requirements."
+  },
+  "cta": {
+    "eyebrow": "Next Step",
+    "heading": "Ready to Book Your Event?",
+    "body": "Contact us today to schedule a tour and discuss how we can make your special occasion unforgettable.",
+    "button": "Get in Touch"
+  },
+  "tiers": {
+    "intimate": {
+      "title": "Intimate Gathering",
+      "capacity": "50 Guests",
+      "price": "$2,000",
+      "description": "Perfect for small celebrations, birthday parties, and intimate gatherings. Our cozy setup ensures your guests feel right at home.",
+      "features": [
+        "Tables & Chairs",
+        "Tablecloths & Chair Covers",
+        "Basic Sound System",
+        "Setup & Cleanup"
+      ]
+    },
+    "grand": {
+      "title": "Grand Celebration",
+      "capacity": "150 Guests",
+      "price": "$3,000",
+      "description": "Our most popular choice for weddings and large celebrations. Spacious yet intimate, with all the amenities you need.",
+      "features": [
+        "Premium Tables & Chairs",
+        "Elegant Linens",
+        "Advanced Sound System",
+        "Bridal Suite Access",
+        "Dedicated Event Coordinator"
+      ]
+    },
+    "majestic": {
+      "title": "Majestic Event",
+      "capacity": "250 Guests",
+      "price": "$4,000",
+      "description": "The ultimate venue experience for grand weddings and large corporate events. Full venue access with premium services.",
+      "features": [
+        "Luxury Furnishings",
+        "Premium Linens",
+        "Professional Sound & Lighting",
+        "Bridal Suite & Prep Area",
+        "Event Coordinator",
+        "Custom Layout Design"
+      ]
+    }
+  },
+  "showcase": {
+    "eyebrow": "Packages",
+    "capacityLabel": "Capacity · {{capacity}}",
+    "perEvent": "/ event",
+    "inquireButton": "Inquire About This Package",
+    "imageAlt": "{{title}} package — event setup for {{capacity}} at Fellowship Event Hall in Dacula, GA",
+    "mostPopular": "Most Popular"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "packages": "Packages"
+  }
+}

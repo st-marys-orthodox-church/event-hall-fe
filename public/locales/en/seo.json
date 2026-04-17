@@ -1,0 +1,42 @@
+{
+  "siteName": "Fellowship Event Hall",
+  "siteTitle": "Fellowship Event Hall",
+  "siteDescription": "Elegant 5,000 sq ft event venue in Dacula, GA. Host weddings, receptions, and banquets for up to 250 guests. Packages from $2,000. Serving Gwinnett County and North Atlanta.",
+  "ogImageAlt": "Fellowship Event Hall in Dacula, GA — elegant reception setup with chandeliers, white linens, and floral centerpieces",
+  "home": {
+    "title": "Fellowship Event Hall | Wedding & Banquet Venue in Dacula, GA",
+    "description": "Elegant 5,000 sq ft event venue in Dacula, GA. Host weddings, receptions, and banquets for up to 250 guests. Packages from $2,000. Serving Gwinnett County and North Atlanta."
+  },
+  "packages": {
+    "title": "Packages - Fellowship Event Hall",
+    "description": "View our event hall packages and pricing. Packages include tables, chairs, linens, and more. Starting at $2,000 for 50 guests."
+  },
+  "gallery": {
+    "title": "Gallery - Fellowship Event Hall",
+    "description": "Browse our event hall gallery. View photos of weddings, celebrations, and events held at St. Mary's Orthodox Church event hall in Dacula, GA."
+  },
+  "structuredData": {
+    "areaServed": [
+      "Dacula, GA",
+      "Lawrenceville, GA",
+      "Buford, GA",
+      "Hoschton, GA",
+      "Duluth, GA",
+      "Suwanee, GA",
+      "Gwinnett County, GA",
+      "North Atlanta metropolitan area"
+    ],
+    "amenities": {
+      "parking": "On-site parking",
+      "wifi": "Wi-Fi",
+      "sound": "Sound system",
+      "bridal": "Bridal suite",
+      "kitchen": "Prep kitchen",
+      "furniture": "Tables & chairs",
+      "accessibility": "Wheelchair accessible"
+    },
+    "packageDescription": "Event package accommodating up to {{capacity}} at Fellowship Event Hall.",
+    "offerCatalogName": "Fellowship Event Hall — Event Packages",
+    "packageSuffix": "Package"
+  }
+}

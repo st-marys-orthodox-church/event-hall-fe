@@ -1,0 +1,117 @@
+{
+  "hero": {
+    "logoAltMinimal": "Fellowship Event Hall — wedding and banquet venue in Dacula, Georgia",
+    "logoAltEvents": "Fellowship Event Hall — wedding and banquet venue in Dacula, Georgia",
+    "srOnly": "Fellowship Event Hall — Wedding & Banquet Venue in Dacula, GA",
+    "tagline": "An elegant event hall suited for all your special occasions",
+    "location": "Located in Dacula, GA",
+    "viewGallery": "View Gallery",
+    "explorePackages": "Explore Packages",
+    "scroll": "Scroll",
+    "slides": {
+      "exterior": "Fellowship Event Hall exterior — wedding and banquet venue in Dacula, Georgia",
+      "receptionSetup": "Main hall set up for a 150-guest wedding reception with round tables and linens",
+      "grounds": "Landscaped grounds and on-site parking at Fellowship Event Hall",
+      "interior": "Interior of Fellowship Event Hall prepared for a celebration"
+    }
+  },
+  "story": {
+    "eyebrow": "The Venue",
+    "ourStory": {
+      "title": "Our Story",
+      "paragraphs": [
+        "Saint Mary's Fellowship Hall in Dacula is a brand-new facility and event venue that belongs to the Saint Mary's Church serving American-Romanian community in the area.",
+        "The property is an expression of our identity, a fingerprint of our presence in the area and our contribution to Gwinnett's multi-cultural society. It is also an expression of our community at its best, through the sacrifice and dedication of a small but very active group of members."
+      ],
+      "imageAlt": "Interior of Fellowship Event Hall in Dacula, GA with tables set for a wedding reception"
+    },
+    "aboutYou": {
+      "title": "It's All About You",
+      "paragraphs": [
+        "Our renting facility stands out in the area with a new and large parking space, beautiful green space around, privacy for your events, flexible hours, brand new building with modern design and multiple options for decorations.",
+        "It is an expression of our hospitality and a place you will feel welcomed."
+      ],
+      "imageAlt": "Exterior view of Fellowship Event Hall showing landscaped grounds and on-site parking"
+    }
+  },
+  "stats": {
+    "eyebrow": "The Venue",
+    "heading": "Why Choose Our Dacula Event Venue",
+    "subheading": "Creating memorable experiences for your special occasions",
+    "items": {
+      "capacity": "Guest Capacity",
+      "squareFeet": "Square Feet",
+      "packages": "Packages"
+    },
+    "values": {
+      "capacity": "250",
+      "squareFeet": "5,000",
+      "packages": "$2K–$4K"
+    }
+  },
+  "packagesSection": {
+    "title": "Our Packages",
+    "description": "Choose the perfect package for your event. All packages include tables, chairs, tablecloths, and chair covers."
+  },
+  "cta": {
+    "eyebrow": "Book Your Date",
+    "heading": "Ready to Book Your Dacula Wedding or Event?",
+    "body": "Let us help you create unforgettable memories at St. Mary's Event Hall.",
+    "button": "View All Packages"
+  },
+  "trustBadges": {
+    "flexibleBooking": {
+      "title": "Flexible Booking",
+      "text": "Easy scheduling with multiple date options"
+    },
+    "awardWinning": {
+      "title": "Award Winning",
+      "text": "Highly rated venue in the Dacula area"
+    },
+    "madeWithLove": {
+      "title": "Made with Love",
+      "text": "Personal attention to every detail"
+    }
+  },
+  "visit": {
+    "eyebrow": "Visit",
+    "heading": "Visit Fellowship Event Hall",
+    "subheading": "Conveniently located in Dacula, Georgia — serving Gwinnett County, Lawrenceville, Buford, Hoschton, and the North Atlanta metro area.",
+    "addressTitle": "Address",
+    "getDirections": "Get Directions →",
+    "contactTitle": "Contact",
+    "toursTitle": "Tours by Appointment",
+    "toursText": "We schedule private venue tours by appointment — reach out to find a time that works for you."
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "heading": "Frequently Asked Questions",
+    "subheading": "Everything you need to know before booking your Dacula event.",
+    "items": [
+      {
+        "question": "What is the guest capacity of Fellowship Event Hall?",
+        "answer": "Fellowship Event Hall comfortably seats up to 250 guests and can accommodate up to 300 attendees for standing receptions. The space is approximately 5,000 square feet."
+      },
+      {
+        "question": "Where is Fellowship Event Hall located?",
+        "answer": "We are located at 2875 Winder Hwy, Dacula, GA 30019 — roughly 45 minutes northeast of downtown Atlanta, and convenient to Lawrenceville, Buford, Hoschton, Duluth, and Suwanee."
+      },
+      {
+        "question": "Is parking available on site?",
+        "answer": "Yes. Our property includes a large on-site parking lot with ample space for your guests at no additional charge."
+      },
+      {
+        "question": "Can we bring in our own catering and alcohol?",
+        "answer": "Yes — outside catering is welcome, and our prep kitchen is available to vendors. Alcohol is permitted under our standard rental guidelines, which we will review with you before booking."
+      },
+      {
+        "question": "What is included in the rental?",
+        "answer": "Every rental includes tables and chairs, tablecloths and chair covers, a basic sound system, on-site parking, an on-site coordinator, and setup and cleanup assistance. Higher-tier packages add premium linens, a bridal suite, enhanced sound and lighting, and dedicated coordination."
+      },
+      {
+        "question": "How do we book a tour or check availability?",
+        "answer": "Private venue tours are available by appointment. Use the contact form or send a WhatsApp message and we will follow up promptly with open dates."
+      }
+    ]
+  }
+}

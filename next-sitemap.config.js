@@ -1,6 +1,10 @@
+const { i18n } = require('./next-i18next.config');
+
+const SITE_URL = process.env.SITE_URL || 'https://events.saintmaryro.org';
+
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://events.saintmaryro.org',
+  siteUrl: SITE_URL,
   generateRobotsTxt: true,
   changefreq: 'monthly',
   priority: 0.7,
@@ -12,6 +16,10 @@ module.exports = {
       { userAgent: '*', disallow: ['/api/'] },
     ],
   },
+  alternateRefs: i18n.locales.map((locale) => ({
+    href: locale === i18n.defaultLocale ? SITE_URL : `${SITE_URL}/${locale}`,
+    hreflang: locale,
+  })),
   transform: async (config, path) => {
     const normalized = path.replace(/\/$/, '') || '/';
     const priorityMap = {
@@ -24,6 +32,7 @@ module.exports = {
       changefreq: config.changefreq,
       priority: priorityMap[normalized] ?? config.priority,
       lastmod: new Date().toISOString(),
+      alternateRefs: config.alternateRefs,
     };
   },
 };

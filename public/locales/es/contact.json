@@ -1,0 +1,31 @@
+{
+  "modal": {
+    "eyebrow": "Ponte en contacto",
+    "heading": "Planifiquemos tu evento",
+    "subheading": "Comparte algunos detalles y te responderemos en un día laborable.",
+    "closeAriaLabel": "Cerrar formulario de contacto",
+    "ariaDescribedBy": "formulario de contacto para reservar el salón de eventos"
+  },
+  "whatsappSection": {
+    "label": "Respuesta más rápida",
+    "hideForm": "Ocultar formulario de contacto",
+    "showForm": "¿No tienes WhatsApp?"
+  },
+  "form": {
+    "divider": "Envíanos un mensaje",
+    "fields": {
+      "fullName": "Nombre completo",
+      "email": "Correo electrónico",
+      "date": "Fecha",
+      "dateFormat": "MM/DD/AAAA",
+      "guests": "Número de personas",
+      "message": "Mensaje"
+    },
+    "buttons": {
+      "send": "Enviar",
+      "sending": "Enviando",
+      "success": "Enviado correctamente",
+      "error": "Error al enviar el mensaje"
+    }
+  }
+}

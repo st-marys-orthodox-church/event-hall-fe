@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "eyebrow": "Prețuri",
+    "heading": "Pachete pentru evenimente",
+    "subheading": "Prețuri transparente pentru ocazia ta specială. Fiecare pachet include facilitățile noastre premium.",
+    "imageAlt": "Fellowship Event Hall aranjat pentru o recepție de nuntă"
+  },
+  "pricingTable": {
+    "eyebrow": "După capacitate",
+    "heading": "Capacitate și prețuri",
+    "mostPopular": "Cel mai popular",
+    "tiers": [
+      {
+        "capacity": "50 persoane",
+        "price": "$2,000"
+      },
+      {
+        "capacity": "100 persoane",
+        "price": "$2,500"
+      },
+      {
+        "capacity": "150 persoane",
+        "price": "$3,000"
+      },
+      {
+        "capacity": "200 persoane",
+        "price": "$3,500"
+      },
+      {
+        "capacity": "300 persoane",
+        "price": "$4,000"
+      }
+    ]
+  },
+  "included": {
+    "eyebrow": "Inclus",
+    "heading": "Ce este inclus în fiecare pachet",
+    "items": [
+      "Mese și scaune",
+      "Fețe de masă și huse pentru scaune",
+      "Sistem audio de bază",
+      "Asistență la aranjare și curățenie",
+      "Coordonator la fața locului",
+      "Acces la parcare"
+    ]
+  },
+  "quickQuote": {
+    "eyebrow": "Ofertă rapidă",
+    "heading": "Obține rapid o ofertă prin WhatsApp",
+    "description": "Selectează tipul evenimentului pentru o cerere instantanee de ofertă.",
+    "weddingButton": "Ofertă nuntă",
+    "corporateButton": "Ofertă corporate",
+    "birthdayButton": "Ofertă aniversare"
+  },
+  "deposits": {
+    "eyebrow": "Bine de știut",
+    "heading": "Garanții rambursabile",
+    "body": "La fiecare închiriere sunt necesare <1>un depozit de garanție de {{damage}}</1> și <3>un depozit de curățenie de {{cleaning}}</3>. Aceste taxe sunt rambursabile integral atâta timp cât locația este returnată curată și nedeteriorată.",
+    "disclaimer": "Prețurile pot fi modificate și sunt oferite doar în scop de planificare. Te rugăm să ne contactezi pentru a discuta cerințele specifice ale evenimentului tău."
+  },
+  "cta": {
+    "eyebrow": "Pasul următor",
+    "heading": "Ești gata să-ți rezervi evenimentul?",
+    "body": "Contactează-ne astăzi pentru a programa un tur și a discuta cum putem face ocazia ta specială de neuitat.",
+    "button": "Ia legătura"
+  },
+  "tiers": {
+    "intimate": {
+      "title": "Întâlnire intimă",
+      "capacity": "50 invitați",
+      "price": "$2,000",
+      "description": "Perfect pentru sărbători mici, petreceri aniversare și întâlniri intime. Aranjamentul nostru primitor îi face pe invitați să se simtă ca acasă.",
+      "features": [
+        "Mese și scaune",
+        "Fețe de masă și huse pentru scaune",
+        "Sistem audio de bază",
+        "Aranjare și curățenie"
+      ]
+    },
+    "grand": {
+      "title": "Sărbătoare grandioasă",
+      "capacity": "150 invitați",
+      "price": "$3,000",
+      "description": "Alegerea noastră cea mai populară pentru nunți și sărbători mari. Spațios, dar intim, cu toate facilitățile de care ai nevoie.",
+      "features": [
+        "Mese și scaune premium",
+        "Lenjerii elegante",
+        "Sistem audio avansat",
+        "Acces la suita pentru mireasă",
+        "Coordonator dedicat pentru eveniment"
+      ]
+    },
+    "majestic": {
+      "title": "Eveniment Majestuos",
+      "capacity": "250 invitați",
+      "price": "$4,000",
+      "description": "Experiența supremă pentru nunți grandioase și evenimente corporate mari. Acces complet la locație cu servicii premium.",
+      "features": [
+        "Mobilier de lux",
+        "Lenjerii premium",
+        "Sistem audio și iluminat profesional",
+        "Suită pentru mireasă și zonă de pregătire",
+        "Coordonator eveniment",
+        "Design de aranjament personalizat"
+      ]
+    }
+  },
+  "showcase": {
+    "eyebrow": "Pachete",
+    "capacityLabel": "Capacitate · {{capacity}}",
+    "perEvent": "/ eveniment",
+    "inquireButton": "Cere informații despre acest pachet",
+    "imageAlt": "Pachetul {{title}} — aranjament pentru eveniment de {{capacity}} la Fellowship Event Hall din Dacula, GA",
+    "mostPopular": "Cel mai popular"
+  },
+  "breadcrumb": {
+    "home": "Acasă",
+    "packages": "Pachete"
+  }
+}

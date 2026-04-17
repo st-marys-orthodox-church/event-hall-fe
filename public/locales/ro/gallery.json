@@ -1,0 +1,37 @@
+{
+  "title": "Galeria noastră",
+  "description": "Descoperă frumoasa noastră sală de evenimente prin fotografii ale evenimentelor trecute, aranjamentelor și detaliilor",
+  "categories": {
+    "all": "Toate fotografiile",
+    "hall": "Sala",
+    "events": "Evenimente",
+    "setup": "Aranjament",
+    "details": "Detalii"
+  },
+  "showing_one": "Se afișează {{count}} fotografie",
+  "showing_other": "Se afișează {{count}} fotografii",
+  "inCategory": " în {{category}}",
+  "empty": "Încă nu există fotografii în această categorie.",
+  "viewAll": "Vezi toate fotografiile",
+  "photos": {
+    "hallMain": "Vedere principală a sălii",
+    "eventSetup": "Aranjament eveniment",
+    "hallInterior": "Interiorul sălii",
+    "decorativeDetails": "Detalii decorative",
+    "eventPanorama": "Panoramă eveniment",
+    "tableSetup": "Aranjament masă",
+    "hallSeating": "Aranjarea locurilor",
+    "eventWide": "Imagine de ansamblu eveniment",
+    "chairArrangement": "Aranjarea scaunelor",
+    "closeDetails": "Detalii în prim-plan",
+    "hallLighting": "Iluminatul sălii",
+    "eventCelebration": "Sărbătoare eveniment",
+    "stageSetup": "Aranjament scenă",
+    "tableDecorations": "Decorațiuni de masă",
+    "hallEntrance": "Intrarea sălii",
+    "eventDining": "Masa festivă",
+    "roomConfig": "Configurația sălii",
+    "centerpiece": "Aranjament central",
+    "hallOverview": "Privire de ansamblu asupra sălii"
+  }
+}

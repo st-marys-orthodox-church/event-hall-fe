@@ -99,7 +99,7 @@ const DayCell = ({
       <div
         aria-label={label}
         title="Booked"
-        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-[#7c9885]/15 ring-1 ring-[#7c9885]/30 text-[#5e7768] select-none"
+        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-deep select-none"
       >
         <span className="text-sm font-semibold leading-none">{day}</span>
         <span className="text-[9px] uppercase tracking-wider mt-0.5 font-medium">Booked</span>
@@ -112,7 +112,7 @@ const DayCell = ({
       type="button"
       aria-label={`${MONTH_NAMES[month]} ${day}, ${year}, available — select date to inquire`}
       onClick={() => onSelect(new Date(year, month, day))}
-      className="aspect-square flex items-center justify-center rounded-lg text-sm text-stone-700 font-medium bg-white hover:bg-[#c9a86c]/15 hover:text-[#8a7340] hover:ring-1 hover:ring-[#c9a86c]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a86c] transition cursor-pointer"
+      className="aspect-square flex items-center justify-center rounded-lg text-sm text-stone-700 font-medium bg-white hover:bg-brand-gold/15 hover:text-brand-gold-deep hover:ring-1 hover:ring-brand-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition cursor-pointer"
     >
       {day}
     </button>
@@ -191,7 +191,7 @@ const Legend = () => (
       Available
     </span>
     <span className="flex items-center gap-2">
-      <span className="inline-block w-4 h-4 rounded bg-[#7c9885]/15 ring-1 ring-[#7c9885]/30" />
+      <span className="inline-block w-4 h-4 rounded bg-brand-green/15 ring-1 ring-brand-green/30" />
       Booked
     </span>
     <span className="flex items-center gap-2">
@@ -295,7 +295,7 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
           onClick={goPrev}
           disabled={Boolean(atCurrentMonth)}
           aria-label="Previous month"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-700 hover:bg-[#7c9885]/10 hover:text-[#7c9885] hover:border-[#7c9885]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a86c] transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-stone-700 disabled:hover:border-stone-300"
+          className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-700 hover:bg-brand-green/10 hover:text-brand-green hover:border-brand-green/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-stone-700 disabled:hover:border-stone-300"
         >
           <ChevronLeft />
         </button>
@@ -306,7 +306,7 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
           type="button"
           onClick={goNext}
           aria-label="Next month"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-700 hover:bg-[#7c9885]/10 hover:text-[#7c9885] hover:border-[#7c9885]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a86c] transition"
+          className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-700 hover:bg-brand-green/10 hover:text-brand-green hover:border-brand-green/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition"
         >
           <ChevronRight />
         </button>

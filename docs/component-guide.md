@@ -141,7 +141,7 @@ Card grid displaying event packages. Accepts `title`, `description`, and a `pack
 
 `src/ui/features/FilteredGallery.tsx`
 
-Photo gallery with category filters. Uses `react-photo-gallery` + `react-images` (lightbox).
+Photo gallery with category filters. Uses `react-photo-album` + `yet-another-react-lightbox`.
 
 ```tsx
 <FilteredGallery

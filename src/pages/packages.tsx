@@ -1,4 +1,7 @@
 import { Check, Info } from '@mui/icons-material';
+import type { GetStaticProps } from 'next';
+import { Trans, useTranslation } from 'next-i18next/pages';
+import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations';
 import Image from 'next/image';
 import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
@@ -6,129 +9,131 @@ import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { WhatsAppButton } from '../ui/components/WhatsAppButton';
 import { Section } from '../ui/layout/Section';
-import { AppConfig } from '../utils/AppConfig';
 import { EVENT_TYPES } from '../utils/Constants';
+import { DEPOSIT_INFO, PACKAGE_TIERS } from '../utils/Packages';
 import { breadcrumbJsonLd, offerCatalogJsonLd } from '../utils/StructuredData';
+import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
 const Packages = () => {
   const { handleOpenModal } = useAppContext();
+  const { t } = useTranslation('packages');
+  const { t: tSeo } = useTranslation('seo');
 
-  const packageTiers = [
-    { capacity: '50 People', price: '$2,000', popular: false },
-    { capacity: '100 People', price: '$2,500', popular: false },
-    { capacity: '150 People', price: '$3,000', popular: true },
-    { capacity: '200 People', price: '$3,500', popular: false },
-    { capacity: '300 People', price: '$4,000', popular: false },
-  ];
+  const tiers = t('pricingTable.tiers', { returnObjects: true }) as Array<{
+    capacity: string;
+    price: string;
+  }>;
+  const includedItems = t('included.items', { returnObjects: true }) as string[];
 
   const jsonLd = [
     offerCatalogJsonLd(
-      packageTiers.map((t) => ({
-        name: `${t.capacity} Package`,
-        price: t.price,
-        capacity: Number.parseInt(t.capacity, 10),
-        description: `Event package accommodating up to ${t.capacity.toLowerCase()} at Fellowship Event Hall.`,
-      }))
+      tiers.map((tier) => ({
+        name: `${tier.capacity} ${tSeo('structuredData.packageSuffix')}`,
+        price: tier.price,
+        capacity: Number.parseInt(tier.capacity, 10),
+        description: tSeo('structuredData.packageDescription', {
+          capacity: tier.capacity.toLowerCase(),
+        }),
+      })),
+      tSeo('structuredData.offerCatalogName')
     ),
     breadcrumbJsonLd([
-      { name: 'Home', path: '/' },
-      { name: 'Packages', path: '/packages' },
+      { name: t('breadcrumb.home'), path: '/' },
+      { name: t('breadcrumb.packages'), path: '/packages' },
     ]),
-  ];
-
-  const includedItems = [
-    'Tables & Chairs',
-    'Tablecloths & Chair Covers',
-    'Basic Sound System',
-    'Setup & Cleanup Assistance',
-    'On-site Coordinator',
-    'Parking Access',
   ];
 
   return (
     <div className="antialiased text-stone-800 bg-stone-50">
       <Meta
-        title={`Packages - ${AppConfig.title}`}
-        description="View our event hall packages and pricing. Packages include tables, chairs, linens, and more. Starting at $2,000 for 50 guests."
+        title={tSeo('packages.title')}
+        description={tSeo('packages.description')}
         jsonLd={jsonLd}
       />
       <Template topPad>
-        {/* Header — editorial, photograph-backed */}
+        {/* Header */}
         <div className="relative bg-stone-900 text-white py-28 md:py-36 overflow-hidden">
           <Image
             src="/photos/tier-3.jpg"
-            alt="Fellowship Event Hall set for a wedding reception"
+            alt={t('hero.imageAlt')}
             fill
             priority
             className="object-cover object-center opacity-55"
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-stone-900/70 via-stone-900/50 to-stone-900/80" />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#7c9885]/25 via-transparent to-[#c9a86c]/15" />
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#c9a86c]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-green/25 via-transparent to-brand-gold/15" />
+          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
           <div className="relative max-w-4xl mx-auto px-4 text-center">
-            <span className="eyebrow text-[#c9a86c]">Pricing</span>
+            <span className="eyebrow text-brand-gold">{t('hero.eyebrow')}</span>
             <h1 className="mt-4 font-display text-5xl md:text-6xl leading-tight drop-shadow-lg">
-              Event Packages
+              {t('hero.heading')}
             </h1>
-            <div className="mx-auto mt-5 w-16 h-px bg-[#c9a86c]" />
+            <div className="mx-auto mt-5 w-16 h-px bg-brand-gold" />
             <p className="mt-6 text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed drop-shadow-md">
-              Transparent pricing for your special occasion. Every package includes our premium
-              amenities.
+              {t('hero.subheading')}
             </p>
           </div>
         </div>
 
         <Section>
           <div className="max-w-6xl mx-auto space-y-24">
-            {/* Pricing Table — flat, editorial */}
+            {/* Pricing Table */}
             <div>
               <div className="text-center mb-10">
-                <span className="eyebrow text-[#c9a86c]">By Capacity</span>
+                <span className="eyebrow text-brand-gold">{t('pricingTable.eyebrow')}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
-                  Capacity &amp; Pricing
+                  {t('pricingTable.heading')}
                 </h2>
-                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+                <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 border-t border-l border-stone-200">
-                {packageTiers.map((tier, index) => (
-                  <div
-                    key={index}
-                    className={`relative flex flex-col items-center justify-center px-6 pb-8 text-center border-r border-b border-stone-200 transition-colors duration-500 ease-refined ${
-                      tier.popular ? 'bg-stone-900 text-white' : 'bg-white hover:bg-stone-100'
-                    }`}
-                  >
-                    <div className="h-7 flex items-center justify-center">
-                      {tier.popular && (
-                        <span className="eyebrow text-[#c9a86c] text-[0.625rem]">Most Popular</span>
-                      )}
-                    </div>
+                {PACKAGE_TIERS.map((meta) => {
+                  const tier = tiers[meta.index];
+                  if (!tier) return null;
+                  return (
                     <div
-                      className={`eyebrow mb-4 ${tier.popular ? 'text-white/60' : 'text-stone-500'}`}
-                    >
-                      {tier.capacity}
-                    </div>
-                    <div
-                      className={`font-display text-4xl md:text-5xl font-medium ${
-                        tier.popular ? 'text-white' : 'text-[#7c9885]'
+                      key={meta.index}
+                      className={`relative flex flex-col items-center justify-center px-6 pb-8 text-center border-r border-b border-stone-200 transition-colors duration-500 ease-refined ${
+                        meta.popular ? 'bg-stone-900 text-white' : 'bg-white hover:bg-stone-100'
                       }`}
                     >
-                      {tier.price}
+                      <div className="h-7 flex items-center justify-center">
+                        {meta.popular && (
+                          <span className="eyebrow text-brand-gold text-[0.625rem]">
+                            {t('pricingTable.mostPopular')}
+                          </span>
+                        )}
+                      </div>
+                      <div
+                        className={`eyebrow mb-4 ${
+                          meta.popular ? 'text-white/60' : 'text-stone-500'
+                        }`}
+                      >
+                        {tier.capacity}
+                      </div>
+                      <div
+                        className={`font-display text-4xl md:text-5xl font-medium ${
+                          meta.popular ? 'text-white' : 'text-brand-green'
+                        }`}
+                      >
+                        {tier.price}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
-            {/* What's Included — flat grid */}
+            {/* What's Included */}
             <div>
               <div className="text-center mb-10">
-                <span className="eyebrow text-[#c9a86c]">Included</span>
+                <span className="eyebrow text-brand-gold">{t('included.eyebrow')}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
-                  What&apos;s Included in Every Package
+                  {t('included.heading')}
                 </h2>
-                <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+                <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-6">
                 {includedItems.map((item, index) => (
@@ -136,7 +141,7 @@ const Packages = () => {
                     key={index}
                     className="flex items-center gap-4 py-4 border-b border-stone-200"
                   >
-                    <Check className="w-5 h-5 text-[#c9a86c] flex-shrink-0" />
+                    <Check className="w-5 h-5 text-brand-gold flex-shrink-0" />
                     <span className="text-stone-700">{item}</span>
                   </div>
                 ))}
@@ -145,57 +150,63 @@ const Packages = () => {
 
             {/* WhatsApp Quick Quote */}
             <div className="py-10 border-y border-stone-200 text-center">
-              <span className="eyebrow text-[#c9a86c]">Fast Quote</span>
+              <span className="eyebrow text-brand-gold">{t('quickQuote.eyebrow')}</span>
               <h3 className="mt-3 font-display text-2xl md:text-3xl text-stone-900">
-                Get a Quick Quote via WhatsApp
+                {t('quickQuote.heading')}
               </h3>
               <p className="mt-3 text-stone-600 text-sm max-w-xl mx-auto">
-                Select your event type for an instant quote request.
+                {t('quickQuote.description')}
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <WhatsAppButton eventType={EVENT_TYPES.WEDDING} size="medium">
-                  Wedding Quote
+                  {t('quickQuote.weddingButton')}
                 </WhatsAppButton>
                 <WhatsAppButton eventType={EVENT_TYPES.CORPORATE} size="medium" variant="outlined">
-                  Corporate Quote
+                  {t('quickQuote.corporateButton')}
                 </WhatsAppButton>
                 <WhatsAppButton eventType={EVENT_TYPES.BIRTHDAY} size="medium" variant="outlined">
-                  Birthday Quote
+                  {t('quickQuote.birthdayButton')}
                 </WhatsAppButton>
               </div>
             </div>
 
-            {/* Deposits Info — refined editorial note */}
-            <div className="flex items-start gap-6 pl-6 border-l-2 border-[#c9a86c]">
+            {/* Deposits Info */}
+            <div className="flex items-start gap-6 pl-6 border-l-2 border-brand-gold">
               <div className="flex-shrink-0">
-                <Info className="w-6 h-6 text-[#c9a86c]" />
+                <Info className="w-6 h-6 text-brand-gold" />
               </div>
               <div className="space-y-4">
-                <span className="eyebrow text-[#c9a86c]">Good to Know</span>
-                <h3 className="font-display text-2xl text-stone-900">Refundable Deposits</h3>
+                <span className="eyebrow text-brand-gold">{t('deposits.eyebrow')}</span>
+                <h3 className="font-display text-2xl text-stone-900">{t('deposits.heading')}</h3>
                 <p className="text-stone-700 leading-relaxed">
-                  A <span className="font-semibold">$1,500 damage deposit</span> and a{' '}
-                  <span className="font-semibold">$1,000 cleaning deposit</span> are required with
-                  each rental. These fees are fully refundable as long as the venue is returned
-                  clean and undamaged.
+                  <Trans
+                    t={t}
+                    i18nKey="deposits.body"
+                    values={{
+                      damage: DEPOSIT_INFO.damageDeposit,
+                      cleaning: DEPOSIT_INFO.cleaningDeposit,
+                    }}
+                    components={{
+                      1: <span className="font-semibold" />,
+                      3: <span className="font-semibold" />,
+                    }}
+                  />
                 </p>
                 <p className="text-sm text-stone-500 italic leading-relaxed">
-                  Prices are subject to change and provided for planning purposes only. Please
-                  contact us to discuss your specific event requirements.
+                  {t('deposits.disclaimer')}
                 </p>
               </div>
             </div>
 
             {/* CTA */}
             <div className="text-center py-12">
-              <span className="eyebrow text-[#c9a86c]">Next Step</span>
+              <span className="eyebrow text-brand-gold">{t('cta.eyebrow')}</span>
               <h3 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
-                Ready to Book Your Event?
+                {t('cta.heading')}
               </h3>
-              <div className="mx-auto mt-4 w-12 h-px bg-[#c9a86c]" />
+              <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
               <p className="mt-5 text-stone-600 max-w-xl mx-auto leading-relaxed">
-                Contact us today to schedule a tour and discuss how we can make your special
-                occasion unforgettable.
+                {t('cta.body')}
               </p>
               <div className="mt-8">
                 <ModernButton
@@ -203,7 +214,7 @@ const Packages = () => {
                   size="large"
                   onClick={() => handleOpenModal()}
                 >
-                  Get in Touch
+                  {t('cta.button')}
                 </ModernButton>
               </div>
             </div>
@@ -213,5 +224,16 @@ const Packages = () => {
     </div>
   );
 };
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale ?? I18N_DEFAULT_LOCALE, [
+      'common',
+      'packages',
+      'seo',
+      'contact',
+    ])),
+  },
+});
 
 export default Packages;

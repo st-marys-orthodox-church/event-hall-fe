@@ -1,19 +1,40 @@
 export type IGalleryCategory = 'all' | 'hall' | 'events' | 'details' | 'setup';
 
+export type IGalleryPhotoAltKey =
+  | 'hallMain'
+  | 'eventSetup'
+  | 'hallInterior'
+  | 'decorativeDetails'
+  | 'eventPanorama'
+  | 'tableSetup'
+  | 'hallSeating'
+  | 'eventWide'
+  | 'chairArrangement'
+  | 'closeDetails'
+  | 'hallLighting'
+  | 'eventCelebration'
+  | 'stageSetup'
+  | 'tableDecorations'
+  | 'hallEntrance'
+  | 'eventDining'
+  | 'roomConfig'
+  | 'centerpiece'
+  | 'hallOverview';
+
 export type IGalleryImgProps = {
   src: string;
   width: number;
   height: number;
   category: IGalleryCategory;
-  alt?: string;
+  altKey: IGalleryPhotoAltKey;
 };
 
-export const GALLERY_CATEGORIES: { key: IGalleryCategory; label: string }[] = [
-  { key: 'all', label: 'All Photos' },
-  { key: 'hall', label: 'The Hall' },
-  { key: 'events', label: 'Events' },
-  { key: 'setup', label: 'Setup' },
-  { key: 'details', label: 'Details' },
+export const GALLERY_CATEGORY_KEYS: IGalleryCategory[] = [
+  'all',
+  'hall',
+  'events',
+  'setup',
+  'details',
 ];
 
 export const GALLERY_PHOTOS: IGalleryImgProps[] = [
@@ -22,132 +43,132 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
     width: 2048,
     height: 1364,
     category: 'hall',
-    alt: 'Main hall view',
+    altKey: 'hallMain',
   },
   {
     src: 'https://i.imgur.com/H9M6s5e.jpg',
     width: 4032,
     height: 3024,
     category: 'events',
-    alt: 'Event setup',
+    altKey: 'eventSetup',
   },
   {
     src: 'https://i.imgur.com/6KXQOQZ.jpg',
     width: 4032,
     height: 3024,
     category: 'hall',
-    alt: 'Hall interior',
+    altKey: 'hallInterior',
   },
   {
     src: 'https://i.imgur.com/WLiiqYQ.jpg',
     width: 3024,
     height: 4032,
     category: 'details',
-    alt: 'Decorative details',
+    altKey: 'decorativeDetails',
   },
   {
     src: 'https://i.imgur.com/AGlvxI4.jpg',
     width: 4032,
     height: 3024,
     category: 'events',
-    alt: 'Event panorama',
+    altKey: 'eventPanorama',
   },
   {
     src: 'https://i.imgur.com/7IRrMHO.jpg',
     width: 4032,
     height: 3024,
     category: 'setup',
-    alt: 'Table setup',
+    altKey: 'tableSetup',
   },
   {
     src: 'https://i.imgur.com/X4e1Ha1.jpg',
     width: 3024,
     height: 4032,
     category: 'hall',
-    alt: 'Hall seating',
+    altKey: 'hallSeating',
   },
   {
     src: 'https://i.imgur.com/6nAJplD.jpg',
     width: 4032,
     height: 3024,
     category: 'events',
-    alt: 'Event wide shot',
+    altKey: 'eventWide',
   },
   {
     src: 'https://i.imgur.com/BZtkcQp.jpg',
     width: 4032,
     height: 3024,
     category: 'setup',
-    alt: 'Chair arrangement',
+    altKey: 'chairArrangement',
   },
   {
     src: 'https://i.imgur.com/vHNLSrJ.jpg',
     width: 4032,
     height: 3024,
     category: 'details',
-    alt: 'Close-up details',
+    altKey: 'closeDetails',
   },
   {
     src: 'https://i.imgur.com/lwdmV5l.jpg',
     width: 3024,
     height: 4032,
     category: 'hall',
-    alt: 'Hall lighting',
+    altKey: 'hallLighting',
   },
   {
     src: 'https://i.imgur.com/6UgCavp.jpg',
     width: 4032,
     height: 3024,
     category: 'events',
-    alt: 'Event celebration',
+    altKey: 'eventCelebration',
   },
   {
     src: 'https://i.imgur.com/e1hXa6U.jpg',
     width: 4032,
     height: 3024,
     category: 'setup',
-    alt: 'Stage setup',
+    altKey: 'stageSetup',
   },
   {
     src: 'https://i.imgur.com/KMftC0m.jpg',
     width: 3024,
     height: 4032,
     category: 'details',
-    alt: 'Table decorations',
+    altKey: 'tableDecorations',
   },
   {
     src: 'https://i.imgur.com/DB3sRpf.jpg',
     width: 3024,
     height: 4032,
     category: 'hall',
-    alt: 'Hall entrance',
+    altKey: 'hallEntrance',
   },
   {
     src: 'https://i.imgur.com/7r6dEdZ.jpg',
     width: 3024,
     height: 4032,
     category: 'events',
-    alt: 'Event dining',
+    altKey: 'eventDining',
   },
   {
     src: 'https://i.imgur.com/GbY9d67.jpg',
     width: 4032,
     height: 3024,
     category: 'setup',
-    alt: 'Room configuration',
+    altKey: 'roomConfig',
   },
   {
     src: 'https://i.imgur.com/d6oVq2s.jpg',
     width: 3024,
     height: 4032,
     category: 'details',
-    alt: 'Centerpiece',
+    altKey: 'centerpiece',
   },
   {
     src: 'https://i.imgur.com/fL5qyjB.jpg',
     width: 4032,
     height: 3024,
     category: 'hall',
-    alt: 'Hall overview',
+    altKey: 'hallOverview',
   },
 ];

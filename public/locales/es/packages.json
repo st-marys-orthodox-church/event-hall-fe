@@ -1,0 +1,120 @@
+{
+  "hero": {
+    "eyebrow": "Precios",
+    "heading": "Paquetes de eventos",
+    "subheading": "Precios transparentes para tu ocasión especial. Todos los paquetes incluyen nuestras comodidades prémium.",
+    "imageAlt": "Fellowship Event Hall preparado para una recepción de boda"
+  },
+  "pricingTable": {
+    "eyebrow": "Por capacidad",
+    "heading": "Capacidad y precios",
+    "mostPopular": "Más popular",
+    "tiers": [
+      {
+        "capacity": "50 personas",
+        "price": "2.000 $"
+      },
+      {
+        "capacity": "100 personas",
+        "price": "2.500 $"
+      },
+      {
+        "capacity": "150 personas",
+        "price": "3.000 $"
+      },
+      {
+        "capacity": "200 personas",
+        "price": "3.500 $"
+      },
+      {
+        "capacity": "300 personas",
+        "price": "4.000 $"
+      }
+    ]
+  },
+  "included": {
+    "eyebrow": "Incluido",
+    "heading": "Qué se incluye en cada paquete",
+    "items": [
+      "Mesas y sillas",
+      "Manteles y fundas para sillas",
+      "Sistema de sonido básico",
+      "Asistencia en montaje y limpieza",
+      "Coordinador in situ",
+      "Acceso al aparcamiento"
+    ]
+  },
+  "quickQuote": {
+    "eyebrow": "Presupuesto rápido",
+    "heading": "Obtén un presupuesto rápido por WhatsApp",
+    "description": "Selecciona el tipo de evento para solicitar un presupuesto al instante.",
+    "weddingButton": "Presupuesto de boda",
+    "corporateButton": "Presupuesto corporativo",
+    "birthdayButton": "Presupuesto de cumpleaños"
+  },
+  "deposits": {
+    "eyebrow": "Información útil",
+    "heading": "Depósitos reembolsables",
+    "body": "Se requiere un <1>depósito por daños de {{damage}}</1> y un <3>depósito de limpieza de {{cleaning}}</3> con cada alquiler. Estas tarifas son totalmente reembolsables siempre que el espacio se devuelva limpio y sin daños.",
+    "disclaimer": "Los precios están sujetos a cambios y se proporcionan solo con fines de planificación. Por favor, contáctanos para hablar de los requisitos específicos de tu evento."
+  },
+  "cta": {
+    "eyebrow": "Siguiente paso",
+    "heading": "¿Listo para reservar tu evento?",
+    "body": "Contáctanos hoy para programar una visita y hablar de cómo podemos hacer que tu ocasión especial sea inolvidable.",
+    "button": "Ponte en contacto"
+  },
+  "tiers": {
+    "intimate": {
+      "title": "Reunión íntima",
+      "capacity": "50 invitados",
+      "price": "2.000 $",
+      "description": "Perfecto para pequeñas celebraciones, fiestas de cumpleaños y reuniones íntimas. Nuestro acogedor montaje hace que tus invitados se sientan como en casa.",
+      "features": [
+        "Mesas y sillas",
+        "Manteles y fundas para sillas",
+        "Sistema de sonido básico",
+        "Montaje y limpieza"
+      ]
+    },
+    "grand": {
+      "title": "Gran celebración",
+      "capacity": "150 invitados",
+      "price": "3.000 $",
+      "description": "Nuestra opción más popular para bodas y grandes celebraciones. Espaciosa pero acogedora, con todas las comodidades que necesitas.",
+      "features": [
+        "Mesas y sillas prémium",
+        "Mantelería elegante",
+        "Sistema de sonido avanzado",
+        "Acceso a suite nupcial",
+        "Coordinador de eventos dedicado"
+      ]
+    },
+    "majestic": {
+      "title": "Evento majestuoso",
+      "capacity": "250 invitados",
+      "price": "4.000 $",
+      "description": "La experiencia definitiva del espacio para grandes bodas y grandes eventos corporativos. Acceso completo al espacio con servicios prémium.",
+      "features": [
+        "Mobiliario de lujo",
+        "Mantelería prémium",
+        "Sonido e iluminación profesionales",
+        "Suite nupcial y zona de preparación",
+        "Coordinador de eventos",
+        "Diseño de distribución personalizado"
+      ]
+    }
+  },
+  "showcase": {
+    "eyebrow": "Paquetes",
+    "capacityLabel": "Capacidad · {{capacity}}",
+    "perEvent": "/ evento",
+    "inquireButton": "Consultar sobre este paquete",
+    "imageAlt": "Paquete {{title}} — montaje de evento para {{capacity}} en Fellowship Event Hall en Dacula, GA",
+    "mostPopular": "Más popular"
+  },
+  "breadcrumb": {
+    "home": "Inicio",
+    "packages": "Paquetes"
+  }
+}

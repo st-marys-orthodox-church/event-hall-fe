@@ -1,0 +1,31 @@
+{
+  "modal": {
+    "eyebrow": "Get in Touch",
+    "heading": "Let's plan your event",
+    "subheading": "Share a few details and we'll follow up within one business day.",
+    "closeAriaLabel": "Close contact form",
+    "ariaDescribedBy": "contact form to book the event hall"
+  },
+  "whatsappSection": {
+    "label": "Fastest response",
+    "hideForm": "Hide contact form",
+    "showForm": "Don't have WhatsApp?"
+  },
+  "form": {
+    "divider": "Send us a message",
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "date": "Date",
+      "dateFormat": "MM/DD/YYYY",
+      "guests": "Amount of People",
+      "message": "Message"
+    },
+    "buttons": {
+      "send": "Send",
+      "sending": "Sending",
+      "success": "Successfully Sent",
+      "error": "Error Sending Message"
+    }
+  }
+}

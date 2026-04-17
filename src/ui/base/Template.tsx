@@ -15,10 +15,8 @@ export const Template = (props: ITemplateProps) => {
   return (
     <>
       <div
-        className={`w-full z-50 transition-all duration-500 ease-refined ${
-          scrollY > 0
-            ? 'fixed bg-white/95 backdrop-blur-sm shadow-soft border-b border-stone-200/60'
-            : 'absolute bg-white border-b border-stone-200/60'
+        className={`w-full z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-refined border-b border-stone-200/60 ${
+          scrollY > 0 ? 'fixed bg-white/95 backdrop-blur-sm shadow-soft' : 'absolute bg-white'
         }`}
       >
         <Navbar />

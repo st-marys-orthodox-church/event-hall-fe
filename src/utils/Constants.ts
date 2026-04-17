@@ -1,19 +1,3 @@
-import type { ReactNode } from 'react';
-import { BulletList } from '../ui/features/BulletList';
-
-// Define type locally to avoid circular dependency
-type ICardGridListItemProps = {
-  title: string;
-  img?: `${string}`;
-  price?: string;
-  description?: string | ReactNode;
-  cta?: {
-    action?: any;
-    text: string;
-    link?: string;
-  };
-};
-
 export const SOCIALS = {
   FB: 'https://www.facebook.com/bisericasfantamariadacula',
   IG: 'https://www.instagram.com/fellowshipstmary/',
@@ -26,7 +10,8 @@ export const WHATSAPP_CONFIG = {
   defaultMessage: "Hi St. Mary's! I'm interested in booking your event hall.",
 };
 
-// Event types for package-specific quick quotes
+// Event types are identifiers used to build English WhatsApp messages;
+// button labels shown to users are translated separately via i18n.
 export const EVENT_TYPES = {
   WEDDING: 'Wedding',
   CORPORATE: 'Corporate Event',
@@ -34,12 +19,14 @@ export const EVENT_TYPES = {
   OTHER: 'Other Event',
 } as const;
 
-// Helper to generate WhatsApp click-to-chat URL
-export const generateWhatsAppUrl = (options?: {
+export type IWhatsAppUrlOptions = {
   eventType?: string;
   date?: string;
   guests?: string;
-}): string => {
+};
+
+// WhatsApp messages always go out in English — the recipient is the church office.
+export const generateWhatsAppUrl = (options?: IWhatsAppUrlOptions): string => {
   const { eventType, date, guests } = options || {};
 
   let message = WHATSAPP_CONFIG.defaultMessage;
@@ -59,36 +46,3 @@ export const generateWhatsAppUrl = (options?: {
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodedMessage}`;
 };
-
-export const PACKAGES_LIST: ICardGridListItemProps[] = [
-  {
-    title: '50 People',
-    description: BulletList({
-      title: '',
-      bullets: ['Tables', 'Chairs', 'Tablecloths', 'Chair Covers'],
-    }),
-    price: '~ $2000',
-    img: 'https://i.imgur.com/7r6dEdZ.jpg',
-    cta: { text: 'Learn More', link: '/packages' },
-  },
-  {
-    title: '150 People',
-    description: BulletList({
-      title: '',
-      bullets: ['Tables', 'Chairs', 'Tablecloths', 'Chair Covers'],
-    }),
-    price: '~ $3000',
-    img: '/photos/tier-3.jpg',
-    cta: { text: 'Learn More', link: '/packages' },
-  },
-  {
-    title: '250 People',
-    description: BulletList({
-      title: '',
-      bullets: ['Tables', 'Chairs', 'Tablecloths', 'Chair Covers'],
-    }),
-    price: '~ $4000',
-    img: '/photos/tier-2.jpeg',
-    cta: { text: 'Learn More', link: '/packages' },
-  },
-];

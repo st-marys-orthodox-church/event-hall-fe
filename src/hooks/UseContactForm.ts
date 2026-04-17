@@ -1,8 +1,10 @@
+import { useTranslation } from 'next-i18next/pages';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../stores/Global';
 
 export const useContactForm = () => {
+  const { t } = useTranslation('contact');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -37,10 +39,10 @@ export const useContactForm = () => {
     });
 
   const determineMessage = () => {
-    if (isLoading) return 'Sending';
-    if (isSuccess) return 'Successfully Sent';
-    if (isError) return 'Error Sending Message';
-    return 'Send';
+    if (isLoading) return t('form.buttons.sending');
+    if (isSuccess) return t('form.buttons.success');
+    if (isError) return t('form.buttons.error');
+    return t('form.buttons.send');
   };
 
   const determineButtonColor = () => {

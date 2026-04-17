@@ -1,27 +1,12 @@
+import { useTranslation } from 'next-i18next/pages';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { useScrollParallax } from '../../hooks';
-
-const HERO_SLIDES = [
-  {
-    src: '/photos/hero-bg.JPG',
-    alt: 'Fellowship Event Hall exterior — wedding and banquet venue in Dacula, Georgia',
-  },
-  {
-    src: '/photos/tier-3.jpg',
-    alt: 'Main hall set up for a 150-guest wedding reception with round tables and linens',
-  },
-  {
-    src: '/photos/about-2.jpg',
-    alt: 'Landscaped grounds and on-site parking at Fellowship Event Hall',
-  },
-  {
-    src: '/photos/about-1.jpeg',
-    alt: 'Interior of Fellowship Event Hall prepared for a celebration',
-  },
-];
+import { TIMING } from '../../utils/DesignTokens';
+import { HERO_SLIDES } from '../../utils/HeroSlides';
 
 export const HeroCarousel = () => {
+  const { t } = useTranslation('home');
   const [currentIndex, setCurrentIndex] = useState(0);
   const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.35, max: 220 });
 
@@ -30,7 +15,7 @@ export const HeroCarousel = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000);
+    const interval = setInterval(nextSlide, TIMING.heroCarouselIntervalMs);
     return () => clearInterval(interval);
   }, [nextSlide]);
 
@@ -55,7 +40,7 @@ export const HeroCarousel = () => {
             >
               <Image
                 src={slide.src}
-                alt={slide.alt}
+                alt={t(`hero.slides.${slide.altKey}`)}
                 fill
                 priority={index === 0}
                 className="object-cover scale-[1.04]"
