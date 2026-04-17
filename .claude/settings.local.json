@@ -68,7 +68,12 @@
       "Read(//Users/alo/Downloads/**)",
       "Bash(sips -g pixelWidth -g pixelHeight /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg)",
       "Bash(cp /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg /tmp/og-image-original.jpg)",
-      "Bash(sips -s format jpeg -s formatOptions 82 /tmp/og-image-original.jpg --out /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg)"
+      "Bash(sips -s format jpeg -s formatOptions 82 /tmp/og-image-original.jpg --out /Users/alo/Desktop/dev/alo/st-marys/event-hall-fe/public/og-image.jpg)",
+      "Bash(curl -s \"https://calendar.zoho.com/ical/zz0801123066b64994f829d11e56cc348facba0cdfdce632535bcd44e8a4553f41c4b0eaf6e4c28bd240bf20982ba0c3760ee2a8b2\")",
+      "Bash(node --experimental-vm-modules -e ' *)",
+      "Bash(curl -s \"http://localhost:3000/api/availability?from=2026-04-01&to=2026-07-01&t=$\\(date +%s\\)\")",
+      "Bash(curl -si \"http://localhost:3000/api/availability?from=2026-04-01&to=2026-07-01&t=$\\(date +%s\\)\")",
+      "Bash(curl -sL \"http://localhost:3000/api/availability?from=2026-04-01&to=2026-07-01&t=$\\(date +%s\\)\")"
     ]
   }
 }

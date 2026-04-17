@@ -53,6 +53,11 @@
     "title": "Our Packages",
     "description": "Choose the perfect package for your event. All packages include tables, chairs, tablecloths, and chair covers."
   },
+  "availability": {
+    "eyebrow": "Check Dates",
+    "heading": "Availability Calendar",
+    "subheading": "See which dates are open and tap any available day to start your inquiry."
+  },
   "cta": {
     "eyebrow": "Book Your Date",
     "heading": "Ready to Book Your Dacula Wedding or Event?",

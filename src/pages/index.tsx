@@ -4,10 +4,12 @@ import { useTranslation } from 'next-i18next/pages';
 import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations';
 import Link from 'next/link';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
+import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
 import { Faq } from '../ui/features/Faq';
 import { Hero } from '../ui/features/Hero';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
@@ -30,6 +32,7 @@ const Index = () => {
   const { t: tHome } = useTranslation('home');
   const { t: tSeo } = useTranslation('seo');
   const { t: tPackages } = useTranslation('packages');
+  const { handleOpenModal } = useAppContext();
 
   const structuredDataCopy: StructuredDataCopy = {
     siteName: tSeo('siteName'),
@@ -116,6 +119,28 @@ const Index = () => {
 
         {/* Packages Section */}
         <PackagesShowcase packages={PACKAGES} />
+
+        {/* Availability Calendar */}
+        <section aria-labelledby="availability-heading" className="py-20 bg-stone-50">
+          <div className="max-w-5xl mx-auto px-4">
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <div className="text-center mb-12">
+                <span className="eyebrow text-brand-gold">{tHome('availability.eyebrow')}</span>
+                <h2
+                  id="availability-heading"
+                  className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
+                >
+                  {tHome('availability.heading')}
+                </h2>
+                <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
+                <p className="mt-5 text-stone-600 max-w-2xl mx-auto leading-relaxed">
+                  {tHome('availability.subheading')}
+                </p>
+              </div>
+            </AnimationOnScroll>
+            <AvailabilityCalendar onDateSelect={handleOpenModal} />
+          </div>
+        </section>
 
         {/* CTA Banner */}
         <section className="relative py-24 bg-stone-900 text-white overflow-hidden">

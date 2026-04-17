@@ -53,6 +53,11 @@
     "title": "Pachetele noastre",
     "description": "Alege pachetul perfect pentru evenimentul tău. Toate pachetele includ mese, scaune, fețe de masă și huse pentru scaune."
   },
+  "availability": {
+    "eyebrow": "Verifică Datele",
+    "heading": "Calendar de Disponibilitate",
+    "subheading": "Vedeți ce date sunt libere și apăsați pe orice zi disponibilă pentru a începe solicitarea dumneavoastră."
+  },
   "cta": {
     "eyebrow": "Pasul următor",
     "heading": "Ești gata să-ți rezervi evenimentul?",

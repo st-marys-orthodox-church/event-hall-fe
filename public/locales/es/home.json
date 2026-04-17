@@ -53,6 +53,11 @@
     "title": "Nuestros paquetes",
     "description": "Elige el paquete perfecto para tu evento. Todos los paquetes incluyen mesas, sillas, manteles y fundas para sillas."
   },
+  "availability": {
+    "eyebrow": "Consultar fechas",
+    "heading": "Calendario de disponibilidad",
+    "subheading": "Consulta qué fechas están libres y toca cualquier día disponible para iniciar tu solicitud."
+  },
   "cta": {
     "eyebrow": "Siguiente paso",
     "heading": "¿Listo para reservar tu evento?",

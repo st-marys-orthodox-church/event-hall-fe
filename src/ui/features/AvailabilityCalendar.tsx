@@ -52,16 +52,11 @@ const buildMonthCells = (year: number, month: number) => {
   return cells;
 };
 
-async function fetchAvailability(_from: string, _to: string): Promise<string[]> {
-  // TODO: wire to GET /api/availability?from=${from}&to=${to}
-  // Returns ISO YYYY-MM-DD strings in venue timezone.
-  await new Promise((resolve) => setTimeout(resolve, 350));
-  const today = isoToMonthKey(todayIsoInVenueTz());
-  const mk = (monthOffset: number, day: number) => {
-    const { year, month } = addMonths(today, monthOffset);
-    return isoOf(year, month, day);
-  };
-  return [mk(0, 18), mk(0, 19), mk(0, 25), mk(1, 9), mk(1, 10), mk(1, 24)];
+async function fetchAvailability(from: string, to: string): Promise<string[]> {
+  const res = await fetch(`/api/availability/?from=${from}&to=${to}`, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`availability request failed: ${res.status}`);
+  const data = (await res.json()) as { dates?: string[] };
+  return data.dates ?? [];
 }
 
 const DayCell = ({
