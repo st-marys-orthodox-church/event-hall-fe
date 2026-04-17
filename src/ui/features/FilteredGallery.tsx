@@ -64,7 +64,12 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
       <div className="transition-opacity duration-300">
         <RowsPhotoAlbum
           photos={photos}
-          targetRowHeight={220}
+          targetRowHeight={(containerWidth) => {
+            if (containerWidth < 640) return 260;
+            if (containerWidth < 1024) return 340;
+            return 420;
+          }}
+          rowConstraints={{ minPhotos: 1, maxPhotos: 3 }}
           onClick={({ index }) => setLightboxIndex(index)}
         />
       </div>

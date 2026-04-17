@@ -32,6 +32,10 @@
     "eventDining": "Event dining",
     "roomConfig": "Room configuration",
     "centerpiece": "Centerpiece",
-    "hallOverview": "Hall overview"
+    "hallOverview": "Hall overview",
+    "sweet16Celebration": "Sweet 16 celebration",
+    "sweet16Party": "Sweet 16 party",
+    "eventMoment": "Event moment",
+    "eventGathering": "Event gathering"
   }
 }

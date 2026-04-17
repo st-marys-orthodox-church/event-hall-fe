@@ -32,6 +32,10 @@
     "eventDining": "Cena del evento",
     "roomConfig": "Configuración de la sala",
     "centerpiece": "Centro de mesa",
-    "hallOverview": "Vista general del salón"
+    "hallOverview": "Vista general del salón",
+    "sweet16Celebration": "Celebración de Dulces 16",
+    "sweet16Party": "Fiesta de Dulces 16",
+    "eventMoment": "Momento del evento",
+    "eventGathering": "Reunión del evento"
   }
 }

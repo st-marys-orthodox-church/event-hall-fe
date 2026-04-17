@@ -19,7 +19,11 @@ export type IGalleryPhotoAltKey =
   | 'eventDining'
   | 'roomConfig'
   | 'centerpiece'
-  | 'hallOverview';
+  | 'hallOverview'
+  | 'sweet16Celebration'
+  | 'sweet16Party'
+  | 'eventMoment'
+  | 'eventGathering';
 
 export type IGalleryImgProps = {
   src: string;
@@ -170,5 +174,33 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
     height: 3024,
     category: 'hall',
     altKey: 'hallOverview',
+  },
+  {
+    src: 'https://i.ibb.co/Z67T7tss/sweet-16.jpg',
+    width: 4032,
+    height: 3024,
+    category: 'events',
+    altKey: 'sweet16Celebration',
+  },
+  {
+    src: 'https://i.ibb.co/jZG0DvV3/sweet-16-2.jpg',
+    width: 1000,
+    height: 462,
+    category: 'events',
+    altKey: 'sweet16Party',
+  },
+  {
+    src: 'https://i.ibb.co/993V0bjD/imagejpeg-0.jpg',
+    width: 512,
+    height: 384,
+    category: 'events',
+    altKey: 'eventMoment',
+  },
+  {
+    src: 'https://i.ibb.co/0kbK9cW/IMG-3614.jpg',
+    width: 4032,
+    height: 3024,
+    category: 'events',
+    altKey: 'eventGathering',
   },
 ];

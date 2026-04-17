@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
 import { useWindowSize } from '../../hooks';
 import { Footer } from './Footer';
@@ -7,10 +6,10 @@ import { Navbar } from './Navbar';
 type ITemplateProps = {
   children: ReactNode;
   topPad?: boolean;
+  bottomPad?: boolean;
 };
 
 export const Template = (props: ITemplateProps) => {
-  const { pathname } = useRouter();
   const { scrollY } = useWindowSize();
   return (
     <>
@@ -23,6 +22,7 @@ export const Template = (props: ITemplateProps) => {
       </div>
       {props.topPad && <div className="h-[68.5px]" />}
       <main className="opacity-100">{props.children}</main>
+      {props.bottomPad && <div className="h-[68.5px]" />}
       <Footer />
     </>
   );

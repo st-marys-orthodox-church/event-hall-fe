@@ -21,7 +21,7 @@ const GalleryPage = () => {
         ])}
       />
 
-      <Template topPad>
+      <Template topPad bottomPad>
         <FilteredGallery images={GALLERY_PHOTOS} />
       </Template>
     </div>
