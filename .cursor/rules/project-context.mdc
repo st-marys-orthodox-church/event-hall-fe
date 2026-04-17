@@ -1,0 +1,54 @@
+---
+description: Core project context for Fellowship Event Hall — always apply this when working in this repo.
+alwaysApply: true
+---
+
+# Fellowship Event Hall — Project Context
+
+Marketing site for **Fellowship Event Hall**, the event venue at St. Mary Romanian Orthodox Church in Dacula, GA. Production URL: [events.saintmaryro.org](https://events.saintmaryro.org).
+
+## Stack
+
+- **Next.js 15** (Pages Router — not App Router, no RSC)
+- **React 19** + **TypeScript 5** (strict)
+- **Tailwind CSS 3** for utility styling
+- **MUI 6** + Emotion for UI components and icons
+- **next-seo** + **next-sitemap** for SEO
+- **SendGrid** for contact form (`src/pages/api/sendgrid.ts`)
+- **Biome** for lint + format (no ESLint, no Prettier)
+- **SWC** compiler (no Babel — `.babelrc` has been removed)
+
+## Pages
+
+- `src/pages/index.tsx` — landing page (Hero, features, stats, packages preview, CTA)
+- `src/pages/packages.tsx` — pricing & packages
+- `src/pages/gallery.tsx` — photo gallery
+- `src/pages/api/sendgrid.ts` — contact form API route
+
+## Key conventions
+
+- **Pages Router only.** No `app/` directory routes.
+- **Tailwind first.** Use MUI only for what already exists there (icons, Button, Menu, date pickers).
+- **Named exports** for all components except page files (which require default exports).
+- **No nested `<a>` inside `<Link>`.** Use MUI's `component={Link}` pattern instead.
+- **No hardcoded copy.** Site-wide values live in `src/utils/AppConfig.ts`.
+- **Every page needs `<Meta>`** from `src/ui/base/Meta.tsx` with `title`, `description`, and `jsonLd`.
+- **Structured data helpers** live in `src/utils/StructuredData.ts`.
+- **Brand palette:** sage green `#7c9885`, warm gold `#c9a86c`, stone neutrals.
+
+## Commands
+
+```bash
+npm run dev          # dev server on :3000
+npm run build        # production build + sitemap
+npm run check        # Biome lint + format + organize imports
+npm run build-types  # tsc --noEmit — run this after any type changes
+```
+
+Always run `npm run check` and `npm run build-types` before finishing a change.
+
+## Docs
+
+- `docs/content-guide.md` — brand voice, SEO keywords, copy rules
+- `docs/component-guide.md` — component API reference and usage patterns
+- `.claude/agents/` — reusable AI agent definitions

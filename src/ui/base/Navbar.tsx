@@ -42,9 +42,9 @@ export const Navbar = () => {
             <ul className="two-columns flex items-center gap-1 font-medium text-xl text-gray-800">
               {links.map((el, i) => (
                 <li key={`nav-item-${i}`}>
-                  <Link href={el.link} legacyBehavior>
-                    <Button className="text-neutral-900">{el.text}</Button>
-                  </Link>
+                  <Button component={Link} href={el.link} className="text-neutral-900">
+                    {el.text}
+                  </Button>
                 </li>
               ))}
               <li className="flex items-center gap-2">
@@ -126,14 +126,15 @@ export const Navbar = () => {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
               >
                 {links.map((el, i) => (
-                  <Link href={el.link} key={`nav-dropdown-${i}`} legacyBehavior>
-                    <MenuItem
-                      className="justify-end pl-10"
-                      onClick={handleClose}
-                    >
-                      {el.text}
-                    </MenuItem>
-                  </Link>
+                  <MenuItem
+                    component={Link}
+                    href={el.link}
+                    key={`nav-dropdown-${i}`}
+                    className="justify-end pl-10"
+                    onClick={handleClose}
+                  >
+                    {el.text}
+                  </MenuItem>
                 ))}
                 <MenuItem
                   onClick={handleOpenModal}

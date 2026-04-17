@@ -6,7 +6,21 @@ export const AppConfig = {
   locale: 'en',
   url: 'https://events.saintmaryro.org',
   logo: 'https://events.saintmaryro.org/logos/logo.jpg',
-  instagram: '',
+  instagram: 'https://www.instagram.com/fellowshipstmary/',
   twitter: '',
-  facebook: '',
+  facebook: 'https://www.facebook.com/bisericasfantamariadacula',
+  telephone: '+1-404-984-8686',
+  email: 'events@saintmaryro.org',
+  address: {
+    street: '2875 Winder Hwy',
+    city: 'Dacula',
+    region: 'GA',
+    postalCode: '30019',
+    country: 'US',
+  },
+  geo: {
+    latitude: 33.99224442833723,
+    longitude: -83.88655118493534,
+  },
+  priceRange: '$2,000–$4,000',
 };

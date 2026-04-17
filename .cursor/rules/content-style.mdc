@@ -1,0 +1,72 @@
+---
+description: Brand voice and content style guide for Fellowship Event Hall — auto-attached when editing copy-heavy files.
+globs: ["src/pages/**/*.tsx", "src/ui/features/**/*.tsx", "src/utils/AppConfig.ts", "public/llms.txt"]
+alwaysApply: false
+---
+
+# Content Style Guide
+
+## Brand voice
+
+**Warm, welcoming, professional.** Think of a trusted family friend who happens to run a beautiful venue.
+
+- Hospitable and community-rooted
+- Transparent about pricing and policies
+- Inclusive — the venue serves all cultures and backgrounds
+- Proud of the space without being boastful
+
+## Dos and don'ts
+
+**Do:**
+- Lead with the experience ("create unforgettable memories," "your perfect day")
+- Use "your event," "your guests," "your special occasion"
+- Mention the community story when relevant (built by the church community, gift to future generations)
+- Be specific: "up to 300 guests," "5,000 sq ft," "$2,000 starting price"
+- Highlight transparency: "fully refundable deposits"
+
+**Don't:**
+- Use vague superlatives: "world-class," "state-of-the-art," "premier," "best in class"
+- Use religious language that could feel exclusive to non-members
+- Make unverifiable claims about awards or rankings
+- Use long run-on sentences — short punchy lines work best on the web
+
+## SEO keywords
+
+**Primary (use in headlines/titles):**
+- event hall Dacula GA
+- event venue Dacula
+- wedding venue Dacula GA
+- party hall Gwinnett County
+
+**Secondary (use in body copy):**
+- event hall near Buford GA / Lawrenceville / Auburn
+- birthday party venue Gwinnett
+- corporate event space Dacula GA
+- wedding reception venue northeast Atlanta
+
+**Long-tail (meta descriptions, FAQ copy):**
+- affordable wedding venue Gwinnett County
+- event hall with tables and chairs included
+- event venue near Atlanta with on-site coordinator
+
+## Venue facts — always accurate
+
+- Address: 2875 Winder Hwy, Dacula, GA 30019
+- Capacity: up to 300 guests
+- Pricing: $2,000–$4,000 depending on guest count
+- Deposits: $1,500 damage + $1,000 cleaning (fully refundable)
+- Every package includes tables, chairs, tablecloths, chair covers, sound system, setup/cleanup, coordinator
+- Phone: +1-404-984-8686
+- WhatsApp: same number
+
+## Copy length guidelines
+
+| Element | Length |
+|---|---|
+| Page title | < 60 characters |
+| Meta description | 140–160 characters |
+| Hero headline | 4–8 words |
+| Hero subheadline | 1–2 short sentences |
+| Section headline | 3–7 words |
+| CTA button | 2–4 words |
+| Card description | 1–3 sentences |

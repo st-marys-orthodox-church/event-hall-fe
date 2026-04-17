@@ -8,6 +8,7 @@ import { WhatsAppButton } from '../ui/components/WhatsAppButton';
 import { useAppContext } from '../stores/Global';
 import { Info, Check } from '@mui/icons-material';
 import { EVENT_TYPES } from '../utils/Constants';
+import { breadcrumbJsonLd, offerCatalogJsonLd } from '../utils/StructuredData';
 
 const Packages = () => {
   const { handleOpenModal } = useAppContext();
@@ -18,6 +19,21 @@ const Packages = () => {
     { capacity: '150 People', price: '$3,000', popular: true },
     { capacity: '200 People', price: '$3,500', popular: false },
     { capacity: '300 People', price: '$4,000', popular: false },
+  ];
+
+  const jsonLd = [
+    offerCatalogJsonLd(
+      packageTiers.map((t) => ({
+        name: `${t.capacity} Package`,
+        price: t.price,
+        capacity: parseInt(t.capacity, 10),
+        description: `Event package accommodating up to ${t.capacity.toLowerCase()} at Fellowship Event Hall.`,
+      }))
+    ),
+    breadcrumbJsonLd([
+      { name: 'Home', path: '/' },
+      { name: 'Packages', path: '/packages' },
+    ]),
   ];
 
   const includedItems = [
@@ -31,7 +47,11 @@ const Packages = () => {
 
   return (
     <div className="antialiased text-stone-800 bg-stone-50">
-      <Meta title={`Packages - ${AppConfig.title}`} description="View our event hall packages and pricing. Packages include tables, chairs, linens, and more. Starting at $2,000 for 50 guests." />
+      <Meta
+        title={`Packages - ${AppConfig.title}`}
+        description="View our event hall packages and pricing. Packages include tables, chairs, linens, and more. Starting at $2,000 for 50 guests."
+        jsonLd={jsonLd}
+      />
       <Template topPad>
         {/* Header */}
         <div className="bg-gradient-to-br from-[#7c9885] to-[#9db5a0] text-white py-16 md:py-24">

@@ -1,0 +1,66 @@
+---
+description: SEO requirements for Fellowship Event Hall pages — auto-attached when editing src/pages files.
+globs: ["src/pages/**/*.tsx", "src/ui/base/Meta.tsx", "src/utils/StructuredData.ts", "src/utils/AppConfig.ts"]
+alwaysApply: false
+---
+
+# SEO Checklist
+
+Every page change should be checked against this list.
+
+## Required on every page
+
+```tsx
+import { Meta } from '../ui/base/Meta';
+
+// Minimum:
+<Meta
+  title="Page Title — Fellowship Event Hall"   // < 60 chars
+  description="140–160 char description..."    // target 140–160 chars
+  jsonLd={/* schema from src/utils/StructuredData.ts */}
+/>
+```
+
+- Title < 60 characters, includes primary keyword
+- Description 140–160 characters, ends with benefit or soft CTA
+- `jsonLd` always provided — never skip structured data
+
+## Structured data by page
+
+| Page | Required schemas |
+|---|---|
+| `index.tsx` | `localBusinessJsonLd()`, `eventVenueJsonLd()`, `offerCatalogJsonLd(...)` |
+| `packages.tsx` | `offerCatalogJsonLd(...)`, `breadcrumbJsonLd(...)` |
+| `gallery.tsx` | `breadcrumbJsonLd(...)` |
+| New page | At minimum `breadcrumbJsonLd(...)` |
+
+Import helpers from `src/utils/StructuredData.ts`. Do not write raw JSON-LD objects inline.
+
+## Heading hierarchy
+
+- Exactly one `<h1>` per page
+- `<h2>` for major sections, `<h3>` for sub-sections
+- Never skip levels (no jumping from `<h1>` to `<h3>`)
+
+## Images
+
+- Every `<img>` and `<Image>` (next/image) must have non-empty `alt`
+- Decorative images: `alt=""`
+- Hero/feature images: describe what is shown, include location keyword where natural ("Event hall dining room setup for wedding, Dacula GA")
+
+## Open Graph
+
+`Meta.tsx` wires OG title/description/image automatically. For pages with a unique hero image, pass it through `next-seo`'s `openGraph.images` prop.
+
+## Site-wide copy
+
+All canonical site data lives in `src/utils/AppConfig.ts`:
+- `AppConfig.url` — canonical base URL
+- `AppConfig.title`, `AppConfig.description` — global fallbacks
+- `AppConfig.address`, `AppConfig.telephone`, `AppConfig.email` — used in structured data
+
+Never hardcode the domain or contact info anywhere else.
+
+## Sitemap
+
+`postbuild` runs `next-sitemap` automatically. Do not suppress it. New pages are included automatically. If a page should be excluded (e.g., a thank-you page), add it to `next-sitemap.config.js`.

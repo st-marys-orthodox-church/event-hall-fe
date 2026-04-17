@@ -1,0 +1,72 @@
+---
+description: UI component conventions for Fellowship Event Hall — auto-attached when editing src/ui files.
+globs: ["src/ui/**/*.tsx", "src/ui/**/*.ts"]
+alwaysApply: false
+---
+
+# Component Conventions
+
+## Primitives to reach for first
+
+| Need | Component | Import from |
+|---|---|---|
+| Page shell | `<Template topPad?>` | `src/ui/base/Template` |
+| Content container | `<Section title? yPadding? className?>` | `src/ui/layout/Section` |
+| CTA strip | `<Banner full? className?>` | `src/ui/features/Banner` |
+| Branded button | `<ModernButton buttonVariant? size?>` | `src/ui/components/ModernButton` |
+| Stat card | `<NumberDisplay text value icon?>` | `src/ui/components/NumberDisplay` |
+| Two-col feature | `<VerticalFeatureRow title description image imageAlt reverse?>` | `src/ui/layout/VerticalFeatureRow` |
+| WhatsApp CTA | `<WhatsAppButton eventType size? variant?>` | `src/ui/components/WhatsAppButton` |
+
+## ModernButton variants
+
+- `primary` — sage green gradient, white text (main CTAs)
+- `secondary` — gold gradient, white text (secondary CTAs)
+- `outline` — green border, green text (on light backgrounds)
+- `outlineLight` — white border, white text (on dark/image backgrounds)
+- `ghost` — no border, green text (tertiary actions)
+
+For navigation links: `<ModernButton component={Link} href="/path" buttonVariant="primary">`.
+Never wrap ModernButton in `<Link>` — use `component={Link}` directly.
+
+## Brand palette
+
+```
+#7c9885   sage green — primary actions, icons
+#9db5a0   sage green light — gradients
+#c9a86c   warm gold — badges, secondary accents
+bg-stone-50   page backgrounds
+text-stone-800   primary text
+text-stone-600   secondary/muted text
+```
+
+## Scroll animations
+
+```tsx
+import { AnimationOnScroll } from 'react-animation-on-scroll';
+
+<AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+  {/* content */}
+</AnimationOnScroll>
+
+// With staggered delay:
+<AnimationOnScroll animateIn="animate__fadeInUp" delay={150} animateOnce>
+```
+
+Always set `animateOnce` — replaying animations on scroll-up is distracting.
+
+## File placement
+
+- Page sections → `src/ui/features/`
+- Small atoms → `src/ui/components/`
+- Layout wrappers → `src/ui/layout/`
+- Site chrome → `src/ui/base/`
+- Dialogs → `src/ui/modals/`
+
+## Quality checklist
+
+- [ ] All `<img>` have descriptive `alt`
+- [ ] No `<a>` nested inside `<Link>`
+- [ ] No inline `style={{}}` — prefer Tailwind utilities
+- [ ] No hardcoded brand copy — use `AppConfig` or constants
+- [ ] TypeScript types defined, no untyped `any`

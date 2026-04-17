@@ -10,6 +10,11 @@ import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
 import { ModernButton } from '../ui/components/ModernButton';
 import { useRouter } from 'next/router';
+import {
+  eventVenueJsonLd,
+  localBusinessJsonLd,
+  offerCatalogJsonLd,
+} from '../utils/StructuredData';
 
 const PACKAGES_DATA = [
   {
@@ -42,9 +47,22 @@ const PACKAGES_DATA = [
 const Index = () => {
   const { push } = useRouter();
 
+  const jsonLd = [
+    localBusinessJsonLd(),
+    eventVenueJsonLd(),
+    offerCatalogJsonLd(
+      PACKAGES_DATA.map((p) => ({
+        name: p.title,
+        price: p.price,
+        capacity: parseInt(p.capacity, 10),
+        description: p.description,
+      }))
+    ),
+  ];
+
   return (
     <div className="antialiased text-stone-800 bg-stone-50">
-      <Meta title={AppConfig.title} description={AppConfig.description} />
+      <Meta title={AppConfig.title} description={AppConfig.description} jsonLd={jsonLd} />
 
       <Template>
         <Hero />

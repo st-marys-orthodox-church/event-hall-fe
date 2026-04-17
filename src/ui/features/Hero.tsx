@@ -42,16 +42,22 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mt-4 items-center">
-              <Link href="/gallery">
-                <ModernButton buttonVariant="primary" size="large">
-                  View Gallery
-                </ModernButton>
-              </Link>
-              <Link href="/packages">
-                <ModernButton buttonVariant="outlineLight" size="large">
-                  Explore Packages
-                </ModernButton>
-              </Link>
+              <ModernButton
+                component={Link}
+                href="/gallery"
+                buttonVariant="primary"
+                size="large"
+              >
+                View Gallery
+              </ModernButton>
+              <ModernButton
+                component={Link}
+                href="/packages"
+                buttonVariant="outlineLight"
+                size="large"
+              >
+                Explore Packages
+              </ModernButton>
             </div>
           </div>
         </FadeIn>

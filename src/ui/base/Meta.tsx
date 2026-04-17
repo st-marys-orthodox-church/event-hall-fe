@@ -7,10 +7,17 @@ type IMetaProps = {
   title: string;
   description: string;
   canonical?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
 const Meta = (props: IMetaProps) => {
   const router = useRouter();
+  const canonical = props.canonical ?? `${AppConfig.url}${router.asPath.split('?')[0]}`;
+  const jsonLdItems = props.jsonLd
+    ? Array.isArray(props.jsonLd)
+      ? props.jsonLd
+      : [props.jsonLd]
+    : [];
 
   return (
     <>
@@ -40,22 +47,31 @@ const Meta = (props: IMetaProps) => {
           href={`${router.basePath}/favicon-16x16.png`}
           key="icon16"
         />
-        <link
-          rel="icon"
-          href={`${router.basePath}/favicon.ico`}
-          key="favicon"
-        />
+        <link rel="icon" href={`${router.basePath}/favicon.ico`} key="favicon" />
+        {jsonLdItems.map((item, i) => (
+          <script
+            key={`jsonld-${i}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
+          />
+        ))}
       </Head>
       <NextSeo
         title={props.title}
         description={props.description}
-        canonical={props.canonical}
+        canonical={canonical}
         openGraph={{
           title: props.title,
           description: props.description,
-          url: props.canonical,
+          url: canonical,
           locale: AppConfig.locale,
           site_name: AppConfig.site_name,
+          images: [
+            {
+              url: AppConfig.logo,
+              alt: AppConfig.site_name,
+            },
+          ],
         }}
       />
     </>
