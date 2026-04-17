@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
+import moment from 'moment';
 import { useTranslation } from 'next-i18next/pages';
 import * as React from 'react';
 import { useContactForm, useWindowSize } from '../../hooks';
@@ -76,12 +77,13 @@ export function ContactModal() {
     setShowForm(!isMobile);
   }, [isMobile]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: updateContactForm is unstable; prefill only when modal opens with a date
   React.useEffect(() => {
     if (modalOpen && prefilledDate) {
       updateContactForm('date', prefilledDate);
       setShowForm(true);
     }
-  }, [modalOpen, prefilledDate, updateContactForm]);
+  }, [modalOpen, prefilledDate]);
 
   const toggleForm = () => setShowForm((prev) => !prev);
 
@@ -190,7 +192,7 @@ export function ContactModal() {
                       <DesktopDatePicker
                         label={t('form.fields.date')}
                         format={t('form.fields.dateFormat')}
-                        value={contactForm.date}
+                        value={contactForm.date ? moment(contactForm.date) : null}
                         onChange={(e) => updateContactForm('date', e?.toDate() || null)}
                         slotProps={{ textField: { sx: fieldSx } }}
                       />
