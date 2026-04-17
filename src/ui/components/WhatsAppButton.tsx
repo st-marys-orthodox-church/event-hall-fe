@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button, ButtonProps } from '@mui/material';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { Button, type ButtonProps } from '@mui/material';
+import type React from 'react';
 
 // WhatsApp Business Configuration - uses environment variable for security
 const WHATSAPP_PHONE = process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '';
@@ -12,21 +12,21 @@ const generateWhatsAppUrl = (options?: {
   guests?: string;
 }): string => {
   const { eventType, date, guests } = options || {};
-  
+
   let message = "Hi St. Mary's! I'm interested in booking your event hall.";
-  
+
   if (eventType) {
     message += ` I'm planning a ${eventType}.`;
   }
-  
+
   if (date) {
     message += ` My event date is ${date}.`;
   }
-  
+
   if (guests) {
     message += ` I expect about ${guests} guests.`;
   }
-  
+
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodedMessage}`;
 };
@@ -95,7 +95,8 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
           color: variant === 'contained' ? 'white' : whatsappGreen,
           borderColor: variant === 'outlined' ? whatsappGreen : undefined,
           '&:hover': {
-            backgroundColor: variant === 'contained' ? whatsappDarkGreen : 'rgba(37, 211, 102, 0.1)',
+            backgroundColor:
+              variant === 'contained' ? whatsappDarkGreen : 'rgba(37, 211, 102, 0.1)',
             borderColor: variant === 'outlined' ? whatsappDarkGreen : undefined,
           },
           textTransform: 'none',

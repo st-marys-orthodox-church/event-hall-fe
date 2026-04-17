@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react';
-import React, { ReactNode, useEffect, useState } from 'react';
+import { type ReactNode, useEffect, useState } from 'react';
 
 type IFadeInProps = {
   children: ReactNode;
@@ -8,12 +8,7 @@ type IFadeInProps = {
   duration?: `duration-${string}`;
 };
 
-const FadeIn = ({
-  children,
-  disabled,
-  duration = 'duration-1000',
-  delay = 500,
-}: IFadeInProps) => {
+const FadeIn = ({ children, disabled, duration = 'duration-1000', delay = 500 }: IFadeInProps) => {
   const [isShowing, setIsShowing] = useState(false);
 
   useEffect(() => {

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 import { useAppContext } from '../stores/Global';
 
 export const useContactForm = () => {

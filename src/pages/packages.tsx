@@ -1,12 +1,12 @@
-import { AppConfig } from '../utils/AppConfig';
+import { Check, Info } from '@mui/icons-material';
+import { Divider } from '@mui/material';
+import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
-import { Section } from '../ui/layout/Section';
-import { Button, Divider } from '@mui/material';
 import { ModernButton } from '../ui/components/ModernButton';
 import { WhatsAppButton } from '../ui/components/WhatsAppButton';
-import { useAppContext } from '../stores/Global';
-import { Info, Check } from '@mui/icons-material';
+import { Section } from '../ui/layout/Section';
+import { AppConfig } from '../utils/AppConfig';
 import { EVENT_TYPES } from '../utils/Constants';
 import { breadcrumbJsonLd, offerCatalogJsonLd } from '../utils/StructuredData';
 
@@ -26,7 +26,7 @@ const Packages = () => {
       packageTiers.map((t) => ({
         name: `${t.capacity} Package`,
         price: t.price,
-        capacity: parseInt(t.capacity, 10),
+        capacity: Number.parseInt(t.capacity, 10),
         description: `Event package accommodating up to ${t.capacity.toLowerCase()} at Fellowship Event Hall.`,
       }))
     ),
@@ -56,11 +56,10 @@ const Packages = () => {
         {/* Header */}
         <div className="bg-gradient-to-br from-[#7c9885] to-[#9db5a0] text-white py-16 md:py-24">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Event Packages
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Event Packages</h1>
             <p className="text-xl text-white/90 max-w-2xl mx-auto">
-              Transparent pricing for your special occasion. All packages include our premium amenities.
+              Transparent pricing for your special occasion. All packages include our premium
+              amenities.
             </p>
           </div>
         </div>
@@ -73,7 +72,7 @@ const Packages = () => {
                 <h2 className="text-2xl md:text-3xl font-bold text-stone-800 mb-8 text-center">
                   Capacity & Pricing
                 </h2>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                   {packageTiers.map((tier, index) => (
                     <div
@@ -89,10 +88,10 @@ const Packages = () => {
                           POPULAR
                         </div>
                       )}
-                      <div className="text-sm font-medium text-stone-500 mb-2">
-                        {tier.capacity}
-                      </div>
-                      <div className={`text-3xl font-bold ${tier.popular ? 'text-white' : 'text-[#7c9885]'}`}>
+                      <div className="text-sm font-medium text-stone-500 mb-2">{tier.capacity}</div>
+                      <div
+                        className={`text-3xl font-bold ${tier.popular ? 'text-white' : 'text-[#7c9885]'}`}
+                      >
                         {tier.price}
                       </div>
                     </div>
@@ -108,10 +107,7 @@ const Packages = () => {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {includedItems.map((item, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-3 p-4 rounded-xl bg-stone-50"
-                  >
+                  <div key={index} className="flex items-center gap-3 p-4 rounded-xl bg-stone-50">
                     <div className="w-8 h-8 rounded-full bg-[#7c9885]/10 flex items-center justify-center flex-shrink-0">
                       <Check className="w-5 h-5 text-[#7c9885]" />
                     </div>
@@ -166,19 +162,19 @@ const Packages = () => {
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-lg font-bold text-amber-900 mb-1">
-                      Refundable Deposits
-                    </h3>
+                    <h3 className="text-lg font-bold text-amber-900 mb-1">Refundable Deposits</h3>
                     <p className="text-amber-800">
                       A <span className="font-bold">$1,500 damage deposit</span> and a{' '}
-                      <span className="font-bold">$1,000 cleaning deposit</span> are required with each rental. 
-                      These fees are fully refundable as long as the venue is returned clean with no damages.
+                      <span className="font-bold">$1,000 cleaning deposit</span> are required with
+                      each rental. These fees are fully refundable as long as the venue is returned
+                      clean with no damages.
                     </p>
                   </div>
                   <div className="pt-2 border-t border-amber-200">
                     <p className="text-sm text-amber-700 italic">
-                      <span className="font-bold">Note:</span> Prices are subject to change and provided for planning purposes only. 
-                      Please contact us to discuss your specific event requirements.
+                      <span className="font-bold">Note:</span> Prices are subject to change and
+                      provided for planning purposes only. Please contact us to discuss your
+                      specific event requirements.
                     </p>
                   </div>
                 </div>
@@ -187,17 +183,12 @@ const Packages = () => {
 
             {/* CTA */}
             <div className="text-center py-8">
-              <h3 className="text-2xl font-bold text-stone-800 mb-4">
-                Ready to Book Your Event?
-              </h3>
+              <h3 className="text-2xl font-bold text-stone-800 mb-4">Ready to Book Your Event?</h3>
               <p className="text-stone-600 mb-8 max-w-xl mx-auto">
-                Contact us today to schedule a tour and discuss how we can make your special occasion unforgettable.
+                Contact us today to schedule a tour and discuss how we can make your special
+                occasion unforgettable.
               </p>
-              <ModernButton
-                buttonVariant="primary"
-                size="large"
-                onClick={handleOpenModal}
-              >
+              <ModernButton buttonVariant="primary" size="large" onClick={handleOpenModal}>
                 Get in Touch
               </ModernButton>
             </div>

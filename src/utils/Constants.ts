@@ -1,5 +1,5 @@
+import type { ReactNode } from 'react';
 import { BulletList } from '../ui/features/BulletList';
-import { ReactNode } from 'react';
 
 // Define type locally to avoid circular dependency
 type ICardGridListItemProps = {
@@ -41,21 +41,21 @@ export const generateWhatsAppUrl = (options?: {
   guests?: string;
 }): string => {
   const { eventType, date, guests } = options || {};
-  
+
   let message = WHATSAPP_CONFIG.defaultMessage;
-  
+
   if (eventType) {
     message += ` I'm planning a ${eventType}.`;
   }
-  
+
   if (date) {
     message += ` My event date is ${date}.`;
   }
-  
+
   if (guests) {
     message += ` I expect about ${guests} guests.`;
   }
-  
+
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodedMessage}`;
 };

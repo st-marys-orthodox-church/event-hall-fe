@@ -1,8 +1,12 @@
-import React, { useState, useCallback, useMemo } from 'react';
-import Gallery from 'react-photo-gallery';
+import { useCallback, useMemo, useState } from 'react';
 import Carousel, { Modal, ModalGateway } from 'react-images';
+import Gallery from 'react-photo-gallery';
+import {
+  GALLERY_CATEGORIES,
+  type IGalleryCategory,
+  type IGalleryImgProps,
+} from '../../utils/Photos';
 import { Section } from '../layout/Section';
-import { GALLERY_CATEGORIES, IGalleryCategory, IGalleryImgProps } from '../../utils/Photos';
 
 type IFilteredGalleryProps = {
   images: IGalleryImgProps[];
@@ -58,7 +62,8 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
       {/* Photo Count */}
       <div className="text-center mb-6 text-stone-500 text-sm">
         Showing {filteredImages.length} {filteredImages.length === 1 ? 'photo' : 'photos'}
-        {activeCategory !== 'all' && ` in ${GALLERY_CATEGORIES.find(c => c.key === activeCategory)?.label}`}
+        {activeCategory !== 'all' &&
+          ` in ${GALLERY_CATEGORIES.find((c) => c.key === activeCategory)?.label}`}
       </div>
 
       {/* Gallery Grid */}
@@ -93,9 +98,7 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
       {/* Empty State */}
       {filteredImages.length === 0 && (
         <div className="text-center py-16 bg-stone-50 rounded-2xl">
-          <p className="text-stone-500 text-lg">
-            No photos in this category yet.
-          </p>
+          <p className="text-stone-500 text-lg">No photos in this category yet.</p>
           <button
             onClick={() => setActiveCategory('all')}
             className="mt-4 text-[#7c9885] font-semibold hover:underline"

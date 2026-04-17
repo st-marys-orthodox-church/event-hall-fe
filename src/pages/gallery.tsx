@@ -1,7 +1,7 @@
-import { AppConfig } from '../utils/AppConfig';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { FilteredGallery } from '../ui/features/FilteredGallery';
+import { AppConfig } from '../utils/AppConfig';
 import { GALLERY_PHOTOS } from '../utils/Photos';
 import { breadcrumbJsonLd } from '../utils/StructuredData';
 

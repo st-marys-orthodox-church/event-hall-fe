@@ -1,4 +1,5 @@
 import className from 'classnames';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 
@@ -28,19 +29,20 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
     <div className={`${verticalFeatureClass}`}>
       <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
         <div className={`w-full px-2 text-center sm:text-left`}>
-          <h3 className="text-3xl text-gray-900 font-semibold">
-            {props.title}
-          </h3>
+          <h3 className="text-3xl text-gray-900 font-semibold">{props.title}</h3>
           <div className="mt-6 text-lg">{props.description}</div>
         </div>
       </AnimationOnScroll>
 
       <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
         <div className="w-full p-2">
-          <img
+          <Image
             src={`${router.basePath}${props.image}`}
             alt={props.imageAlt}
-            className="rounded max-h-80 w-full min-w-[350px]"
+            width={700}
+            height={500}
+            className="rounded max-h-80 w-full min-w-[350px] object-cover"
+            sizes="(max-width: 640px) 100vw, 50vw"
           />
         </div>
       </AnimationOnScroll>

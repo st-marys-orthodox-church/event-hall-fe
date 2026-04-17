@@ -1,5 +1,3 @@
-import React from 'react';
-
 type IBulletListProps = {
   title: string;
   bullets: string[];

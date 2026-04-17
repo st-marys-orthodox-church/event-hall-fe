@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useAppContext } from '../../stores/Global';
 
 import { Section } from '../layout/Section';
@@ -24,9 +24,7 @@ const Banner = ({ color, full, children, className }: IBannerProps) => {
           className={`text-center flex flex-col p-4 sm:text-left sm:flex-row sm:items-center sm:justify-between sm:p-12 rounded-md ${bgClass}`}
         >
           <div className="text-2xl font-semibold">
-            <div className="text-gray-900">
-              {'Interested in booking your next event with us?'}
-            </div>
+            <div className="text-gray-900">{'Interested in booking your next event with us?'}</div>
             <div className="text-brand-green">{'Reach out to us today.'}</div>
           </div>
 

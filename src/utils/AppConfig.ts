@@ -2,7 +2,7 @@ export const AppConfig = {
   site_name: 'Fellowship Event Hall',
   title: 'Fellowship Event Hall',
   description:
-    "An event hall to suit all your needs, whether it's a wedding or birthday.",
+    'Elegant 5,000 sq ft event venue in Dacula, GA. Host weddings, receptions, and banquets for up to 250 guests. Packages from $2,000. Serving Gwinnett County and North Atlanta.',
   locale: 'en',
   url: 'https://events.saintmaryro.org',
   logo: 'https://events.saintmaryro.org/logos/logo.jpg',

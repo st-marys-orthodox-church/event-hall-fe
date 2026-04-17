@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
-import Gallery from 'react-photo-gallery';
+import { useCallback, useState } from 'react';
 import Carousel, { Modal, ModalGateway } from 'react-images';
+import Gallery from 'react-photo-gallery';
 import { Section } from '../layout/Section';
 
 type IGalleryGridProps = {
@@ -31,10 +31,7 @@ export const GalleryGrid = (props: IGalleryGridProps) => {
 
   return (
     <Section title={props.title} description={props.description}>
-      <AnyGallery
-        photos={props.images && props.images}
-        onClick={openLightbox}
-      />
+      <AnyGallery photos={props.images && props.images} onClick={openLightbox} />
       <AnyModalGateway>
         {viewerIsOpen ? (
           <AnyModal onClose={closeLightbox}>

@@ -1,12 +1,12 @@
-import { Button, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
-import Link from 'next/link';
-import { useWindowSize, useDropdown } from '../../hooks';
-import { Section } from '../layout/Section';
-import { Logo } from './Logo';
 import MenuIcon from '@mui/icons-material/Menu';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import { Button, IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
+import Link from 'next/link';
+import { useDropdown, useWindowSize } from '../../hooks';
 import { useAppContext } from '../../stores/Global';
 import { generateWhatsAppUrl } from '../../utils/Constants';
+import { Section } from '../layout/Section';
+import { Logo } from './Logo';
 
 export const Navbar = () => {
   const { handleOpenModal } = useAppContext();
@@ -29,11 +29,11 @@ export const Navbar = () => {
   const brandGreenDark = '#6b8574';
 
   return (
-    <Section yPadding="py">
+    <Section yPadding="py-1">
       <div className="flex flex-wrap justify-between items-center">
         <div className="pt-2">
           <Link href="/">
-            <Logo xl />
+            <Logo />
           </Link>
         </div>
 
@@ -48,11 +48,7 @@ export const Navbar = () => {
                 </li>
               ))}
               <li className="flex items-center gap-2">
-                <Button
-                  variant="outlined"
-                  className="normal-case"
-                  onClick={handleOpenModal}
-                >
+                <Button variant="outlined" className="normal-case" onClick={handleOpenModal}>
                   Contact Us
                 </Button>
                 <Tooltip title="Chat on WhatsApp">
@@ -136,10 +132,7 @@ export const Navbar = () => {
                     {el.text}
                   </MenuItem>
                 ))}
-                <MenuItem
-                  onClick={handleOpenModal}
-                  className="text-brand-green pl-10"
-                >
+                <MenuItem onClick={handleOpenModal} className="text-brand-green pl-10">
                   Contact Form
                 </MenuItem>
               </Menu>

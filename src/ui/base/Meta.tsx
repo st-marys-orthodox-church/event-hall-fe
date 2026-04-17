@@ -7,12 +7,19 @@ type IMetaProps = {
   title: string;
   description: string;
   canonical?: string;
+  ogType?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const normalizePath = (path: string) => {
+  const stripped = (path.split('?')[0] ?? '').split('#')[0] ?? '';
+  if (stripped === '/' || stripped === '') return '/';
+  return stripped.endsWith('/') ? stripped : `${stripped}/`;
 };
 
 const Meta = (props: IMetaProps) => {
   const router = useRouter();
-  const canonical = props.canonical ?? `${AppConfig.url}${router.asPath.split('?')[0]}`;
+  const canonical = props.canonical ?? `${AppConfig.url}${normalizePath(router.asPath)}`;
   const jsonLdItems = props.jsonLd
     ? Array.isArray(props.jsonLd)
       ? props.jsonLd
@@ -23,31 +30,39 @@ const Meta = (props: IMetaProps) => {
     <>
       <Head>
         <meta charSet="UTF-8" key="charset" />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1"
-          key="viewport"
+        <meta name="viewport" content="width=device-width,initial-scale=1" key="viewport" />
+        <link rel="preconnect" href="https://www.google.com" key="preconnect-google" />
+        <link
+          rel="preconnect"
+          href="https://maps.googleapis.com"
+          crossOrigin="anonymous"
+          key="preconnect-maps"
         />
         <link
           rel="apple-touch-icon"
+          sizes="180x180"
           href={`${router.basePath}/apple-touch-icon.png`}
           key="apple"
         />
         <link
           rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href={`${router.basePath}/favicon-32x32.png`}
-          key="icon32"
+          type="image/svg+xml"
+          href={`${router.basePath}/favicon.svg`}
+          key="icon-svg"
         />
         <link
           rel="icon"
           type="image/png"
-          sizes="16x16"
-          href={`${router.basePath}/favicon-16x16.png`}
-          key="icon16"
+          sizes="96x96"
+          href={`${router.basePath}/favicon-96x96.png`}
+          key="icon96"
         />
         <link rel="icon" href={`${router.basePath}/favicon.ico`} key="favicon" />
+        <link
+          rel="manifest"
+          href={`${router.basePath}/site.webmanifest`}
+          key="manifest"
+        />
         {jsonLdItems.map((item, i) => (
           <script
             key={`jsonld-${i}`}
@@ -61,6 +76,7 @@ const Meta = (props: IMetaProps) => {
         description={props.description}
         canonical={canonical}
         openGraph={{
+          type: props.ogType ?? 'website',
           title: props.title,
           description: props.description,
           url: canonical,
@@ -69,9 +85,14 @@ const Meta = (props: IMetaProps) => {
           images: [
             {
               url: AppConfig.logo,
+              width: 1200,
+              height: 630,
               alt: AppConfig.site_name,
             },
           ],
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
         }}
       />
     </>

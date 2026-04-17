@@ -1,10 +1,10 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import { Section } from '../layout/Section';
-import { useRouter } from 'next/router';
 import { Transition } from '@headlessui/react';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { useRouter } from 'next/router';
+import * as React from 'react';
+import { Section } from '../layout/Section';
 
 interface ITabPanelProps {
   children?: React.ReactNode;
@@ -66,16 +66,9 @@ export function BasicTabs(props: ITabProps) {
   return (
     <Section title={props.title} description={props.description}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label="tabs"
-          variant="fullWidth"
-        >
+        <Tabs value={value} onChange={handleChange} aria-label="tabs" variant="fullWidth">
           {props.tabs &&
-            props.tabs.map((el, i) => (
-              <Tab key={`tab-${i}`} label={el.name} {...a11yProps(i)} />
-            ))}
+            props.tabs.map((el, i) => <Tab key={`tab-${i}`} label={el.name} {...a11yProps(i)} />)}
         </Tabs>
       </Box>
       <Box className="min-h-[320px]">

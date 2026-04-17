@@ -1,10 +1,10 @@
-import { AppProps } from 'next/app';
-import { AppWrapper } from '../stores/Global';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import type { AppProps } from 'next/app';
+import { AppWrapper } from '../stores/Global';
 
 import '../styles/global.css';
-import { ContactModal } from '../ui/modals/Contact';
 import { LocalizationProvider } from '@mui/x-date-pickers';
+import { ContactModal } from '../ui/modals/Contact';
 import 'animate.css/animate.min.css';
 import { MuiThemeProvider } from '../styles/theme';
 

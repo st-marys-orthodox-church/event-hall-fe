@@ -16,6 +16,8 @@ Reusable AI agent definitions for this repo. Each `.md` file in this directory d
 | **dependency-reviewer** | [dependency-reviewer.md](./dependency-reviewer.md) | Reviews `package.json` for outdated, unmaintained, or unused packages. Read-only. |
 | **content-writer** | [content-writer.md](./content-writer.md) | Writes and edits copy — headlines, meta descriptions, section text, social captions. Knows brand voice and venue facts. Read-only. |
 | **component-builder** | [component-builder.md](./component-builder.md) | Builds new UI sections and components following the design system. Can read and write files. |
+| **seo-fundatmentals** | [seo-fundatmentals.md](./seo-fundatmentals.md) | Understand SEO best principles and approaches for a professional and corporate approach |
+| **scripts** | [scripts](./scripts/) | Contains python script intended for seo-fundamentals.md agent |
 
 ## Adding a new agent
 

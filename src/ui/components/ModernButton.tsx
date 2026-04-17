@@ -1,6 +1,6 @@
-import { Button as MuiButton, ButtonProps } from '@mui/material';
+import { type ButtonProps, Button as MuiButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface ModernButtonProps extends Omit<ButtonProps, 'variant'> {
   children: ReactNode;
@@ -20,7 +20,7 @@ const StyledButton = styled(MuiButton, {
   overflow: 'hidden',
   willChange: 'transform, box-shadow',
   boxSizing: 'border-box',
-  
+
   ...(size === 'small' && {
     padding: '8px 16px',
     fontSize: '0.875rem',

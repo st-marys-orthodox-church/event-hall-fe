@@ -1,24 +1,24 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
 import CloseIcon from '@mui/icons-material/Close';
-import { useAppContext } from '../../stores/Global';
 import {
   Button,
-  FormControl,
-  TextField,
   CircularProgress,
   Collapse,
-  Typography,
   Divider,
+  FormControl,
+  TextField,
+  Typography,
 } from '@mui/material';
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
 import { DesktopDatePicker } from '@mui/x-date-pickers';
+import * as React from 'react';
 import { useContactForm, useWindowSize } from '../../hooks';
+import { useAppContext } from '../../stores/Global';
 import { WhatsAppButton } from '../components/WhatsAppButton';
 
 const style = {
-  position: 'absolute' as 'absolute',
+  position: 'absolute' as const,
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -31,7 +31,7 @@ export function ContactModal() {
   const { handleCloseModal, modalOpen } = useAppContext();
   const { width } = useWindowSize();
   const isMobile = width < 768;
-  
+
   // Form visibility state - hidden by default on mobile, visible on desktop
   const [showForm, setShowForm] = React.useState(!isMobile);
   const {
@@ -80,13 +80,13 @@ export function ContactModal() {
 
               {/* WhatsApp Section - Primary CTA */}
               <div className="bg-green-50 rounded-lg p-4 border border-green-100">
-                <WhatsAppButton 
-                  fullWidth 
+                <WhatsAppButton
+                  fullWidth
                   size="large"
                   guests={contactForm.cap || undefined}
                   date={contactForm.date ? contactForm.date.toLocaleDateString() : undefined}
                 />
-                
+
                 {/* Toggle Form Link */}
                 <div className="text-center mt-3">
                   <Button
@@ -112,9 +112,7 @@ export function ContactModal() {
                         id="contact-form-name"
                         value={contactForm.name}
                         label="Full Name"
-                        onChange={(e) =>
-                          updateContactForm('name', e.target.value)
-                        }
+                        onChange={(e) => updateContactForm('name', e.target.value)}
                         variant="outlined"
                         required
                       />
@@ -126,9 +124,7 @@ export function ContactModal() {
                         id="contact-form-email"
                         value={contactForm.email}
                         label="Email"
-                        onChange={(e) =>
-                          updateContactForm('email', e.target.value)
-                        }
+                        onChange={(e) => updateContactForm('email', e.target.value)}
                         variant="outlined"
                       />
                     </FormControl>
@@ -160,9 +156,7 @@ export function ContactModal() {
                       id="contact-form-message"
                       value={contactForm.message}
                       label="Message"
-                      onChange={(e) =>
-                        updateContactForm('message', e.target.value)
-                      }
+                      onChange={(e) => updateContactForm('message', e.target.value)}
                       variant="outlined"
                       multiline
                       minRows={3}
@@ -177,8 +171,7 @@ export function ContactModal() {
                     onClick={handleSubmit}
                     disabled={isSuccess || isError || isLoading}
                   >
-                    {determineMessage()}{' '}
-                    {isLoading && <CircularProgress size={16} />}
+                    {determineMessage()} {isLoading && <CircularProgress size={16} />}
                   </Button>
                 </div>
               </Collapse>

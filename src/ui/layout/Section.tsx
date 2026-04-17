@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type ISectionProps = {
   title?: string;
@@ -16,12 +16,8 @@ const Section = (props: ISectionProps) => (
   >
     {(props.title || props.description) && (
       <div className="mb-12 text-center">
-        {props.title && (
-          <h2 className="text-3xl text-gray-900 font-bold">{props.title}</h2>
-        )}
-        {props.description && (
-          <div className="mt-4 text-lg md:px-20">{props.description}</div>
-        )}
+        {props.title && <h2 className="text-3xl text-gray-900 font-bold">{props.title}</h2>}
+        {props.description && <div className="mt-4 text-lg md:px-20">{props.description}</div>}
       </div>
     )}
 

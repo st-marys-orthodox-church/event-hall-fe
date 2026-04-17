@@ -1,9 +1,9 @@
 import { Button, Card } from '@mui/material';
 import { useRouter } from 'next/router';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
-import { Section } from '../layout/Section';
 import { WhatsAppButton } from '../components/WhatsAppButton';
+import { Section } from '../layout/Section';
 
 export type ICardGridListItemProps = {
   title: string;
@@ -41,9 +41,7 @@ const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
                 <div>
                   <div className="flex items-center justify-between">
                     <h4 className="text-xl font-semibold">{el.title}</h4>
-                    {el.price && (
-                      <span className="text-neutral-600">{el.price}</span>
-                    )}
+                    {el.price && <span className="text-neutral-600">{el.price}</span>}
                   </div>
                   {el.img && (
                     <img
@@ -89,10 +87,7 @@ const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
       </div>
       {seeall && (
         <div className="flex justify-center w-full mt-6">
-          <Button
-            className="!px-4"
-            onClick={() => push({ pathname: '/packages' })}
-          >
+          <Button className="!px-4" onClick={() => push({ pathname: '/packages' })}>
             See All Our Packages
           </Button>
         </div>

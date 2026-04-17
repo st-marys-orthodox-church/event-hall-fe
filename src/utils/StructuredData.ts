@@ -11,6 +11,49 @@ const postalAddress = {
 
 const sameAs = [AppConfig.facebook, AppConfig.instagram, AppConfig.twitter].filter(Boolean);
 
+const GOOGLE_MAPS_URL =
+  'https://www.google.com/maps/place/Saint+Mary%27s+Fellowship+Hall/@33.9922444,-83.8865512,17z';
+
+const areaServed = [
+  'Dacula, GA',
+  'Lawrenceville, GA',
+  'Buford, GA',
+  'Hoschton, GA',
+  'Duluth, GA',
+  'Suwanee, GA',
+  'Gwinnett County, GA',
+  'North Atlanta metropolitan area',
+].map((name) => ({ '@type': 'Place', name }));
+
+const openingHoursSpecification = [
+  {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+    opens: '09:00',
+    closes: '18:00',
+  },
+  {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Saturday', 'Sunday'],
+    opens: '10:00',
+    closes: '23:00',
+  },
+];
+
+const amenityFeature = [
+  { name: 'On-site parking', value: true },
+  { name: 'Wi-Fi', value: true },
+  { name: 'Sound system', value: true },
+  { name: 'Bridal suite', value: true },
+  { name: 'Prep kitchen', value: true },
+  { name: 'Tables & chairs', value: true },
+  { name: 'Wheelchair accessible', value: true },
+].map((f) => ({
+  '@type': 'LocationFeatureSpecification',
+  name: f.name,
+  value: f.value,
+}));
+
 export const eventVenueJsonLd = () => ({
   '@context': 'https://schema.org',
   '@type': 'EventVenue',
@@ -29,6 +72,10 @@ export const eventVenueJsonLd = () => ({
     latitude: AppConfig.geo.latitude,
     longitude: AppConfig.geo.longitude,
   },
+  hasMap: GOOGLE_MAPS_URL,
+  areaServed,
+  openingHoursSpecification,
+  amenityFeature,
   sameAs,
 });
 
@@ -44,18 +91,38 @@ export const localBusinessJsonLd = () => ({
   telephone: AppConfig.telephone,
   email: AppConfig.email,
   priceRange: AppConfig.priceRange,
+  maximumAttendeeCapacity: 300,
   address: postalAddress,
   geo: {
     '@type': 'GeoCoordinates',
     latitude: AppConfig.geo.latitude,
     longitude: AppConfig.geo.longitude,
   },
+  hasMap: GOOGLE_MAPS_URL,
+  areaServed,
+  openingHoursSpecification,
+  amenityFeature,
   parentOrganization: {
     '@type': 'Church',
     name: 'St. Mary Romanian Orthodox Church',
     url: 'https://saintmaryro.org',
   },
   sameAs,
+});
+
+type FaqItem = { question: string; answer: string };
+
+export const faqPageJsonLd = (items: FaqItem[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
 });
 
 type PackageOffer = {

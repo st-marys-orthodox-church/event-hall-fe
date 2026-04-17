@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useWindowSize } from '../../hooks';
-import FadeIn from '../components/FadeIn';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 
@@ -15,17 +14,11 @@ export const Template = (props: ITemplateProps) => {
   const { scrollY } = useWindowSize();
   return (
     <>
-      <div
-        className={`bg-white shadow-md ${
-          scrollY > 0 ? 'fixed' : 'absolute'
-        } w-full z-50`}
-      >
+      <div className={`bg-white shadow-md ${scrollY > 0 ? 'fixed' : 'absolute'} w-full z-50`}>
         <Navbar />
       </div>
       {props.topPad && <div className="h-[68.5px]" />}
-      <main className="opacity-100">
-        {props.children}
-      </main>
+      <main className="opacity-100">{props.children}</main>
       <Footer />
     </>
   );
