@@ -1,7 +1,6 @@
 export const SOCIALS = {
-  FB: 'https://www.facebook.com/bisericasfantamariadacula',
+  FB: 'https://www.facebook.com/fellowshipvenue',
   IG: 'https://www.instagram.com/fellowshipeventhall/',
-  IG_CHURCH: 'https://www.instagram.com/fellowshipstmary/',
 };
 
 // WhatsApp Business Configuration - uses environment variable for security

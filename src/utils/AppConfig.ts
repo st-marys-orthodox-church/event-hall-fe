@@ -1,4 +1,7 @@
 // Non-display configuration. All user-facing copy (site name, titles, descriptions,
+
+import { SOCIALS } from './Constants';
+
 // OG alt text, meta descriptions) lives in public/locales/{locale}/seo.json.
 export const AppConfig = {
   defaultLocale: 'en',
@@ -6,10 +9,9 @@ export const AppConfig = {
   logo: 'https://events.saintmaryro.org/logos/logo.jpg',
   ogImage: 'https://events.saintmaryro.org/og-image.jpg',
   themeColor: '#7c9885',
-  instagram: 'https://www.instagram.com/fellowshipeventhall/',
-  instagramChurch: 'https://www.instagram.com/fellowshipstmary/',
+  instagram: SOCIALS.IG,
   twitter: '',
-  facebook: 'https://www.facebook.com/bisericasfantamariadacula',
+  facebook: SOCIALS.FB,
   telephone: '+1-‭404-518-1042‬',
   email: 'events@saintmaryro.org',
   address: {
