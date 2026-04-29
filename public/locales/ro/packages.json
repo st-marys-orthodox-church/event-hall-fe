@@ -119,5 +119,40 @@
   "breadcrumb": {
     "home": "Acasă",
     "packages": "Pachete"
+  },
+  "faq": {
+    "eyebrow": "Bine de știut",
+    "heading": "Întrebări frecvente despre pachete și rezervări",
+    "subheading": "Întrebări comune despre prețuri, depozite, catering și ce este inclus.",
+    "items": [
+      {
+        "question": "Ce este inclus în fiecare pachet?",
+        "answer": "Fiecare pachet include mese și scaune, fețe de masă și huse pentru scaune, un sistem audio de bază, parcare la fața locului, un coordonator la fața locului și asistență la montare și curățenie. Pachetele superioare adaugă lenjerie premium, o suită pentru mireasă, sistem audio și de iluminat îmbunătățit și coordonare dedicată."
+      },
+      {
+        "question": "Depozitele sunt rambursabile?",
+        "answer": "Da. La fiecare închiriere se solicită un depozit pentru daune de $1,500 și un depozit pentru curățenie de $1,000. Ambele depozite sunt integral rambursabile, atât timp cât locația este returnată curată și nedeteriorată."
+      },
+      {
+        "question": "Putem aduce catering din exterior?",
+        "answer": "Da — cateringul din exterior este binevenit la Fellowship Event Hall. Bucătăria noastră de pregătire este disponibilă pentru furnizorii dumneavoastră și nu vă cerem să folosiți un anumit caterer."
+      },
+      {
+        "question": "Este permis alcoolul la evenimentul nostru?",
+        "answer": "Alcoolul este permis conform regulamentului nostru standard de închiriere. Vom analiza împreună cu dumneavoastră detaliile înainte de rezervare — inclusiv eventualele cerințe privind barmanii autorizați sau asigurarea."
+      },
+      {
+        "question": "Locația este accesibilă pentru scaune cu rotile?",
+        "answer": "Da. Fellowship Event Hall este accesibilă pentru scaune cu rotile, cu intrare fără trepte și toalete accesibile."
+      },
+      {
+        "question": "Care este politica de anulare?",
+        "answer": "Termenii de anulare depind de cât de departe în timp este programat evenimentul. Vă vom comunica în scris politica completă înainte de a semna contractul de închiriere, pentru a avea o înțelegere clară de la început."
+      },
+      {
+        "question": "Cum putem rezerva o dată?",
+        "answer": "Datele sunt rezervate printr-un contract de închiriere semnat și depozitele rambursabile. Contactați-ne prin formularul de contact, WhatsApp sau telefon și vom confirma disponibilitatea și vă vom ghida prin pașii următori."
+      }
+    ]
   }
 }

@@ -11,10 +11,11 @@ import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { WhatsAppButton } from '../ui/components/WhatsAppButton';
 import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
+import { Faq } from '../ui/features/Faq';
 import { Section } from '../ui/layout/Section';
 import { EVENT_TYPES } from '../utils/Constants';
 import { DEPOSIT_INFO, PACKAGES, PACKAGE_TIERS } from '../utils/Packages';
-import { breadcrumbJsonLd, offerCatalogJsonLd } from '../utils/StructuredData';
+import { breadcrumbJsonLd, faqPageJsonLd, offerCatalogJsonLd } from '../utils/StructuredData';
 import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
 const Packages = () => {
@@ -40,6 +41,10 @@ const Packages = () => {
     price: string;
   }>;
   const includedItems = t('included.items', { returnObjects: true }) as string[];
+  const faqItems = t('faq.items', { returnObjects: true }) as Array<{
+    question: string;
+    answer: string;
+  }>;
 
   const jsonLd = [
     offerCatalogJsonLd(
@@ -55,6 +60,7 @@ const Packages = () => {
       { name: t('breadcrumb.home'), path: '/' },
       { name: t('breadcrumb.packages'), path: '/packages' },
     ]),
+    faqPageJsonLd(faqItems),
   ];
 
   return (
@@ -291,6 +297,26 @@ const Packages = () => {
               </div>
             </AnimationOnScroll>
             <AvailabilityCalendar onDateSelect={handleOpenModal} />
+          </div>
+        </section>
+
+        {/* Packages FAQ */}
+        <section aria-labelledby="packages-faq-heading" className="py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-4">
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <div className="text-center mb-12">
+                <span className="eyebrow text-brand-gold">{t('faq.eyebrow')}</span>
+                <h2
+                  id="packages-faq-heading"
+                  className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
+                >
+                  {t('faq.heading')}
+                </h2>
+                <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
+                <p className="mt-5 text-stone-600">{t('faq.subheading')}</p>
+              </div>
+            </AnimationOnScroll>
+            <Faq ns="packages" itemsKey="faq.items" />
           </div>
         </section>
 

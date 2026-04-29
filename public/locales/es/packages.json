@@ -119,5 +119,40 @@
   "breadcrumb": {
     "home": "Inicio",
     "packages": "Paquetes"
+  },
+  "faq": {
+    "eyebrow": "Información útil",
+    "heading": "Preguntas frecuentes sobre paquetes y reservas",
+    "subheading": "Preguntas habituales sobre precios, depósitos, catering y lo que está incluido.",
+    "items": [
+      {
+        "question": "¿Qué incluye cada paquete?",
+        "answer": "Todos los paquetes incluyen mesas y sillas, manteles y fundas para sillas, un sistema de sonido básico, aparcamiento en el recinto, un coordinador in situ y asistencia con el montaje y la limpieza. Los paquetes de categoría superior añaden mantelería premium, una suite nupcial, sonido e iluminación mejorados y coordinación dedicada."
+      },
+      {
+        "question": "¿Los depósitos son reembolsables?",
+        "answer": "Sí. Se requiere un depósito por daños de $1,500 y un depósito de limpieza de $1,000 con cada alquiler. Ambos depósitos son totalmente reembolsables siempre que el recinto se devuelva limpio y sin daños."
+      },
+      {
+        "question": "¿Podemos contratar un catering externo?",
+        "answer": "Sí — el catering externo es bienvenido en Fellowship Event Hall. Nuestra cocina de preparación está disponible para tus proveedores y no exigimos que utilices un catering específico."
+      },
+      {
+        "question": "¿Se permite el alcohol en nuestro evento?",
+        "answer": "El alcohol está permitido bajo nuestras directrices estándar de alquiler. Revisaremos los detalles contigo antes de la reserva, incluidos los requisitos para camareros con licencia o seguros."
+      },
+      {
+        "question": "¿Es el recinto accesible para sillas de ruedas?",
+        "answer": "Sí. Fellowship Event Hall es accesible para sillas de ruedas, con entrada sin escalones y aseos adaptados."
+      },
+      {
+        "question": "¿Cuál es vuestra política de cancelación?",
+        "answer": "Las condiciones de cancelación dependen de la antelación con la que esté programado el evento. Compartiremos la política completa por escrito antes de que firmes tu contrato de alquiler, para que tengas una comprensión clara desde el principio."
+      },
+      {
+        "question": "¿Cómo reservamos una fecha?",
+        "answer": "Las fechas se reservan con un contrato de alquiler firmado y los depósitos reembolsables. Contacta con nosotros mediante el formulario de contacto, WhatsApp o teléfono y confirmaremos la disponibilidad y te guiaremos en los siguientes pasos."
+      }
+    ]
   }
 }

@@ -81,9 +81,14 @@ const FaqRow = ({
   );
 };
 
-export const Faq = () => {
-  const { t } = useTranslation('home');
-  const items = (t('faq.items', { returnObjects: true }) as FaqItem[]) || [];
+type FaqProps = {
+  ns?: string;
+  itemsKey?: string;
+};
+
+export const Faq = ({ ns = 'home', itemsKey = 'faq.items' }: FaqProps = {}) => {
+  const { t } = useTranslation(ns);
+  const items = (t(itemsKey, { returnObjects: true }) as FaqItem[]) || [];
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
