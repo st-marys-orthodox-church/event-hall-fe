@@ -27,8 +27,7 @@
     "visitTitle": "Visit",
     "contactTitle": "Contact",
     "hoursTitle": "Hours",
-    "weekdayHours": "Mon–Fri 9 AM – 6 PM",
-    "weekendHours": "Sat–Sun 10 AM – 11 PM",
+    "hours": "Every day, 8 AM – 6 PM EST",
     "getDirections": "Get Directions"
   },
   "logo": {

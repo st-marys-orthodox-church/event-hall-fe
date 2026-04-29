@@ -27,8 +27,7 @@
     "visitTitle": "Visítenos",
     "contactTitle": "Contacto",
     "hoursTitle": "Horario",
-    "weekdayHours": "Lun–Vie 9:00 – 18:00",
-    "weekendHours": "Sáb–Dom 10:00 – 23:00",
+    "hours": "Todos los días, 8:00 – 18:00 EST",
     "getDirections": "Cómo llegar"
   },
   "logo": {

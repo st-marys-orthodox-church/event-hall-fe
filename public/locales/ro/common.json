@@ -27,8 +27,7 @@
     "visitTitle": "Vizitează",
     "contactTitle": "Contact",
     "hoursTitle": "Program",
-    "weekdayHours": "Luni–Vineri 9:00 – 18:00",
-    "weekendHours": "Sâmbătă–Duminică 10:00 – 23:00",
+    "hours": "Zilnic, 8:00 – 18:00 EST",
     "getDirections": "Obține indicații"
   },
   "logo": {

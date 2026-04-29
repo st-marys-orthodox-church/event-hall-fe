@@ -64,8 +64,7 @@ const Footer = () => {
 
             <div className="flex flex-col items-center md:items-start gap-2 mt-2">
               <span className="eyebrow text-brand-gold">{t('footer.hoursTitle')}</span>
-              <span>{t('footer.weekdayHours')}</span>
-              <span>{t('footer.weekendHours')}</span>
+              <span>{t('footer.hours')}</span>
             </div>
           </div>
 
