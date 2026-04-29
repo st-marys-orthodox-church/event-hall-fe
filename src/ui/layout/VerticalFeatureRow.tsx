@@ -34,9 +34,9 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
       <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
         <div className="w-full px-2 text-center sm:text-left">
           <span className="eyebrow text-brand-gold">{props.eyebrow}</span>
-          <h3 className="mt-3 text-4xl md:text-5xl text-stone-900 font-display font-medium leading-tight">
+          <h2 className="mt-3 text-4xl md:text-5xl text-stone-900 font-display font-medium leading-tight">
             {props.title}
-          </h3>
+          </h2>
           <div className="mt-3 w-12 h-px bg-brand-gold mx-auto sm:mx-0" />
           <div className="mt-6 text-lg text-stone-600 leading-relaxed">
             {props.paragraphs.map((paragraph, idx) => (

@@ -24,10 +24,11 @@ const Hero = () => {
           <div className="w-full flex flex-col gap-8 items-center justify-center !max-w-none !px-0">
             <header className="text-center py-6 w-full max-w-4xl mx-auto px-4">
               <h1 className="text-4xl md:text-5xl text-white tracking-wide leading-tight mb-6 drop-shadow-lg">
-                <div className="flex flex-col items-center justify-center">
+                <span className="sr-only">{t('hero.srOnly')}</span>
+                <span aria-hidden className="flex flex-col items-center justify-center">
                   <Image
                     src="/logos/fellowship-wordmark-minimal-white.svg"
-                    alt={t('hero.logoAltMinimal')}
+                    alt=""
                     width={390}
                     height={110}
                     className="mx-auto w-full max-w-[300px] sm:max-w-[390px] h-auto"
@@ -35,14 +36,13 @@ const Hero = () => {
                   />
                   <Image
                     src="/logos/fellowship-wordmark-events-white.svg"
-                    alt={t('hero.logoAltEvents')}
+                    alt=""
                     width={260}
                     height={73}
                     className="mx-auto w-full max-w-[200px] sm:max-w-[260px] h-auto"
                     priority
                   />
-                </div>
-                <span className="sr-only">{t('hero.srOnly')}</span>
+                </span>
               </h1>
 
               <div className="mx-auto w-16 h-px bg-brand-gold/80 mb-6" />
