@@ -37,7 +37,7 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
   );
 
   return (
-    <Section title={t('title')} description={t('description')}>
+    <Section title={t('title')} titleAs="h1" description={t('description')}>
       <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6 border-y border-stone-200 py-5">
         {GALLERY_CATEGORY_KEYS.map((categoryKey) => (
           <button
