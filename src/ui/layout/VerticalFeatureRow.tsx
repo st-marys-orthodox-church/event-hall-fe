@@ -1,7 +1,6 @@
 import className from 'classnames';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { Fragment } from 'react';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { useScrollParallax } from '../../hooks';
 
@@ -38,12 +37,9 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
             {props.title}
           </h2>
           <div className="mt-3 w-12 h-px bg-brand-gold mx-auto sm:mx-0" />
-          <div className="mt-6 text-lg text-stone-600 leading-relaxed">
+          <div className="mt-6 text-lg text-stone-600 leading-relaxed space-y-4">
             {props.paragraphs.map((paragraph, idx) => (
-              <Fragment key={idx}>
-                <p>{paragraph}</p>
-                {idx < props.paragraphs.length - 1 && <br />}
-              </Fragment>
+              <p key={idx}>{paragraph}</p>
             ))}
           </div>
         </div>
