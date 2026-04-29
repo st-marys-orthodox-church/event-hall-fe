@@ -7,9 +7,19 @@ export type IPackageMeta = {
 };
 
 export const PACKAGES: IPackageMeta[] = [
-  { key: 'intimate', img: '/photos/tier-1.jpeg' },
-  { key: 'grand', img: '/photos/tier-3.jpg', popular: true },
-  { key: 'majestic', img: '/photos/tier-2.jpeg' },
+  {
+    key: 'intimate',
+    img: 'https://i.ibb.co/tPK5dkkr/hf-20260429-052718-69542eb9-8854-4bfe-9893-484126107025.png',
+  },
+  {
+    key: 'grand',
+    img: 'https://i.ibb.co/h1dnK7Gr/hf-20260429-052653-a6626937-aade-4ada-8881-d2c3490d4c28.png',
+    popular: true,
+  },
+  {
+    key: 'majestic',
+    img: 'https://i.ibb.co/Cp4QcWvC/hf-20260429-052910-7b7f30bd-1963-491e-a1b7-e46d640e0570.png',
+  },
 ];
 
 export type IPackageTierMeta = {

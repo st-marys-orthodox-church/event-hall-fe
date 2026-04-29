@@ -10,11 +10,11 @@
     "heading": "Capacity & Pricing",
     "mostPopular": "Most Popular",
     "tiers": [
-      { "capacity": "50 People", "price": "$2,000" },
-      { "capacity": "100 People", "price": "$2,500" },
-      { "capacity": "150 People", "price": "$3,000" },
-      { "capacity": "200 People", "price": "$3,500" },
-      { "capacity": "300 People", "price": "$4,000" }
+      { "capacity": "50 People", "price": "$2,500" },
+      { "capacity": "100 People", "price": "$3,000" },
+      { "capacity": "150 People", "price": "$3,500" },
+      { "capacity": "200 People", "price": "$4,000" },
+      { "capacity": "250 People", "price": "$4,000" }
     ]
   },
   "included": {
@@ -33,6 +33,7 @@
     "eyebrow": "Fast Quote",
     "heading": "Get a Quick Quote via WhatsApp",
     "description": "Select your event type for an instant quote request.",
+    "imageAlt": "Elegantly arranged tables and chairs set up for an event at Fellowship Event Hall",
     "weddingButton": "Wedding Quote",
     "quinceaneraButton": "Quinceañera Quote",
     "corporateButton": "Corporate Quote",
@@ -48,7 +49,8 @@
     "eyebrow": "Next Step",
     "heading": "Ready to Book Your Event?",
     "body": "Contact us today to schedule a tour and discuss how we can make your special occasion unforgettable.",
-    "button": "Get in Touch"
+    "button": "Get in Touch",
+    "imageAlt": "Fellowship Event Hall celebration — event venue in Dacula, GA"
   },
   "tiers": {
     "intimate": {

@@ -43,11 +43,11 @@ export type IStoryFeatureMeta = {
 export const STORY_FEATURES: IStoryFeatureMeta[] = [
   {
     key: 'ourStory',
-    image: '/photos/about-1.jpeg',
+    image: 'https://i.ibb.co/Gvb0LzwP/hf-20260429-052713-ab321634-f189-4a89-81ec-c622c894a006.png',
   },
   {
     key: 'aboutYou',
-    image: '/photos/about-2.jpg',
+    image: 'https://i.ibb.co/zcrtSqd/hf-20260429-052821-f57ba732-b7fe-43b5-b21c-2f96b03b03be.png',
     reverse: true,
   },
 ];

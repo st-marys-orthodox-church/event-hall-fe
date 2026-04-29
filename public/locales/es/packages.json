@@ -48,6 +48,7 @@
     "eyebrow": "Presupuesto rápido",
     "heading": "Obtén un presupuesto rápido por WhatsApp",
     "description": "Selecciona el tipo de evento para solicitar un presupuesto al instante.",
+    "imageAlt": "Mesas y sillas elegantemente dispuestas para un evento en Fellowship Event Hall",
     "weddingButton": "Presupuesto de boda",
     "quinceaneraButton": "Presupuesto de quinceañera",
     "corporateButton": "Presupuesto corporativo",
@@ -63,7 +64,8 @@
     "eyebrow": "Siguiente paso",
     "heading": "¿Listo para reservar tu evento?",
     "body": "Contáctanos hoy para programar una visita y hablar de cómo podemos hacer que tu ocasión especial sea inolvidable.",
-    "button": "Ponte en contacto"
+    "button": "Ponte en contacto",
+    "imageAlt": "Celebración en Fellowship Event Hall — lugar de eventos en Dacula, GA"
   },
   "tiers": {
     "intimate": {

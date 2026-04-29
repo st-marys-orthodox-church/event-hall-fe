@@ -2,8 +2,10 @@ import { Email, LocationOn, Phone, Schedule } from '@mui/icons-material';
 import type { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next/pages';
 import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations';
+import Image from 'next/image';
 import Link from 'next/link';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { useScrollParallax } from '../hooks';
 import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
@@ -33,6 +35,10 @@ const Index = () => {
   const { t: tSeo } = useTranslation('seo');
   const { t: tPackages } = useTranslation('packages');
   const { handleOpenModal } = useAppContext();
+  const { ref: ctaRef, offset: ctaOffset } = useScrollParallax<HTMLDivElement>({
+    speed: 0.3,
+    max: 180,
+  });
 
   const structuredDataCopy: StructuredDataCopy = {
     siteName: tSeo('siteName'),
@@ -121,7 +127,11 @@ const Index = () => {
         <PackagesShowcase packages={PACKAGES} />
 
         {/* Availability Calendar */}
-        <section aria-labelledby="availability-heading" className="py-20 bg-stone-50">
+        <section
+          id="availability"
+          aria-labelledby="availability-heading"
+          className="pb-32 bg-stone-50"
+        >
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-12">
@@ -143,9 +153,28 @@ const Index = () => {
         </section>
 
         {/* CTA Banner */}
-        <section className="relative py-24 bg-stone-900 text-white overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-green/25 via-transparent to-brand-gold/20" />
-          <div className="relative max-w-3xl mx-auto px-6 text-center">
+        <section className="relative py-28 text-white overflow-hidden">
+          {/* Parallax background image */}
+          <div ref={ctaRef} className="absolute inset-0 overflow-hidden">
+            <div
+              className="absolute -inset-y-20 inset-x-0 will-change-transform"
+              style={{ transform: `translate3d(0, ${ctaOffset}px, 0)` }}
+            >
+              <Image
+                src="https://i.ibb.co/JjsS7wDn/hf-20260429-052749-a8a99f87-5229-435e-8b3a-335908b7d3cf.png"
+                alt="Fellowship Event Hall celebration — event venue in Dacula, GA"
+                fill
+                className="object-cover"
+                sizes="100vw"
+              />
+            </div>
+          </div>
+
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/55 to-black/75 z-[1]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-green/20 via-transparent to-brand-gold/15 z-[1]" />
+
+          <div className="relative z-[2] max-w-3xl mx-auto px-6 text-center">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <span className="eyebrow text-brand-gold">{tHome('cta.eyebrow')}</span>
               <h2 className="mt-3 font-display text-4xl md:text-5xl leading-tight">
@@ -168,33 +197,6 @@ const Index = () => {
             </AnimationOnScroll>
           </div>
         </section>
-
-        {/* Trust Badges */}
-        <div className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                {TRUST_BADGES.map((badge) => (
-                  <div key={badge.key} className="flex flex-col items-center gap-4">
-                    <div className="w-14 h-14 flex items-center justify-center border border-stone-200">
-                      <badge.Icon
-                        className={`w-7 h-7 ${
-                          badge.iconTone === 'green' ? 'text-brand-green' : 'text-brand-gold'
-                        }`}
-                      />
-                    </div>
-                    <h3 className="font-display text-2xl text-stone-900">
-                      {tHome(`trustBadges.${badge.key}.title`)}
-                    </h3>
-                    <p className="text-stone-600 max-w-xs">
-                      {tHome(`trustBadges.${badge.key}.text`)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </AnimationOnScroll>
-          </div>
-        </div>
 
         {/* Visit Us */}
         <section aria-labelledby="visit-us-heading" className="py-20 bg-stone-50">
@@ -237,9 +239,7 @@ const Index = () => {
                     <span itemProp="postalCode">{AppConfig.address.postalCode}</span>
                   </address>
                   <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      `${AppConfig.address.street}, ${AppConfig.address.city}, ${AppConfig.address.region} ${AppConfig.address.postalCode}`
-                    )}`}
+                    href={'https://maps.app.goo.gl/XMYyAKG9XSL24X259'}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="eyebrow text-brand-green hover:text-brand-green-dark transition-colors mt-1"
@@ -298,6 +298,33 @@ const Index = () => {
             <Faq />
           </div>
         </section>
+
+        {/* Trust Badges */}
+        <div className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                {TRUST_BADGES.map((badge) => (
+                  <div key={badge.key} className="flex flex-col items-center gap-4">
+                    <div className="w-14 h-14 flex items-center justify-center border border-stone-200">
+                      <badge.Icon
+                        className={`w-7 h-7 ${
+                          badge.iconTone === 'green' ? 'text-brand-green' : 'text-brand-gold'
+                        }`}
+                      />
+                    </div>
+                    <h3 className="font-display text-2xl text-stone-900">
+                      {tHome(`trustBadges.${badge.key}.title`)}
+                    </h3>
+                    <p className="text-stone-600 max-w-xs">
+                      {tHome(`trustBadges.${badge.key}.text`)}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </AnimationOnScroll>
+          </div>
+        </div>
       </Template>
     </div>
   );

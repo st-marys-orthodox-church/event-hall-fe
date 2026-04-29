@@ -1,5 +1,9 @@
 import React from 'react';
 
+// Fires synchronously before paint on client; falls back to useEffect on server
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
+
 export const useWindowSize = () => {
   const breakpoint = 1024;
   const [windowSize, setWindowSize] = React.useState({
@@ -9,34 +13,19 @@ export const useWindowSize = () => {
   const [scrollY, setScrollY] = React.useState(0);
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    // just trigger this so that the initial state
-    // is updated as soon as the component is mounted
-    // related: https://stackoverflow.com/a/63408216
+    const handleScroll = () => setScrollY(window.scrollY);
     handleScroll();
-
     window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const handleResize = () =>
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
 
     window.addEventListener('resize', handleResize);
-
     handleResize();
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return { ...windowSize, breakpoint, scrollY, isMobile: windowSize.width < breakpoint };

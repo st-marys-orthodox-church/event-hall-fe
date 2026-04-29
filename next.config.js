@@ -13,6 +13,14 @@ const nextConfig = {
     emotion: true,
   },
   i18n,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.ibb.co',
+      },
+    ],
+  },
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

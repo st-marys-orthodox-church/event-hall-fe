@@ -48,6 +48,7 @@
     "eyebrow": "Ofertă rapidă",
     "heading": "Obține rapid o ofertă prin WhatsApp",
     "description": "Selectează tipul evenimentului pentru o cerere instantanee de ofertă.",
+    "imageAlt": "Mese și scaune aranjate elegant pentru un eveniment la Fellowship Event Hall",
     "weddingButton": "Ofertă nuntă",
     "quinceaneraButton": "Ofertă quinceañera",
     "corporateButton": "Ofertă corporate",
@@ -63,7 +64,8 @@
     "eyebrow": "Pasul următor",
     "heading": "Ești gata să-ți rezervi evenimentul?",
     "body": "Contactează-ne astăzi pentru a programa un tur și a discuta cum putem face ocazia ta specială de neuitat.",
-    "button": "Ia legătura"
+    "button": "Ia legătura",
+    "imageAlt": "Celebrație la Fellowship Event Hall — sala de evenimente din Dacula, GA"
   },
   "tiers": {
     "intimate": {

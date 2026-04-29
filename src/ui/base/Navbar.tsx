@@ -14,14 +14,18 @@ import { Logo } from './Logo';
 
 export const Navbar = () => {
   const { handleOpenModal } = useAppContext();
-  const { width } = useWindowSize();
+  const { width, scrollY } = useWindowSize();
   const { open, handleClick, handleClose, anchorEl } = useDropdown();
   const { t } = useTranslation('common');
 
   const links = NAV_LINKS;
+  const isScrolled = scrollY > 50;
 
   return (
-    <Section yPadding="py-3">
+    <Section
+      yPadding={isScrolled ? 'py-1.5' : 'py-3'}
+      className="transition-[padding] duration-300 ease-refined"
+    >
       <div className="flex justify-between items-center gap-6">
         <Link href="/" className="flex items-center" aria-label={t('nav.homeAriaLabel')}>
           <Logo />
@@ -42,13 +46,12 @@ export const Navbar = () => {
                 </li>
               ))}
               <li className="flex items-center gap-3 pl-4 border-l border-stone-200">
-                <button
-                  type="button"
-                  onClick={() => handleOpenModal()}
+                <Link
+                  href="/#availability"
                   className="eyebrow text-stone-700 hover:text-brand-green border border-stone-300 hover:border-brand-green px-4 py-2 transition-colors duration-300 ease-refined"
                 >
                   {t('nav.contactUs')}
-                </button>
+                </Link>
                 <Tooltip title={t('whatsapp.chat')}>
                   <IconButton
                     href={generateWhatsAppUrl()}
@@ -75,13 +78,12 @@ export const Navbar = () => {
             </ul>
           ) : (
             <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={() => handleOpenModal()}
+              <Link
+                href="/#availability"
                 className="eyebrow text-stone-700 border border-stone-300 px-3 py-1.5"
               >
                 {t('nav.contact')}
-              </button>
+              </Link>
               <Tooltip title={t('whatsapp.chat')}>
                 <IconButton
                   href={generateWhatsAppUrl()}
