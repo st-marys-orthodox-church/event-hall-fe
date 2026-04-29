@@ -24,6 +24,7 @@ import { REVIEWS } from '../utils/Reviews';
 import {
   type StructuredDataCopy,
   type StructuredReview,
+  breadcrumbJsonLd,
   eventVenueJsonLd,
   faqPageJsonLd,
   localBusinessJsonLd,
@@ -78,6 +79,7 @@ const Index = () => {
       structuredDataCopy.offerCatalogName
     ),
     faqPageJsonLd(faqItems),
+    breadcrumbJsonLd([{ name: tPackages('breadcrumb.home'), path: '/' }]),
   ];
 
   return (

@@ -13,7 +13,7 @@ import { WhatsAppButton } from '../ui/components/WhatsAppButton';
 import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
 import { Section } from '../ui/layout/Section';
 import { EVENT_TYPES } from '../utils/Constants';
-import { DEPOSIT_INFO, PACKAGE_TIERS } from '../utils/Packages';
+import { DEPOSIT_INFO, PACKAGES, PACKAGE_TIERS } from '../utils/Packages';
 import { breadcrumbJsonLd, offerCatalogJsonLd } from '../utils/StructuredData';
 import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
@@ -43,13 +43,11 @@ const Packages = () => {
 
   const jsonLd = [
     offerCatalogJsonLd(
-      tiers.map((tier) => ({
-        name: `${tier.capacity} ${tSeo('structuredData.packageSuffix')}`,
-        price: tier.price,
-        capacity: Number.parseInt(tier.capacity, 10),
-        description: tSeo('structuredData.packageDescription', {
-          capacity: tier.capacity.toLowerCase(),
-        }),
+      PACKAGES.map((p) => ({
+        name: t(`tiers.${p.key}.title`),
+        price: t(`tiers.${p.key}.price`),
+        capacity: Number.parseInt(t(`tiers.${p.key}.capacity`), 10),
+        description: t(`tiers.${p.key}.description`),
       })),
       tSeo('structuredData.offerCatalogName')
     ),
