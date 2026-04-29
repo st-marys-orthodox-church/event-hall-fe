@@ -12,7 +12,7 @@ export const AppConfig = {
   instagram: SOCIALS.IG,
   twitter: '',
   facebook: SOCIALS.FB,
-  telephone: '+1-‭404-518-1042‬',
+  telephone: '+1-404-518-1042',
   email: 'events@saintmaryro.org',
   address: {
     street: '2875 Winder Hwy',
@@ -25,5 +25,5 @@ export const AppConfig = {
     latitude: 33.99224442833723,
     longitude: -83.88655118493534,
   },
-  priceRange: '$2,000–$4,000',
+  priceRange: '$2000-$4000',
 };

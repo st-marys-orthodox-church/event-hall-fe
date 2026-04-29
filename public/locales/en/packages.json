@@ -10,10 +10,10 @@
     "heading": "Capacity & Pricing",
     "mostPopular": "Most Popular",
     "tiers": [
-      { "capacity": "50 People", "price": "$2,500" },
-      { "capacity": "100 People", "price": "$3,000" },
-      { "capacity": "150 People", "price": "$3,500" },
-      { "capacity": "200 People", "price": "$4,000" },
+      { "capacity": "50 People", "price": "$2,000" },
+      { "capacity": "100 People", "price": "$2,500" },
+      { "capacity": "150 People", "price": "$3,000" },
+      { "capacity": "200 People", "price": "$3,500" },
       { "capacity": "250 People", "price": "$4,000" }
     ]
   },
