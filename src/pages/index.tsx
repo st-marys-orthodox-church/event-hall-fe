@@ -269,6 +269,7 @@ const Index = () => {
                   </h3>
                   <a
                     href={`tel:${AppConfig.telephone.replace(/[^\d+]/g, '')}`}
+                    aria-label={`Call Fellowship Event Hall at ${AppConfig.telephone}`}
                     className="text-stone-600 hover:text-brand-green transition"
                     itemProp="telephone"
                   >
