@@ -33,5 +33,17 @@
   },
   "logo": {
     "alt": "Fellowship Event Hall"
+  },
+  "calendar": {
+    "previousMonth": "Luna anterioară",
+    "nextMonth": "Luna următoare",
+    "clickHint": "Apăsați pe orice dată disponibilă pentru a începe",
+    "available": "Disponibil",
+    "booked": "Rezervat",
+    "past": "Trecut",
+    "errorTitle": "Calendar temporar indisponibil",
+    "errorBody": "Vă rugăm să ne sunați sau să trimiteți formularul de contact pentru a verifica disponibilitatea.",
+    "selectDateAria": "{{month}} {{day}}, {{year}}, disponibil — selectați data pentru a solicita informații",
+    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}"
   }
 }

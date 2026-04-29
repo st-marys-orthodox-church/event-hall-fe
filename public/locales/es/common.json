@@ -33,5 +33,17 @@
   },
   "logo": {
     "alt": "Fellowship Event Hall"
+  },
+  "calendar": {
+    "previousMonth": "Mes anterior",
+    "nextMonth": "Mes siguiente",
+    "clickHint": "Haz clic en cualquier fecha disponible para empezar",
+    "available": "Disponible",
+    "booked": "Reservado",
+    "past": "Pasado",
+    "errorTitle": "Calendario temporalmente no disponible",
+    "errorBody": "Por favor, llámanos o envía el formulario de contacto para consultar la disponibilidad.",
+    "selectDateAria": "{{month}} {{day}}, {{year}}, disponible — selecciona la fecha para consultar",
+    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}"
   }
 }

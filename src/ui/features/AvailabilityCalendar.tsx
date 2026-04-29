@@ -1,22 +1,18 @@
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import { useTranslation } from 'next-i18next/pages';
 import { useEffect, useMemo, useState } from 'react';
 
 const VENUE_TZ = 'America/New_York';
-const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-const MONTH_NAMES = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+
+const buildWeekdayNames = (locale: string) => {
+  const fmt = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+  return Array.from({ length: 7 }, (_, i) => fmt.format(new Date(2024, 0, 7 + i)));
+};
+
+const buildMonthNames = (locale: string) => {
+  const fmt = new Intl.DateTimeFormat(locale, { month: 'long' });
+  return Array.from({ length: 12 }, (_, i) => fmt.format(new Date(2024, i, 1)));
+};
 
 type Props = {
   monthsVisible?: number;
@@ -63,25 +59,35 @@ const DayCell = ({
   day,
   year,
   month,
+  monthName,
   status,
   onSelect,
 }: {
   day: number | null;
   year: number;
   month: number;
+  monthName: string;
   status: 'available' | 'booked' | 'past' | null;
   onSelect: (date: Date) => void;
 }) => {
+  const { t } = useTranslation('common');
+
   if (day === null || status === null) {
     return <div aria-hidden className="aspect-square" />;
   }
 
-  const label = `${MONTH_NAMES[month]} ${day}, ${year}, ${status}`;
+  const statusLabel = t(`calendar.${status}`);
+  const dayStatusAria = t('calendar.dayStatusAria', {
+    month: monthName,
+    day,
+    year,
+    status: statusLabel,
+  });
 
   if (status === 'past') {
     return (
       <div
-        aria-label={label}
+        aria-label={dayStatusAria}
         className="aspect-square flex items-center justify-center rounded-lg text-stone-300 text-sm select-none"
       >
         {day}
@@ -92,12 +98,14 @@ const DayCell = ({
   if (status === 'booked') {
     return (
       <div
-        aria-label={label}
-        title="Booked"
+        aria-label={dayStatusAria}
+        title={statusLabel}
         className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-deep select-none"
       >
         <span className="text-sm font-semibold leading-none">{day}</span>
-        <span className="text-[9px] uppercase tracking-wider mt-0.5 font-medium">Booked</span>
+        <span className="text-[9px] uppercase tracking-wider mt-0.5 font-medium">
+          {statusLabel}
+        </span>
       </div>
     );
   }
@@ -105,7 +113,7 @@ const DayCell = ({
   return (
     <button
       type="button"
-      aria-label={`${MONTH_NAMES[month]} ${day}, ${year}, available — select date to inquire`}
+      aria-label={t('calendar.selectDateAria', { month: monthName, day, year })}
       onClick={() => onSelect(new Date(year, month, day))}
       className="aspect-square flex items-center justify-center rounded-lg text-sm text-stone-700 font-medium bg-white hover:bg-brand-gold/15 hover:text-brand-gold-deep hover:ring-1 hover:ring-brand-gold/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition cursor-pointer"
     >
@@ -117,12 +125,16 @@ const DayCell = ({
 const MonthGrid = ({
   year,
   month,
+  monthName,
+  weekdayNames,
   bookedSet,
   todayIso,
   onSelect,
 }: {
   year: number;
   month: number;
+  monthName: string;
+  weekdayNames: string[];
   bookedSet: Set<string>;
   todayIso: string;
   onSelect: (date: Date) => void;
@@ -132,10 +144,10 @@ const MonthGrid = ({
   return (
     <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-4 sm:p-5">
       <h3 className="text-center text-lg font-bold text-stone-800 mb-4">
-        {MONTH_NAMES[month]} {year}
+        {monthName} {year}
       </h3>
       <div className="grid grid-cols-7 gap-1 mb-1">
-        {WEEKDAYS.map((wd) => (
+        {weekdayNames.map((wd) => (
           <div
             key={wd}
             className="text-[10px] sm:text-xs uppercase tracking-wider text-stone-500 text-center font-semibold py-1"
@@ -153,6 +165,7 @@ const MonthGrid = ({
                 day={null}
                 year={year}
                 month={month}
+                monthName={monthName}
                 status={null}
                 onSelect={onSelect}
               />
@@ -169,6 +182,7 @@ const MonthGrid = ({
               day={day}
               year={year}
               month={month}
+              monthName={monthName}
               status={status}
               onSelect={onSelect}
             />
@@ -179,24 +193,27 @@ const MonthGrid = ({
   );
 };
 
-const Legend = () => (
-  <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-stone-600 mt-6">
-    <span className="flex items-center gap-2">
-      <span className="inline-block w-4 h-4 rounded bg-white border border-stone-300" />
-      Available
-    </span>
-    <span className="flex items-center gap-2">
-      <span className="inline-block w-4 h-4 rounded bg-brand-green/15 ring-1 ring-brand-green/30" />
-      Booked
-    </span>
-    <span className="flex items-center gap-2">
-      <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-300 flex items-center justify-center text-[10px]">
-        •
+const Legend = () => {
+  const { t } = useTranslation('common');
+  return (
+    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-stone-600 mt-6">
+      <span className="flex items-center gap-2">
+        <span className="inline-block w-4 h-4 rounded bg-white border border-stone-300" />
+        {t('calendar.available')}
       </span>
-      Past
-    </span>
-  </div>
-);
+      <span className="flex items-center gap-2">
+        <span className="inline-block w-4 h-4 rounded bg-brand-green/15 ring-1 ring-brand-green/30" />
+        {t('calendar.booked')}
+      </span>
+      <span className="flex items-center gap-2">
+        <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-300 flex items-center justify-center text-[10px]">
+          •
+        </span>
+        {t('calendar.past')}
+      </span>
+    </div>
+  );
+};
 
 const SkeletonGrid = () => (
   <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-4 sm:p-5 animate-pulse">
@@ -210,6 +227,10 @@ const SkeletonGrid = () => (
 );
 
 const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Props) => {
+  const { t, i18n } = useTranslation('common');
+  const activeLocale = i18n.language || 'en';
+  const weekdayNames = useMemo(() => buildWeekdayNames(activeLocale), [activeLocale]);
+  const monthNames = useMemo(() => buildMonthNames(activeLocale), [activeLocale]);
   const [mounted, setMounted] = useState(false);
   const [baseMonth, setBaseMonth] = useState<MonthKey>({ year: 2026, month: 0 });
   const [todayIso, setTodayIso] = useState('');
@@ -289,16 +310,16 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
           type="button"
           onClick={goPrev}
           disabled={Boolean(atCurrentMonth)}
-          aria-label="Previous month"
+          aria-label={t('calendar.previousMonth')}
           className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-700 hover:bg-brand-green/10 hover:text-brand-green hover:border-brand-green/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-stone-700 disabled:hover:border-stone-300"
         >
           <ChevronLeft />
         </button>
-        <p className="text-sm text-stone-500 font-medium">Click any available date to start</p>
+        <p className="text-sm text-stone-500 font-medium">{t('calendar.clickHint')}</p>
         <button
           type="button"
           onClick={goNext}
-          aria-label="Next month"
+          aria-label={t('calendar.nextMonth')}
           className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-700 hover:bg-brand-green/10 hover:text-brand-green hover:border-brand-green/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition"
         >
           <ChevronRight />
@@ -307,10 +328,8 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
 
       {error ? (
         <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-8 text-center">
-          <p className="text-stone-700 font-semibold mb-2">Calendar temporarily unavailable</p>
-          <p className="text-stone-600 text-sm">
-            Please call us or submit the contact form to check availability.
-          </p>
+          <p className="text-stone-700 font-semibold mb-2">{t('calendar.errorTitle')}</p>
+          <p className="text-stone-600 text-sm">{t('calendar.errorBody')}</p>
         </div>
       ) : loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
@@ -325,6 +344,8 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
               key={`${m.year}-${m.month}`}
               year={m.year}
               month={m.month}
+              monthName={monthNames[m.month] ?? ''}
+              weekdayNames={weekdayNames}
               bookedSet={bookedSet}
               todayIso={todayIso}
               onSelect={handleSelect}
