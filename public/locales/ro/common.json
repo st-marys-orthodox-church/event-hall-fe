@@ -23,7 +23,13 @@
     "facebook": "Facebook",
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
-    "mapTitle": "Hartă care arată Fellowship Event Hall la 2875 Winder Hwy, Dacula, GA 30019"
+    "mapTitle": "Hartă care arată Fellowship Event Hall la 2875 Winder Hwy, Dacula, GA 30019",
+    "visitTitle": "Vizitează",
+    "contactTitle": "Contact",
+    "hoursTitle": "Program",
+    "weekdayHours": "Luni–Vineri 9:00 – 18:00",
+    "weekendHours": "Sâmbătă–Duminică 10:00 – 23:00",
+    "getDirections": "Obține indicații"
   },
   "logo": {
     "alt": "Fellowship Event Hall"
