@@ -20,8 +20,10 @@ import { VerticalFeatures } from '../ui/features/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 import { STATS_ITEMS, TRUST_BADGES } from '../utils/Features';
 import { PACKAGES } from '../utils/Packages';
+import { REVIEWS } from '../utils/Reviews';
 import {
   type StructuredDataCopy,
+  type StructuredReview,
   eventVenueJsonLd,
   faqPageJsonLd,
   localBusinessJsonLd,
@@ -56,9 +58,16 @@ const Index = () => {
     answer: string;
   }>;
 
+  const structuredReviews: StructuredReview[] = REVIEWS.map((review) => ({
+    author: tHome(`reviews.items.${review.key}.name`),
+    reviewBody: tHome(`reviews.items.${review.key}.text`),
+    datePublished: review.datePublished,
+    rating: review.rating,
+  }));
+
   const jsonLd = [
-    localBusinessJsonLd(structuredDataCopy),
-    eventVenueJsonLd(structuredDataCopy),
+    localBusinessJsonLd(structuredDataCopy, structuredReviews),
+    eventVenueJsonLd(structuredDataCopy, structuredReviews),
     offerCatalogJsonLd(
       PACKAGES.map((p) => ({
         name: tPackages(`tiers.${p.key}.title`),

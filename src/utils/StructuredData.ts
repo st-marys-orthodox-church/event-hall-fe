@@ -47,6 +47,40 @@ export type StructuredDataCopy = {
   offerCatalogName: string;
 };
 
+export type StructuredReview = {
+  author: string;
+  datePublished: string;
+  reviewBody: string;
+  rating: number;
+};
+
+const buildReviewNodes = (reviews: StructuredReview[]) =>
+  reviews.map((review) => ({
+    '@type': 'Review',
+    author: { '@type': 'Person', name: review.author },
+    datePublished: review.datePublished,
+    reviewBody: review.reviewBody,
+    reviewRating: {
+      '@type': 'Rating',
+      ratingValue: review.rating,
+      bestRating: 5,
+      worstRating: 1,
+    },
+  }));
+
+const buildAggregateRating = (reviews: StructuredReview[]) => {
+  if (reviews.length === 0) return undefined;
+  const total = reviews.reduce((sum, r) => sum + r.rating, 0);
+  const ratingValue = Number((total / reviews.length).toFixed(1));
+  return {
+    '@type': 'AggregateRating',
+    ratingValue,
+    bestRating: 5,
+    worstRating: 1,
+    reviewCount: reviews.length,
+  };
+};
+
 const buildAmenityFeature = (copy: StructuredDataCopy) =>
   AMENITY_KEYS.map((key) => ({
     '@type': 'LocationFeatureSpecification',
@@ -57,61 +91,71 @@ const buildAmenityFeature = (copy: StructuredDataCopy) =>
 const buildAreaServed = (copy: StructuredDataCopy) =>
   copy.areaServed.map((name) => ({ '@type': 'Place', name }));
 
-export const eventVenueJsonLd = (copy: StructuredDataCopy) => ({
-  '@context': 'https://schema.org',
-  '@type': 'EventVenue',
-  '@id': `${AppConfig.url}/#venue`,
-  name: copy.siteName,
-  description: copy.description,
-  url: AppConfig.url,
-  image: AppConfig.ogImage,
-  telephone: AppConfig.telephone,
-  email: AppConfig.email,
-  priceRange: AppConfig.priceRange,
-  maximumAttendeeCapacity: 300,
-  address: postalAddress,
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: AppConfig.geo.latitude,
-    longitude: AppConfig.geo.longitude,
-  },
-  hasMap: GOOGLE_MAPS_URL,
-  areaServed: buildAreaServed(copy),
-  openingHoursSpecification,
-  amenityFeature: buildAmenityFeature(copy),
-  sameAs,
-});
+export const eventVenueJsonLd = (copy: StructuredDataCopy, reviews: StructuredReview[] = []) => {
+  const aggregateRating = buildAggregateRating(reviews);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'EventVenue',
+    '@id': `${AppConfig.url}/#venue`,
+    name: copy.siteName,
+    description: copy.description,
+    url: AppConfig.url,
+    image: AppConfig.ogImage,
+    telephone: AppConfig.telephone,
+    email: AppConfig.email,
+    priceRange: AppConfig.priceRange,
+    maximumAttendeeCapacity: 300,
+    address: postalAddress,
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: AppConfig.geo.latitude,
+      longitude: AppConfig.geo.longitude,
+    },
+    hasMap: GOOGLE_MAPS_URL,
+    areaServed: buildAreaServed(copy),
+    openingHoursSpecification,
+    amenityFeature: buildAmenityFeature(copy),
+    sameAs,
+    ...(aggregateRating ? { aggregateRating } : {}),
+    ...(reviews.length > 0 ? { review: buildReviewNodes(reviews) } : {}),
+  };
+};
 
-export const localBusinessJsonLd = (copy: StructuredDataCopy) => ({
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${AppConfig.url}/#business`,
-  name: copy.siteName,
-  description: copy.description,
-  url: AppConfig.url,
-  image: AppConfig.ogImage,
-  logo: AppConfig.logo,
-  telephone: AppConfig.telephone,
-  email: AppConfig.email,
-  priceRange: AppConfig.priceRange,
-  maximumAttendeeCapacity: 300,
-  address: postalAddress,
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: AppConfig.geo.latitude,
-    longitude: AppConfig.geo.longitude,
-  },
-  hasMap: GOOGLE_MAPS_URL,
-  areaServed: buildAreaServed(copy),
-  openingHoursSpecification,
-  amenityFeature: buildAmenityFeature(copy),
-  parentOrganization: {
-    '@type': 'Church',
-    name: 'St. Mary Romanian Orthodox Church',
-    url: 'https://saintmaryro.org',
-  },
-  sameAs,
-});
+export const localBusinessJsonLd = (copy: StructuredDataCopy, reviews: StructuredReview[] = []) => {
+  const aggregateRating = buildAggregateRating(reviews);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': `${AppConfig.url}/#business`,
+    name: copy.siteName,
+    description: copy.description,
+    url: AppConfig.url,
+    image: AppConfig.ogImage,
+    logo: AppConfig.logo,
+    telephone: AppConfig.telephone,
+    email: AppConfig.email,
+    priceRange: AppConfig.priceRange,
+    maximumAttendeeCapacity: 300,
+    address: postalAddress,
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: AppConfig.geo.latitude,
+      longitude: AppConfig.geo.longitude,
+    },
+    hasMap: GOOGLE_MAPS_URL,
+    areaServed: buildAreaServed(copy),
+    openingHoursSpecification,
+    amenityFeature: buildAmenityFeature(copy),
+    parentOrganization: {
+      '@type': 'Church',
+      name: 'St. Mary Romanian Orthodox Church',
+      url: 'https://saintmaryro.org',
+    },
+    sameAs,
+    ...(aggregateRating ? { aggregateRating } : {}),
+    ...(reviews.length > 0 ? { review: buildReviewNodes(reviews) } : {}),
+  };
+};
 
 type FaqItem = { question: string; answer: string };
 
