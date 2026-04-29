@@ -37,6 +37,24 @@
     },
     "packageDescription": "Event package accommodating up to {{capacity}} at Fellowship Event Hall.",
     "offerCatalogName": "Fellowship Event Hall — Event Packages",
-    "packageSuffix": "Package"
+    "packageSuffix": "Package",
+    "services": {
+      "wedding": {
+        "name": "Wedding venue rental",
+        "description": "Wedding ceremony and reception venue rental at Fellowship Event Hall in Dacula, GA — seats up to 250 guests with bridal suite, sound and lighting, and on-site coordinator."
+      },
+      "quinceanera": {
+        "name": "Quinceañera venue rental",
+        "description": "Quinceañera celebration venue rental at Fellowship Event Hall in Dacula, GA — full hall access with tables, linens, sound system, and dance floor for up to 250 guests."
+      },
+      "corporate": {
+        "name": "Corporate event venue rental",
+        "description": "Corporate event and team gathering venue rental at Fellowship Event Hall in Dacula, GA — flexible hours, on-site parking, prep kitchen, and Wi-Fi."
+      },
+      "birthday": {
+        "name": "Birthday and private party venue rental",
+        "description": "Birthday party and private celebration venue rental at Fellowship Event Hall in Dacula, GA — intimate to large gatherings with included tables, chairs, linens, and on-site coordinator."
+      }
+    }
   }
 }

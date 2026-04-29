@@ -9,7 +9,12 @@ const postalAddress = {
   addressCountry: AppConfig.address.country,
 };
 
-const sameAs = [AppConfig.facebook, AppConfig.instagram, AppConfig.twitter].filter(Boolean);
+const sameAs = [
+  AppConfig.facebook,
+  AppConfig.instagram,
+  AppConfig.twitter,
+  AppConfig.googleBusinessProfile,
+].filter(Boolean);
 
 const GOOGLE_MAPS_URL =
   'https://www.google.com/maps/place/Saint+Mary%27s+Fellowship+Hall/@33.9922444,-83.8865512,17z';
@@ -211,6 +216,31 @@ export const offerCatalogJsonLd = (offers: PackageOffer[], offerCatalogName: str
     },
   })),
 });
+
+type EventService = {
+  key: string;
+  name: string;
+  description: string;
+};
+
+export const eventServicesJsonLd = (services: EventService[], areaServed: string[]) =>
+  services.map((service) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${AppConfig.url}/#service-${service.key}`,
+    name: service.name,
+    description: service.description,
+    serviceType: service.name,
+    provider: { '@id': `${AppConfig.url}/#venue` },
+    areaServed: areaServed.map((name) => ({ '@type': 'Place', name })),
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'USD',
+      lowPrice: '2000',
+      highPrice: '4000',
+      url: `${AppConfig.url}/packages`,
+    },
+  }));
 
 type BreadcrumbItem = { name: string; path: string };
 

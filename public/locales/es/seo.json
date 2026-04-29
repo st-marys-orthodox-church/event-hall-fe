@@ -37,6 +37,24 @@
     },
     "packageDescription": "Paquete de evento con capacidad para hasta {{capacity}} en Fellowship Event Hall.",
     "offerCatalogName": "Fellowship Event Hall — Paquetes de eventos",
-    "packageSuffix": "Paquete"
+    "packageSuffix": "Paquete",
+    "services": {
+      "wedding": {
+        "name": "Alquiler de espacio para bodas",
+        "description": "Alquiler de espacio para ceremonias y banquetes de boda en Fellowship Event Hall en Dacula, GA — capacidad para hasta 250 invitados, con suite nupcial, sonido e iluminación y coordinador in situ."
+      },
+      "quinceanera": {
+        "name": "Alquiler de espacio para quinceañeras",
+        "description": "Alquiler de espacio para celebraciones de quinceañera en Fellowship Event Hall en Dacula, GA — acceso completo al salón con mesas, mantelería, sistema de sonido y pista de baile para hasta 250 invitados."
+      },
+      "corporate": {
+        "name": "Alquiler de espacio para eventos corporativos",
+        "description": "Alquiler de espacio para eventos corporativos y reuniones de equipo en Fellowship Event Hall en Dacula, GA — horarios flexibles, aparcamiento en el recinto, cocina de preparación y Wi-Fi."
+      },
+      "birthday": {
+        "name": "Alquiler de espacio para cumpleaños y fiestas privadas",
+        "description": "Alquiler de espacio para fiestas de cumpleaños y celebraciones privadas en Fellowship Event Hall en Dacula, GA — desde reuniones íntimas hasta grandes eventos, con mesas, sillas, mantelería y coordinador in situ incluidos."
+      }
+    }
   }
 }

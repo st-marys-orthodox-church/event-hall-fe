@@ -25,6 +25,7 @@ import {
   type StructuredDataCopy,
   type StructuredReview,
   breadcrumbJsonLd,
+  eventServicesJsonLd,
   eventVenueJsonLd,
   faqPageJsonLd,
   localBusinessJsonLd,
@@ -66,6 +67,13 @@ const Index = () => {
     rating: review.rating,
   }));
 
+  const eventServiceKeys = ['wedding', 'quinceanera', 'corporate', 'birthday'] as const;
+  const services = eventServiceKeys.map((key) => ({
+    key,
+    name: tSeo(`structuredData.services.${key}.name`),
+    description: tSeo(`structuredData.services.${key}.description`),
+  }));
+
   const jsonLd = [
     localBusinessJsonLd(structuredDataCopy, structuredReviews),
     eventVenueJsonLd(structuredDataCopy, structuredReviews),
@@ -78,6 +86,7 @@ const Index = () => {
       })),
       structuredDataCopy.offerCatalogName
     ),
+    ...eventServicesJsonLd(services, structuredDataCopy.areaServed),
     faqPageJsonLd(faqItems),
     breadcrumbJsonLd([{ name: tPackages('breadcrumb.home'), path: '/' }]),
   ];

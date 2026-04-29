@@ -12,6 +12,7 @@ export const AppConfig = {
   instagram: SOCIALS.IG,
   twitter: '',
   facebook: SOCIALS.FB,
+  googleBusinessProfile: 'https://maps.app.goo.gl/XMYyAKG9XSL24X259',
   telephone: '+1-404-518-1042',
   email: 'events@saintmaryro.org',
   address: {

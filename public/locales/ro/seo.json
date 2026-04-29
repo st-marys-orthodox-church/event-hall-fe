@@ -37,6 +37,24 @@
     },
     "packageDescription": "Pachet pentru eveniment care găzduiește până la {{capacity}} la Fellowship Event Hall.",
     "offerCatalogName": "Fellowship Event Hall — Pachete pentru evenimente",
-    "packageSuffix": "Pachet"
+    "packageSuffix": "Pachet",
+    "services": {
+      "wedding": {
+        "name": "Închiriere locație pentru nuntă",
+        "description": "Închiriere locație pentru ceremonie și recepție de nuntă la Fellowship Event Hall în Dacula, GA — capacitate de până la 250 de invitați, cu suită pentru mireasă, sistem audio și de iluminat și coordonator la fața locului."
+      },
+      "quinceanera": {
+        "name": "Închiriere locație pentru Quinceañera",
+        "description": "Închiriere locație pentru sărbătoarea de Quinceañera la Fellowship Event Hall în Dacula, GA — acces complet la sală, cu mese, lenjerii, sistem audio și ring de dans pentru până la 250 de invitați."
+      },
+      "corporate": {
+        "name": "Închiriere locație pentru evenimente corporate",
+        "description": "Închiriere locație pentru evenimente corporate și întâlniri de echipă la Fellowship Event Hall în Dacula, GA — program flexibil, parcare la fața locului, bucătărie de pregătire și Wi-Fi."
+      },
+      "birthday": {
+        "name": "Închiriere locație pentru aniversări și petreceri private",
+        "description": "Închiriere locație pentru petreceri de aniversare și sărbători private la Fellowship Event Hall în Dacula, GA — de la întâlniri intime până la evenimente mari, cu mese, scaune, lenjerii și coordonator la fața locului incluse."
+      }
+    }
   }
 }
