@@ -64,6 +64,31 @@
     "body": "Contactează-ne astăzi pentru a programa un tur și a discuta cum putem face ocazia ta specială de neuitat.",
     "button": "Ia legătura"
   },
+  "reviews": {
+    "eyebrow": "Recenzii ale invitaților",
+    "heading": "Ce spun invitații",
+    "subheading": "Recenzii reale de la cupluri și familii care au sărbătorit la Fellowship Event Hall.",
+    "sourceLabel": "De pe Google Reviews",
+    "ratingLabel": "{{rating}} din 5 stele",
+    "viewAllOnGoogle": "Citește toate recenziile pe Google",
+    "items": {
+      "laura": {
+        "name": "Laura Pop",
+        "date": "acum 3 ani",
+        "text": "Mi-am organizat evenimentul aici la începutul lunii decembrie 2022. A fost foarte ușor să colaborez cu ei — au fost extrem de înțelegători cu solicitările mele pentru aranjare și strângere, permițându-mi să mă bucur de ziua evenimentului cu minim de stres."
+      },
+      "yuritzia": {
+        "name": "Yuritzia A.",
+        "date": "acum un an",
+        "text": "Am organizat aici aniversarea de 60 de ani a tatălui meu și a fost minunat! Locația are tavan înalt, interior frumos și spațiu generos pentru petreceri mari. Personalul și proprietarul au fost extrem de amabili și săritori. Este pur și simplu o locație foarte frumoasă."
+      },
+      "ioana": {
+        "name": "Ioana Bondar",
+        "date": "acum un an",
+        "text": "Eu și soțul meu am organizat recent nunta noastră la Saint Mary's Fellowship Hall și a fost o experiență excelentă de la început până la sfârșit. Locația în sine a fost superbă, cu candelabre elegante și fețe de masă deosebite, care au făcut spațiul să se simtă cu adevărat special."
+      }
+    }
+  },
   "trustBadges": {
     "flexibleBooking": {
       "title": "Rezervare flexibilă",

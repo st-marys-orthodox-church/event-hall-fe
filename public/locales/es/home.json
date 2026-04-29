@@ -64,6 +64,31 @@
     "body": "Contáctanos hoy para programar una visita y hablar de cómo podemos hacer que tu ocasión especial sea inolvidable.",
     "button": "Ponte en contacto"
   },
+  "reviews": {
+    "eyebrow": "Opiniones de los invitados",
+    "heading": "Lo que dicen los invitados",
+    "subheading": "Reseñas reales de parejas y familias que celebraron en Fellowship Event Hall.",
+    "sourceLabel": "De Google Reviews",
+    "ratingLabel": "{{rating}} de 5 estrellas",
+    "viewAllOnGoogle": "Lee todas las reseñas en Google",
+    "items": {
+      "laura": {
+        "name": "Laura Pop",
+        "date": "Hace 3 años",
+        "text": "Celebré mi evento aquí a principios de diciembre de 2022. Fue muy fácil trabajar con ellos: se adaptaron perfectamente a mi solicitud de montaje y desmontaje, permitiéndome disfrutar del día de mi evento con el mínimo estrés."
+      },
+      "yuritzia": {
+        "name": "Yuritzia A.",
+        "date": "Hace un año",
+        "text": "Organicé el 60 cumpleaños de mi padre aquí en el salón de eventos y fue increíble. El lugar tiene techos altos, un interior bonito y un gran espacio para fiestas numerosas. El personal y el propietario fueron sumamente amables y serviciales. Es, sencillamente, un lugar precioso."
+      },
+      "ioana": {
+        "name": "Ioana Bondar",
+        "date": "Hace un año",
+        "text": "Mi marido y yo celebramos recientemente nuestra boda en Saint Mary's Fellowship Hall y fue una experiencia excelente de principio a fin. El lugar en sí era precioso, con elegantes lámparas de araña y unos manteles preciosos que hacían que el espacio se sintiera realmente especial."
+      }
+    }
+  },
   "trustBadges": {
     "flexibleBooking": {
       "title": "Reserva flexible",

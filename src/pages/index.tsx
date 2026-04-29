@@ -15,6 +15,7 @@ import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
 import { Faq } from '../ui/features/Faq';
 import { Hero } from '../ui/features/Hero';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
+import { Reviews } from '../ui/features/Reviews';
 import { VerticalFeatures } from '../ui/features/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 import { STATS_ITEMS, TRUST_BADGES } from '../utils/Features';
@@ -125,6 +126,9 @@ const Index = () => {
 
         {/* Packages Section */}
         <PackagesShowcase packages={PACKAGES} />
+
+        {/* Guest Reviews */}
+        <Reviews />
 
         {/* Availability Calendar */}
         <section

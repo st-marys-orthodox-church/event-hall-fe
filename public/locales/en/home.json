@@ -64,6 +64,31 @@
     "body": "Let us help you create unforgettable memories at St. Mary's Event Hall.",
     "button": "View All Packages"
   },
+  "reviews": {
+    "eyebrow": "Guest Reviews",
+    "heading": "What Guests Are Saying",
+    "subheading": "Real reviews from couples and families who celebrated at Fellowship Event Hall.",
+    "sourceLabel": "From Google Reviews",
+    "ratingLabel": "{{rating}} out of 5 stars",
+    "viewAllOnGoogle": "Read all reviews on Google",
+    "items": {
+      "laura": {
+        "name": "Laura Pop",
+        "date": "3 years ago",
+        "text": "I held my event here early December of 2022. They were so easy to work with — very accommodating to my request for set up and take down to allow me to enjoy my event day with minimal stress."
+      },
+      "yuritzia": {
+        "name": "Yuritzia A.",
+        "date": "a year ago",
+        "text": "I hosted my father's 60th birthday here at the event hall and it was amazing! The venue has high ceiling, nice interior, great space for large parties. The staff and owner were extremely helpful and nice. It's just a very beautiful venue."
+      },
+      "ioana": {
+        "name": "Ioana Bondar",
+        "date": "a year ago",
+        "text": "My husband and I recently hosted our wedding at Saint Mary's Fellowship Hall and it was an excellent experience from start to finish. The venue itself was beautiful, with elegant chandeliers and lovely linens that really made the space feel special."
+      }
+    }
+  },
   "trustBadges": {
     "flexibleBooking": {
       "title": "Flexible Booking",
