@@ -54,16 +54,16 @@ const Hero = () => {
             </header>
 
             <div className="flex flex-col sm:flex-row gap-4 mt-2 items-center">
-              <ModernButton component={Link} href="/gallery" buttonVariant="primary" size="large">
-                {t('hero.viewGallery')}
+              <ModernButton component={Link} href="/calendar" buttonVariant="primary" size="large">
+                {t('hero.viewCalendar')}
               </ModernButton>
               <ModernButton
                 component={Link}
-                href="/packages"
+                href="/donate"
                 buttonVariant="outlineLight"
                 size="large"
               >
-                {t('hero.explorePackages')}
+                {t('hero.donate')}
               </ModernButton>
             </div>
           </div>

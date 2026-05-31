@@ -5,8 +5,8 @@
     "srOnly": "Biserica Ortodoxă Română Sfânta Maria — Dacula, GA",
     "tagline": "O parohie românească primitoare care deservește zona Atlanta",
     "location": "2875 Winder Hwy, Dacula, GA",
-    "viewGallery": "Vezi Fotografii",
-    "explorePackages": "Despre Slujbe",
+    "viewCalendar": "Vezi Calendarul",
+    "donate": "Donează",
     "scroll": "Explorează",
     "slides": {
       "exterior": "Exteriorul Bisericii Sfânta Maria din Dacula, GA",
@@ -21,61 +21,17 @@
       "titleAccent": "Liturgic",
       "todayLabel": "Astăzi",
       "todayEmpty": "Nu există evenimente astăzi.",
+      "calendarUnavailable": "Calendarul nu este configurat încă.",
+      "noUpcoming": "Nu există încă evenimente liturgice viitoare.",
+      "allDay": "Toată ziua",
+      "sourceLabels": {
+        "programLiturgic": "Program Liturgic",
+        "saintMaryEvents": "Saint Mary Events",
+        "calendarulOrthodox": "Calendarul Ortodox"
+      },
       "viewAll": "Vezi Mai Multe Evenimente",
-      "todayEvents": [
-        {
-          "time": "Toată ziua",
-          "title": "Sf. Mc. Luchilian, Ipatie și Paula fecioara",
-          "source": "Calendarul Ortodox",
-          "description": "Praznic și pomenire din calendarul ortodox.",
-          "tone": "red"
-        },
-        {
-          "time": "Toată ziua",
-          "title": "Festivalul Românesc",
-          "source": "Saint Mary Events",
-          "description": "Zi de sărbătoare și activități pentru întreaga comunitate.",
-          "tone": "blue"
-        },
-        {
-          "time": "9:00 AM - 10:00 AM",
-          "title": "Veniți de luați lumină!",
-          "source": "Program Liturgic",
-          "description": "Utrenia Învierii, Canonul Învierii și Sfânta Liturghie.",
-          "tone": "stone"
-        }
-      ],
-      "upcomingDays": [
-        {
-          "dateNumber": "23",
-          "month": "Mart.",
-          "year": "2026",
-          "events": [
-            {
-              "time": "9:00 AM - 10:00 AM",
-              "title": "Sfântul Maslu",
-              "description": "Slujbă de obște pentru sănătate și întărire sufletească."
-            }
-          ]
-        },
-        {
-          "dateNumber": "26",
-          "month": "Mart.",
-          "year": "2026",
-          "events": [
-            {
-              "time": "10:00 AM - 12:00 PM",
-              "title": "Vecernie și Acatist",
-              "description": "Rugăciune de seară urmată de citirea Acatistului."
-            },
-            {
-              "time": "6:00 PM - 8:00 PM",
-              "title": "Cateheză pentru tineri",
-              "description": "Întâlnire de formare și discuții pentru adolescenți și tineri."
-            }
-          ]
-        }
-      ]
+      "todayEvents": [],
+      "upcomingDays": []
     },
     "news": {
       "titlePrefix": "Știri și",

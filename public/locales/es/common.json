@@ -1,12 +1,13 @@
 {
   "nav": {
+    "calendar": "Calendario",
+    "donate": "Donar",
     "gallery": "Galería",
-    "packages": "Paquetes",
     "contactUs": "Contáctanos",
     "contact": "Contacto",
     "contactForm": "Formulario de contacto",
     "navigation": "Navegación",
-    "homeAriaLabel": "Fellowship Event Hall — Inicio",
+    "homeAriaLabel": "Saint Mary Romanian Orthodox Church — Inicio",
     "language": "Idioma",
     "languageNames": {
       "en": "English",
@@ -31,7 +32,7 @@
     "getDirections": "Cómo llegar"
   },
   "logo": {
-    "alt": "Fellowship Event Hall"
+    "alt": "Saint Mary Romanian Orthodox Church"
   },
   "calendar": {
     "previousMonth": "Mes anterior",

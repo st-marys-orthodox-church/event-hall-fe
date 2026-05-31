@@ -1,0 +1,26 @@
+{
+  "eyebrow": "Calendar Parohial",
+  "title": "Program Liturgic și Evenimente",
+  "intro": "Acest calendar reunește Programul Liturgic, Saint Mary Events și Calendarul Ortodox într-o singură vedere clară, în stilul noului site al parohiei.",
+  "seoTitle": "Calendar | Biserica Ortodoxă Română Sfânta Maria",
+  "seoDescription": "Consultați programul liturgic, evenimentele parohiei și Calendarul Ortodox într-un singur calendar.",
+  "sources": [
+    { "key": "programLiturgic", "label": "Program Liturgic" },
+    { "key": "saintMaryEvents", "label": "Saint Mary Events" },
+    { "key": "calendarulOrthodox", "label": "Calendarul Ortodox" }
+  ],
+  "monthViewEyebrow": "Vedere lunară",
+  "selectedDay": "Zi selectată",
+  "upcoming": "Evenimente",
+  "noSelection": "Alegeți o zi",
+  "allDay": "Toată ziua",
+  "emptyDay": "Nu există evenimente pentru această zi.",
+  "emptyCalendarTitle": "Nu există încă evenimente viitoare.",
+  "emptyCalendarBody": "Calendarul este configurat, dar nu au fost găsite evenimente viitoare în intervalul afișat.",
+  "unavailableTitle": "Calendarul nu este configurat încă.",
+  "unavailableBody": "Adăugați cele trei linkuri private iCal în variabilele de mediu și această pagină va afișa automat toate evenimentele combinate.",
+  "donateEyebrow": "Susține Parohia",
+  "donateTitle": "Sprijină lucrarea comunității",
+  "donateBody": "Dacă doriți să susțineți Sala Socială și viața comunitară a parohiei, puteți face o donație rapidă prin PayPal.",
+  "donateCta": "Mergi la Donații"
+}

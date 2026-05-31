@@ -1,12 +1,13 @@
 {
   "nav": {
+    "calendar": "Calendar",
+    "donate": "Donează",
     "gallery": "Galerie",
-    "packages": "Pachete",
     "contactUs": "Contactează-ne",
     "contact": "Contact",
     "contactForm": "Formular de contact",
     "navigation": "Navigare",
-    "homeAriaLabel": "Fellowship Event Hall — Acasă",
+    "homeAriaLabel": "Biserica Sfânta Maria — Acasă",
     "language": "Limbă",
     "languageNames": {
       "en": "English",
@@ -31,7 +32,7 @@
     "getDirections": "Obține indicații"
   },
   "logo": {
-    "alt": "Fellowship Event Hall"
+    "alt": "Biserica Ortodoxă Română Sfânta Maria"
   },
   "calendar": {
     "previousMonth": "Luna anterioară",

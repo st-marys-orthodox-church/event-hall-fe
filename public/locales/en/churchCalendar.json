@@ -1,0 +1,26 @@
+{
+  "eyebrow": "Parish Calendar",
+  "title": "Liturgical Schedule and Events",
+  "intro": "This calendar combines the Liturgical Schedule, Saint Mary Events, and the Orthodox Calendar into one clear view styled to match the new parish site.",
+  "seoTitle": "Calendar | Saint Mary Romanian Orthodox Church",
+  "seoDescription": "View the liturgical schedule, parish events, and Orthodox calendar in one combined calendar.",
+  "sources": [
+    { "key": "programLiturgic", "label": "Liturgical Schedule" },
+    { "key": "saintMaryEvents", "label": "Saint Mary Events" },
+    { "key": "calendarulOrthodox", "label": "Orthodox Calendar" }
+  ],
+  "monthViewEyebrow": "Month View",
+  "selectedDay": "Selected Day",
+  "upcoming": "Events",
+  "noSelection": "Choose a day",
+  "allDay": "All day",
+  "emptyDay": "There are no events for this day.",
+  "emptyCalendarTitle": "There are no upcoming events yet.",
+  "emptyCalendarBody": "The calendar is configured, but no future events were found in the displayed range.",
+  "unavailableTitle": "The calendar is not configured yet.",
+  "unavailableBody": "Add the three private iCal links in your environment variables and this page will automatically render the merged events.",
+  "donateEyebrow": "Support the Parish",
+  "donateTitle": "Support the life of the community",
+  "donateBody": "If you’d like to support the fellowship hall and parish community life, you can make a quick PayPal donation.",
+  "donateCta": "Go to Donations"
+}

@@ -5,8 +5,8 @@
     "srOnly": "Saint Mary Romanian Orthodox Church — Dacula, GA",
     "tagline": "A welcoming Romanian Orthodox parish serving the Atlanta area",
     "location": "2875 Winder Hwy, Dacula, GA",
-    "viewGallery": "View Photos",
-    "explorePackages": "Learn About Services",
+    "viewCalendar": "View Calendar",
+    "donate": "Donate",
     "scroll": "Explore",
     "slides": {
       "exterior": "Exterior of Saint Mary Romanian Orthodox Church in Dacula, GA",
@@ -21,61 +21,17 @@
       "titleAccent": "Schedule",
       "todayLabel": "Today",
       "todayEmpty": "No events today.",
+      "calendarUnavailable": "The calendar is not configured yet.",
+      "noUpcoming": "There are no upcoming liturgical events yet.",
+      "allDay": "All day",
+      "sourceLabels": {
+        "programLiturgic": "Liturgical Schedule",
+        "saintMaryEvents": "Saint Mary Events",
+        "calendarulOrthodox": "Orthodox Calendar"
+      },
       "viewAll": "View More Events",
-      "todayEvents": [
-        {
-          "time": "All day",
-          "title": "Sts. Lucillian, Hypatius, and Paula the Virgin",
-          "source": "Orthodox Calendar",
-          "description": "Feast-day remembrance from the Orthodox calendar.",
-          "tone": "red"
-        },
-        {
-          "time": "All day",
-          "title": "Romanian Festival",
-          "source": "Saint Mary Events",
-          "description": "A parish-wide celebration with food, culture, and fellowship.",
-          "tone": "blue"
-        },
-        {
-          "time": "9:00 AM - 10:00 AM",
-          "title": "Come Receive the Light",
-          "source": "Liturgical Schedule",
-          "description": "Resurrection Matins, the Canon of Pascha, and Divine Liturgy.",
-          "tone": "stone"
-        }
-      ],
-      "upcomingDays": [
-        {
-          "dateNumber": "23",
-          "month": "Mar.",
-          "year": "2026",
-          "events": [
-            {
-              "time": "9:00 AM - 10:00 AM",
-              "title": "Holy Unction",
-              "description": "A communal service for healing and spiritual strengthening."
-            }
-          ]
-        },
-        {
-          "dateNumber": "26",
-          "month": "Mar.",
-          "year": "2026",
-          "events": [
-            {
-              "time": "10:00 AM - 12:00 PM",
-              "title": "Vespers and Akathist",
-              "description": "Evening prayers followed by the reading of the Akathist hymn."
-            },
-            {
-              "time": "6:00 PM - 8:00 PM",
-              "title": "Youth Catechism",
-              "description": "Formation, discussion, and fellowship for teens and young adults."
-            }
-          ]
-        }
-      ]
+      "todayEvents": [],
+      "upcomingDays": []
     },
     "news": {
       "titlePrefix": "News and",

@@ -4,7 +4,6 @@ import { IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { useDropdown, useWindowSize } from '../../hooks';
-import { useAppContext } from '../../stores/Global';
 import { generateWhatsAppUrl } from '../../utils/Constants';
 import { COLORS, EASING } from '../../utils/DesignTokens';
 import { NAV_LINKS } from '../../utils/Navigation';
@@ -13,7 +12,6 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { Logo } from './Logo';
 
 export const Navbar = () => {
-  const { handleOpenModal } = useAppContext();
   const { width, scrollY } = useWindowSize();
   const { open, handleClick, handleClose, anchorEl } = useDropdown();
   const { t } = useTranslation('common');
@@ -46,12 +44,6 @@ export const Navbar = () => {
                 </li>
               ))}
               <li className="flex items-center gap-3 pl-4 border-l border-stone-200">
-                <Link
-                  href="/#availability"
-                  className="eyebrow text-stone-700 hover:text-brand-green border border-stone-300 hover:border-brand-green px-4 py-2 transition-colors duration-300 ease-refined"
-                >
-                  {t('nav.contactUs')}
-                </Link>
                 <Tooltip title={t('whatsapp.chat')}>
                   <IconButton
                     href={generateWhatsAppUrl()}
@@ -78,12 +70,6 @@ export const Navbar = () => {
             </ul>
           ) : (
             <div className="flex items-center gap-2">
-              <Link
-                href="/#availability"
-                className="eyebrow text-stone-700 border border-stone-300 px-3 py-1.5"
-              >
-                {t('nav.contact')}
-              </Link>
               <Tooltip title={t('whatsapp.chat')}>
                 <IconButton
                   href={generateWhatsAppUrl()}
@@ -149,18 +135,6 @@ export const Navbar = () => {
                     {t(`nav.${el.key}`)}
                   </MenuItem>
                 ))}
-                <MenuItem
-                  onClick={() => handleOpenModal()}
-                  sx={{
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.18em',
-                    fontSize: '0.75rem',
-                    color: COLORS.brand.green,
-                    py: 1.25,
-                  }}
-                >
-                  {t('nav.contactForm')}
-                </MenuItem>
               </Menu>
             </div>
           )}

@@ -5,8 +5,8 @@
     "srOnly": "Fellowship Event Hall — Espacio para bodas y banquetes en Dacula, GA",
     "tagline": "Un elegante salón de eventos ideal para todas tus ocasiones especiales",
     "location": "Ubicado en Dacula, GA",
-    "viewGallery": "Ver galería",
-    "explorePackages": "Explorar paquetes",
+    "viewCalendar": "Ver calendario",
+    "donate": "Donar",
     "scroll": "Desplázate",
     "slides": {
       "exterior": "Exterior de Fellowship Event Hall — espacio para bodas y banquetes en Dacula, Georgia",
@@ -21,61 +21,17 @@
       "titleAccent": "Litúrgico",
       "todayLabel": "Hoy",
       "todayEmpty": "No hay eventos hoy.",
+      "calendarUnavailable": "El calendario aún no está configurado.",
+      "noUpcoming": "Todavía no hay próximos eventos litúrgicos.",
+      "allDay": "Todo el día",
+      "sourceLabels": {
+        "programLiturgic": "Programa Litúrgico",
+        "saintMaryEvents": "Saint Mary Events",
+        "calendarulOrthodox": "Calendario Ortodoxo"
+      },
       "viewAll": "Ver Más Eventos",
-      "todayEvents": [
-        {
-          "time": "Todo el día",
-          "title": "Santos Luciliano, Hipacio y Paula Virgen",
-          "source": "Calendario Ortodoxo",
-          "description": "Conmemoración festiva del calendario ortodoxo.",
-          "tone": "red"
-        },
-        {
-          "time": "Todo el día",
-          "title": "Festival Rumano",
-          "source": "Saint Mary Events",
-          "description": "Celebración parroquial con comida, cultura y convivencia.",
-          "tone": "blue"
-        },
-        {
-          "time": "9:00 AM - 10:00 AM",
-          "title": "Venid a recibir la luz",
-          "source": "Programa Litúrgico",
-          "description": "Maitines de la Resurrección, Canon Pascual y Divina Liturgia.",
-          "tone": "stone"
-        }
-      ],
-      "upcomingDays": [
-        {
-          "dateNumber": "23",
-          "month": "Mar.",
-          "year": "2026",
-          "events": [
-            {
-              "time": "9:00 AM - 10:00 AM",
-              "title": "Santa Unción",
-              "description": "Servicio comunitario de sanación y fortaleza espiritual."
-            }
-          ]
-        },
-        {
-          "dateNumber": "26",
-          "month": "Mar.",
-          "year": "2026",
-          "events": [
-            {
-              "time": "10:00 AM - 12:00 PM",
-              "title": "Vísperas y Acatisto",
-              "description": "Oración vespertina seguida de la lectura del himno Acatisto."
-            },
-            {
-              "time": "6:00 PM - 8:00 PM",
-              "title": "Catequesis juvenil",
-              "description": "Formación, diálogo y convivencia para adolescentes y jóvenes."
-            }
-          ]
-        }
-      ]
+      "todayEvents": [],
+      "upcomingDays": []
     },
     "news": {
       "titlePrefix": "Noticias y",
