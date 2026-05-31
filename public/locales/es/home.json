@@ -15,6 +15,86 @@
       "interior": "Interior de Fellowship Event Hall preparado para una celebración"
     }
   },
+  "homepageHub": {
+    "schedule": {
+      "titlePrefix": "Programa",
+      "titleAccent": "Litúrgico",
+      "todayLabel": "Hoy",
+      "todayEmpty": "No hay eventos hoy.",
+      "viewAll": "Ver Más Eventos",
+      "todayEvents": [
+        {
+          "time": "Todo el día",
+          "title": "Santos Luciliano, Hipacio y Paula Virgen",
+          "source": "Calendario Ortodoxo",
+          "description": "Conmemoración festiva del calendario ortodoxo.",
+          "tone": "red"
+        },
+        {
+          "time": "Todo el día",
+          "title": "Festival Rumano",
+          "source": "Saint Mary Events",
+          "description": "Celebración parroquial con comida, cultura y convivencia.",
+          "tone": "blue"
+        },
+        {
+          "time": "9:00 AM - 10:00 AM",
+          "title": "Venid a recibir la luz",
+          "source": "Programa Litúrgico",
+          "description": "Maitines de la Resurrección, Canon Pascual y Divina Liturgia.",
+          "tone": "stone"
+        }
+      ],
+      "upcomingDays": [
+        {
+          "dateNumber": "23",
+          "month": "Mar.",
+          "year": "2026",
+          "events": [
+            {
+              "time": "9:00 AM - 10:00 AM",
+              "title": "Santa Unción",
+              "description": "Servicio comunitario de sanación y fortaleza espiritual."
+            }
+          ]
+        },
+        {
+          "dateNumber": "26",
+          "month": "Mar.",
+          "year": "2026",
+          "events": [
+            {
+              "time": "10:00 AM - 12:00 PM",
+              "title": "Vísperas y Acatisto",
+              "description": "Oración vespertina seguida de la lectura del himno Acatisto."
+            },
+            {
+              "time": "6:00 PM - 8:00 PM",
+              "title": "Catequesis juvenil",
+              "description": "Formación, diálogo y convivencia para adolescentes y jóvenes."
+            }
+          ]
+        }
+      ]
+    },
+    "news": {
+      "titlePrefix": "Noticias y",
+      "titleAccent": "Eventos Parroquiales",
+      "readMore": "Leer Más",
+      "items": [
+        {
+          "date": "23 de marzo de 2026",
+          "title": "Conferencia espiritual",
+          "excerpt": "El P. Ieremia Staretul ofrecerá una charla sobre el arrepentimiento, la oración y la vida en Cristo para los fieles y visitantes de la parroquia."
+        },
+        {
+          "date": "28 de marzo de 2026",
+          "title": "Celebración comunitaria",
+          "excerpt": "Después del servicio les invitamos a la comida fraterna y a una tarde de convivencia con música, conversación y actividades para las familias."
+        }
+      ]
+    }
+  },
   "story": {
     "eyebrow": "El espacio",
     "ourStory": {

@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Sprijină Parohia",
+  "title": "Donații Sala Socială a Bisericii",
+  "intro": "Contribuția dumneavoastră sprijină în mod direct Sala Socială a Bisericii Sfânta Maria și lucrările comunității noastre. Veți fi redirecționat în siguranță către PayPal pentru finalizarea donației.",
+  "seoTitle": "Donații | Biserica Ortodoxă Română Sfânta Maria",
+  "seoDescription": "Faceți o donație pentru Sala Socială a Bisericii Sfânta Maria prin PayPal.",
+  "amount": {
+    "label": "Alegeți suma",
+    "custom": "Donează altă sumă"
+  },
+  "fields": {
+    "firstName": "Prenume",
+    "lastName": "Nume",
+    "email": "Adresă de email",
+    "anonymous": "Fă această donație anonimă.",
+    "comment": "Comentariu"
+  },
+  "summary": {
+    "total": "Total donație:"
+  },
+  "submit": "Donează prin PayPal",
+  "status": {
+    "returnedTitle": "V-ați întors de la PayPal.",
+    "returnedBody": "Dacă ați finalizat plata, verificați emailul de confirmare primit de la PayPal. Dacă ați închis plata înainte de finalizare, puteți încerca din nou mai jos.",
+    "cancelledTitle": "Donația a fost anulată.",
+    "cancelledBody": "Nu a fost trimisă nicio donație. Puteți ajusta suma sau completa din nou formularul."
+  },
+  "sidebar": {
+    "secureEyebrow": "Plată securizată",
+    "secureTitle": "Donație prin PayPal",
+    "secureBody": "Folosim PayPal pentru a păstra fluxul de donații simplu și familiar. După apăsarea butonului de donație, PayPal va prelua în siguranță procesul de plată.",
+    "campaignLabel": "Campanie",
+    "impactEyebrow": "Impactul Donației",
+    "impactTitle": "Cum ajută donația",
+    "impactItems": [
+      "Susține întreținerea și îmbunătățirea Sălii Sociale.",
+      "Ajută la organizarea evenimentelor și meselor comunitare.",
+      "Sprijină lucrările parohiei și nevoile practice ale comunității."
+    ]
+  }
+}

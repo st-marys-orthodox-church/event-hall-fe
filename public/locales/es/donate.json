@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Apoya la parroquia",
+  "title": "Donaciones para el Salón Social",
+  "intro": "Su donación apoya directamente el salón social de Saint Mary y la vida de nuestra comunidad parroquial. Será redirigido de forma segura a PayPal para completar la donación.",
+  "seoTitle": "Donar | Saint Mary Romanian Orthodox Church",
+  "seoDescription": "Haz una donación por PayPal para el salón social de Saint Mary.",
+  "amount": {
+    "label": "Elige una cantidad",
+    "custom": "Donar otra cantidad"
+  },
+  "fields": {
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "anonymous": "Hacer esta donación anónima.",
+    "comment": "Comentario"
+  },
+  "summary": {
+    "total": "Total de la donación:"
+  },
+  "submit": "Donar con PayPal",
+  "status": {
+    "returnedTitle": "Has regresado desde PayPal.",
+    "returnedBody": "Si completaste el pago, revisa el correo de confirmación de PayPal. Si cerraste el proceso antes de terminar, puedes intentarlo nuevamente abajo.",
+    "cancelledTitle": "Donación cancelada.",
+    "cancelledBody": "No se envió ninguna donación. Puedes ajustar la cantidad o volver a completar el formulario."
+  },
+  "sidebar": {
+    "secureEyebrow": "Donación segura",
+    "secureTitle": "Donación con PayPal",
+    "secureBody": "Mantenemos el flujo actual de donaciones con PayPal para que donar siga siendo simple y familiar. Después de hacer clic en donar, PayPal gestionará de forma segura el pago.",
+    "campaignLabel": "Campaña",
+    "impactEyebrow": "Tu impacto",
+    "impactTitle": "Qué apoya tu donación",
+    "impactItems": [
+      "Mantenimiento y mejoras del salón social.",
+      "Eventos parroquiales, hospitalidad y comidas comunitarias.",
+      "Apoyo práctico para la vida diaria del ministerio parroquial."
+    ]
+  }
+}

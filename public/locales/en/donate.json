@@ -1,0 +1,41 @@
+{
+  "eyebrow": "Support the Parish",
+  "title": "Fellowship Hall Donations",
+  "intro": "Your gift directly supports Saint Mary’s fellowship hall and the life of our parish community. You’ll be redirected securely to PayPal to complete your donation.",
+  "seoTitle": "Donate | Saint Mary Romanian Orthodox Church",
+  "seoDescription": "Make a PayPal donation for Saint Mary’s fellowship hall.",
+  "amount": {
+    "label": "Choose an amount",
+    "custom": "Donate another amount"
+  },
+  "fields": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email address",
+    "anonymous": "Make this an anonymous donation.",
+    "comment": "Comment"
+  },
+  "summary": {
+    "total": "Donation total:"
+  },
+  "submit": "Donate with PayPal",
+  "status": {
+    "returnedTitle": "You returned from PayPal.",
+    "returnedBody": "If you completed payment, please check your PayPal confirmation email. If you closed the payment flow before finishing, you can try again below.",
+    "cancelledTitle": "Donation cancelled.",
+    "cancelledBody": "No donation was submitted. You can adjust the amount or complete the form again."
+  },
+  "sidebar": {
+    "secureEyebrow": "Secure Giving",
+    "secureTitle": "PayPal Donation",
+    "secureBody": "We’re keeping the current PayPal-based donation flow so giving stays simple and familiar. After you click donate, PayPal will securely handle the payment step.",
+    "campaignLabel": "Campaign",
+    "impactEyebrow": "Your Impact",
+    "impactTitle": "What your gift supports",
+    "impactItems": [
+      "Maintenance and improvements for the fellowship hall.",
+      "Parish events, hospitality, and shared community meals.",
+      "Practical support for the church’s day-to-day ministry."
+    ]
+  }
+}

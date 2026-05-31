@@ -15,6 +15,86 @@
       "gathering": "Părtășie și mese comunitare organizate de biserică"
     }
   },
+  "homepageHub": {
+    "schedule": {
+      "titlePrefix": "Programul",
+      "titleAccent": "Liturgic",
+      "todayLabel": "Astăzi",
+      "todayEmpty": "Nu există evenimente astăzi.",
+      "viewAll": "Vezi Mai Multe Evenimente",
+      "todayEvents": [
+        {
+          "time": "Toată ziua",
+          "title": "Sf. Mc. Luchilian, Ipatie și Paula fecioara",
+          "source": "Calendarul Ortodox",
+          "description": "Praznic și pomenire din calendarul ortodox.",
+          "tone": "red"
+        },
+        {
+          "time": "Toată ziua",
+          "title": "Festivalul Românesc",
+          "source": "Saint Mary Events",
+          "description": "Zi de sărbătoare și activități pentru întreaga comunitate.",
+          "tone": "blue"
+        },
+        {
+          "time": "9:00 AM - 10:00 AM",
+          "title": "Veniți de luați lumină!",
+          "source": "Program Liturgic",
+          "description": "Utrenia Învierii, Canonul Învierii și Sfânta Liturghie.",
+          "tone": "stone"
+        }
+      ],
+      "upcomingDays": [
+        {
+          "dateNumber": "23",
+          "month": "Mart.",
+          "year": "2026",
+          "events": [
+            {
+              "time": "9:00 AM - 10:00 AM",
+              "title": "Sfântul Maslu",
+              "description": "Slujbă de obște pentru sănătate și întărire sufletească."
+            }
+          ]
+        },
+        {
+          "dateNumber": "26",
+          "month": "Mart.",
+          "year": "2026",
+          "events": [
+            {
+              "time": "10:00 AM - 12:00 PM",
+              "title": "Vecernie și Acatist",
+              "description": "Rugăciune de seară urmată de citirea Acatistului."
+            },
+            {
+              "time": "6:00 PM - 8:00 PM",
+              "title": "Cateheză pentru tineri",
+              "description": "Întâlnire de formare și discuții pentru adolescenți și tineri."
+            }
+          ]
+        }
+      ]
+    },
+    "news": {
+      "titlePrefix": "Știri și",
+      "titleAccent": "Evenimente din Parohie",
+      "readMore": "Mai Mult",
+      "items": [
+        {
+          "date": "23 martie, 2026",
+          "title": "Conferință duhovnicească",
+          "excerpt": "Părintele Ieremia Starețul va susține o conferință dedicată pocăinței, rugăciunii și vieții în Hristos pentru credincioșii parohiei și invitații lor."
+        },
+        {
+          "date": "28 martie, 2026",
+          "title": "Sărbătoare în comunitate",
+          "excerpt": "După slujbă, vă invităm la agapa frățească și la o după-amiază de părtășie, cântări și bucurie alături de familiile parohiei."
+        }
+      ]
+    }
+  },
   "story": {
     "eyebrow": "Parohia",
     "ourStory": {

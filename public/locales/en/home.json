@@ -15,6 +15,86 @@
       "gathering": "Fellowship and community meals hosted by the church"
     }
   },
+  "homepageHub": {
+    "schedule": {
+      "titlePrefix": "Liturgical",
+      "titleAccent": "Schedule",
+      "todayLabel": "Today",
+      "todayEmpty": "No events today.",
+      "viewAll": "View More Events",
+      "todayEvents": [
+        {
+          "time": "All day",
+          "title": "Sts. Lucillian, Hypatius, and Paula the Virgin",
+          "source": "Orthodox Calendar",
+          "description": "Feast-day remembrance from the Orthodox calendar.",
+          "tone": "red"
+        },
+        {
+          "time": "All day",
+          "title": "Romanian Festival",
+          "source": "Saint Mary Events",
+          "description": "A parish-wide celebration with food, culture, and fellowship.",
+          "tone": "blue"
+        },
+        {
+          "time": "9:00 AM - 10:00 AM",
+          "title": "Come Receive the Light",
+          "source": "Liturgical Schedule",
+          "description": "Resurrection Matins, the Canon of Pascha, and Divine Liturgy.",
+          "tone": "stone"
+        }
+      ],
+      "upcomingDays": [
+        {
+          "dateNumber": "23",
+          "month": "Mar.",
+          "year": "2026",
+          "events": [
+            {
+              "time": "9:00 AM - 10:00 AM",
+              "title": "Holy Unction",
+              "description": "A communal service for healing and spiritual strengthening."
+            }
+          ]
+        },
+        {
+          "dateNumber": "26",
+          "month": "Mar.",
+          "year": "2026",
+          "events": [
+            {
+              "time": "10:00 AM - 12:00 PM",
+              "title": "Vespers and Akathist",
+              "description": "Evening prayers followed by the reading of the Akathist hymn."
+            },
+            {
+              "time": "6:00 PM - 8:00 PM",
+              "title": "Youth Catechism",
+              "description": "Formation, discussion, and fellowship for teens and young adults."
+            }
+          ]
+        }
+      ]
+    },
+    "news": {
+      "titlePrefix": "News and",
+      "titleAccent": "Parish Events",
+      "readMore": "Read More",
+      "items": [
+        {
+          "date": "March 23, 2026",
+          "title": "Spiritual Conference",
+          "excerpt": "Fr. Ieremia Staretul will offer a talk on repentance, prayer, and life in Christ for parishioners and guests from the wider Atlanta community."
+        },
+        {
+          "date": "March 28, 2026",
+          "title": "Community Celebration",
+          "excerpt": "Join us after services for a parish meal, fellowship, and a joyful afternoon with music, conversation, and family activities."
+        }
+      ]
+    }
+  },
   "story": {
     "eyebrow": "The Venue",
     "ourStory": {
