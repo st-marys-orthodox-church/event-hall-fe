@@ -1,18 +1,18 @@
 {
   "hero": {
-    "logoAltMinimal": "Fellowship Event Hall — wedding and banquet venue in Dacula, Georgia",
-    "logoAltEvents": "Fellowship Event Hall — wedding and banquet venue in Dacula, Georgia",
-    "srOnly": "Fellowship Event Hall — Wedding & Banquet Venue in Dacula, GA",
-    "tagline": "An elegant event hall suited for all your special occasions",
-    "location": "Located in Dacula, GA",
-    "viewGallery": "View Gallery",
-    "explorePackages": "Explore Packages",
-    "scroll": "Scroll",
+    "logoAltMinimal": "Saint Mary Romanian Orthodox Church — Dacula, Georgia",
+    "logoAltEvents": "Saint Mary Romanian Orthodox Church — parish life and services in Dacula, Georgia",
+    "srOnly": "Saint Mary Romanian Orthodox Church — Dacula, GA",
+    "tagline": "A welcoming Romanian Orthodox parish serving the Atlanta area",
+    "location": "2875 Winder Hwy, Dacula, GA",
+    "viewGallery": "View Photos",
+    "explorePackages": "Learn About Services",
+    "scroll": "Explore",
     "slides": {
-      "exterior": "Fellowship Event Hall exterior — wedding and banquet venue in Dacula, Georgia",
-      "receptionSetup": "Main hall set up for a 150-guest wedding reception with round tables and linens",
-      "grounds": "Landscaped grounds and on-site parking at Fellowship Event Hall",
-      "interior": "Interior of Fellowship Event Hall prepared for a celebration"
+      "exterior": "Exterior of Saint Mary Romanian Orthodox Church in Dacula, GA",
+      "nave": "Interior view of the church nave and iconostasis",
+      "festival": "Community festival and cultural events at the parish",
+      "gathering": "Fellowship and community meals hosted by the church"
     }
   },
   "story": {
@@ -35,112 +35,108 @@
     }
   },
   "stats": {
-    "eyebrow": "The Venue",
-    "heading": "Why Choose Our Dacula Event Venue",
-    "subheading": "Creating memorable experiences for your special occasions",
+    "eyebrow": "About the Parish",
+    "heading": "About Saint Mary Romanian Orthodox Church",
+    "subheading": "A parish rooted in faith, tradition, and community",
     "items": {
-      "capacity": "Guest Capacity",
-      "squareFeet": "Square Feet",
-      "packages": "Packages"
+      "membership": "Parish Membership",
+      "programs": "Programs",
+      "services": "Weekly Services"
     },
     "values": {
-      "capacity": "250",
-      "squareFeet": "5,000",
-      "packages": "$2K–$4K"
+      "membership": "Romanian-American parish serving families across Gwinnett County",
+      "programs": "Divine Liturgy, sacraments, youth programs, community meals",
+      "services": "Regular Sunday liturgies and seasonal services"
     }
   },
   "packagesSection": {
-    "title": "Our Packages",
-    "description": "Choose the perfect package for your event. All packages include tables, chairs, tablecloths, and chair covers."
+    "title": "Parish Programs",
+    "description": "Religious services, educational programs, cultural events, and community outreach hosted by Saint Mary Parish."
   },
   "availability": {
-    "eyebrow": "Check Dates",
-    "heading": "Availability Calendar",
-    "subheading": "See which dates are open and tap any available day to start your inquiry."
+    "eyebrow": "Service Times",
+    "heading": "Liturgical Schedule & Events",
+    "subheading": "View upcoming services, feast days, and parish events. Contact the parish for sacramental scheduling."
   },
   "cta": {
-    "eyebrow": "Book Your Date",
-    "heading": "Ready to Book Your Wedding, Quinceañera, or Event?",
-    "body": "Let us help you create unforgettable memories at St. Mary's Event Hall.",
-    "button": "View All Packages"
+    "eyebrow": "Join Us",
+    "heading": "Visit or Join Saint Mary Parish",
+    "body": "All are welcome — attend a service, join a program, or contact the parish office for pastoral care and sacramental arrangements.",
+    "button": "Contact the Parish"
   },
   "reviews": {
-    "eyebrow": "Guest Reviews",
-    "heading": "What Guests Are Saying",
-    "subheading": "Real reviews from couples and families who celebrated at Fellowship Event Hall.",
-    "sourceLabel": "From Google Reviews",
+    "eyebrow": "Parishioner Voices",
+    "heading": "What Parishioners Say",
+    "subheading": "Reflections from members and friends of Saint Mary Parish.",
+    "sourceLabel": "From the Parish",
     "ratingLabel": "{{rating}} out of 5 stars",
-    "viewAllOnGoogle": "Read all reviews on Google",
+    "viewAllOnGoogle": "Read more on the parish website",
     "items": {
-      "laura": {
-        "name": "Laura Pop",
-        "date": "3 years ago",
-        "text": "I held my event here early December of 2022. They were so easy to work with — very accommodating to my request for set up and take down to allow me to enjoy my event day with minimal stress."
+      "maria": {
+        "name": "Maria Pop",
+        "date": "2 years ago",
+        "text": "Saint Mary is a warm, welcoming community — the services and fellowship have been a blessing for our family."
       },
-      "yuritzia": {
-        "name": "Yuritzia A.",
+      "ion": {
+        "name": "Ion Marin",
         "date": "a year ago",
-        "text": "I hosted my father's 60th birthday here at the event hall and it was amazing! The venue has high ceiling, nice interior, great space for large parties. The staff and owner were extremely helpful and nice. It's just a very beautiful venue."
+        "text": "The parish hosts wonderful cultural events that help preserve our Romanian traditions for the next generation."
       },
-      "ioana": {
-        "name": "Ioana Bondar",
-        "date": "a year ago",
-        "text": "My husband and I recently hosted our wedding at Saint Mary's Fellowship Hall and it was an excellent experience from start to finish. The venue itself was beautiful, with elegant chandeliers and lovely linens that really made the space feel special."
+      "ana": {
+        "name": "Ana Ionescu",
+        "date": "6 months ago",
+        "text": "Clergy and volunteers provide caring support for families and celebrations of the sacraments."
       }
     }
   },
   "trustBadges": {
-    "flexibleBooking": {
-      "title": "Flexible Booking",
-      "text": "Easy scheduling with multiple date options"
+    "community": {
+      "title": "Community-Focused",
+      "text": "Programs for families, seniors, and youth"
     },
-    "awardWinning": {
-      "title": "Highly Rated",
-      "text": "Five-star reviews from couples and families"
+    "tradition": {
+      "title": "Living Tradition",
+      "text": "Romanian Orthodox liturgy and cultural events"
     },
-    "madeWithLove": {
-      "title": "Made with Love",
-      "text": "Personal attention to every detail"
+    "service": {
+      "title": "Active Outreach",
+      "text": "Meals, charity drives, and local partnerships"
     }
   },
   "visit": {
     "eyebrow": "Visit",
-    "heading": "Visit Fellowship Event Hall",
-    "subheading": "Conveniently located in Dacula, Georgia — serving Gwinnett County, Lawrenceville, Buford, Hoschton, and the North Atlanta metro area.",
+    "heading": "Visit Saint Mary Romanian Orthodox Church",
+    "subheading": "Serving Gwinnett County and the greater Atlanta Romanian community.",
     "addressTitle": "Address",
     "getDirections": "Get Directions →",
     "contactTitle": "Contact",
-    "toursTitle": "Tours by Appointment",
-    "toursText": "We schedule private venue tours by appointment — reach out to find a time that works for you."
+    "toursTitle": "Parish Office Hours",
+    "toursText": "Contact the parish at saintmaryro@gmail.com or call 404-518-1042 for inquiries, sacramental scheduling, and parish events."
   },
   "faq": {
     "eyebrow": "FAQ",
     "heading": "Frequently Asked Questions",
-    "subheading": "Everything you need to know before booking your Dacula event.",
+    "subheading": "Practical information about services, sacraments, and parish life.",
     "items": [
       {
-        "question": "What is the guest capacity of Fellowship Event Hall?",
-        "answer": "Fellowship Event Hall comfortably seats up to 250 guests and can accommodate up to 300 attendees for standing receptions. The space is approximately 5,000 square feet."
+        "question": "Where is Saint Mary Romanian Orthodox Church located?",
+        "answer": "2875 Winder Hwy, Dacula, GA 30019 — serving Gwinnett County and the North Atlanta area."
       },
       {
-        "question": "Where is Fellowship Event Hall located?",
-        "answer": "We are located at 2875 Winder Hwy, Dacula, GA 30019 — roughly 45 minutes northeast of downtown Atlanta, and convenient to Lawrenceville, Buford, Hoschton, Duluth, and Suwanee."
+        "question": "How can I contact the parish office?",
+        "answer": "Email saintmaryro@gmail.com or call 404-518-1042 for general inquiries and sacramental scheduling."
       },
       {
-        "question": "Is parking available on site?",
-        "answer": "Yes. Our property includes a large on-site parking lot with ample space for your guests at no additional charge."
+        "question": "When are services held?",
+        "answer": "The parish celebrates Sunday Divine Liturgy and observances for major feast days; see the parish calendar for exact times and seasonal schedules."
       },
       {
-        "question": "Can we bring in our own catering and alcohol?",
-        "answer": "Yes — outside catering is welcome, and our prep kitchen is available to vendors. Alcohol is permitted under our standard rental guidelines, which we will review with you before booking."
+        "question": "Does the parish offer community meals and events?",
+        "answer": "Yes — the parish organizes community meals, cultural festivals, and outreach programs throughout the year."
       },
       {
-        "question": "What is included in the rental?",
-        "answer": "Every rental includes tables and chairs, tablecloths and chair covers, a basic sound system, on-site parking, an on-site coordinator, and setup and cleanup assistance. Higher-tier packages add premium linens, a bridal suite, enhanced sound and lighting, and dedicated coordination."
-      },
-      {
-        "question": "How do we book a tour or check availability?",
-        "answer": "Private venue tours are available by appointment. Use the contact form or send a WhatsApp message and we will follow up promptly with open dates."
+        "question": "How do I request a sacrament or pastoral visit?",
+        "answer": "Contact the parish office or speak with clergy after services to arrange baptisms, weddings, confessions, and pastoral visits."
       }
     ]
   }

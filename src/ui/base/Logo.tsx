@@ -15,7 +15,7 @@ const Logo = (props: ILogoProps) => {
   return (
     <span className={`text-gray-900 inline-flex items-center ${fontStyle}`}>
       <Image
-        src={isMobile ? '/logos/fellowship-logomark.svg' : '/logos/fellowship-wordmark.svg'}
+        src={isMobile ? '/logos/fellowship-logomark.svg' : '/logos/saintmaryrologo.png'}
         alt={t('logo.alt')}
         width={isMobile ? 30 : width}
         height={isMobile ? 30 : height}

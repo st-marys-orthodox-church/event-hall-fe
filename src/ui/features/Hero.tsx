@@ -27,21 +27,21 @@ const Hero = () => {
                 <span className="sr-only">{t('hero.srOnly')}</span>
                 <span aria-hidden className="flex flex-col items-center justify-center">
                   <Image
-                    src="/logos/fellowship-wordmark-minimal-white.svg"
+                    src="/logos/saintmarytext.png"
                     alt=""
                     width={390}
                     height={110}
                     className="mx-auto w-full max-w-[300px] sm:max-w-[390px] h-auto"
                     priority
                   />
-                  <Image
+                  {/* <Image
                     src="/logos/fellowship-wordmark-events-white.svg"
                     alt=""
                     width={260}
                     height={73}
                     className="mx-auto w-full max-w-[200px] sm:max-w-[260px] h-auto"
                     priority
-                  />
+                  /> */}
                 </span>
               </h1>
 

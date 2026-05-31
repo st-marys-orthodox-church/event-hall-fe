@@ -1,5 +1,148 @@
 {
   "hero": {
+    "logoAltMinimal": "Biserica Ortodoxă Română Sfânta Maria — Dacula, Georgia",
+    "logoAltEvents": "Biserica Sfânta Maria — slujbe și viață parohială în Dacula, Georgia",
+    "srOnly": "Biserica Ortodoxă Română Sfânta Maria — Dacula, GA",
+    "tagline": "O parohie românească primitoare care deservește zona Atlanta",
+    "location": "2875 Winder Hwy, Dacula, GA",
+    "viewGallery": "Vezi Fotografii",
+    "explorePackages": "Despre Slujbe",
+    "scroll": "Explorează",
+    "slides": {
+      "exterior": "Exteriorul Bisericii Sfânta Maria din Dacula, GA",
+      "nave": "Interiorul bisericii și iconostasul",
+      "festival": "Festivaluri comunitare și evenimente culturale la parohie",
+      "gathering": "Părtășie și mese comunitare organizate de biserică"
+    }
+  },
+  "story": {
+    "eyebrow": "Parohia",
+    "ourStory": {
+      "title": "Povestea Noastră",
+      "paragraphs": [
+        "Biserica Ortodoxă Română Sfânta Maria din Dacula servește comunitatea românească și familiile din județul Gwinnett și zona mai largă Atlanta.",
+        "Parohia combină viața liturgică ortodoxă cu activități culturale și sociale care păstrează tradițiile românești pentru generațiile viitoare."
+      ],
+      "imageAlt": "Interiorul Bisericii Sfânta Maria pregătit pentru slujbă"
+    },
+    "aboutYou": {
+      "title": "Despre Tine",
+      "paragraphs": [
+        "Toți sunt bineveniți la slujbele noastre — familii, tineri și vizitatori. Oferim sprijin pastoral, programe pentru copii și evenimente comunitare.",
+        "Ne bucurăm să fim un loc de rugăciune, întâlnire și sprijin reciproc."
+      ],
+      "imageAlt": "Vedere exterioară a Bisericii Sfânta Maria și spațiilor comunitare"
+    }
+  },
+  "stats": {
+    "eyebrow": "Despre Parohie",
+    "heading": "Despre Biserica Sfânta Maria",
+    "subheading": "Credință, tradiție și viață comunitară",
+    "items": {
+      "membership": "Parohieni",
+      "programs": "Programe",
+      "services": "Slujbe"
+    },
+    "values": {
+      "membership": "Parohie româno-americană dedicată familiilor din Gwinnett County",
+      "programs": "Liturghii, taine, programe pentru tineri și mese comunitare",
+      "services": "Slujbe duminicale și sărbători religioase"
+    }
+  },
+  "packagesSection": {
+    "title": "Programe Parohiale",
+    "description": "Slujbe religioase, programe educaționale, evenimente culturale și activități de binefacere organizate de parohie."
+  },
+  "availability": {
+    "eyebrow": "Program",
+    "heading": "Calendar Liturgic & Evenimente",
+    "subheading": "Consultați slujbele viitoare, zilele de praznic și evenimentele parohiale. Contactați parohia pentru programări."
+  },
+  "cta": {
+    "eyebrow": "Alăturați-vă",
+    "heading": "Vizitați sau Alăturați-vă Parohiei Sfânta Maria",
+    "body": "Toți sunt bineveniți — participați la o slujbă, înscrieți-vă la un program sau contactați biroul parohial pentru asistență pastorală.",
+    "button": "Contactați Parohia"
+  },
+  "reviews": {
+    "eyebrow": "Vocea Parohienilor",
+    "heading": "Ce spun parohienii",
+    "subheading": "Mărturii ale membrilor și prietenilor parohiei Sfânta Maria.",
+    "sourceLabel": "Din partea Parohiei",
+    "ratingLabel": "{{rating}} din 5 stele",
+    "viewAllOnGoogle": "Citește mai mult pe site-ul parohial",
+    "items": {
+      "maria": {
+        "name": "Maria Pop",
+        "date": "2 ani în urmă",
+        "text": "Parohia Sfânta Maria este o comunitate primitoare — slujbele și părtășia ne-au binecuvântat familia."
+      },
+      "ion": {
+        "name": "Ion Marin",
+        "date": "acum un an",
+        "text": "Evenimentele culturale susțin păstrarea tradițiilor noastre românești pentru copii."
+      },
+      "ana": {
+        "name": "Ana Ionescu",
+        "date": "6 luni în urmă",
+        "text": "Preoții și voluntarii oferă sprijin grijuliu familiilor și organiză tainele cu respect."
+      }
+    }
+  },
+  "trustBadges": {
+    "community": {
+      "title": "Orientare Comunitară",
+      "text": "Programe pentru familii, seniori și tineri"
+    },
+    "tradition": {
+      "title": "Tradiție Vie",
+      "text": "Liturghie ortodoxă românească și evenimente culturale"
+    },
+    "service": {
+      "title": "Implicare",
+      "text": "Mese comunitare, colecte și parteneriate locale"
+    }
+  },
+  "visit": {
+    "eyebrow": "Vizită",
+    "heading": "Vizitați Biserica Sfânta Maria",
+    "subheading": "Deservim județul Gwinnett și comunitatea românească din zona Atlanta.",
+    "addressTitle": "Adresă",
+    "getDirections": "Direcții →",
+    "contactTitle": "Contact",
+    "toursTitle": "Program Birou Parohial",
+    "toursText": "Contactați parohia la saintmaryro@gmail.com sau sunați la 404-518-1042 pentru întrebări, programări sacramentale și evenimente."
+  },
+  "faq": {
+    "eyebrow": "Întrebări",
+    "heading": "Întrebări frecvente",
+    "subheading": "Informații practice despre slujbe, taine și viața parohială.",
+    "items": [
+      {
+        "question": "Unde este situată Biserica Sfânta Maria?",
+        "answer": "2875 Winder Hwy, Dacula, GA 30019 — deservim județul Gwinnett și zona Atlanta."
+      },
+      {
+        "question": "Cum pot contacta biroul parohial?",
+        "answer": "Trimiteți un email la saintmaryro@gmail.com sau sunați la 404-518-1042 pentru informații și programări."
+      },
+      {
+        "question": "Când sunt slujbele?",
+        "answer": "Parohia săvârșește Liturghia Duminicală și sărbători religioase; consultați calendarul pentru ore exacte."
+      },
+      {
+        "question": "Organizează parohia mese comunitare?",
+        "answer": "Da — organizăm mese comunitare, festivaluri culturale și programe de sprijin pe parcursul anului."
+      },
+      {
+        "question": "Cum solicit o taină sau o vizită pastorală?",
+        "answer": "Contactați biroul parohial sau vorbiți cu preotul după slujbă pentru a programa botezuri, cununii, spovedanii și vizite pastorale."
+      }
+    ]
+  }
+}
+{
+  "hero": {
     "logoAltMinimal": "Fellowship Event Hall — locație pentru nunți și banchete în Dacula, Georgia",
     "logoAltEvents": "Fellowship Event Hall — locație pentru nunți și banchete în Dacula, Georgia",
     "srOnly": "Fellowship Event Hall — Locație pentru Nunți și Banchete în Dacula, GA",
