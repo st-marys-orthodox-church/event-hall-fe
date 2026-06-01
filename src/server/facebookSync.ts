@@ -94,7 +94,13 @@ const deriveExcerpt = (message: string, attachment: MetaAttachment | undefined) 
 };
 
 const isLivePost = (post: MetaPost, attachment: MetaAttachment | undefined, message: string) => {
-  const haystack = [message, attachment?.title, attachment?.description, post.permalink_url, post.status_type]
+  const haystack = [
+    message,
+    attachment?.title,
+    attachment?.description,
+    post.permalink_url,
+    post.status_type,
+  ]
     .filter(Boolean)
     .join(' ')
     .toLowerCase();

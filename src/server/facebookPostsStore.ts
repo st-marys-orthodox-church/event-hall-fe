@@ -1,6 +1,6 @@
-import Database from 'better-sqlite3';
 import fs from 'node:fs';
 import path from 'node:path';
+import Database from 'better-sqlite3';
 import type { FacebookPost } from '../utils/facebookPostsShared';
 
 type FacebookPostRow = {
@@ -104,9 +104,7 @@ export const getFacebookPostCount = () => {
   return row.count;
 };
 
-export const upsertFacebookPosts = (
-  posts: Array<FacebookPost & { rawPayload: string }>
-) => {
+export const upsertFacebookPosts = (posts: Array<FacebookPost & { rawPayload: string }>) => {
   const db = getDb();
   const statement = db.prepare(`
     INSERT INTO facebook_posts (

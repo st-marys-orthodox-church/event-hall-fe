@@ -2,9 +2,9 @@ import type { GetServerSideProps } from 'next';
 import { useTranslation } from 'next-i18next/pages';
 import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations';
 import Link from 'next/link';
-import type { FacebookPost } from '../utils/facebookPostsShared';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
+import type { FacebookPost } from '../utils/facebookPostsShared';
 import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
 type StiriEvenimentePageProps = {
@@ -108,10 +108,7 @@ export const getServerSideProps: GetServerSideProps<StiriEvenimentePageProps> = 
 
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? I18N_DEFAULT_LOCALE, [
-        'common',
-        'facebookFeed',
-      ])),
+      ...(await serverSideTranslations(locale ?? I18N_DEFAULT_LOCALE, ['common', 'facebookFeed'])),
       posts: listFacebookPosts(24),
     },
   };
