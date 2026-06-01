@@ -1,5 +1,5 @@
 allowBuilds:
-  '@biomejs/biome': set this to true or false
+  '@biomejs/biome': true
   better-sqlite3: true
-  lefthook: set this to true or false
-  sharp: set this to true or false
+  lefthook: true
+  sharp: true
