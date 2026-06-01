@@ -11,10 +11,6 @@ import type {
 
 type EventTone = 'blue' | 'gold' | 'red' | 'stone';
 
-type ScheduleEvent = {
-  event: ChurchCalendarEvent;
-};
-
 type ScheduleDay = {
   dayKey: string;
   events: ChurchCalendarEvent[];
@@ -23,7 +19,9 @@ type ScheduleDay = {
 type PostPreview = {
   date: string;
   excerpt: string;
+  permalinkUrl?: string;
   title: string;
+  isRepost?: boolean;
 };
 
 const POST_IMAGES = [
@@ -141,18 +139,21 @@ const ScheduleDayColumn = ({
 
 export const ParishHomepageHub = ({
   calendarUnavailable,
+  homepagePosts,
   todayEvents,
   upcomingDays,
 }: {
   calendarUnavailable: boolean;
+  homepagePosts: PostPreview[];
   todayEvents: ChurchCalendarEvent[];
   upcomingDays: ScheduleDay[];
 }) => {
   const { t, i18n } = useTranslation('home');
   const locale = i18n.language;
-  const postPreviews = t('homepageHub.news.items', {
+  const fallbackPostPreviews = t('homepageHub.news.items', {
     returnObjects: true,
   }) as PostPreview[];
+  const postPreviews = homepagePosts.length > 0 ? homepagePosts : fallbackPostPreviews;
 
   return (
     <section className="relative overflow-hidden bg-stone-50 py-20 md:py-24">
@@ -247,7 +248,9 @@ export const ParishHomepageHub = ({
                     {post.excerpt}
                   </p>
                   <Link
-                    href="/stiri-evenimente"
+                    href={post.permalinkUrl || '/stiri-evenimente'}
+                    target={post.permalinkUrl ? '_blank' : undefined}
+                    rel={post.permalinkUrl ? 'noopener noreferrer' : undefined}
                     className="mt-6 inline-flex items-center gap-1 text-sm font-medium uppercase tracking-[0.18em] text-brand-green transition-colors duration-300 hover:text-brand-gold"
                   >
                     <span>{t('homepageHub.news.readMore')}</span>

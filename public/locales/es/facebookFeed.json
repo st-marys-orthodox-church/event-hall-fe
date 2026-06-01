@@ -1,0 +1,14 @@
+{
+  "eyebrow": "Facebook parroquial",
+  "title": "Noticias y Eventos Parroquiales",
+  "intro": "Esta página muestra automáticamente las publicaciones recientes del Facebook de la parroquia, filtradas y preparadas para el sitio web.",
+  "seoTitle": "Noticias y Eventos Parroquiales | Saint Mary Romanian Orthodox Church",
+  "seoDescription": "Publicaciones recientes del Facebook de la parroquia Saint Mary.",
+  "fallbackImage": "Imagen disponible en Facebook",
+  "emptyExcerpt": "Abre la publicación en Facebook para ver todos los detalles.",
+  "repostLabel": "Repost",
+  "facebookSource": "Facebook",
+  "readMore": "Leer Más",
+  "emptyTitle": "Todavía no hay publicaciones sincronizadas.",
+  "emptyBody": "Cuando se configuren las credenciales de Meta y se ejecute la sincronización diaria, las publicaciones aparecerán aquí automáticamente."
+}

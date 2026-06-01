@@ -1,0 +1,14 @@
+{
+  "eyebrow": "Parish Facebook",
+  "title": "News and Parish Events",
+  "intro": "This page automatically displays recent posts from the parish Facebook page, filtered and prepared for the website.",
+  "seoTitle": "News and Parish Events | Saint Mary Romanian Orthodox Church",
+  "seoDescription": "Recent posts from Saint Mary Parish Facebook page.",
+  "fallbackImage": "Image available on Facebook",
+  "emptyExcerpt": "Open the post on Facebook to see the full details.",
+  "repostLabel": "Repost",
+  "facebookSource": "Facebook",
+  "readMore": "Read More",
+  "emptyTitle": "There are no synced posts yet.",
+  "emptyBody": "Once Meta credentials are configured and the daily sync runs, posts will appear here automatically."
+}

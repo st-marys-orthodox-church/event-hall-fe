@@ -24,9 +24,18 @@ yarn-error.log*
 
 # dotenv local files
 .env*.local
+.env
 
 # local folder
 local
+
+# local package manager cache
+.pnpm-store
+
+# local synced content database
+data/*.db
+data/*.db-shm
+data/*.db-wal
 
 # vercel
 .vercel

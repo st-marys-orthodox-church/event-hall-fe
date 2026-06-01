@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { AppConfig } from '../../utils/AppConfig';
 import { SOCIALS, generateWhatsAppUrl } from '../../utils/Constants';
 import { Section } from '../layout/Section';
-import { Logo } from './Logo';
 
 const GOOGLE_MAPS_DIRECTIONS = 'https://maps.app.goo.gl/XMYyAKG9XSL24X259';
 
@@ -69,7 +68,6 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center md:items-end justify-between gap-4">
-            <Logo />
             <div className="flex flex-col items-center md:items-end gap-3">
               <span className="eyebrow text-brand-gold">{t('footer.connect')}</span>
               <div className="flex flex-wrap justify-center md:justify-start md:flex-col items-center md:items-end gap-4 md:gap-2">

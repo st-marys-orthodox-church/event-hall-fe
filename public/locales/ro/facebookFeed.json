@@ -1,0 +1,14 @@
+{
+  "eyebrow": "Facebook Parohial",
+  "title": "Știri și Evenimente din Parohie",
+  "intro": "Această pagină afișează automat postările recente de pe Facebook-ul parohiei, filtrate și pregătite pentru site.",
+  "seoTitle": "Știri și Evenimente | Biserica Ortodoxă Română Sfânta Maria",
+  "seoDescription": "Postări recente de pe Facebook-ul parohiei Sfânta Maria.",
+  "fallbackImage": "Imagine disponibilă pe Facebook",
+  "emptyExcerpt": "Deschideți postarea pe Facebook pentru a vedea mai multe detalii.",
+  "repostLabel": "Repostare",
+  "facebookSource": "Facebook",
+  "readMore": "Mai Mult",
+  "emptyTitle": "Nu există încă postări sincronizate.",
+  "emptyBody": "După configurarea credențialelor Meta și rularea sincronizării zilnice, postările vor apărea aici automat."
+}
