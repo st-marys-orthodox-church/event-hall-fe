@@ -1,6 +1,6 @@
 // Non-display configuration. All user-facing copy (site name, titles, descriptions,
 
-import { SOCIALS } from './Constants';
+import { PHONE_NUMBER, SOCIALS } from './Constants';
 
 // OG alt text, meta descriptions) lives in public/locales/{locale}/seo.json.
 export const AppConfig = {
@@ -13,7 +13,7 @@ export const AppConfig = {
   twitter: '',
   facebook: SOCIALS.FB,
   googleBusinessProfile: 'https://maps.app.goo.gl/XMYyAKG9XSL24X259',
-  telephone: '+1-404-518-1042',
+  telephone: PHONE_NUMBER,
   email: 'events@saintmaryro.org',
   address: {
     street: '2875 Winder Hwy',

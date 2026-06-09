@@ -3,10 +3,14 @@ export const SOCIALS = {
   IG: 'https://www.instagram.com/fellowshipeventhall/',
 };
 
-// WhatsApp Business Configuration - uses environment variable for security
-// Format: country code + phone number without spaces or special characters (e.g., 14165551234 for US)
+// Single source of truth for the venue phone number, served via NEXT_PUBLIC_PHONE so it can be
+// overridden per environment without a code change. Falls back to the production number so the
+// tel: link, displayed number, and WhatsApp deep link never break when the env var is unset.
+export const PHONE_NUMBER = process.env.NEXT_PUBLIC_PHONE || '+1-404-518-1042';
+
+// WhatsApp deep links need digits only — country code + number, no '+' or punctuation.
 export const WHATSAPP_CONFIG = {
-  phoneNumber: process.env.NEXT_PUBLIC_WHATSAPP_PHONE || '',
+  phoneNumber: PHONE_NUMBER.replace(/\D/g, ''),
   defaultMessage: "Hi St. Mary's! I'm interested in booking your event hall.",
 };
 
