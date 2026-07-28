@@ -1,4 +1,4 @@
-import { Email, Facebook, Instagram, Phone, WhatsApp } from '@mui/icons-material';
+import { Description, Email, Facebook, Instagram, Phone, WhatsApp } from '@mui/icons-material';
 import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { AppConfig } from '../../utils/AppConfig';
@@ -59,6 +59,14 @@ const Footer = () => {
                 className="hover:text-brand-gold transition-colors inline-flex items-center gap-2"
               >
                 <Email fontSize="small" /> {AppConfig.email}
+              </a>
+              <a
+                href="/docs/rental-agreement.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-gold transition-colors inline-flex items-center gap-2"
+              >
+                <Description fontSize="small" /> {t('footer.rentalAgreement')}
               </a>
             </div>
 

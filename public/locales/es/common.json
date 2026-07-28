@@ -28,7 +28,8 @@
     "contactTitle": "Contacto",
     "hoursTitle": "Horario",
     "hours": "Todos los días, 8:00 – 18:00 EST",
-    "getDirections": "Cómo llegar"
+    "getDirections": "Cómo llegar",
+    "rentalAgreement": "Contrato de alquiler (PDF)"
   },
   "logo": {
     "alt": "Fellowship Event Hall"

@@ -28,7 +28,8 @@
     "contactTitle": "Contact",
     "hoursTitle": "Hours",
     "hours": "Every day, 8 AM – 6 PM EST",
-    "getDirections": "Get Directions"
+    "getDirections": "Get Directions",
+    "rentalAgreement": "Rental Agreement (PDF)"
   },
   "logo": {
     "alt": "Fellowship Event Hall"
