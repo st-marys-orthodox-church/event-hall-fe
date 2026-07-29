@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Acasă",
     "gallery": "Galerie",
     "packages": "Pachete",
     "contactUs": "Contactează-ne",
@@ -19,6 +20,7 @@
     "default": "Scrie pe WhatsApp"
   },
   "footer": {
+    "exploreTitle": "Explorează",
     "connect": "Conectează-te cu noi",
     "facebook": "Facebook",
     "instagram": "Instagram",

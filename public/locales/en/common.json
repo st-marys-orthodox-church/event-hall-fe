@@ -1,5 +1,6 @@
 {
   "nav": {
+    "home": "Home",
     "gallery": "Gallery",
     "packages": "Packages",
     "contactUs": "Contact Us",
@@ -19,6 +20,7 @@
     "default": "Chat on WhatsApp"
   },
   "footer": {
+    "exploreTitle": "Explore",
     "connect": "Connect with us",
     "facebook": "Facebook",
     "instagram": "Instagram",

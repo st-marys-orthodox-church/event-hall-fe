@@ -16,10 +16,11 @@ export const useContactForm = () => {
     cap: '',
     email: '',
     package: '',
+    website: '',
   });
 
   const updateContactForm = (
-    key: 'name' | 'date' | 'message' | 'cap' | 'email' | 'package',
+    key: 'name' | 'date' | 'message' | 'cap' | 'email' | 'package' | 'website',
     value: string | Date
   ) => {
     setContactForm({
@@ -36,6 +37,7 @@ export const useContactForm = () => {
       cap: '',
       email: '',
       package: '',
+      website: '',
     });
 
   const determineMessage = () => {

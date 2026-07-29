@@ -78,6 +78,35 @@ const Footer = () => {
 
           <div className="flex flex-col items-center md:items-end justify-between gap-4">
             <Logo />
+            <nav
+              aria-label={t('nav.navigation')}
+              className="flex flex-col items-center md:items-end gap-3"
+            >
+              <span className="eyebrow text-brand-gold">{t('footer.exploreTitle')}</span>
+              <ul className="flex flex-wrap justify-center md:flex-col items-center md:items-end gap-4 md:gap-2 text-sm">
+                <li>
+                  <Link href="/" className="hover:text-brand-gold transition-colors duration-300">
+                    {t('nav.home')}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/gallery"
+                    className="hover:text-brand-gold transition-colors duration-300"
+                  >
+                    {t('nav.gallery')}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/packages"
+                    className="hover:text-brand-gold transition-colors duration-300"
+                  >
+                    {t('nav.packages')}
+                  </Link>
+                </li>
+              </ul>
+            </nav>
             <div className="flex flex-col items-center md:items-end gap-3">
               <span className="eyebrow text-brand-gold">{t('footer.connect')}</span>
               <div className="flex flex-wrap justify-center md:justify-start md:flex-col items-center md:items-end gap-4 md:gap-2">

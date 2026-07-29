@@ -162,6 +162,17 @@ export function ContactModal() {
                   <span className="flex-1 h-px bg-stone-200" />
                 </div>
                 <div className="flex flex-col gap-4">
+                  {/* Honeypot — hidden from real users, bots that fill it are dropped server-side */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={contactForm.website}
+                    onChange={(e) => updateContactForm('website', e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+                  />
                   <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
                     <FormControl fullWidth required>
                       <TextField
