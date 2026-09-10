@@ -18,6 +18,7 @@ import { PackagesShowcase } from '../ui/features/PackagesShowcase';
 import { Reviews } from '../ui/features/Reviews';
 import { VerticalFeatures } from '../ui/features/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
+import { fullBleedSrc } from '../utils/CloudflareImages';
 import { STATS_ITEMS, TRUST_BADGES } from '../utils/Features';
 import { PACKAGES } from '../utils/Packages';
 import { REVIEWS } from '../utils/Reviews';
@@ -185,7 +186,9 @@ const Index = () => {
               style={{ transform: `translate3d(0, ${ctaOffset}px, 0)` }}
             >
               <Image
-                src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/dd2d39a7-a9c3-4518-e2ab-195922a72100/public"
+                src={fullBleedSrc(
+                  'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/dd2d39a7-a9c3-4518-e2ab-195922a72100/public'
+                )}
                 alt={tHome('cta.imageAlt')}
                 fill
                 className="object-cover"
