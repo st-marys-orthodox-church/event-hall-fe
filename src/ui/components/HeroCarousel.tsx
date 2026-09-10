@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next/pages';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { useScrollParallax } from '../../hooks';
+import { fullBleedSrc } from '../../utils/CloudflareImages';
 import { TIMING } from '../../utils/DesignTokens';
 import { HERO_SLIDES } from '../../utils/HeroSlides';
 
@@ -39,7 +40,7 @@ export const HeroCarousel = () => {
               }`}
             >
               <Image
-                src={slide.src}
+                src={fullBleedSrc(slide.src)}
                 alt={t(`hero.slides.${slide.altKey}`)}
                 fill
                 priority={index === 0}
