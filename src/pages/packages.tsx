@@ -79,7 +79,7 @@ const Packages = () => {
               style={{ transform: `translate3d(0, ${heroOffset}px, 0)` }}
             >
               <Image
-                src="https://i.ibb.co/hx3FtCqj/hf-20260429-052734-58410ebd-b2e2-4f9b-974e-4aa316a2b668.png"
+                src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/8a183893-5d18-481b-8e88-8e3774d05e00/public"
                 alt={t('hero.imageAlt')}
                 fill
                 priority
@@ -190,7 +190,7 @@ const Packages = () => {
                     style={{ transform: `translate3d(0, ${quoteImgOffset}px, 0)` }}
                   >
                     <Image
-                      src="https://i.ibb.co/0RmJx4CP/hf-20260429-052729-4f79efd2-f270-49eb-9e17-4ff0aaef050c.png"
+                      src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/0378b0e5-f911-4cf5-5415-ea5d66fe3a00/public"
                       alt={t('quickQuote.imageAlt')}
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -328,7 +328,7 @@ const Packages = () => {
               style={{ transform: `translate3d(0, ${ctaOffset}px, 0)` }}
             >
               <Image
-                src="https://i.ibb.co/JjsS7wDn/hf-20260429-052749-a8a99f87-5229-435e-8b3a-335908b7d3cf.png"
+                src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/dd2d39a7-a9c3-4518-e2ab-195922a72100/public"
                 alt={t('cta.imageAlt')}
                 fill
                 className="object-cover"

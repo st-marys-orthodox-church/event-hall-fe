@@ -9,10 +9,10 @@
     "explorePackages": "Explorar paquetes",
     "scroll": "Desplázate",
     "slides": {
-      "exterior": "Exterior de Fellowship Event Hall — espacio para bodas y banquetes en Dacula, Georgia",
-      "receptionSetup": "Salón principal preparado para una recepción de boda de 150 invitados con mesas redondas y mantelería",
-      "grounds": "Jardines paisajísticos y aparcamiento en las instalaciones de Fellowship Event Hall",
-      "interior": "Interior de Fellowship Event Hall preparado para una celebración"
+      "celebrationBackdrop": "Fondo de baby shower con guirnalda de globos en rosa y beige en Fellowship Event Hall en Dacula, Georgia",
+      "receptionSetup": "Salón principal con mesas redondas, bajoplatos dorados y lazos azul empolvado para una recepción de boda",
+      "quinceaneraHeadTable": "Mesa principal de quinceañera con faldón de volantes rosado, silla tipo trono capitoné y centro de flor de cerezo",
+      "interior": "Interior de Fellowship Event Hall con largas mesas de recepción, sillas transparentes y centros de paniculata"
     }
   },
   "story": {
@@ -31,7 +31,7 @@
         "Nuestras instalaciones en alquiler destacan en la zona por un aparcamiento nuevo y amplio, hermosas zonas verdes alrededor, privacidad para tus eventos, horarios flexibles, un edificio totalmente nuevo con diseño moderno y múltiples opciones de decoración.",
         "Es una expresión de nuestra hospitalidad y un lugar donde te sentirás bienvenido."
       ],
-      "imageAlt": "Vista exterior de Fellowship Event Hall con jardines paisajísticos y aparcamiento en las instalaciones"
+      "imageAlt": "Arco de globos en tonos melocotón y terracota con flores secas enmarcando la pared de ventanales en Fellowship Event Hall"
     }
   },
   "stats": {
@@ -62,7 +62,8 @@
     "eyebrow": "Siguiente paso",
     "heading": "¿Listo para reservar tu boda, quinceañera o evento?",
     "body": "Contáctanos hoy para programar una visita y hablar de cómo podemos hacer que tu ocasión especial sea inolvidable.",
-    "button": "Ponte en contacto"
+    "button": "Ponte en contacto",
+    "imageAlt": "Larga mesa de banquete con bajoplatos dorados, centros de follaje y lazos azul empolvado en Fellowship Event Hall"
   },
   "reviews": {
     "eyebrow": "Opiniones de los invitados",

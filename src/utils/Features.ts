@@ -47,7 +47,8 @@ export const STORY_FEATURES: IStoryFeatureMeta[] = [
   },
   {
     key: 'aboutYou',
-    image: 'https://i.ibb.co/zcrtSqd/hf-20260429-052821-f57ba732-b7fe-43b5-b21c-2f96b03b03be.png',
+    image:
+      'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/690c3c8f-c8ce-4c7c-6e86-3c8051f08900/public',
     reverse: true,
   },
 ];
