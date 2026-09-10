@@ -9,10 +9,10 @@
     "explorePackages": "Explorează pachetele",
     "scroll": "Derulează",
     "slides": {
-      "exterior": "Exteriorul Fellowship Event Hall — locație pentru nunți și banchete în Dacula, Georgia",
-      "receptionSetup": "Sala principală pregătită pentru o recepție de nuntă cu 150 de invitați, cu mese rotunde și fețe de masă",
-      "grounds": "Spațiile amenajate și parcarea proprie la Fellowship Event Hall",
-      "interior": "Interiorul Fellowship Event Hall pregătit pentru o sărbătoare"
+      "celebrationBackdrop": "Fundal de baby shower cu ghirlandă de baloane roz și bej la Fellowship Event Hall din Dacula, Georgia",
+      "receptionSetup": "Sala principală cu mese rotunde, farfurii-suport aurii și funde albastru prăfuit pentru o recepție de nuntă",
+      "quinceaneraHeadTable": "Masa principală de quinceañera cu volane roz, scaun tip tron capitonat și aranjament din flori de cireș",
+      "interior": "Interiorul Fellowship Event Hall cu mese lungi de recepție, scaune transparente și aranjamente de floarea-miresei"
     }
   },
   "story": {
@@ -31,7 +31,7 @@
         "Spațiul nostru de închiriat se remarcă în zonă prin parcarea nouă și spațioasă, zona verde frumoasă din jur, intimitate pentru evenimentele tale, program flexibil, clădire nouă cu design modern și multiple opțiuni de decorare.",
         "Este o expresie a ospitalității noastre și un loc în care te vei simți binevenit."
       ],
-      "imageAlt": "Vedere exterioară a Fellowship Event Hall ce arată spațiile amenajate și parcarea proprie"
+      "imageAlt": "Arc din baloane în nuanțe de piersică și teracotă cu flori uscate, încadrând peretele de ferestre la Fellowship Event Hall"
     }
   },
   "stats": {
@@ -62,7 +62,8 @@
     "eyebrow": "Pasul următor",
     "heading": "Ești gata să-ți rezervi nunta, quinceañera sau evenimentul?",
     "body": "Contactează-ne astăzi pentru a programa un tur și a discuta cum putem face ocazia ta specială de neuitat.",
-    "button": "Ia legătura"
+    "button": "Ia legătura",
+    "imageAlt": "Masă lungă de banchet cu farfurii-suport aurii, aranjamente din verdeață și funde albastru prăfuit la Fellowship Event Hall"
   },
   "reviews": {
     "eyebrow": "Recenzii ale invitaților",

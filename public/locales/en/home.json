@@ -9,10 +9,10 @@
     "explorePackages": "Explore Packages",
     "scroll": "Scroll",
     "slides": {
-      "exterior": "Fellowship Event Hall exterior — wedding and banquet venue in Dacula, Georgia",
-      "receptionSetup": "Main hall set up for a 150-guest wedding reception with round tables and linens",
-      "grounds": "Landscaped grounds and on-site parking at Fellowship Event Hall",
-      "interior": "Interior of Fellowship Event Hall prepared for a celebration"
+      "celebrationBackdrop": "Baby shower backdrop with a pink and beige balloon garland at Fellowship Event Hall in Dacula, Georgia",
+      "receptionSetup": "Main hall set with round tables, gold chargers and dusty blue chair sashes for a wedding reception",
+      "quinceaneraHeadTable": "Quinceañera head table with blush ruffled skirting, a tufted throne chair and cherry blossom centerpiece",
+      "interior": "Interior of Fellowship Event Hall with long reception tables, ghost chairs and baby's breath centerpieces"
     }
   },
   "story": {
@@ -31,7 +31,7 @@
         "Our renting facility stands out in the area with a new and large parking space, beautiful green space around, privacy for your events, flexible hours, brand new building with modern design and multiple options for decorations.",
         "It is an expression of our hospitality and a place you will feel welcomed."
       ],
-      "imageAlt": "Exterior view of Fellowship Event Hall showing landscaped grounds and on-site parking"
+      "imageAlt": "Peach and terracotta balloon arch with dried florals framing the window wall at Fellowship Event Hall"
     }
   },
   "stats": {
@@ -62,7 +62,8 @@
     "eyebrow": "Book Your Date",
     "heading": "Ready to Book Your Wedding, Quinceañera, or Event?",
     "body": "Let us help you create unforgettable memories at St. Mary's Event Hall.",
-    "button": "View All Packages"
+    "button": "View All Packages",
+    "imageAlt": "Long banquet table with gold chargers, greenery centerpieces and dusty blue chair sashes at Fellowship Event Hall"
   },
   "reviews": {
     "eyebrow": "Guest Reviews",

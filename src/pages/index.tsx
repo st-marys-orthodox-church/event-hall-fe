@@ -185,8 +185,8 @@ const Index = () => {
               style={{ transform: `translate3d(0, ${ctaOffset}px, 0)` }}
             >
               <Image
-                src="https://i.ibb.co/JjsS7wDn/hf-20260429-052749-a8a99f87-5229-435e-8b3a-335908b7d3cf.png"
-                alt="Fellowship Event Hall celebration — event venue in Dacula, GA"
+                src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/dd2d39a7-a9c3-4518-e2ab-195922a72100/public"
+                alt={tHome('cta.imageAlt')}
                 fill
                 className="object-cover"
                 sizes="100vw"
