@@ -47,7 +47,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageMeta; index: number }) => {
               >
                 <Image
                   src={pkg.img}
-                  alt={t('showcase.imageAlt', { title, capacity })}
+                  alt={t(`tiers.${pkg.key}.imageAlt`, { title })}
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-[1200ms] ease-refined group-hover:scale-[1.04]"

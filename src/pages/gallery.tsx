@@ -5,20 +5,30 @@ import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { FilteredGallery } from '../ui/features/FilteredGallery';
 import { GALLERY_PHOTOS } from '../utils/Photos';
-import { breadcrumbJsonLd } from '../utils/StructuredData';
+import { breadcrumbJsonLd, imageGalleryJsonLd } from '../utils/StructuredData';
 import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
 const GalleryPage = () => {
-  const { t } = useTranslation(['seo', 'packages']);
+  const { t } = useTranslation(['seo', 'packages', 'gallery']);
   return (
     <div className="antialiased text-stone-800">
       <Meta
         title={t('seo:gallery.title')}
         description={t('seo:gallery.description')}
-        jsonLd={breadcrumbJsonLd([
-          { name: t('packages:breadcrumb.home'), path: '/' },
-          { name: t('seo:gallery.title'), path: '/gallery' },
-        ])}
+        jsonLd={[
+          breadcrumbJsonLd([
+            { name: t('packages:breadcrumb.home'), path: '/' },
+            { name: t('seo:gallery.title'), path: '/gallery' },
+          ]),
+          imageGalleryJsonLd(
+            t('gallery:title'),
+            t('gallery:description'),
+            GALLERY_PHOTOS.map((photo) => ({
+              url: photo.src,
+              description: t(`gallery:photos.${photo.altKey}`),
+            }))
+          ),
+        ]}
       />
 
       <Template topPad bottomPad>

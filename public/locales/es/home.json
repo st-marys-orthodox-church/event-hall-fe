@@ -10,9 +10,8 @@
     "scroll": "Desplázate",
     "slides": {
       "celebrationBackdrop": "Fondo de baby shower con guirnalda de globos en rosa y beige en Fellowship Event Hall en Dacula, Georgia",
-      "receptionSetup": "Salón principal con mesas redondas, bajoplatos dorados y lazos azul empolvado para una recepción de boda",
-      "quinceaneraHeadTable": "Mesa principal de quinceañera con faldón de volantes rosado, silla tipo trono capitoné y centro de flor de cerezo",
-      "interior": "Interior de Fellowship Event Hall con largas mesas de recepción, sillas transparentes y centros de paniculata"
+      "receptionSetup": "Salón principal con mesas redondas, bajoplatos dorados y lazos azul empolvado para una recepción",
+      "quinceaneraHeadTable": "Mesa principal de quinceañera con faldón de volantes rosado, silla tipo trono capitoné y centro de flor de cerezo"
     }
   },
   "story": {
@@ -23,7 +22,7 @@
         "Saint Mary's Fellowship Hall en Dacula es una instalación totalmente nueva y un espacio para eventos que pertenece a Saint Mary's Church, al servicio de la comunidad estadounidense-rumana de la zona.",
         "La propiedad es una expresión de nuestra identidad, una huella de nuestra presencia en la zona y de nuestra contribución a la sociedad multicultural de Gwinnett. También es una expresión de nuestra comunidad en su mejor versión, gracias al sacrificio y la dedicación de un grupo pequeño pero muy activo de miembros."
       ],
-      "imageAlt": "Interior de Fellowship Event Hall en Dacula, GA con mesas preparadas para una recepción de boda"
+      "imageAlt": "Mesas de banquete y sillas plegables blancas dispuestas alrededor de la pista de baile en el salón principal abovedado de Fellowship Event Hall en Dacula, GA"
     },
     "aboutYou": {
       "title": "Todo gira en torno a ti",

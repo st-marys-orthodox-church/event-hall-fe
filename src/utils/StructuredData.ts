@@ -248,3 +248,23 @@ export const breadcrumbJsonLd = (items: BreadcrumbItem[]) => ({
     item: `${AppConfig.url}${item.path}`,
   })),
 });
+
+type GalleryImage = {
+  url: string;
+  description: string;
+};
+
+export const imageGalleryJsonLd = (name: string, description: string, images: GalleryImage[]) => ({
+  '@context': 'https://schema.org',
+  '@type': 'ImageGallery',
+  '@id': `${AppConfig.url}/gallery/#gallery`,
+  url: `${AppConfig.url}/gallery`,
+  name,
+  description,
+  about: { '@id': `${AppConfig.url}/#venue` },
+  image: images.map((image) => ({
+    '@type': 'ImageObject',
+    contentUrl: image.url,
+    description: image.description,
+  })),
+});

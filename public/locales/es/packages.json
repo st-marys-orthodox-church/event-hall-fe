@@ -78,7 +78,8 @@
         "Manteles y fundas para sillas",
         "Sistema de sonido básico",
         "Montaje y limpieza"
-      ]
+      ],
+      "imageAlt": "Paquete {{title}} — mesas redondas con lazos oro rosa, bajoplatos dorados y centros de globos en Fellowship Event Hall"
     },
     "grand": {
       "title": "Gran celebración",
@@ -91,7 +92,8 @@
         "Sistema de sonido avanzado",
         "Acceso a suite nupcial",
         "Coordinador de eventos dedicado"
-      ]
+      ],
+      "imageAlt": "Paquete {{title}} — largas mesas de banquete con mantelería blanca y centros florales altos bajo lámparas de araña"
     },
     "majestic": {
       "title": "Evento majestuoso",
@@ -105,7 +107,8 @@
         "Suite nupcial y zona de preparación",
         "Coordinador de eventos",
         "Diseño de distribución personalizado"
-      ]
+      ],
+      "imageAlt": "Paquete {{title}} — mesa principal de quinceañera con faldón de volantes rosado, silla tipo trono capitoné y centro de flor de cerezo"
     }
   },
   "showcase": {
@@ -113,7 +116,6 @@
     "capacityLabel": "Capacidad · {{capacity}}",
     "perEvent": "/ evento",
     "inquireButton": "Consultar sobre este paquete",
-    "imageAlt": "Paquete {{title}} — montaje de evento para {{capacity}} en Fellowship Event Hall en Dacula, GA",
     "mostPopular": "Más popular"
   },
   "breadcrumb": {

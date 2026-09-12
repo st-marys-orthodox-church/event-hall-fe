@@ -193,9 +193,7 @@ const Packages = () => {
                     style={{ transform: `translate3d(0, ${quoteImgOffset}px, 0)` }}
                   >
                     <Image
-                      src={fullBleedSrc(
-                        'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/0378b0e5-f911-4cf5-5415-ea5d66fe3a00/public'
-                      )}
+                      src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/0378b0e5-f911-4cf5-5415-ea5d66fe3a00/public"
                       alt={t('quickQuote.imageAlt')}
                       fill
                       sizes="(max-width: 1024px) 100vw, 50vw"
@@ -333,7 +331,9 @@ const Packages = () => {
               style={{ transform: `translate3d(0, ${ctaOffset}px, 0)` }}
             >
               <Image
-                src="https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/dd2d39a7-a9c3-4518-e2ab-195922a72100/public"
+                src={fullBleedSrc(
+                  'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/dd2d39a7-a9c3-4518-e2ab-195922a72100/public'
+                )}
                 alt={t('cta.imageAlt')}
                 fill
                 className="object-cover"

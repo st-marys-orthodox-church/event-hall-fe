@@ -78,7 +78,8 @@
         "Fețe de masă și huse pentru scaune",
         "Sistem audio de bază",
         "Aranjare și curățenie"
-      ]
+      ],
+      "imageAlt": "Pachetul {{title}} — mese rotunde cu funde aurii-roz, farfurii-suport aurii și aranjamente din baloane la Fellowship Event Hall"
     },
     "grand": {
       "title": "Sărbătoare grandioasă",
@@ -91,7 +92,8 @@
         "Sistem audio avansat",
         "Acces la suita pentru mireasă",
         "Coordonator dedicat pentru eveniment"
-      ]
+      ],
+      "imageAlt": "Pachetul {{title}} — mese lungi de banchet cu fețe de masă albe și aranjamente florale înalte sub candelabre de cristal"
     },
     "majestic": {
       "title": "Eveniment Majestuos",
@@ -105,7 +107,8 @@
         "Suită pentru mireasă și zonă de pregătire",
         "Coordonator eveniment",
         "Design de aranjament personalizat"
-      ]
+      ],
+      "imageAlt": "Pachetul {{title}} — masa principală de quinceañera cu volane roz, scaun tip tron capitonat și aranjament din flori de cireș"
     }
   },
   "showcase": {
@@ -113,7 +116,6 @@
     "capacityLabel": "Capacitate · {{capacity}}",
     "perEvent": "/ eveniment",
     "inquireButton": "Cere informații despre acest pachet",
-    "imageAlt": "Pachetul {{title}} — aranjament pentru eveniment de {{capacity}} la Fellowship Event Hall din Dacula, GA",
     "mostPopular": "Cel mai popular"
   },
   "breadcrumb": {

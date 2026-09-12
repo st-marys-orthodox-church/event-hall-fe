@@ -10,9 +10,8 @@
     "scroll": "Scroll",
     "slides": {
       "celebrationBackdrop": "Baby shower backdrop with a pink and beige balloon garland at Fellowship Event Hall in Dacula, Georgia",
-      "receptionSetup": "Main hall set with round tables, gold chargers and dusty blue chair sashes for a wedding reception",
-      "quinceaneraHeadTable": "Quinceañera head table with blush ruffled skirting, a tufted throne chair and cherry blossom centerpiece",
-      "interior": "Interior of Fellowship Event Hall with long reception tables, ghost chairs and baby's breath centerpieces"
+      "receptionSetup": "Main hall set with round tables, gold chargers and dusty blue chair sashes for a reception",
+      "quinceaneraHeadTable": "Quinceañera head table with blush ruffled skirting, a tufted throne chair and cherry blossom centerpiece"
     }
   },
   "story": {
@@ -23,7 +22,7 @@
         "Fellowship Event Hall is the rental venue at St. Mary Romanian Orthodox Church in Dacula, Georgia, serving Gwinnett County and the greater Atlanta metro area. The hall is a brand-new facility built by the parish that serves the American-Romanian community in the area.",
         "The property is an expression of our identity, a fingerprint of our presence in the area and our contribution to Gwinnett's multi-cultural society. It is also an expression of our community at its best, through the sacrifice and dedication of a small but very active group of members."
       ],
-      "imageAlt": "Interior of Fellowship Event Hall in Dacula, GA with tables set for a wedding reception"
+      "imageAlt": "Banquet tables and white folding chairs arranged around an open dance floor in the vaulted main hall of Fellowship Event Hall in Dacula, GA"
     },
     "aboutYou": {
       "title": "It's All About You",

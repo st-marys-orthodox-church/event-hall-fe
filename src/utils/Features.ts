@@ -43,7 +43,8 @@ export type IStoryFeatureMeta = {
 export const STORY_FEATURES: IStoryFeatureMeta[] = [
   {
     key: 'ourStory',
-    image: 'https://i.ibb.co/Gvb0LzwP/hf-20260429-052713-ab321634-f189-4a89-81ec-c622c894a006.png',
+    image:
+      'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/70d7db59-2fd7-43d9-1e3b-61d74508ec00/public',
   },
   {
     key: 'aboutYou',

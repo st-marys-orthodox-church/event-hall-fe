@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next/pages';
 import { useMemo, useState } from 'react';
 import { RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
+import SSR from 'react-photo-album/ssr';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import {
@@ -10,6 +11,10 @@ import {
   type IGalleryImgProps,
 } from '../../utils/Photos';
 import { Section } from '../layout/Section';
+
+// Server-renders one layout per container width so crawlers get real <img> tags;
+// container queries show the matching one before hydration, avoiding layout shift.
+const GALLERY_BREAKPOINTS = [640, 1024, 1200];
 
 type IFilteredGalleryProps = {
   images: IGalleryImgProps[];
@@ -62,16 +67,18 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
       </div>
 
       <div className="transition-opacity duration-300">
-        <RowsPhotoAlbum
-          photos={photos}
-          targetRowHeight={(containerWidth) => {
-            if (containerWidth < 640) return 260;
-            if (containerWidth < 1024) return 340;
-            return 420;
-          }}
-          rowConstraints={{ minPhotos: 1, maxPhotos: 3 }}
-          onClick={({ index }) => setLightboxIndex(index)}
-        />
+        <SSR breakpoints={GALLERY_BREAKPOINTS}>
+          <RowsPhotoAlbum
+            photos={photos}
+            targetRowHeight={(containerWidth) => {
+              if (containerWidth < 640) return 260;
+              if (containerWidth < 1024) return 340;
+              return 420;
+            }}
+            rowConstraints={{ minPhotos: 1, maxPhotos: 3 }}
+            onClick={({ index }) => setLightboxIndex(index)}
+          />
+        </SSR>
       </div>
 
       <Lightbox

@@ -1,6 +1,6 @@
 export type IHeroSlide = {
   src: string;
-  altKey: 'celebrationBackdrop' | 'receptionSetup' | 'quinceaneraHeadTable' | 'interior';
+  altKey: 'celebrationBackdrop' | 'receptionSetup' | 'quinceaneraHeadTable';
 };
 
 export const HERO_SLIDES: IHeroSlide[] = [
@@ -15,9 +15,5 @@ export const HERO_SLIDES: IHeroSlide[] = [
   {
     src: 'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/e561ef79-50cf-4ffc-a1c4-7fb918df6d00/public',
     altKey: 'quinceaneraHeadTable',
-  },
-  {
-    src: 'https://i.ibb.co/Gvb0LzwP/hf-20260429-052713-ab321634-f189-4a89-81ec-c622c894a006.png',
-    altKey: 'interior',
   },
 ];

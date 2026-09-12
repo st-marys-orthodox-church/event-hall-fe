@@ -78,7 +78,8 @@
         "Tablecloths & Chair Covers",
         "Basic Sound System",
         "Setup & Cleanup"
-      ]
+      ],
+      "imageAlt": "{{title}} package — round tables with rose gold sashes, gold chargers and balloon centerpieces at Fellowship Event Hall"
     },
     "grand": {
       "title": "Grand Celebration",
@@ -91,7 +92,8 @@
         "Advanced Sound System",
         "Bridal Suite Access",
         "Dedicated Event Coordinator"
-      ]
+      ],
+      "imageAlt": "{{title}} package — long banquet tables with white linens and tall floral centerpieces under crystal chandeliers"
     },
     "majestic": {
       "title": "Majestic Event",
@@ -105,7 +107,8 @@
         "Bridal Suite & Prep Area",
         "Event Coordinator",
         "Custom Layout Design"
-      ]
+      ],
+      "imageAlt": "{{title}} package — quinceañera head table with blush ruffled skirting, a tufted throne chair and cherry blossom centerpiece"
     }
   },
   "showcase": {
@@ -113,7 +116,6 @@
     "capacityLabel": "Capacity · {{capacity}}",
     "perEvent": "/ event",
     "inquireButton": "Inquire About This Package",
-    "imageAlt": "{{title}} package — event setup for {{capacity}} at Fellowship Event Hall in Dacula, GA",
     "mostPopular": "Most Popular"
   },
   "breadcrumb": {

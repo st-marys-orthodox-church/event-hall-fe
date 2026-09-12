@@ -3,7 +3,6 @@ export type IGalleryCategory = 'all' | 'hall' | 'events' | 'details' | 'setup';
 export type IGalleryPhotoAltKey =
   | 'hallMain'
   | 'eventSetup'
-  | 'hallInterior'
   | 'decorativeDetails'
   | 'eventPanorama'
   | 'tableSetup'
@@ -97,13 +96,6 @@ export const GALLERY_PHOTOS: IGalleryImgProps[] = [
     height: 2400,
     category: 'details',
     altKey: 'decorativeDetails',
-  },
-  {
-    src: 'https://i.ibb.co/Gvb0LzwP/hf-20260429-052713-ab321634-f189-4a89-81ec-c622c894a006.png',
-    width: 2400,
-    height: 1792,
-    category: 'hall',
-    altKey: 'hallInterior',
   },
   {
     src: 'https://imagedelivery.net/J9QDi-Ui04SJHIZBSNVpSQ/ccb865b9-405e-4364-6bfa-bd9b82357500/public',
