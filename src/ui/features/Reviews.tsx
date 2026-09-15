@@ -50,7 +50,7 @@ export const Reviews = () => {
       <div className="max-w-6xl mx-auto px-4">
         <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
           <div className="text-center mb-14">
-            <span className="eyebrow text-brand-gold">{t('reviews.eyebrow')}</span>
+            <span className="eyebrow text-brand-gold-ink">{t('reviews.eyebrow')}</span>
             <h2
               id="reviews-heading"
               className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
@@ -75,7 +75,7 @@ export const Reviews = () => {
             href={GOOGLE_REVIEWS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="eyebrow text-brand-green hover:text-brand-green-dark transition-colors"
+            className="eyebrow text-brand-green-ink hover:text-brand-green-deep transition-colors"
           >
             {t('reviews.viewAllOnGoogle')} →
           </a>

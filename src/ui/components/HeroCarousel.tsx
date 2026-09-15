@@ -9,10 +9,15 @@ import { HERO_SLIDES } from '../../utils/HeroSlides';
 export const HeroCarousel = () => {
   const { t } = useTranslation('home');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hydrated, setHydrated] = useState(false);
   const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.35, max: 220 });
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % HERO_SLIDES.length);
+  }, []);
+
+  useEffect(() => {
+    setHydrated(true);
   }, []);
 
   useEffect(() => {
@@ -30,7 +35,7 @@ export const HeroCarousel = () => {
       >
         {HERO_SLIDES.map((slide, index) => {
           const isActive = index === currentIndex;
-          const isPreload = index === nextIndex;
+          const isPreload = hydrated && index === nextIndex;
           if (!isActive && !isPreload) return null;
           return (
             <div

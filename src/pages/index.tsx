@@ -108,7 +108,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-14">
-                <span className="eyebrow text-brand-gold">{tHome('stats.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{tHome('stats.eyebrow')}</span>
                 <h2 className="mt-3 font-display text-4xl md:text-5xl text-stone-900">
                   {tHome('stats.heading')}
                 </h2>
@@ -160,7 +160,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-12">
-                <span className="eyebrow text-brand-gold">{tHome('availability.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{tHome('availability.eyebrow')}</span>
                 <h2
                   id="availability-heading"
                   className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
@@ -203,7 +203,7 @@ const Index = () => {
 
           <div className="relative z-[2] max-w-3xl mx-auto px-6 text-center">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <span className="eyebrow text-brand-gold">{tHome('cta.eyebrow')}</span>
+              <span className="eyebrow text-brand-gold-ink">{tHome('cta.eyebrow')}</span>
               <h2 className="mt-3 font-display text-4xl md:text-5xl leading-tight">
                 {tHome('cta.heading')}
               </h2>
@@ -230,7 +230,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-14">
-                <span className="eyebrow text-brand-gold">{tHome('visit.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{tHome('visit.eyebrow')}</span>
                 <h2
                   id="visit-us-heading"
                   className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
@@ -269,7 +269,7 @@ const Index = () => {
                     href={'https://maps.app.goo.gl/XMYyAKG9XSL24X259'}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="eyebrow text-brand-green hover:text-brand-green-dark transition-colors mt-1"
+                    className="eyebrow text-brand-green-ink hover:text-brand-green-deep transition-colors mt-1"
                   >
                     {tHome('visit.getDirections')}
                   </a>
@@ -312,7 +312,7 @@ const Index = () => {
           <div className="max-w-3xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-12">
-                <span className="eyebrow text-brand-gold">{tHome('faq.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{tHome('faq.eyebrow')}</span>
                 <h2
                   id="faq-heading"
                   className="mt-3 font-display text-4xl md:text-5xl text-stone-900"

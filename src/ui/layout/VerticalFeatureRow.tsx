@@ -32,7 +32,7 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
     <div className={`${verticalFeatureClass}`}>
       <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
         <div className="w-full px-2 text-center sm:text-left">
-          <span className="eyebrow text-brand-gold">{props.eyebrow}</span>
+          <span className="eyebrow text-brand-gold-ink">{props.eyebrow}</span>
           <h2 className="mt-3 text-4xl md:text-5xl text-stone-900 font-display font-medium leading-tight">
             {props.title}
           </h2>

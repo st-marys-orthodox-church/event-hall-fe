@@ -67,10 +67,10 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageMeta; index: number }) => {
             {pkg.popular && (
               <div className="inline-flex items-center gap-2 mb-1">
                 <span className="h-px w-6 bg-brand-gold" />
-                <span className="eyebrow text-brand-gold">{t('showcase.mostPopular')}</span>
+                <span className="eyebrow text-brand-gold-ink">{t('showcase.mostPopular')}</span>
               </div>
             )}
-            <div className="flex items-center gap-2 text-brand-green">
+            <div className="flex items-center gap-2 text-brand-green-ink">
               <People className="w-4 h-4" />
               <span className="eyebrow">{t('showcase.capacityLabel', { capacity })}</span>
             </div>
@@ -122,7 +122,7 @@ const PackagesShowcase = ({ packages }: IPackagesShowcaseProps) => {
   return (
     <Section className="!py-24 !max-w-6xl">
       <div className="text-center mb-8">
-        <span className="eyebrow text-brand-gold">{t('packages:showcase.eyebrow')}</span>
+        <span className="eyebrow text-brand-gold-ink">{t('packages:showcase.eyebrow')}</span>
         <h2 className="mt-3 font-display text-4xl md:text-5xl text-stone-900 leading-tight">
           {title}
         </h2>

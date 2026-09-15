@@ -42,7 +42,7 @@ const FaqRow = ({
         >
           <span
             className={`text-base md:text-lg font-medium tracking-tight transition-colors duration-500 ease-refined ${
-              isOpen ? 'text-brand-green' : 'text-stone-900 group-hover:text-brand-green'
+              isOpen ? 'text-brand-green-ink' : 'text-stone-900 group-hover:text-brand-green-ink'
             }`}
           >
             {item.question}

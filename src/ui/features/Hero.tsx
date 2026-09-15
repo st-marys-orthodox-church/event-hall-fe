@@ -1,9 +1,8 @@
 import { useTranslation } from 'next-i18next/pages';
-import Image from 'next/image';
 import Link from 'next/link';
-import FadeIn from '../components/FadeIn';
 import { HeroCarousel } from '../components/HeroCarousel';
 import { ModernButton } from '../components/ModernButton';
+import { WordmarkEvents, WordmarkMinimal } from '../components/Wordmark';
 import { Section } from '../layout/Section';
 
 const Hero = () => {
@@ -20,54 +19,38 @@ const Hero = () => {
         className="relative z-[2] w-full flex flex-col gap-5 items-center justify-center !max-w-none !px-0"
         yPadding="py-16"
       >
-        <FadeIn>
-          <div className="w-full flex flex-col gap-8 items-center justify-center !max-w-none !px-0">
-            <header className="text-center py-6 w-full max-w-4xl mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl text-white tracking-wide leading-tight mb-6 drop-shadow-lg">
-                <span className="sr-only">{t('hero.srOnly')}</span>
-                <span aria-hidden className="flex flex-col items-center justify-center">
-                  <Image
-                    src="/logos/fellowship-wordmark-minimal-white.svg"
-                    alt=""
-                    width={390}
-                    height={110}
-                    className="mx-auto w-full max-w-[300px] sm:max-w-[390px] h-auto"
-                    priority
-                  />
-                  <Image
-                    src="/logos/fellowship-wordmark-events-white.svg"
-                    alt=""
-                    width={260}
-                    height={73}
-                    className="mx-auto w-full max-w-[200px] sm:max-w-[260px] h-auto"
-                    priority
-                  />
-                </span>
-              </h1>
+        <div className="w-full flex flex-col gap-8 items-center justify-center !max-w-none !px-0 animate-fade-up motion-reduce:animate-none">
+          <header className="text-center py-6 w-full max-w-4xl mx-auto px-4">
+            <h1 className="text-4xl md:text-5xl text-white tracking-wide leading-tight mb-6 drop-shadow-lg">
+              <span className="sr-only">{t('hero.srOnly')}</span>
+              <span aria-hidden className="flex flex-col items-center justify-center">
+                <WordmarkMinimal className="mx-auto w-full max-w-[300px] sm:max-w-[390px] h-auto" />
+                <WordmarkEvents className="mx-auto w-full max-w-[200px] sm:max-w-[260px] h-auto" />
+              </span>
+            </h1>
 
-              <div className="mx-auto w-16 h-px bg-brand-gold/80 mb-6" />
+            <div className="mx-auto w-16 h-px bg-brand-gold/80 mb-6" />
 
-              <h2 className="text-xl md:text-2xl font-display italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
-                {t('hero.tagline')}
-              </h2>
-              <p className="mt-3 eyebrow text-white/75">{t('hero.location')}</p>
-            </header>
+            <h2 className="text-xl md:text-2xl font-display italic text-white/95 drop-shadow-md max-w-2xl mx-auto leading-relaxed">
+              {t('hero.tagline')}
+            </h2>
+            <p className="mt-3 eyebrow text-white/75">{t('hero.location')}</p>
+          </header>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-2 items-center">
-              <ModernButton component={Link} href="/gallery" buttonVariant="primary" size="large">
-                {t('hero.viewGallery')}
-              </ModernButton>
-              <ModernButton
-                component={Link}
-                href="/packages"
-                buttonVariant="outlineLight"
-                size="large"
-              >
-                {t('hero.explorePackages')}
-              </ModernButton>
-            </div>
+          <div className="flex flex-col sm:flex-row gap-4 mt-2 items-center">
+            <ModernButton component={Link} href="/gallery" buttonVariant="primary" size="large">
+              {t('hero.viewGallery')}
+            </ModernButton>
+            <ModernButton
+              component={Link}
+              href="/packages"
+              buttonVariant="outlineLight"
+              size="large"
+            >
+              {t('hero.explorePackages')}
+            </ModernButton>
           </div>
-        </FadeIn>
+        </div>
       </Section>
 
       {/* Refined scroll indicator — thin line + dot */}

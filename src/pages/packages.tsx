@@ -95,7 +95,7 @@ const Packages = () => {
           <div className="absolute inset-0 bg-gradient-to-br from-brand-green/25 via-transparent to-brand-gold/15" />
           <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-gold/60 to-transparent" />
           <div className="relative max-w-4xl mx-auto px-4 text-center">
-            <span className="eyebrow text-brand-gold">{t('hero.eyebrow')}</span>
+            <span className="eyebrow text-brand-gold-ink">{t('hero.eyebrow')}</span>
             <h1 className="mt-4 font-display text-5xl md:text-6xl leading-tight drop-shadow-lg">
               {t('hero.heading')}
             </h1>
@@ -111,7 +111,7 @@ const Packages = () => {
             {/* Pricing Table */}
             <div>
               <div className="text-center mb-10">
-                <span className="eyebrow text-brand-gold">{t('pricingTable.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{t('pricingTable.eyebrow')}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
                   {t('pricingTable.heading')}
                 </h2>
@@ -161,7 +161,7 @@ const Packages = () => {
             {/* What's Included */}
             <div>
               <div className="text-center mb-10">
-                <span className="eyebrow text-brand-gold">{t('included.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{t('included.eyebrow')}</span>
                 <h2 className="mt-3 font-display text-3xl md:text-4xl text-stone-900">
                   {t('included.heading')}
                 </h2>
@@ -207,7 +207,7 @@ const Packages = () => {
               {/* Content */}
               <div className="w-full lg:w-1/2 lg:order-1 flex flex-col justify-center gap-6">
                 <div className="space-y-3">
-                  <span className="eyebrow text-brand-gold">{t('quickQuote.eyebrow')}</span>
+                  <span className="eyebrow text-brand-gold-ink">{t('quickQuote.eyebrow')}</span>
                   <h3 className="font-display text-4xl lg:text-5xl text-stone-900 leading-tight">
                     {t('quickQuote.heading')}
                   </h3>
@@ -253,7 +253,7 @@ const Packages = () => {
                 <Info className="w-6 h-6 text-brand-gold" />
               </div>
               <div className="space-y-4">
-                <span className="eyebrow text-brand-gold">{t('deposits.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{t('deposits.eyebrow')}</span>
                 <h3 className="font-display text-2xl text-stone-900">{t('deposits.heading')}</h3>
                 <p className="text-stone-700 leading-relaxed">
                   <Trans
@@ -286,7 +286,7 @@ const Packages = () => {
           <div className="max-w-5xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-12">
-                <span className="eyebrow text-brand-gold">{tHome('availability.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{tHome('availability.eyebrow')}</span>
                 <h2
                   id="availability-heading"
                   className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
@@ -308,7 +308,7 @@ const Packages = () => {
           <div className="max-w-3xl mx-auto px-4">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
               <div className="text-center mb-12">
-                <span className="eyebrow text-brand-gold">{t('faq.eyebrow')}</span>
+                <span className="eyebrow text-brand-gold-ink">{t('faq.eyebrow')}</span>
                 <h2
                   id="packages-faq-heading"
                   className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
@@ -346,7 +346,7 @@ const Packages = () => {
 
           <div className="relative z-[2] max-w-3xl mx-auto px-6 text-center">
             <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
-              <span className="eyebrow text-brand-gold">{t('cta.eyebrow')}</span>
+              <span className="eyebrow text-brand-gold-ink">{t('cta.eyebrow')}</span>
               <h2 className="mt-3 font-display text-4xl md:text-5xl leading-tight">
                 {t('cta.heading')}
               </h2>

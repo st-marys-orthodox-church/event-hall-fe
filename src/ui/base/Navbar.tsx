@@ -153,7 +153,7 @@ export const Navbar = () => {
                   textTransform: 'uppercase',
                   letterSpacing: '0.18em',
                   fontSize: '0.75rem',
-                  color: COLORS.brand.green,
+                  color: COLORS.brand.greenDeep,
                   py: 1.25,
                 }}
               >

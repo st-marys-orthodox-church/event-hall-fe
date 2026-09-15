@@ -23,6 +23,7 @@ export const LanguageSwitcher = ({ size = 'small' }: ILanguageSwitcherProps) => 
   const { open, handleClick, handleClose, anchorEl } = useDropdown();
   const currentLocale = router.locale ?? I18N_DEFAULT_LOCALE;
   const locales = I18N_LOCALES;
+  const currentShort = LOCALE_SHORT[currentLocale] ?? currentLocale.toUpperCase();
 
   return (
     <>
@@ -30,13 +31,13 @@ export const LanguageSwitcher = ({ size = 'small' }: ILanguageSwitcherProps) => 
         <IconButton
           onClick={handleClick}
           size={size}
-          aria-label={t('nav.language')}
+          aria-label={`${t('nav.language')}: ${currentShort}`}
           aria-controls={open ? 'language-menu' : undefined}
           aria-haspopup="true"
           aria-expanded={open ? 'true' : undefined}
           sx={{
             borderRadius: 0,
-            color: COLORS.brand.green,
+            color: COLORS.brand.greenInk,
             display: 'inline-flex',
             alignItems: 'center',
             gap: '4px',
@@ -51,7 +52,7 @@ export const LanguageSwitcher = ({ size = 'small' }: ILanguageSwitcherProps) => 
               textTransform: 'uppercase',
             }}
           >
-            {LOCALE_SHORT[currentLocale] ?? currentLocale.toUpperCase()}
+            {currentShort}
           </span>
         </IconButton>
       </Tooltip>
@@ -87,7 +88,7 @@ export const LanguageSwitcher = ({ size = 'small' }: ILanguageSwitcherProps) => 
               textTransform: 'uppercase',
               letterSpacing: '0.18em',
               fontSize: '0.75rem',
-              color: locale === currentLocale ? COLORS.brand.green : COLORS.neutral.mutedText,
+              color: locale === currentLocale ? COLORS.brand.greenDeep : COLORS.neutral.mutedText,
               py: 1.25,
             }}
           >

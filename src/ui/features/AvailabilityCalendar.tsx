@@ -88,7 +88,7 @@ const DayCell = ({
     return (
       <div
         aria-label={dayStatusAria}
-        className="aspect-square flex items-center justify-center rounded-lg text-stone-300 text-sm select-none"
+        className="aspect-square flex items-center justify-center rounded-lg text-stone-500 text-sm select-none"
       >
         {day}
       </div>
@@ -100,7 +100,7 @@ const DayCell = ({
       <div
         aria-label={dayStatusAria}
         title={statusLabel}
-        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-deep select-none"
+        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-ink select-none"
       >
         <span className="text-sm font-semibold leading-none">{day}</span>
         <span className="text-[9px] uppercase tracking-wider mt-0.5 font-medium">
@@ -206,7 +206,7 @@ const Legend = () => {
         {t('calendar.booked')}
       </span>
       <span className="flex items-center gap-2">
-        <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-300 flex items-center justify-center text-[10px]">
+        <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-500 flex items-center justify-center text-[10px]">
           •
         </span>
         {t('calendar.past')}

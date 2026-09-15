@@ -4,16 +4,16 @@ import type { ReactNode } from 'react';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#7c9885',
-      light: '#9db5a0',
-      dark: '#6b8574',
+      main: '#5e7768',
+      light: '#7c9885',
+      dark: '#5a7263',
       contrastText: '#ffffff',
     },
     secondary: {
       main: '#c9a86c',
       light: '#d4b87a',
       dark: '#b8975f',
-      contrastText: '#ffffff',
+      contrastText: '#1f2a23',
     },
   },
   typography: {

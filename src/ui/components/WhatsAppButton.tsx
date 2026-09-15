@@ -61,12 +61,13 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
         className={`${className}`}
         sx={{
           backgroundColor: variant === 'contained' ? COLORS.whatsapp.base : 'transparent',
-          color: variant === 'contained' ? 'white' : COLORS.whatsapp.base,
-          borderColor: variant === 'outlined' ? COLORS.whatsapp.base : undefined,
+          color: variant === 'contained' ? COLORS.brand.dark : COLORS.whatsapp.ink,
+          borderColor: variant === 'outlined' ? COLORS.whatsapp.ink : undefined,
           '&:hover': {
             backgroundColor:
-              variant === 'contained' ? COLORS.whatsapp.dark : 'rgba(37, 211, 102, 0.1)',
-            borderColor: variant === 'outlined' ? COLORS.whatsapp.dark : undefined,
+              variant === 'contained' ? COLORS.whatsapp.ink : 'rgba(37, 211, 102, 0.1)',
+            color: variant === 'contained' ? '#ffffff' : COLORS.whatsapp.ink,
+            borderColor: variant === 'outlined' ? COLORS.whatsapp.ink : undefined,
           },
           textTransform: 'none',
           fontWeight: 600,

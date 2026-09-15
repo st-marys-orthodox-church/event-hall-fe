@@ -36,11 +36,11 @@ const StyledButton = styled(MuiButton, {
   }),
 
   ...(buttonVariant === 'primary' && {
-    background: COLORS.brand.green,
+    background: COLORS.brand.greenDeep,
     color: '#ffffff',
     boxShadow: '0 10px 24px -14px rgba(15, 23, 23, 0.45)',
     '&:hover': {
-      background: COLORS.brand.greenDark,
+      background: COLORS.brand.greenInk,
       boxShadow: '0 14px 30px -14px rgba(15, 23, 23, 0.55)',
       transform: 'translateY(-1px)',
     },
@@ -52,7 +52,7 @@ const StyledButton = styled(MuiButton, {
 
   ...(buttonVariant === 'secondary' && {
     background: COLORS.brand.gold,
-    color: '#ffffff',
+    color: COLORS.brand.dark,
     boxShadow: '0 10px 24px -14px rgba(15, 23, 23, 0.45)',
     '&:hover': {
       background: COLORS.brand.goldDark,
@@ -73,13 +73,13 @@ const StyledButton = styled(MuiButton, {
     ...(size === 'medium' && { padding: '10px 24px' }),
     ...(size === 'large' && { padding: '13px 32px' }),
     '&:hover': {
-      background: COLORS.brand.green,
-      borderColor: COLORS.brand.green,
+      background: COLORS.brand.greenDeep,
+      borderColor: COLORS.brand.greenDeep,
       color: '#ffffff',
     },
     '&:active': {
-      background: COLORS.brand.greenDark,
-      borderColor: COLORS.brand.greenDark,
+      background: COLORS.brand.greenInk,
+      borderColor: COLORS.brand.greenInk,
     },
   }),
 
@@ -102,7 +102,7 @@ const StyledButton = styled(MuiButton, {
 
   ...(buttonVariant === 'ghost' && {
     background: 'transparent',
-    color: COLORS.brand.green,
+    color: COLORS.brand.greenDeep,
     '&:hover': {
       background: 'rgba(124, 152, 133, 0.08)',
     },

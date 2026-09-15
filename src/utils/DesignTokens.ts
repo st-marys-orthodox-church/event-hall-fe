@@ -4,14 +4,17 @@ export const COLORS = {
     greenDark: '#6b8574',
     greenLight: '#9db5a0',
     greenDeep: '#5e7768',
+    greenInk: '#5a7263',
     gold: '#c9a86c',
     goldDark: '#b8975f',
     goldDeep: '#8a7340',
+    goldInk: '#7a6538',
     dark: '#1f2a23',
   },
   whatsapp: {
     base: '#25D366',
     dark: '#128C7E',
+    ink: '#0a6b5f',
   },
   neutral: {
     outlineBorder: '#e7e5e4',

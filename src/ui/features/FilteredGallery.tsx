@@ -51,7 +51,7 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
             onClick={() => setActiveCategory(categoryKey)}
             className={`eyebrow transition-colors duration-300 ease-refined pb-1 border-b ${
               activeCategory === categoryKey
-                ? 'text-brand-green border-brand-gold'
+                ? 'text-brand-green-ink border-brand-gold'
                 : 'text-stone-500 border-transparent hover:text-stone-800'
             }`}
           >
@@ -94,7 +94,7 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
           <button
             type="button"
             onClick={() => setActiveCategory('all')}
-            className="mt-5 eyebrow text-brand-green hover:text-brand-green-dark border-b border-brand-gold pb-1"
+            className="mt-5 eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-1"
           >
             {t('viewAll')}
           </button>

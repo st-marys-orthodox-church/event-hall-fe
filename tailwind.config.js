@@ -31,14 +31,17 @@ module.exports = {
           'green-dark': '#6b8574',
           'green-light': '#9db5a0',
           'green-deep': '#5e7768',
+          'green-ink': '#5a7263',
           gold: '#c9a86c',
           'gold-dark': '#b8975f',
           'gold-deep': '#8a7340',
+          'gold-ink': '#7a6538',
           dark: '#1f2a23',
         },
         whatsapp: {
           DEFAULT: '#25D366',
           dark: '#128C7E',
+          ink: '#0a6b5f',
         },
         primary: {
           100: '#eef4f0',
