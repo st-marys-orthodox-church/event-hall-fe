@@ -4,7 +4,6 @@ import { useTranslation } from 'next-i18next/pages';
 import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { useScrollParallax } from '../hooks';
 import { loadUpcomingPublicEvents } from '../server/publicEvents';
 import { useAppContext } from '../stores/Global';
@@ -12,6 +11,7 @@ import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
 import { ModernButton } from '../ui/components/ModernButton';
 import { NumberDisplay } from '../ui/components/NumberDisplay';
+import { Reveal } from '../ui/components/Reveal';
 import { AvailabilityCalendar } from '../ui/features/AvailabilityCalendar';
 import { Faq } from '../ui/features/Faq';
 import { Hero } from '../ui/features/Hero';
@@ -117,7 +117,7 @@ const Index = ({ events }: Props) => {
         <section className="relative py-24 bg-stone-100">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-gold/40 to-transparent" />
           <div className="max-w-5xl mx-auto px-4">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <Reveal variant="fade">
               <div className="text-center mb-14">
                 <span className="eyebrow text-brand-gold-ink">{tHome('stats.eyebrow')}</span>
                 <h2 className="mt-3 font-display text-4xl md:text-5xl text-stone-900">
@@ -128,15 +128,10 @@ const Index = ({ events }: Props) => {
                   {tHome('stats.subheading')}
                 </p>
               </div>
-            </AnimationOnScroll>
+            </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-stone-300/70 max-w-4xl mx-auto">
               {STATS_ITEMS.map((stat, index) => (
-                <AnimationOnScroll
-                  key={stat.key}
-                  animateIn="animate__fadeInUp"
-                  delay={STAT_ANIMATION_DELAYS[index] ?? 0}
-                  animateOnce
-                >
+                <Reveal key={stat.key} delay={STAT_ANIMATION_DELAYS[index] ?? 0}>
                   <NumberDisplay
                     text={tHome(`stats.items.${stat.key}`)}
                     value={tHome(`stats.values.${stat.key}`)}
@@ -149,7 +144,7 @@ const Index = ({ events }: Props) => {
                       />
                     }
                   />
-                </AnimationOnScroll>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -170,7 +165,7 @@ const Index = ({ events }: Props) => {
             className="py-24 bg-white border-y border-stone-200/80"
           >
             <div className="max-w-6xl mx-auto px-4">
-              <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+              <Reveal variant="fade">
                 <div className="text-center mb-12">
                   <span className="eyebrow text-brand-gold-ink">{tHome('events.eyebrow')}</span>
                   <h2
@@ -184,7 +179,7 @@ const Index = ({ events }: Props) => {
                     {tHome('events.subheading')}
                   </p>
                 </div>
-              </AnimationOnScroll>
+              </Reveal>
               <UpcomingEvents events={events} variant="compact" />
               <div className="mt-12 text-center">
                 <Link
@@ -205,7 +200,7 @@ const Index = ({ events }: Props) => {
           className="pb-32 bg-stone-50"
         >
           <div className="max-w-5xl mx-auto px-4">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <Reveal variant="fade">
               <div className="text-center mb-12">
                 <span className="eyebrow text-brand-gold-ink">{tHome('availability.eyebrow')}</span>
                 <h2
@@ -219,7 +214,7 @@ const Index = ({ events }: Props) => {
                   {tHome('availability.subheading')}
                 </p>
               </div>
-            </AnimationOnScroll>
+            </Reveal>
             <AvailabilityCalendar onDateSelect={handleOpenModal} />
           </div>
         </section>
@@ -249,7 +244,7 @@ const Index = ({ events }: Props) => {
           <div className="absolute inset-0 bg-gradient-to-br from-brand-green/20 via-transparent to-brand-gold/15 z-[1]" />
 
           <div className="relative z-[2] max-w-3xl mx-auto px-6 text-center">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <Reveal variant="fade">
               <span className="eyebrow text-brand-gold-ink">{tHome('cta.eyebrow')}</span>
               <h2 className="mt-3 font-display text-4xl md:text-5xl leading-tight">
                 {tHome('cta.heading')}
@@ -268,14 +263,14 @@ const Index = ({ events }: Props) => {
                   {tHome('cta.button')}
                 </ModernButton>
               </div>
-            </AnimationOnScroll>
+            </Reveal>
           </div>
         </section>
 
         {/* Visit Us */}
         <section aria-labelledby="visit-us-heading" className="py-20 bg-stone-50">
           <div className="max-w-5xl mx-auto px-4">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <Reveal variant="fade">
               <div className="text-center mb-14">
                 <span className="eyebrow text-brand-gold-ink">{tHome('visit.eyebrow')}</span>
                 <h2
@@ -350,14 +345,14 @@ const Index = ({ events }: Props) => {
                   <p className="text-stone-600 leading-relaxed">{tHome('visit.toursText')}</p>
                 </div>
               </div>
-            </AnimationOnScroll>
+            </Reveal>
           </div>
         </section>
 
         {/* FAQ */}
         <section aria-labelledby="faq-heading" className="py-20 bg-white">
           <div className="max-w-3xl mx-auto px-4">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <Reveal variant="fade">
               <div className="text-center mb-12">
                 <span className="eyebrow text-brand-gold-ink">{tHome('faq.eyebrow')}</span>
                 <h2
@@ -369,7 +364,7 @@ const Index = ({ events }: Props) => {
                 <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
                 <p className="mt-5 text-stone-600">{tHome('faq.subheading')}</p>
               </div>
-            </AnimationOnScroll>
+            </Reveal>
             <Faq />
           </div>
         </section>
@@ -377,7 +372,7 @@ const Index = ({ events }: Props) => {
         {/* Trust Badges */}
         <div className="py-20 bg-white">
           <div className="max-w-6xl mx-auto px-4">
-            <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+            <Reveal variant="fade">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
                 {TRUST_BADGES.map((badge) => (
                   <div key={badge.key} className="flex flex-col items-center gap-4">
@@ -397,7 +392,7 @@ const Index = ({ events }: Props) => {
                   </div>
                 ))}
               </div>
-            </AnimationOnScroll>
+            </Reveal>
           </div>
         </div>
       </Template>

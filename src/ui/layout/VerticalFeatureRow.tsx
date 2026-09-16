@@ -1,8 +1,8 @@
 import className from 'classnames';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { useScrollParallax } from '../../hooks';
+import { Reveal } from '../components/Reveal';
 
 type IVerticalFeatureRowProps = {
   title: string;
@@ -30,7 +30,7 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
 
   return (
     <div className={`${verticalFeatureClass}`}>
-      <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+      <Reveal variant="fade">
         <div className="w-full px-2 text-center sm:text-left">
           <span className="eyebrow text-brand-gold-ink">{props.eyebrow}</span>
           <h2 className="mt-3 text-4xl md:text-5xl text-stone-900 font-display font-medium leading-tight">
@@ -43,9 +43,9 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
             ))}
           </div>
         </div>
-      </AnimationOnScroll>
+      </Reveal>
 
-      <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+      <Reveal variant="fade">
         <div className="w-full p-2">
           <div
             ref={ref}
@@ -66,7 +66,7 @@ const VerticalFeatureRow = (props: IVerticalFeatureRowProps) => {
             </div>
           </div>
         </div>
-      </AnimationOnScroll>
+      </Reveal>
     </div>
   );
 };

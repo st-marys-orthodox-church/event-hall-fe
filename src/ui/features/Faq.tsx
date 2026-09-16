@@ -1,7 +1,7 @@
 import { useTranslation } from 'next-i18next/pages';
 import { useEffect, useRef, useState } from 'react';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { EASING, TIMING } from '../../utils/DesignTokens';
+import { Reveal } from '../components/Reveal';
 
 type FaqItem = {
   question: string;
@@ -28,11 +28,7 @@ const FaqRow = ({
   }, [isOpen]);
 
   return (
-    <AnimationOnScroll
-      animateIn="animate__fadeInUp"
-      delay={index * TIMING.faqStaggerMs}
-      animateOnce
-    >
+    <Reveal delay={index * TIMING.faqStaggerMs}>
       <div className="border-b border-stone-200/80">
         <button
           type="button"
@@ -77,7 +73,7 @@ const FaqRow = ({
           </div>
         </div>
       </div>
-    </AnimationOnScroll>
+    </Reveal>
   );
 };
 

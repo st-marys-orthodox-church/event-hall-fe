@@ -7,7 +7,6 @@ import { MuiThemeProvider } from '../styles/theme';
 import { ContactModalHost } from '../ui/modals/ContactModalHost';
 
 import '../styles/global.css';
-import 'animate.css/animate.min.css';
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   const AnyComponent = Component as any;

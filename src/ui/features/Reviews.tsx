@@ -1,8 +1,8 @@
 import { FormatQuote, Star } from '@mui/icons-material';
 import { useTranslation } from 'next-i18next/pages';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { TIMING } from '../../utils/DesignTokens';
 import { GOOGLE_REVIEWS_URL, type IReviewMeta, REVIEWS } from '../../utils/Reviews';
+import { Reveal } from '../components/Reveal';
 
 const StarRow = ({ rating, label }: { rating: number; label: string }) => (
   <div className="flex items-center gap-0.5" role="img" aria-label={label}>
@@ -20,11 +20,7 @@ const ReviewCard = ({ review, index }: { review: IReviewMeta; index: number }) =
   const ratingLabel = t('reviews.ratingLabel', { rating: review.rating });
 
   return (
-    <AnimationOnScroll
-      animateIn="animate__fadeInUp"
-      delay={index * TIMING.packageStaggerMs}
-      animateOnce
-    >
+    <Reveal delay={index * TIMING.packageStaggerMs}>
       <figure className="relative h-full bg-white border border-stone-200/80 px-7 pt-7 pb-7 flex flex-col">
         <FormatQuote
           aria-hidden
@@ -38,7 +34,7 @@ const ReviewCard = ({ review, index }: { review: IReviewMeta; index: number }) =
           <div className="mt-1 text-sm text-stone-500">{date}</div>
         </figcaption>
       </figure>
-    </AnimationOnScroll>
+    </Reveal>
   );
 };
 
@@ -48,7 +44,7 @@ export const Reviews = () => {
   return (
     <section aria-labelledby="reviews-heading" className="py-24 bg-stone-50">
       <div className="max-w-6xl mx-auto px-4">
-        <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+        <Reveal variant="fade">
           <div className="text-center mb-14">
             <span className="eyebrow text-brand-gold-ink">{t('reviews.eyebrow')}</span>
             <h2
@@ -62,7 +58,7 @@ export const Reviews = () => {
               {t('reviews.subheading')}
             </p>
           </div>
-        </AnimationOnScroll>
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {REVIEWS.map((review, index) => (

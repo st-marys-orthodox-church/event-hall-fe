@@ -1,7 +1,7 @@
 import { Button, Card } from '@mui/material';
 import { useRouter } from 'next/router';
 import type { ReactNode } from 'react';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
+import { Reveal } from '../components/Reveal';
 import { WhatsAppButton } from '../components/WhatsAppButton';
 import { Section } from '../layout/Section';
 
@@ -30,12 +30,7 @@ const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
     <Section title={title} description={description}>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {list?.map((el, i) => (
-          <AnimationOnScroll
-            animateIn="animate__fadeInUp"
-            delay={i * 150}
-            key={`card-grid-${i}`}
-            animateOnce
-          >
+          <Reveal key={`card-grid-${i}`} delay={i * 150}>
             <Card className="p-3 md:p-4 shadow-md rounded-lg bg-neutral-100 flex flex-col justify-between gap-4 h-full">
               <div>
                 <div className="flex items-center justify-between">
@@ -81,7 +76,7 @@ const CardGrid = ({ title, description, list, seeall }: ICardGridProps) => {
                 </div>
               )}
             </Card>
-          </AnimationOnScroll>
+          </Reveal>
         ))}
       </div>
       {seeall && (

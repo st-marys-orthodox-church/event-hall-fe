@@ -2,11 +2,11 @@ import { Check, People } from '@mui/icons-material';
 import { useTranslation } from 'next-i18next/pages';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { useScrollParallax } from '../../hooks';
 import { TIMING } from '../../utils/DesignTokens';
 import type { IPackageMeta } from '../../utils/Packages';
 import { ModernButton } from '../components/ModernButton';
+import { Reveal } from '../components/Reveal';
 import { Section } from '../layout/Section';
 
 type IPackagesShowcaseProps = {
@@ -25,11 +25,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageMeta; index: number }) => {
   const features = t(`tiers.${pkg.key}.features`, { returnObjects: true }) as string[];
 
   return (
-    <AnimationOnScroll
-      animateIn="animate__fadeInUp"
-      delay={index * TIMING.packageStaggerMs}
-      animateOnce
-    >
+    <Reveal delay={index * TIMING.packageStaggerMs}>
       <div
         className={`relative flex flex-col lg:flex-row items-stretch gap-8 lg:gap-16 py-10 lg:py-14 border-t border-stone-200 ${
           pkg.popular ? 'bg-gradient-to-br from-brand-green/[0.03] to-brand-gold/[0.04]' : ''
@@ -110,7 +106,7 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageMeta; index: number }) => {
           </div>
         </div>
       </div>
-    </AnimationOnScroll>
+    </Reveal>
   );
 };
 

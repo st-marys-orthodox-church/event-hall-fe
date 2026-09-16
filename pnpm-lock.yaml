@@ -32,9 +32,6 @@ importers:
       '@sendgrid/mail':
         specifier: ^8.1.4
         version: 8.1.6
-      animate.css:
-        specifier: ^4.1.1
-        version: 4.1.1
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -62,9 +59,6 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.2.5
-      react-animation-on-scroll:
-        specifier: ^5.1.0
-        version: 5.1.0(react@19.2.5)
       react-dom:
         specifier: ^19.0.0
         version: 19.2.5(react@19.2.5)
@@ -823,9 +817,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  animate.css@4.1.1:
-    resolution: {integrity: sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==}
-
   ansi-styles@3.2.1:
     resolution: {integrity: sha512-VT0ZI6kZRdTh8YyJw3SMbYm/u+NqfsAxEpWO0Pf9sq8/e94WxxOpPKx9FR1FlyCtOVDNOQ+8ntlqFxiRc+r5qA==}
     engines: {node: '>=4'}
@@ -1540,9 +1531,6 @@ packages:
   lodash.memoize@4.1.2:
     resolution: {integrity: sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==}
 
-  lodash.throttle@4.1.1:
-    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
-
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
 
@@ -2009,11 +1997,6 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
-
-  react-animation-on-scroll@5.1.0:
-    resolution: {integrity: sha512-UBhlXUig+AGwDpRoqFC6qFh1mCIperwy1Pk7dJTb0XgpDzERF4f6fhoqFY2+on9Bf1n4OfUrRw4xsnKfQt6U7w==}
-    peerDependencies:
-      react: '>= 15.4.1'
 
   react-aria@3.48.0:
     resolution: {integrity: sha512-jQjd4rBEIMqecBaAKYJbVGK6EqIHLa5znVQ7jwFyK5vCyljoj6KhgtiahmcIPsG5vG5vEDLw+ba+bEWn6A2P4w==}
@@ -3061,8 +3044,6 @@ snapshots:
 
   acorn@8.16.0: {}
 
-  animate.css@4.1.1: {}
-
   ansi-styles@3.2.1:
     dependencies:
       color-convert: 1.9.3
@@ -3858,8 +3839,6 @@ snapshots:
 
   lodash.memoize@4.1.2: {}
 
-  lodash.throttle@4.1.1: {}
-
   lodash.uniq@4.5.0: {}
 
   loose-envify@1.4.0:
@@ -4281,11 +4260,6 @@ snapshots:
   proxy-from-env@2.1.0: {}
 
   queue-microtask@1.2.3: {}
-
-  react-animation-on-scroll@5.1.0(react@19.2.5):
-    dependencies:
-      lodash.throttle: 4.1.1
-      react: 19.2.5
 
   react-aria@3.48.0(react-dom@19.2.5(react@19.2.5))(react@19.2.5):
     dependencies:

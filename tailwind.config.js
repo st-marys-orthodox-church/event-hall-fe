@@ -86,6 +86,10 @@ module.exports = {
         refined: 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
       keyframes: {
+        'fade-in': {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
         'fade-up': {
           '0%': { opacity: '0', transform: 'translateY(12px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
@@ -96,6 +100,7 @@ module.exports = {
         },
       },
       animation: {
+        'fade-in': 'fade-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both',
         'fade-up': 'fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both',
         'sweep-in': 'sweep-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both',
       },
