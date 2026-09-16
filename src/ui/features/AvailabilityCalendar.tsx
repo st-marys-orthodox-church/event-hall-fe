@@ -1,6 +1,9 @@
 import { ChevronLeft, ChevronRight } from '@mui/icons-material';
 import { useTranslation } from 'next-i18next/pages';
+import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
+import type { AvailabilityResponse } from '../../pages/api/availability';
+import type { PublicEvent } from '../../server/publicEvents';
 
 const VENUE_TZ = 'America/New_York';
 
@@ -48,12 +51,25 @@ const buildMonthCells = (year: number, month: number) => {
   return cells;
 };
 
-async function fetchAvailability(from: string, to: string): Promise<string[]> {
+type DayStatus = 'available' | 'booked' | 'event' | 'past';
+type EventsByDate = Map<string, PublicEvent>;
+
+async function fetchAvailability(from: string, to: string): Promise<AvailabilityResponse> {
   const res = await fetch(`/api/availability/?from=${from}&to=${to}`, { cache: 'no-store' });
   if (!res.ok) throw new Error(`availability request failed: ${res.status}`);
-  const data = (await res.json()) as { dates?: string[] };
-  return data.dates ?? [];
+  const data = (await res.json()) as Partial<AvailabilityResponse>;
+  return { dates: data.dates ?? [], events: data.events ?? [] };
 }
+
+const indexEventsByDate = (events: PublicEvent[]): EventsByDate => {
+  const map: EventsByDate = new Map();
+  for (const ev of events) {
+    for (const date of ev.dates) {
+      if (!map.has(date)) map.set(date, ev);
+    }
+  }
+  return map;
+};
 
 const DayCell = ({
   day,
@@ -61,13 +77,15 @@ const DayCell = ({
   month,
   monthName,
   status,
+  event,
   onSelect,
 }: {
   day: number | null;
   year: number;
   month: number;
   monthName: string;
-  status: 'available' | 'booked' | 'past' | null;
+  status: DayStatus | null;
+  event?: PublicEvent;
   onSelect: (date: Date) => void;
 }) => {
   const { t } = useTranslation('common');
@@ -92,6 +110,23 @@ const DayCell = ({
       >
         {day}
       </div>
+    );
+  }
+
+  if (status === 'event' && event) {
+    const eventAria = t('calendar.eventAria', { month: monthName, day, year, title: event.title });
+    return (
+      <Link
+        href={`/events/#${event.id}`}
+        aria-label={eventAria}
+        title={`${event.title} — ${t('calendar.eventHint')}`}
+        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-gold/15 ring-1 ring-brand-gold/40 text-brand-gold-ink hover:bg-brand-gold/25 hover:ring-brand-gold/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition select-none overflow-hidden px-0.5"
+      >
+        <span className="text-sm font-semibold leading-none">{day}</span>
+        <span className="text-[9px] leading-tight mt-0.5 font-medium w-full text-center truncate">
+          {event.title}
+        </span>
+      </Link>
     );
   }
 
@@ -128,6 +163,7 @@ const MonthGrid = ({
   monthName,
   weekdayNames,
   bookedSet,
+  eventsByDate,
   todayIso,
   onSelect,
 }: {
@@ -136,6 +172,7 @@ const MonthGrid = ({
   monthName: string;
   weekdayNames: string[];
   bookedSet: Set<string>;
+  eventsByDate: EventsByDate;
   todayIso: string;
   onSelect: (date: Date) => void;
 }) => {
@@ -172,8 +209,10 @@ const MonthGrid = ({
             );
           }
           const iso = isoOf(year, month, day);
-          let status: 'available' | 'booked' | 'past';
+          const event = eventsByDate.get(iso);
+          let status: DayStatus;
           if (iso < todayIso) status = 'past';
+          else if (event) status = 'event';
           else if (bookedSet.has(iso)) status = 'booked';
           else status = 'available';
           return (
@@ -184,6 +223,7 @@ const MonthGrid = ({
               month={month}
               monthName={monthName}
               status={status}
+              event={event}
               onSelect={onSelect}
             />
           );
@@ -204,6 +244,10 @@ const Legend = () => {
       <span className="flex items-center gap-2">
         <span className="inline-block w-4 h-4 rounded bg-brand-green/15 ring-1 ring-brand-green/30" />
         {t('calendar.booked')}
+      </span>
+      <span className="flex items-center gap-2">
+        <span className="inline-block w-4 h-4 rounded bg-brand-gold/15 ring-1 ring-brand-gold/40" />
+        {t('calendar.event')}
       </span>
       <span className="flex items-center gap-2">
         <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-500 flex items-center justify-center text-[10px]">
@@ -235,6 +279,7 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
   const [baseMonth, setBaseMonth] = useState<MonthKey>({ year: 2026, month: 0 });
   const [todayIso, setTodayIso] = useState('');
   const [bookedSet, setBookedSet] = useState<Set<string>>(new Set());
+  const [eventsByDate, setEventsByDate] = useState<EventsByDate>(new Map());
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -255,9 +300,10 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
     setLoading(true);
     setError(false);
     fetchAvailability(from, to)
-      .then((dates) => {
+      .then(({ dates, events }) => {
         if (!cancelled) {
           setBookedSet(new Set(dates));
+          setEventsByDate(indexEventsByDate(events));
           setLoading(false);
         }
       })
@@ -347,6 +393,7 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
               monthName={monthNames[m.month] ?? ''}
               weekdayNames={weekdayNames}
               bookedSet={bookedSet}
+              eventsByDate={eventsByDate}
               todayIso={todayIso}
               onSelect={handleSelect}
             />

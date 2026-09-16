@@ -13,7 +13,8 @@
       "en": "English",
       "es": "Español",
       "ro": "Română"
-    }
+    },
+    "events": "Events"
   },
   "whatsapp": {
     "chat": "Chat on WhatsApp",
@@ -46,6 +47,9 @@
     "errorTitle": "Calendar temporarily unavailable",
     "errorBody": "Please call us or submit the contact form to check availability.",
     "selectDateAria": "{{month}} {{day}}, {{year}}, available — select date to inquire",
-    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}"
+    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}",
+    "event": "Church event",
+    "eventHint": "Everyone is welcome",
+    "eventAria": "{{month}} {{day}}, {{year}}, church event: {{title}} — everyone is welcome, see details"
   }
 }

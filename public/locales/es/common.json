@@ -13,7 +13,8 @@
       "en": "English",
       "es": "Español",
       "ro": "Română"
-    }
+    },
+    "events": "Eventos"
   },
   "whatsapp": {
     "chat": "Chatea por WhatsApp",
@@ -46,6 +47,9 @@
     "errorTitle": "Calendario temporalmente no disponible",
     "errorBody": "Por favor, llámanos o envía el formulario de contacto para consultar la disponibilidad.",
     "selectDateAria": "{{month}} {{day}}, {{year}}, disponible — selecciona la fecha para consultar",
-    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}"
+    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}",
+    "event": "Evento parroquial",
+    "eventHint": "Todos son bienvenidos",
+    "eventAria": "{{day}} de {{month}} de {{year}}, evento parroquial: {{title}} — todos son bienvenidos, ver detalles"
   }
 }

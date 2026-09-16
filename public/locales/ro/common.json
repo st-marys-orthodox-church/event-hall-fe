@@ -13,7 +13,8 @@
       "en": "English",
       "es": "Español",
       "ro": "Română"
-    }
+    },
+    "events": "Evenimente"
   },
   "whatsapp": {
     "chat": "Scrie pe WhatsApp",
@@ -46,6 +47,9 @@
     "errorTitle": "Calendar temporar indisponibil",
     "errorBody": "Vă rugăm să ne sunați sau să trimiteți formularul de contact pentru a verifica disponibilitatea.",
     "selectDateAria": "{{month}} {{day}}, {{year}}, disponibil — selectați data pentru a solicita informații",
-    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}"
+    "dayStatusAria": "{{month}} {{day}}, {{year}}, {{status}}",
+    "event": "Eveniment parohial",
+    "eventHint": "Toată lumea este binevenită",
+    "eventAria": "{{day}} {{month}} {{year}}, eveniment parohial: {{title}} — toată lumea este binevenită, vezi detalii"
   }
 }
