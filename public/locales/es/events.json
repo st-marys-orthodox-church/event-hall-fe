@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "eyebrow": "Vida parroquial",
+    "heading": "Próximos eventos",
+    "subheading": "Festivales, conciertos y celebraciones parroquiales organizadas por la Iglesia Ortodoxa Rumana Santa María. Estos eventos están abiertos al público: todos son bienvenidos.",
+    "imageAlt": "Invitados reunidos en una celebración dentro de Fellowship Event Hall en Dacula, GA"
+  },
+  "list": {
+    "openInvite": "Todos son bienvenidos",
+    "allDay": "Todo el día",
+    "details": "Detalles del evento",
+    "detailsAria": "Detalles del evento {{title}} (se abre en una pestaña nueva)",
+    "venueFallback": "Iglesia Ortodoxa Rumana Santa María",
+    "whenLabel": "Cuándo",
+    "whereLabel": "Dónde"
+  },
+  "empty": {
+    "title": "No hay eventos públicos programados por ahora",
+    "body": "Vuelve pronto o sigue a la iglesia en Facebook para ver los anuncios."
+  },
+  "cta": {
+    "eyebrow": "¿Planeas tu propia celebración?",
+    "heading": "El salón está disponible para eventos privados",
+    "body": "Bodas, quinceañeras, bautizos y banquetes para hasta 250 invitados. Consulta las fechas libres y envía tu solicitud en minutos.",
+    "button": "Ver paquetes"
+  },
+  "breadcrumb": {
+    "events": "Eventos"
+  }
+}

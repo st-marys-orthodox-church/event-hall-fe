@@ -144,5 +144,11 @@
         "answer": "Private venue tours are available by appointment. Use the contact form or send a WhatsApp message and we will follow up promptly with open dates."
       }
     ]
+  },
+  "events": {
+    "eyebrow": "Church Life",
+    "heading": "Upcoming Events",
+    "subheading": "Public celebrations hosted by St. Mary Romanian Orthodox Church on the same grounds as the hall. Everyone is welcome.",
+    "viewAll": "See all events"
   }
 }

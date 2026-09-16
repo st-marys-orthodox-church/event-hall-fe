@@ -268,3 +268,42 @@ export const imageGalleryJsonLd = (name: string, description: string, images: Ga
     description: image.description,
   })),
 });
+
+export type StructuredEvent = {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  url: string;
+  start: string;
+  end: string;
+};
+
+const CHURCH_ORGANIZER = {
+  '@type': 'Church',
+  name: 'St. Mary Romanian Orthodox Church',
+  url: 'https://saintmaryro.org',
+};
+
+export const eventJsonLd = (event: StructuredEvent, fallbackLocationName: string) => {
+  const pageUrl = `${AppConfig.url}/events/#${event.id}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    '@id': pageUrl,
+    name: event.title,
+    ...(event.description ? { description: event.description } : {}),
+    startDate: event.start,
+    endDate: event.end,
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    url: event.url || pageUrl,
+    image: AppConfig.ogImage,
+    location: {
+      '@type': 'Place',
+      name: event.location || fallbackLocationName,
+      address: postalAddress,
+    },
+    organizer: CHURCH_ORGANIZER,
+  };
+};

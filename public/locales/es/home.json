@@ -144,5 +144,11 @@
         "answer": "Las visitas privadas al espacio están disponibles con cita previa. Usa el formulario de contacto o envíanos un mensaje por WhatsApp y te responderemos rápidamente con las fechas disponibles."
       }
     ]
+  },
+  "events": {
+    "eyebrow": "Vida parroquial",
+    "heading": "Próximos eventos",
+    "subheading": "Celebraciones públicas organizadas por la Iglesia Ortodoxa Rumana Santa María en el mismo recinto que el salón. Todos son bienvenidos.",
+    "viewAll": "Ver todos los eventos"
   }
 }

@@ -144,5 +144,11 @@
         "answer": "Tururile private ale locației sunt disponibile cu programare. Folosește formularul de contact sau trimite un mesaj pe WhatsApp, iar noi îți vom răspunde prompt cu datele disponibile."
       }
     ]
+  },
+  "events": {
+    "eyebrow": "Viața parohiei",
+    "heading": "Evenimente viitoare",
+    "subheading": "Evenimente publice organizate de Biserica Ortodoxă Română Sfânta Maria, în aceeași curte cu sala. Toată lumea este binevenită.",
+    "viewAll": "Vezi toate evenimentele"
   }
 }

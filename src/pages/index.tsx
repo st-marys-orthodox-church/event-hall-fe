@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { useScrollParallax } from '../hooks';
+import { loadUpcomingPublicEvents } from '../server/publicEvents';
 import { useAppContext } from '../stores/Global';
 import { Meta } from '../ui/base/Meta';
 import { Template } from '../ui/base/Template';
@@ -16,9 +17,17 @@ import { Faq } from '../ui/features/Faq';
 import { Hero } from '../ui/features/Hero';
 import { PackagesShowcase } from '../ui/features/PackagesShowcase';
 import { Reviews } from '../ui/features/Reviews';
+import { UpcomingEvents } from '../ui/features/UpcomingEvents';
 import { VerticalFeatures } from '../ui/features/VerticalFeatures';
 import { AppConfig } from '../utils/AppConfig';
 import { fullBleedSrc } from '../utils/CloudflareImages';
+import {
+  type DisplayEvent,
+  EVENTS_REVALIDATE_SECONDS,
+  HOME_UPCOMING_EVENTS_LIMIT,
+  UPCOMING_EVENTS_MONTHS,
+  toDisplayEvent,
+} from '../utils/Events';
 import { STATS_ITEMS, TRUST_BADGES } from '../utils/Features';
 import { PACKAGES } from '../utils/Packages';
 import { REVIEWS } from '../utils/Reviews';
@@ -36,7 +45,9 @@ import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
 const STAT_ANIMATION_DELAYS = [0, 150, 300];
 
-const Index = () => {
+type Props = { events: DisplayEvent[] };
+
+const Index = ({ events }: Props) => {
   const { t: tHome } = useTranslation('home');
   const { t: tSeo } = useTranslation('seo');
   const { t: tPackages } = useTranslation('packages');
@@ -150,6 +161,42 @@ const Index = () => {
 
         {/* Guest Reviews */}
         <Reviews />
+
+        {/* Upcoming church events */}
+        {events.length > 0 && (
+          <section
+            id="events"
+            aria-labelledby="events-heading"
+            className="py-24 bg-white border-y border-stone-200/80"
+          >
+            <div className="max-w-6xl mx-auto px-4">
+              <AnimationOnScroll animateIn="animate__fadeIn" animateOnce>
+                <div className="text-center mb-12">
+                  <span className="eyebrow text-brand-gold-ink">{tHome('events.eyebrow')}</span>
+                  <h2
+                    id="events-heading"
+                    className="mt-3 font-display text-4xl md:text-5xl text-stone-900"
+                  >
+                    {tHome('events.heading')}
+                  </h2>
+                  <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
+                  <p className="mt-5 text-stone-600 max-w-2xl mx-auto leading-relaxed">
+                    {tHome('events.subheading')}
+                  </p>
+                </div>
+              </AnimationOnScroll>
+              <UpcomingEvents events={events} variant="compact" />
+              <div className="mt-12 text-center">
+                <Link
+                  href="/events"
+                  className="eyebrow text-brand-green-ink hover:text-brand-green-deep transition-colors"
+                >
+                  {tHome('events.viewAll')} →
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Availability Calendar */}
         <section
@@ -358,16 +405,21 @@ const Index = () => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
   props: {
+    events: (
+      await loadUpcomingPublicEvents(UPCOMING_EVENTS_MONTHS, HOME_UPCOMING_EVENTS_LIMIT)
+    ).map((event) => toDisplayEvent(event, locale ?? I18N_DEFAULT_LOCALE)),
     ...(await serverSideTranslations(locale ?? I18N_DEFAULT_LOCALE, [
       'common',
       'home',
+      'events',
       'packages',
       'seo',
       'contact',
     ])),
   },
+  revalidate: EVENTS_REVALIDATE_SECONDS,
 });
 
 export default Index;

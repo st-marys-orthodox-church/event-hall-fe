@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "eyebrow": "Church Life",
+    "heading": "Upcoming Events",
+    "subheading": "Festivals, concerts, and parish celebrations hosted by St. Mary Romanian Orthodox Church. These events are open to the public — everyone is welcome.",
+    "imageAlt": "Guests gathered at a celebration inside Fellowship Event Hall in Dacula, GA"
+  },
+  "list": {
+    "openInvite": "Everyone is welcome",
+    "allDay": "All day",
+    "details": "Event details",
+    "detailsAria": "Event details for {{title}} (opens in a new tab)",
+    "venueFallback": "St. Mary Romanian Orthodox Church",
+    "whenLabel": "When",
+    "whereLabel": "Where"
+  },
+  "empty": {
+    "title": "No public events scheduled right now",
+    "body": "Check back soon, or follow the church on Facebook for announcements."
+  },
+  "cta": {
+    "eyebrow": "Planning Your Own Celebration?",
+    "heading": "The hall is available for private events",
+    "body": "Weddings, quinceañeras, baptisms, and banquets for up to 250 guests. Check open dates and start your inquiry in minutes.",
+    "button": "View Packages"
+  },
+  "breadcrumb": {
+    "events": "Events"
+  }
+}

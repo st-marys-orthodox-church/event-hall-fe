@@ -32,10 +32,11 @@ module.exports = {
       '/': 1.0,
       '/packages': 0.9,
       '/gallery': 0.8,
+      '/events': 0.8,
     };
     return {
       loc: path,
-      changefreq: config.changefreq,
+      changefreq: normalized === '/events' ? 'weekly' : config.changefreq,
       priority: priorityMap[normalized] ?? config.priority,
       lastmod: new Date().toISOString(),
     };

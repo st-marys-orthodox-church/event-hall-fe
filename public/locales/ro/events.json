@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "eyebrow": "Viața parohiei",
+    "heading": "Evenimente viitoare",
+    "subheading": "Festivaluri, concerte și sărbători parohiale organizate de Biserica Ortodoxă Română Sfânta Maria. Aceste evenimente sunt deschise publicului: toată lumea este binevenită.",
+    "imageAlt": "Invitați adunați la o petrecere în interiorul Fellowship Event Hall din Dacula, GA"
+  },
+  "list": {
+    "openInvite": "Toată lumea este binevenită",
+    "allDay": "Toată ziua",
+    "details": "Detalii eveniment",
+    "detailsAria": "Detalii despre evenimentul {{title}} (se deschide într-o filă nouă)",
+    "venueFallback": "Biserica Ortodoxă Română Sfânta Maria",
+    "whenLabel": "Când",
+    "whereLabel": "Unde"
+  },
+  "empty": {
+    "title": "Momentan nu sunt programate evenimente publice",
+    "body": "Reveniți în curând sau urmăriți biserica pe Facebook pentru anunțuri."
+  },
+  "cta": {
+    "eyebrow": "Plănuiți propria petrecere?",
+    "heading": "Sala este disponibilă pentru evenimente private",
+    "body": "Nunți, botezuri, aniversări și banchete pentru până la 250 de invitați. Verificați datele libere și trimiteți o solicitare în câteva minute.",
+    "button": "Vezi pachetele"
+  },
+  "breadcrumb": {
+    "events": "Evenimente"
+  }
+}

@@ -105,6 +105,14 @@ const Footer = () => {
                     {t('nav.packages')}
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    href="/events"
+                    className="hover:text-brand-gold transition-colors duration-300"
+                  >
+                    {t('nav.events')}
+                  </Link>
+                </li>
               </ul>
             </nav>
             <div className="flex flex-col items-center md:items-end gap-3">

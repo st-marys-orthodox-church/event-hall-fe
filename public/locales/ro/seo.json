@@ -56,5 +56,9 @@
         "description": "Închiriere locație pentru petreceri de aniversare și sărbători private la Fellowship Event Hall în Dacula, GA — de la întâlniri intime până la evenimente mari, cu mese, scaune, lenjerii și coordonator la fața locului incluse."
       }
     }
+  },
+  "events": {
+    "title": "Evenimente parohiale — Biserica Ortodoxă Română Sfânta Maria, Dacula GA",
+    "description": "Evenimente publice viitoare la Biserica Ortodoxă Română Sfânta Maria și Fellowship Event Hall din Dacula, GA: festivaluri, concerte și sărbători parohiale deschise tuturor."
   }
 }

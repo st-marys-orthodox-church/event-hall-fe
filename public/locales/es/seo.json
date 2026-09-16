@@ -56,5 +56,9 @@
         "description": "Alquiler de espacio para fiestas de cumpleaños y celebraciones privadas en Fellowship Event Hall en Dacula, GA — desde reuniones íntimas hasta grandes eventos, con mesas, sillas, mantelería y coordinador in situ incluidos."
       }
     }
+  },
+  "events": {
+    "title": "Eventos parroquiales — Iglesia Ortodoxa Rumana Santa María, Dacula GA",
+    "description": "Próximos eventos públicos en la Iglesia Ortodoxa Rumana Santa María y Fellowship Event Hall en Dacula, GA: festivales, conciertos y celebraciones parroquiales abiertas a todos."
   }
 }
