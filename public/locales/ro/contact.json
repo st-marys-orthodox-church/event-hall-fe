@@ -17,7 +17,6 @@
       "fullName": "Nume complet",
       "email": "Email",
       "date": "Data",
-      "dateFormat": "LL/ZZ/AAAA",
       "guests": "Număr de persoane",
       "message": "Mesaj"
     },

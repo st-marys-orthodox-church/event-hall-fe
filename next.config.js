@@ -14,6 +14,8 @@ const nextConfig = {
   },
   i18n,
   images: {
+    // Cloudflare image ids are immutable, so optimized copies can live a month.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
       {
         protocol: 'https',

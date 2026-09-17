@@ -17,7 +17,6 @@
       "fullName": "Full Name",
       "email": "Email",
       "date": "Date",
-      "dateFormat": "MM/DD/YYYY",
       "guests": "Amount of People",
       "message": "Message"
     },

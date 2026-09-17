@@ -3,13 +3,23 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../stores/Global';
 
+export type ContactFormState = {
+  name: string;
+  date: Date | null;
+  message: string;
+  cap: string;
+  email: string;
+  package: string;
+  website: string;
+};
+
 export const useContactForm = () => {
   const { t } = useTranslation('contact');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const { handleCloseModal } = useAppContext();
-  const [contactForm, setContactForm] = useState<any>({
+  const [contactForm, setContactForm] = useState<ContactFormState>({
     name: '',
     date: null,
     message: '',
@@ -19,9 +29,9 @@ export const useContactForm = () => {
     website: '',
   });
 
-  const updateContactForm = (
-    key: 'name' | 'date' | 'message' | 'cap' | 'email' | 'package' | 'website',
-    value: string | Date
+  const updateContactForm = <K extends keyof ContactFormState>(
+    key: K,
+    value: ContactFormState[K]
   ) => {
     setContactForm({
       ...contactForm,

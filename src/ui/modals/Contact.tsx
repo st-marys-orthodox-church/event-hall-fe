@@ -10,9 +10,6 @@ import {
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import moment from 'moment';
 import { useTranslation } from 'next-i18next/pages';
 import * as React from 'react';
 import { useContactForm, useWindowSize } from '../../hooks';
@@ -57,6 +54,14 @@ const fieldSx = {
   },
 };
 
+const pad = (n: number) => String(n).padStart(2, '0');
+const toInputDate = (d: Date | null) =>
+  d ? `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}` : '';
+const fromInputDate = (value: string) => {
+  const [y, m, d] = value.split('-').map(Number);
+  return y && m && d ? new Date(y, m - 1, d) : null;
+};
+
 export function ContactModal() {
   const { handleCloseModal, modalOpen, prefilledDate } = useAppContext();
   const { width } = useWindowSize();
@@ -88,8 +93,11 @@ export function ContactModal() {
 
   const toggleForm = () => setShowForm((prev) => !prev);
 
+  const [today, setToday] = React.useState('');
+  React.useEffect(() => setToday(toInputDate(new Date())), []);
+
   return (
-    <LocalizationProvider dateAdapter={AdapterMoment}>
+    <>
       <Modal
         aria-labelledby="contact-form"
         aria-describedby={t('modal.ariaDescribedBy')}
@@ -202,12 +210,22 @@ export function ContactModal() {
                     </div>
                     <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
                       <FormControl fullWidth required>
-                        <DesktopDatePicker
+                        <TextField
+                          required
+                          type="date"
+                          id="contact-form-date"
+                          value={toInputDate(contactForm.date)}
                           label={t('form.fields.date')}
-                          format={t('form.fields.dateFormat')}
-                          value={contactForm.date ? moment(contactForm.date) : null}
-                          onChange={(e) => updateContactForm('date', e?.toDate() || new Date())}
-                          slotProps={{ textField: { sx: fieldSx } }}
+                          onChange={(e) => {
+                            const next = fromInputDate(e.target.value);
+                            if (next) updateContactForm('date', next);
+                          }}
+                          variant="outlined"
+                          slotProps={{
+                            inputLabel: { shrink: true },
+                            htmlInput: { min: today || undefined },
+                          }}
+                          sx={fieldSx}
                         />
                       </FormControl>
                       <FormControl fullWidth required>
@@ -256,6 +274,6 @@ export function ContactModal() {
           </Box>
         </Fade>
       </Modal>
-    </LocalizationProvider>
+    </>
   );
 }

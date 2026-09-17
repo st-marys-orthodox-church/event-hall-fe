@@ -5,6 +5,7 @@ import 'react-photo-album/rows.css';
 import SSR from 'react-photo-album/ssr';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import { fullBleedSrc, optimizedSrcSet } from '../../utils/CloudflareImages';
 import {
   GALLERY_CATEGORY_KEYS,
   type IGalleryCategory,
@@ -15,6 +16,12 @@ import { Section } from '../layout/Section';
 // Server-renders one layout per container width so crawlers get real <img> tags;
 // container queries show the matching one before hydration, avoiding layout shift.
 const GALLERY_BREAKPOINTS = [640, 1024, 1200];
+// Section is max-w-screen-xl with px-3, so the album never exceeds 1256px.
+const GALLERY_SIZES = {
+  size: '1256px',
+  sizes: [{ viewport: '(max-width: 1280px)', size: 'calc(100vw - 24px)' }],
+};
+const EAGER_PHOTO_COUNT = 3;
 
 type IFilteredGalleryProps = {
   images: IGalleryImgProps[];
@@ -32,12 +39,16 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
 
   const photos = useMemo(
     () =>
-      filteredImages.map((img) => ({
-        src: img.src,
-        width: img.width,
-        height: img.height,
-        alt: t(`photos.${img.altKey}`),
-      })),
+      filteredImages.map((img) => {
+        const src = fullBleedSrc(img.src);
+        return {
+          src,
+          width: img.width,
+          height: img.height,
+          alt: t(`photos.${img.altKey}`),
+          srcSet: optimizedSrcSet(src, img.width, img.height),
+        };
+      }),
     [filteredImages, t]
   );
 
@@ -76,6 +87,14 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
               return 420;
             }}
             rowConstraints={{ minPhotos: 1, maxPhotos: 3 }}
+            sizes={GALLERY_SIZES}
+            componentsProps={{
+              image: ({ index }) => ({
+                loading: index < EAGER_PHOTO_COUNT ? 'eager' : 'lazy',
+                fetchPriority: index === 0 ? 'high' : undefined,
+                decoding: 'async',
+              }),
+            }}
             onClick={({ index }) => setLightboxIndex(index)}
           />
         </SSR>
@@ -85,7 +104,10 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
         open={lightboxIndex >= 0}
         index={lightboxIndex}
         close={() => setLightboxIndex(-1)}
-        slides={filteredImages.map((img) => ({ src: img.src, alt: t(`photos.${img.altKey}`) }))}
+        slides={filteredImages.map((img) => ({
+          src: fullBleedSrc(img.src),
+          alt: t(`photos.${img.altKey}`),
+        }))}
       />
 
       {filteredImages.length === 0 && (

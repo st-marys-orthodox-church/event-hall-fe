@@ -17,7 +17,6 @@
       "fullName": "Nombre completo",
       "email": "Correo electrónico",
       "date": "Fecha",
-      "dateFormat": "MM/DD/AAAA",
       "guests": "Número de personas",
       "message": "Mensaje"
     },
