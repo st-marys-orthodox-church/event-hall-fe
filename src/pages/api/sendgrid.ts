@@ -1,9 +1,7 @@
 import sendgrid from '@sendgrid/mail';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-// NEXT_PUBLIC_SENDGRID_API_KEY is the legacy name; drop the fallback once Vercel has SENDGRID_API_KEY.
-const SENDGRID_API_KEY =
-  process.env.SENDGRID_API_KEY ?? process.env.NEXT_PUBLIC_SENDGRID_API_KEY ?? '';
+const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY ?? '';
 if (SENDGRID_API_KEY) sendgrid.setApiKey(SENDGRID_API_KEY);
 
 const VENUE_EMAIL = 'events@saintmaryro.org';
