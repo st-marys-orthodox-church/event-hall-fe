@@ -5,7 +5,7 @@ import { Drawer, IconButton, Tooltip } from '@mui/material';
 import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { type MouseEvent, useEffect, useRef, useState } from 'react';
 import { useWindowSize } from '../../hooks';
 import { useAppContext } from '../../stores/Global';
 import { generateWhatsAppUrl } from '../../utils/Constants';
@@ -15,21 +15,43 @@ import { Section } from '../layout/Section';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Logo } from './Logo';
 
+const DRAWER_ENTER_MS = 360;
+const DRAWER_EXIT_MS = 280;
+
 export const Navbar = () => {
   const { handleOpenModal } = useAppContext();
   const { scrollY } = useWindowSize();
   const { t } = useTranslation('common');
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const pendingNavigation = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const links = NAV_LINKS;
   const isScrolled = scrollY > 50;
   const closeDrawer = () => setDrawerOpen(false);
   const isActive = (link: string) => router.pathname === link;
 
+  useEffect(
+    () => () => {
+      if (pendingNavigation.current) clearTimeout(pendingNavigation.current);
+    },
+    []
+  );
+
+  // The page (and this navbar) remounts on route change, which would cut the
+  // slide-out short, so let the drawer finish closing before navigating.
+  const navigateAfterClose =
+    (href: string, locale?: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      closeDrawer();
+      pendingNavigation.current = setTimeout(() => {
+        router.push(href, undefined, { locale, scroll: locale === undefined });
+      }, DRAWER_EXIT_MS);
+    };
+
   return (
     <Section
-      yPadding={isScrolled ? 'py-1.5' : 'py-3'}
+      yPadding={isScrolled ? 'py-2 md:py-1.5' : 'py-4 md:py-3'}
       className="transition-[padding] duration-300 ease-refined"
     >
       <div className="flex justify-between items-center gap-6">
@@ -89,9 +111,9 @@ export const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('whatsapp.chat')}
-                sx={{ borderRadius: 0, color: COLORS.brand.green, width: 44, height: 44 }}
+                sx={{ borderRadius: 0, color: COLORS.brand.green, width: 48, height: 48 }}
               >
-                <WhatsAppIcon />
+                <WhatsAppIcon sx={{ fontSize: 26 }} />
               </IconButton>
             </Tooltip>
             <IconButton
@@ -100,9 +122,9 @@ export const Navbar = () => {
               aria-controls="mobile-menu"
               aria-haspopup="dialog"
               aria-expanded={drawerOpen ? 'true' : undefined}
-              sx={{ borderRadius: 0, color: COLORS.neutral.darkText, width: 44, height: 44 }}
+              sx={{ borderRadius: 0, color: COLORS.neutral.darkText, width: 48, height: 48 }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{ fontSize: 30 }} />
             </IconButton>
           </div>
         </nav>
@@ -113,7 +135,8 @@ export const Navbar = () => {
         anchor="right"
         open={drawerOpen}
         onClose={closeDrawer}
-        ModalProps={{ keepMounted: false }}
+        transitionDuration={{ enter: DRAWER_ENTER_MS, exit: DRAWER_EXIT_MS }}
+        SlideProps={{ easing: { enter: EASING.refined, exit: 'cubic-bezier(0.4, 0, 0.6, 1)' } }}
         slotProps={{
           paper: {
             sx: {
@@ -128,7 +151,7 @@ export const Navbar = () => {
           <div className="flex items-center justify-between px-5 py-3 border-b border-stone-200">
             <Link
               href="/"
-              onClick={closeDrawer}
+              onClick={navigateAfterClose('/')}
               className="flex items-center"
               aria-label={t('nav.homeAriaLabel')}
             >
@@ -137,9 +160,9 @@ export const Navbar = () => {
             <IconButton
               onClick={closeDrawer}
               aria-label={t('nav.closeMenu')}
-              sx={{ borderRadius: 0, color: COLORS.neutral.darkText, width: 44, height: 44 }}
+              sx={{ borderRadius: 0, color: COLORS.neutral.darkText, width: 48, height: 48 }}
             >
-              <CloseIcon />
+              <CloseIcon sx={{ fontSize: 26 }} />
             </IconButton>
           </div>
 
@@ -147,7 +170,7 @@ export const Navbar = () => {
             <li>
               <Link
                 href="/"
-                onClick={closeDrawer}
+                onClick={navigateAfterClose('/')}
                 aria-current={isActive('/') ? 'page' : undefined}
                 className={`flex items-center justify-between py-4 font-display text-3xl border-b border-stone-100 transition-colors duration-300 ease-refined ${
                   isActive('/') ? 'text-brand-green-ink' : 'text-stone-900 hover:text-brand-green'
@@ -161,7 +184,7 @@ export const Navbar = () => {
               <li key={`nav-drawer-${el.key}`}>
                 <Link
                   href={el.link}
-                  onClick={closeDrawer}
+                  onClick={navigateAfterClose(el.link)}
                   aria-current={isActive(el.link) ? 'page' : undefined}
                   className={`flex items-center justify-between py-4 font-display text-3xl border-b border-stone-100 transition-colors duration-300 ease-refined ${
                     isActive(el.link)
@@ -185,15 +208,8 @@ export const Navbar = () => {
               }}
               className="eyebrow w-full bg-brand-green-deep text-white py-3.5 hover:bg-brand-green-ink transition-colors duration-300 ease-refined"
             >
-              {t('nav.contactForm')}
-            </button>
-            <Link
-              href="/#availability"
-              onClick={closeDrawer}
-              className="eyebrow w-full text-center text-stone-700 border border-stone-300 py-3.5 hover:border-brand-green hover:text-brand-green transition-colors duration-300 ease-refined"
-            >
               {t('nav.contactUs')}
-            </Link>
+            </button>
             <a
               href={generateWhatsAppUrl()}
               target="_blank"
@@ -208,7 +224,10 @@ export const Navbar = () => {
 
           <div className="mt-auto px-5 pb-6 pt-4 border-t border-stone-200">
             <span className="eyebrow block mb-3 text-stone-500">{t('nav.language')}</span>
-            <LanguageSwitcher variant="inline" onSelect={closeDrawer} />
+            <LanguageSwitcher
+              variant="inline"
+              onSelect={(event, locale) => navigateAfterClose(router.asPath, locale)(event)}
+            />
           </div>
         </div>
       </Drawer>

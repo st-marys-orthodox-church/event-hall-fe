@@ -20,7 +20,7 @@ export const Template = (props: ITemplateProps) => {
       >
         <Navbar />
       </div>
-      {props.topPad && <div className="h-[68.5px]" />}
+      {props.topPad && <div className="h-[81px] md:h-[68.5px]" />}
       <main className="opacity-100">{props.children}</main>
       {props.bottomPad && <div className="h-[68.5px]" />}
       <Footer />

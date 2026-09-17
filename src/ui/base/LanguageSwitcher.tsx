@@ -3,6 +3,7 @@ import { IconButton, Menu, MenuItem, Tooltip } from '@mui/material';
 import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import type { MouseEvent } from 'react';
 import { useDropdown } from '../../hooks';
 import { COLORS } from '../../utils/DesignTokens';
 import { I18N_DEFAULT_LOCALE, I18N_LOCALES } from '../../utils/i18nConfig';
@@ -16,7 +17,7 @@ const LOCALE_SHORT: Record<string, string> = {
 type ILanguageSwitcherProps = {
   size?: 'small' | 'medium';
   variant?: 'menu' | 'inline';
-  onSelect?: () => void;
+  onSelect?: (event: MouseEvent<HTMLAnchorElement>, locale: string) => void;
 };
 
 export const LanguageSwitcher = ({
@@ -42,7 +43,7 @@ export const LanguageSwitcher = ({
               href={router.asPath}
               locale={locale}
               scroll={false}
-              onClick={onSelect}
+              onClick={(event) => onSelect?.(event, locale)}
               aria-current={isActive ? 'true' : undefined}
               className={`flex flex-col items-center justify-center gap-1 py-3 border-r border-stone-200 last:border-r-0 transition-colors duration-300 ease-refined ${
                 isActive
