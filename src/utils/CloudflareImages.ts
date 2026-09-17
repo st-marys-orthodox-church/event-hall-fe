@@ -1,13 +1,11 @@
 const CF_IMAGE_HOST = 'imagedelivery.net';
 
 /**
- * Cloudflare serves every image through a named variant, and `public` is capped
- * at 768px on the long edge. Full-bleed art requests `sizes="100vw"`, so
- * next/image upscales that source on any large display. Point this at a wider
- * variant once the account has one — either a named variant, or a flexible
- * variant such as `w=2400,q=85` (needs Flexible Variants enabled in Images).
+ * Cloudflare serves every image through a named variant. `public` is capped at
+ * 768px on the long edge, so full-bleed art (sizes="100vw") and the gallery use
+ * `full`, a scale-down variant of 2400x1600 defined in the Images dashboard.
  */
-export const CF_FULL_BLEED_VARIANT = 'public';
+export const CF_FULL_BLEED_VARIANT = 'full';
 
 export const cfVariant = (src: string, variant: string) =>
   src.includes(CF_IMAGE_HOST) ? src.replace(/\/[^/]+$/, `/${variant}`) : src;
