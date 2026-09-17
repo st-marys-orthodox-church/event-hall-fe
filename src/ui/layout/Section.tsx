@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 type ISectionProps = {
   title?: string;
   titleAs?: 'h1' | 'h2';
+  titleClassName?: string;
   description?: string;
   yPadding?: string;
   children: ReactNode;
@@ -20,7 +21,11 @@ const Section = (props: ISectionProps) => {
       {(props.title || props.description) && (
         <div className="mb-12 text-center">
           {props.title && (
-            <Heading className="font-display text-4xl md:text-5xl text-stone-900 leading-tight">
+            <Heading
+              className={`font-display text-stone-900 leading-tight ${
+                props.titleClassName ?? 'text-4xl md:text-5xl'
+              }`}
+            >
               {props.title}
             </Heading>
           )}

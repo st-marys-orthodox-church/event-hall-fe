@@ -15,15 +15,49 @@ const LOCALE_SHORT: Record<string, string> = {
 
 type ILanguageSwitcherProps = {
   size?: 'small' | 'medium';
+  variant?: 'menu' | 'inline';
+  onSelect?: () => void;
 };
 
-export const LanguageSwitcher = ({ size = 'small' }: ILanguageSwitcherProps) => {
+export const LanguageSwitcher = ({
+  size = 'small',
+  variant = 'menu',
+  onSelect,
+}: ILanguageSwitcherProps) => {
   const router = useRouter();
   const { t } = useTranslation('common');
   const { open, handleClick, handleClose, anchorEl } = useDropdown();
   const currentLocale = router.locale ?? I18N_DEFAULT_LOCALE;
   const locales = I18N_LOCALES;
   const currentShort = LOCALE_SHORT[currentLocale] ?? currentLocale.toUpperCase();
+
+  if (variant === 'inline') {
+    return (
+      <nav aria-label={t('nav.language')} className="grid grid-cols-3 border border-stone-200">
+        {locales.map((locale) => {
+          const isActive = locale === currentLocale;
+          return (
+            <Link
+              key={locale}
+              href={router.asPath}
+              locale={locale}
+              scroll={false}
+              onClick={onSelect}
+              aria-current={isActive ? 'true' : undefined}
+              className={`flex flex-col items-center justify-center gap-1 py-3 border-r border-stone-200 last:border-r-0 transition-colors duration-300 ease-refined ${
+                isActive
+                  ? 'bg-brand-green-deep text-white'
+                  : 'text-stone-600 hover:bg-stone-50 hover:text-stone-900'
+              }`}
+            >
+              <span className="eyebrow">{LOCALE_SHORT[locale] ?? locale.toUpperCase()}</span>
+              <span className="text-xs">{t(`nav.languageNames.${locale}`)}</span>
+            </Link>
+          );
+        })}
+      </nav>
+    );
+  }
 
   return (
     <>

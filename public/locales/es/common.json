@@ -14,7 +14,9 @@
       "es": "Español",
       "ro": "Română"
     },
-    "events": "Eventos"
+    "events": "Eventos",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
   },
   "whatsapp": {
     "chat": "Chatea por WhatsApp",

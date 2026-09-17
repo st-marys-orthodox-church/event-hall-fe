@@ -1,5 +1,6 @@
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useTranslation } from 'next-i18next/pages';
-import { useMemo, useState } from 'react';
+import { useId, useMemo, useState } from 'react';
 import { RowsPhotoAlbum } from 'react-photo-album';
 import 'react-photo-album/rows.css';
 import SSR from 'react-photo-album/ssr';
@@ -29,6 +30,7 @@ type IFilteredGalleryProps = {
 
 export const FilteredGallery = (props: IFilteredGalleryProps) => {
   const { t } = useTranslation('gallery');
+  const filterId = useId();
   const [lightboxIndex, setLightboxIndex] = useState(-1);
   const [activeCategory, setActiveCategory] = useState<IGalleryCategory>('all');
 
@@ -53,8 +55,37 @@ export const FilteredGallery = (props: IFilteredGalleryProps) => {
   );
 
   return (
-    <Section title={t('title')} titleAs="h1" description={t('description')}>
-      <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6 border-y border-stone-200 py-5">
+    <Section
+      title={t('title')}
+      titleAs="h1"
+      titleClassName="text-[clamp(1.375rem,7vw,2.25rem)] md:text-5xl"
+      description={t('description')}
+    >
+      <div className="md:hidden mb-6">
+        <label htmlFor={filterId} className="eyebrow block mb-2 text-stone-500">
+          {t('filterLabel')}
+        </label>
+        <div className="relative">
+          <select
+            id={filterId}
+            value={activeCategory}
+            onChange={(event) => setActiveCategory(event.target.value as IGalleryCategory)}
+            className="eyebrow w-full appearance-none bg-white border border-stone-300 text-stone-800 px-4 py-3.5 pr-11 focus:outline-none focus:border-brand-green"
+          >
+            {GALLERY_CATEGORY_KEYS.map((categoryKey) => (
+              <option key={categoryKey} value={categoryKey}>
+                {t(`categories.${categoryKey}`)}
+              </option>
+            ))}
+          </select>
+          <ExpandMoreIcon
+            fontSize="small"
+            className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-stone-500"
+          />
+        </div>
+      </div>
+
+      <div className="hidden md:flex flex-wrap justify-center gap-x-8 gap-y-3 mb-6 border-y border-stone-200 py-5">
         {GALLERY_CATEGORY_KEYS.map((categoryKey) => (
           <button
             key={categoryKey}
