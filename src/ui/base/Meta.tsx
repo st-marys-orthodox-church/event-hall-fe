@@ -16,6 +16,8 @@ type IMetaProps = {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
 
+const GOOGLE_SITE_VERIFICATION = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? '';
+
 const OG_LOCALE: Record<string, string> = {
   en: 'en_US',
   es: 'es_ES',
@@ -66,6 +68,13 @@ const Meta = (props: IMetaProps) => {
         <meta charSet="UTF-8" key="charset" />
         <meta name="viewport" content="width=device-width,initial-scale=1" key="viewport" />
         <meta name="theme-color" content={AppConfig.themeColor} key="theme-color" />
+        {GOOGLE_SITE_VERIFICATION && (
+          <meta
+            name="google-site-verification"
+            content={GOOGLE_SITE_VERIFICATION}
+            key="google-site-verification"
+          />
+        )}
         <link rel="preconnect" href="https://www.google.com" key="preconnect-google" />
         <link
           rel="preconnect"

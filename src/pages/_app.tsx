@@ -4,6 +4,7 @@ import type { ComponentType } from 'react';
 import { AppWrapper } from '../stores/Global';
 import { display, sans } from '../styles/fonts';
 import { MuiThemeProvider } from '../styles/theme';
+import { Analytics } from '../ui/base/Analytics';
 import { ContactModalHost } from '../ui/modals/ContactModalHost';
 
 import '../styles/global.css';
@@ -16,6 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <div className={`${sans.variable} ${display.variable}`}>
           <AnyComponent {...pageProps} />
           <ContactModalHost />
+          <Analytics />
         </div>
       </AppWrapper>
     </MuiThemeProvider>

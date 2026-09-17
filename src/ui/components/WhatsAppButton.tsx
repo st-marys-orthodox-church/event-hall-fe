@@ -2,6 +2,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { Button, type ButtonProps } from '@mui/material';
 import { useTranslation } from 'next-i18next/pages';
 import type React from 'react';
+import { trackEvent } from '../../utils/Analytics';
 import { generateWhatsAppUrl } from '../../utils/Constants';
 import { COLORS } from '../../utils/DesignTokens';
 
@@ -35,12 +36,10 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
     if (onAnalyticsTrack) {
       onAnalyticsTrack(eventType);
     }
-    if (typeof window !== 'undefined' && (window as any).gtag) {
-      (window as any).gtag('event', 'whatsapp_click', {
-        event_category: 'engagement',
-        event_label: eventType || 'general',
-      });
-    }
+    trackEvent('whatsapp_click', {
+      event_category: 'engagement',
+      event_label: eventType || 'general',
+    });
   };
 
   const whatsappUrl = generateWhatsAppUrl({ eventType, date, guests });
