@@ -7,7 +7,11 @@ import {
   occurrencesInRange,
   veventsOf,
 } from '../../server/ics';
-import { type PublicEvent, loadPublicEvents } from '../../server/publicEvents';
+import {
+  type PublicEvent,
+  isPublicEventsConfigured,
+  loadPublicEvents,
+} from '../../server/publicEvents';
 
 const ICS_URL = process.env.CALENDAR_ICS_URL;
 
@@ -16,6 +20,8 @@ export type AvailabilityResponse = {
   dates: string[];
   /** Public church events touching the range; may be empty when the feed is not configured. */
   events: PublicEvent[];
+  /** Whether PUBLIC_EVENTS_ICS_URL is set on this deployment, so an empty list can be diagnosed. */
+  eventsConfigured: boolean;
 };
 
 const loadBookedDates = async (from: string, to: string): Promise<string[]> => {
@@ -58,7 +64,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     ]);
 
     res.setHeader('Cache-Control', 's-maxage=600, stale-while-revalidate=3600');
-    const body: AvailabilityResponse = { dates, events };
+    const body: AvailabilityResponse = {
+      dates,
+      events,
+      eventsConfigured: isPublicEventsConfigured(),
+    };
     return res.status(200).json(body);
   } catch (err) {
     console.error('availability: failed to fetch calendar', err);
