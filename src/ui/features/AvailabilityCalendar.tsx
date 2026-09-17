@@ -58,7 +58,11 @@ async function fetchAvailability(from: string, to: string): Promise<Availability
   const res = await fetch(`/api/availability/?from=${from}&to=${to}`, { cache: 'no-store' });
   if (!res.ok) throw new Error(`availability request failed: ${res.status}`);
   const data = (await res.json()) as Partial<AvailabilityResponse>;
-  return { dates: data.dates ?? [], events: data.events ?? [] };
+  return {
+    dates: data.dates ?? [],
+    events: data.events ?? [],
+    eventsConfigured: data.eventsConfigured ?? false,
+  };
 }
 
 const indexEventsByDate = (events: PublicEvent[]): EventsByDate => {
