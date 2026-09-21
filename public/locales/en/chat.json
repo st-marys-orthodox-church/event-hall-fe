@@ -6,7 +6,10 @@
   "suggestions": [
     "How many guests fit?",
     "What's included in the rental?",
-    "Can I come see the hall?"
+    "Can I come see the hall?",
+    "What does it cost?",
+    "Can I bring my own catering?",
+    "Is my date available?"
   ],
   "placeholder": "Type your question…",
   "inputLabel": "Your question",

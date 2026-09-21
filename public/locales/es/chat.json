@@ -6,7 +6,10 @@
   "suggestions": [
     "¿Cuántos invitados caben?",
     "¿Qué incluye el alquiler?",
-    "¿Puedo ir a ver el salón?"
+    "¿Puedo ir a ver el salón?",
+    "¿Cuánto cuesta?",
+    "¿Puedo traer mi propio catering?",
+    "¿Está disponible mi fecha?"
   ],
   "placeholder": "Escribe tu pregunta…",
   "inputLabel": "Tu pregunta",

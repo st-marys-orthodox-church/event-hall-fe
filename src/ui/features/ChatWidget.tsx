@@ -15,6 +15,8 @@ type ChatMessage = {
   failed?: boolean;
 };
 
+const MAX_SUGGESTIONS = 3;
+
 export const ChatWidget = () => {
   const { t } = useTranslation('chat');
   const { t: tViewing } = useTranslation('viewing');
@@ -97,6 +99,13 @@ export const ChatWidget = () => {
     }
   };
 
+  const asked = new Set(messages.filter((m) => m.role === 'user').map((m) => m.content));
+  const suggestions = (t('suggestions', { returnObjects: true }) as string[])
+    .filter((suggestion) => !asked.has(suggestion))
+    .slice(0, MAX_SUGGESTIONS);
+  // Once they have an answer, a tour is always one tap away, unless the reply already offers it.
+  const showViewingChip = messages.length > 0 && !messages.at(-1)?.viewingPrefill;
+
   const onSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     ask(input);
@@ -148,21 +157,6 @@ export const ChatWidget = () => {
       >
         <p className="mr-8 bg-stone-100 px-3 py-2 text-stone-800">{t('greeting')}</p>
 
-        {messages.length === 0 && (
-          <div className="flex flex-wrap gap-2">
-            {(t('suggestions', { returnObjects: true }) as string[]).map((suggestion) => (
-              <button
-                key={suggestion}
-                type="button"
-                onClick={() => ask(suggestion)}
-                className="border border-stone-200 px-3 py-1.5 text-xs text-stone-700 transition-colors hover:border-brand-gold"
-              >
-                {suggestion}
-              </button>
-            ))}
-          </div>
-        )}
-
         {messages.map((message, index) =>
           message.role === 'user' ? (
             <p key={index} className="ml-8 bg-brand-green-deep px-3 py-2 text-white">
@@ -193,6 +187,30 @@ export const ChatWidget = () => {
               )}
             </div>
           )
+        )}
+
+        {!busy && (
+          <div className="flex flex-wrap gap-2">
+            {showViewingChip && (
+              <button
+                type="button"
+                onClick={() => handleOpenViewing()}
+                className="border border-brand-gold bg-brand-gold/10 px-3 py-1.5 text-xs font-medium text-brand-gold-ink transition-colors hover:bg-brand-gold hover:text-brand-dark"
+              >
+                {tViewing('cta.button')}
+              </button>
+            )}
+            {suggestions.map((suggestion) => (
+              <button
+                key={suggestion}
+                type="button"
+                onClick={() => ask(suggestion)}
+                className="border border-stone-200 px-3 py-1.5 text-xs text-stone-700 transition-colors hover:border-brand-gold"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
         )}
       </div>
 
