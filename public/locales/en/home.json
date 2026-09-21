@@ -90,20 +90,6 @@
       }
     }
   },
-  "trustBadges": {
-    "flexibleBooking": {
-      "title": "Flexible Booking",
-      "text": "Easy scheduling with multiple date options"
-    },
-    "awardWinning": {
-      "title": "Highly Rated",
-      "text": "Five-star reviews from couples and families"
-    },
-    "madeWithLove": {
-      "title": "Made with Love",
-      "text": "Personal attention to every detail"
-    }
-  },
   "visit": {
     "eyebrow": "Visit",
     "heading": "Visit Fellowship Event Hall",

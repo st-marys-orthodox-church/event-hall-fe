@@ -90,20 +90,6 @@
       }
     }
   },
-  "trustBadges": {
-    "flexibleBooking": {
-      "title": "Rezervare flexibilă",
-      "text": "Programare ușoară cu multiple opțiuni de date"
-    },
-    "awardWinning": {
-      "title": "Premiată",
-      "text": "Locație foarte bine apreciată în zona Dacula"
-    },
-    "madeWithLove": {
-      "title": "Făcut cu pasiune",
-      "text": "Atenție personală pentru fiecare detaliu"
-    }
-  },
   "visit": {
     "eyebrow": "Vizită",
     "heading": "Vizitează Fellowship Event Hall",

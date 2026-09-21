@@ -90,20 +90,6 @@
       }
     }
   },
-  "trustBadges": {
-    "flexibleBooking": {
-      "title": "Reserva flexible",
-      "text": "Programación sencilla con múltiples opciones de fecha"
-    },
-    "awardWinning": {
-      "title": "Galardonado",
-      "text": "Espacio con excelentes valoraciones en la zona de Dacula"
-    },
-    "madeWithLove": {
-      "title": "Hecho con amor",
-      "text": "Atención personal a cada detalle"
-    }
-  },
   "visit": {
     "eyebrow": "Visita",
     "heading": "Visita Fellowship Event Hall",

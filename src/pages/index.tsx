@@ -28,7 +28,7 @@ import {
   UPCOMING_EVENTS_MONTHS,
   toDisplayEvent,
 } from '../utils/Events';
-import { STATS_ITEMS, TRUST_BADGES } from '../utils/Features';
+import { STATS_ITEMS } from '../utils/Features';
 import { PACKAGES } from '../utils/Packages';
 import { REVIEWS } from '../utils/Reviews';
 import {
@@ -376,33 +376,6 @@ const Index = ({ events }: Props) => {
             <Faq />
           </div>
         </section>
-
-        {/* Trust Badges */}
-        <div className="py-20 bg-white">
-          <div className="max-w-6xl mx-auto px-4">
-            <Reveal variant="fade">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                {TRUST_BADGES.map((badge) => (
-                  <div key={badge.key} className="flex flex-col items-center gap-4">
-                    <div className="w-14 h-14 flex items-center justify-center border border-stone-200">
-                      <badge.Icon
-                        className={`w-7 h-7 ${
-                          badge.iconTone === 'green' ? 'text-brand-green' : 'text-brand-gold'
-                        }`}
-                      />
-                    </div>
-                    <h3 className="font-display text-2xl text-stone-900">
-                      {tHome(`trustBadges.${badge.key}.title`)}
-                    </h3>
-                    <p className="text-stone-600 max-w-xs">
-                      {tHome(`trustBadges.${badge.key}.text`)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </div>
       </Template>
     </div>
   );
