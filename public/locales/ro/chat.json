@@ -2,7 +2,7 @@
   "launcher": "Pune o întrebare",
   "title": "Întreabă despre sală",
   "disclaimer": "Asistent AI. Pentru orice informație oficială, te rugăm să ne contactezi.",
-  "greeting": "Bună! Pot răspunde la întrebări despre Fellowship Event Hall — capacitate, prețuri, ce este inclus, date libere — și te pot ajuta să programezi un tur.",
+  "greeting": "Bună! Întreabă-mă orice despre Fellowship Event Hall — capacitate, prețuri, ce este inclus, date libere. Îți pot programa și turul chiar aici, în chat.",
   "suggestions": [
     "Câți invitați încap?",
     "Ce include închirierea?",
@@ -18,5 +18,12 @@
   "thinking": "Scrie…",
   "error": "Ne pare rău, nu am putut răspunde acum. Încearcă din nou sau scrie-ne prin formularul de contact.",
   "rateLimited": "Ai trimis multe mesaje. Încearcă din nou peste câteva minute.",
-  "contact": "Contactează-ne"
+  "contact": "Contactează-ne",
+  "call": "Sună-ne",
+  "whatsapp": "WhatsApp",
+  "contactForm": "Formular de contact",
+  "booked": {
+    "heading": "Tur programat",
+    "body": "{{when}} (ora Coastei de Est). Îți trimitem o confirmare cu invitație de calendar la {{email}}."
+  }
 }

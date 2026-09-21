@@ -1,17 +1,28 @@
 import ChatBubbleOutline from '@mui/icons-material/ChatBubbleOutline';
+import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
 import CloseIcon from '@mui/icons-material/Close';
+import PhoneIcon from '@mui/icons-material/Phone';
 import SendIcon from '@mui/icons-material/Send';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useTranslation } from 'next-i18next/pages';
+import { useRouter } from 'next/router';
 import { type SyntheticEvent, useEffect, useRef, useState } from 'react';
 import type { ChatStreamEvent } from '../../pages/api/chat';
+import type { ChatAction } from '../../server/chatAgent';
 import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
+import { PHONE_NUMBER, generateWhatsAppUrl } from '../../utils/Constants';
+import { VENUE_TIMEZONE } from '../../utils/Events';
 import type { ViewingPrefill } from '../../utils/Viewings';
+
+type ContactOptions = Omit<Extract<ChatAction, { action: 'contact' }>, 'action'>;
 
 type ChatMessage = {
   role: 'user' | 'assistant';
   content: string;
   viewingPrefill?: ViewingPrefill;
+  contact?: ContactOptions;
+  booked?: { start: string; email: string };
   failed?: boolean;
 };
 
@@ -20,6 +31,7 @@ const MAX_SUGGESTIONS = 3;
 export const ChatWidget = () => {
   const { t } = useTranslation('chat');
   const { t: tViewing } = useTranslation('viewing');
+  const { locale = 'en' } = useRouter();
   const { handleOpenViewing, handleOpenModal, modalOpen, viewingOpen } = useAppContext();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
@@ -64,6 +76,7 @@ export const ChatWidget = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           messages: history.map(({ role, content }) => ({ role, content })),
+          locale,
         }),
       });
       if (!res.ok || !res.body) {
@@ -86,7 +99,16 @@ export const ChatWidget = () => {
           if (event.type === 'text') {
             patchLast((last) => ({ ...last, content: last.content + event.delta }));
           } else if (event.type === 'action') {
-            patchLast((last) => ({ ...last, viewingPrefill: event.prefill }));
+            if (event.action === 'book_viewing') {
+              patchLast((last) => ({ ...last, viewingPrefill: event.prefill }));
+            } else if (event.action === 'contact') {
+              const { channels, whatsapp } = event;
+              patchLast((last) => ({ ...last, contact: { channels, whatsapp } }));
+            } else {
+              const { start, email } = event;
+              patchLast((last) => ({ ...last, booked: { start, email } }));
+              trackEvent('chat_viewing_booked', { event_category: 'conversion' });
+            }
           } else if (event.type === 'error') {
             fail('error');
           }
@@ -104,7 +126,20 @@ export const ChatWidget = () => {
     .filter((suggestion) => !asked.has(suggestion))
     .slice(0, MAX_SUGGESTIONS);
   // Once they have an answer, a tour is always one tap away, unless the reply already offers it.
-  const showViewingChip = messages.length > 0 && !messages.at(-1)?.viewingPrefill;
+  const showViewingChip =
+    messages.length > 0 &&
+    !messages.at(-1)?.viewingPrefill &&
+    !messages.some((message) => message.booked);
+
+  const formatWhen = (iso: string) =>
+    new Intl.DateTimeFormat(locale, {
+      timeZone: VENUE_TIMEZONE,
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+    }).format(new Date(iso));
 
   const onSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -176,7 +211,63 @@ export const ChatWidget = () => {
                   {tViewing('cta.button')}
                 </button>
               )}
-              {message.failed && (
+              {message.booked && (
+                <div className="mt-2 border-l-2 border-brand-green bg-primary-100 px-3 py-2">
+                  <p className="flex items-center gap-1.5 font-medium text-brand-green-ink">
+                    <CheckCircleOutline fontSize="small" />
+                    {t('booked.heading')}
+                  </p>
+                  <p className="mt-1 text-xs text-stone-700">
+                    {t('booked.body', {
+                      when: formatWhen(message.booked.start),
+                      email: message.booked.email,
+                    })}
+                  </p>
+                </div>
+              )}
+              {message.contact && (
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {message.contact.channels.includes('call') && (
+                    <a
+                      href={`tel:${PHONE_NUMBER.replace(/[^\d+]/g, '')}`}
+                      onClick={() =>
+                        trackEvent('chat_call_click', { event_category: 'engagement' })
+                      }
+                      className="flex items-center gap-1.5 bg-brand-green-deep px-3 py-2 text-xs font-medium text-white no-underline transition-colors hover:bg-brand-green-ink"
+                    >
+                      <PhoneIcon sx={{ fontSize: 16 }} />
+                      {t('call')}
+                    </a>
+                  )}
+                  {message.contact.channels.includes('whatsapp') && (
+                    <a
+                      href={generateWhatsAppUrl(message.contact.whatsapp)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() =>
+                        trackEvent('chat_whatsapp_click', { event_category: 'engagement' })
+                      }
+                      className="flex items-center gap-1.5 bg-whatsapp px-3 py-2 text-xs font-medium text-brand-dark no-underline transition-colors hover:bg-whatsapp-ink hover:text-white"
+                    >
+                      <WhatsAppIcon sx={{ fontSize: 16 }} />
+                      {t('whatsapp')}
+                    </a>
+                  )}
+                  {message.contact.channels.includes('form') && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        trackEvent('chat_contact_form_click', { event_category: 'engagement' });
+                        handleOpenModal();
+                      }}
+                      className="border border-brand-gold px-3 py-2 text-xs font-medium text-brand-gold-ink transition-colors hover:bg-brand-gold hover:text-brand-dark"
+                    >
+                      {t('contactForm')}
+                    </button>
+                  )}
+                </div>
+              )}
+              {message.failed && !message.contact && (
                 <button
                   type="button"
                   onClick={() => handleOpenModal()}

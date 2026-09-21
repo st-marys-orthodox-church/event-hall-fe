@@ -13,6 +13,12 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["next", "start", "-p", "3001"],
       "port": 3001
+    },
+    {
+      "name": "event-hall-prod-devcal",
+      "runtimeExecutable": "env",
+      "runtimeArgs": ["ZOHO_REFRESH_TOKEN=", "npx", "next", "start", "-p", "3001"],
+      "port": 3001
     }
   ]
 }

@@ -2,7 +2,7 @@
   "launcher": "Ask a question",
   "title": "Ask about the hall",
   "disclaimer": "AI assistant. For anything official, please contact us.",
-  "greeting": "Hi! I can answer questions about Fellowship Event Hall — capacity, pricing, what's included, open dates — and help you book a tour.",
+  "greeting": "Hi! Ask me anything about Fellowship Event Hall — capacity, pricing, what's included, open dates. I can also book your tour right here in the chat.",
   "suggestions": [
     "How many guests fit?",
     "What's included in the rental?",
@@ -18,5 +18,12 @@
   "thinking": "Typing…",
   "error": "Sorry, I couldn't answer just now. Please try again, or reach us through the contact form.",
   "rateLimited": "You've sent a lot of messages. Please try again in a few minutes.",
-  "contact": "Contact us"
+  "contact": "Contact us",
+  "call": "Call us",
+  "whatsapp": "WhatsApp",
+  "contactForm": "Contact form",
+  "booked": {
+    "heading": "Tour booked",
+    "body": "{{when}} (Eastern Time). A confirmation with a calendar invite is on its way to {{email}}."
+  }
 }

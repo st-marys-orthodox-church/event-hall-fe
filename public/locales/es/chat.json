@@ -2,7 +2,7 @@
   "launcher": "Haz una pregunta",
   "title": "Pregunta sobre el salón",
   "disclaimer": "Asistente de IA. Para cualquier asunto oficial, contáctanos.",
-  "greeting": "¡Hola! Puedo responder preguntas sobre Fellowship Event Hall — capacidad, precios, qué está incluido, fechas disponibles — y ayudarte a reservar una visita.",
+  "greeting": "¡Hola! Pregúntame lo que quieras sobre Fellowship Event Hall — capacidad, precios, qué está incluido, fechas disponibles. También puedo reservar tu visita aquí mismo en el chat.",
   "suggestions": [
     "¿Cuántos invitados caben?",
     "¿Qué incluye el alquiler?",
@@ -18,5 +18,12 @@
   "thinking": "Escribiendo…",
   "error": "Lo siento, no pude responder en este momento. Inténtalo de nuevo o escríbenos por el formulario de contacto.",
   "rateLimited": "Has enviado muchos mensajes. Inténtalo de nuevo en unos minutos.",
-  "contact": "Contáctanos"
+  "contact": "Contáctanos",
+  "call": "Llámanos",
+  "whatsapp": "WhatsApp",
+  "contactForm": "Formulario de contacto",
+  "booked": {
+    "heading": "Visita reservada",
+    "body": "{{when}} (hora del Este). Te enviamos una confirmación con invitación de calendario a {{email}}."
+  }
 }

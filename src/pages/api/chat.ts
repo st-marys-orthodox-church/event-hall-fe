@@ -11,6 +11,7 @@ import {
   CHAT_SYSTEM_PROMPT,
   CHAT_TOOLS,
   type ChatAction,
+  type ChatToolContext,
   chatDateContext,
   runChatTool,
 } from '../../server/chatAgent';
@@ -52,7 +53,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!API_KEY) {
     return res.status(503).json({ error: 'not_configured' });
   }
-  const contents = parseHistory((req.body as { messages?: unknown } | null)?.messages);
+  const body = (req.body ?? {}) as { messages?: unknown; locale?: unknown };
+  const contents = parseHistory(body.messages);
   if (!contents) return res.status(400).json({ error: 'invalid' });
   if (isRateLimited(`chat:${clientIp(req)}`, MESSAGES_PER_10_MIN, 10 * 60 * 1000)) {
     return res.status(429).json({ error: 'rate_limited' });
@@ -65,6 +67,14 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     'Content-Encoding': 'none',
   });
   const send = (event: ChatStreamEvent) => res.write(`${JSON.stringify(event)}\n`);
+
+  const toolContext: ChatToolContext = {
+    ip: clientIp(req),
+    locale: typeof body.locale === 'string' ? body.locale : 'en',
+    lastAssistantText: contents.at(-2)?.parts?.[0]?.text ?? '',
+    emit: (action) => send({ type: 'action', ...action }),
+    state: { booked: false },
+  };
 
   const ai = new GoogleGenAI({ apiKey: API_KEY });
   const controller = new AbortController();
@@ -105,17 +115,24 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       for (const call of calls) {
         const name = call.name ?? '';
         try {
-          const output = await runChatTool(name, call.args, (action) =>
-            send({ type: 'action', ...action })
-          );
+          const output = await runChatTool(name, call.args, toolContext);
           results.push({ functionResponse: { id: call.id, name, response: { output } } });
         } catch (err) {
           console.error(`chat: tool ${name} failed`, err);
+          send({
+            type: 'action',
+            action: 'contact',
+            channels: ['call', 'whatsapp', 'form'],
+            whatsapp: {},
+          });
           results.push({
             functionResponse: {
               id: call.id,
               name,
-              response: { error: 'The lookup failed. Suggest contacting the venue directly.' },
+              response: {
+                error:
+                  'The tool failed and nothing was booked. Apologize; contact buttons are now shown.',
+              },
             },
           });
         }
