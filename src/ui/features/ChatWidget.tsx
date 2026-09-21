@@ -202,6 +202,12 @@ export const ChatWidget = () => {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.nativeEvent.isComposing) {
+              e.preventDefault();
+              ask(input);
+            }
+          }}
           maxLength={1000}
           aria-label={t('inputLabel')}
           placeholder={t('placeholder')}

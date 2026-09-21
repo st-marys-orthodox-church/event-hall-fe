@@ -1,4 +1,4 @@
-import type Anthropic from '@anthropic-ai/sdk';
+import type { FunctionDeclaration } from '@google/genai';
 import common from '../../public/locales/en/common.json';
 import home from '../../public/locales/en/home.json';
 import packages from '../../public/locales/en/packages.json';
@@ -52,31 +52,27 @@ ${JSON.stringify(KNOWLEDGE, null, 1)}
 export const chatDateContext = (now = new Date()): string =>
   `Today is ${new Intl.DateTimeFormat('en-US', { timeZone: VENUE_TZ, dateStyle: 'full' }).format(now)} (${isoInVenueTz(now)}) at the venue.`;
 
-export const CHAT_TOOLS: Anthropic.Tool[] = [
+export const CHAT_TOOLS: FunctionDeclaration[] = [
   {
     name: 'check_date_availability',
     description:
       'Check whether the hall is still open for a private event on a given date. Call this whenever a visitor asks about a specific date.',
-    strict: true,
-    input_schema: {
+    parametersJsonSchema: {
       type: 'object',
       properties: { date: { type: 'string', description: 'Event date as YYYY-MM-DD' } },
       required: ['date'],
-      additionalProperties: false,
     },
   },
   {
     name: 'get_viewing_slots',
     description:
       'List the next open times for an in-person tour of the hall. Use it when a visitor asks when they can come see the space.',
-    strict: true,
-    input_schema: { type: 'object', properties: {}, required: [], additionalProperties: false },
   },
   {
     name: 'offer_viewing_booking',
     description:
       'Show the visitor a button that opens the online tour booking. Call it when they want to visit or schedule a tour. Pass the guest count and event date if they have mentioned them so the form is pre-filled.',
-    input_schema: {
+    parametersJsonSchema: {
       type: 'object',
       properties: {
         guests: { type: 'integer', description: 'Expected guest count, if known' },

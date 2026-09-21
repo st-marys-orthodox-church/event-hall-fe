@@ -1,4 +1,11 @@
-import Anthropic from '@anthropic-ai/sdk';
+import {
+  ApiError,
+  type Content,
+  type FunctionCall,
+  GoogleGenAI,
+  type Part,
+  ThinkingLevel,
+} from '@google/genai';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   CHAT_SYSTEM_PROMPT,
@@ -11,7 +18,8 @@ import { clientIp, isRateLimited } from '../../server/rateLimit';
 
 export const config = { maxDuration: 60 };
 
-const MODEL = process.env.CHAT_MODEL || 'claude-opus-5';
+const API_KEY = process.env.GEMINI_API_KEY;
+const MODEL = process.env.CHAT_MODEL || 'gemini-3.8-flash';
 const MAX_TURNS = 24;
 const MAX_MESSAGE_CHARS = 1000;
 const MAX_TOOL_ROUNDS = 4;
@@ -23,17 +31,17 @@ export type ChatStreamEvent =
   | { type: 'error' }
   | { type: 'done' };
 
-const parseHistory = (raw: unknown): Anthropic.MessageParam[] | null => {
+const parseHistory = (raw: unknown): Content[] | null => {
   if (!Array.isArray(raw) || raw.length === 0) return null;
-  const messages: Anthropic.MessageParam[] = [];
+  const contents: Content[] = [];
   for (const item of raw.slice(-MAX_TURNS)) {
     const { role, content } = (item ?? {}) as { role?: unknown; content?: unknown };
     if ((role !== 'user' && role !== 'assistant') || typeof content !== 'string') return null;
     const text = content.trim().slice(0, MAX_MESSAGE_CHARS);
-    if (text) messages.push({ role, content: text });
+    if (text) contents.push({ role: role === 'user' ? 'user' : 'model', parts: [{ text }] });
   }
-  while (messages[0]?.role === 'assistant') messages.shift();
-  return messages.at(-1)?.role === 'user' ? messages : null;
+  while (contents[0]?.role === 'model') contents.shift();
+  return contents.at(-1)?.role === 'user' ? contents : null;
 };
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -41,11 +49,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!API_KEY) {
     return res.status(503).json({ error: 'not_configured' });
   }
-  const messages = parseHistory((req.body as { messages?: unknown } | null)?.messages);
-  if (!messages) return res.status(400).json({ error: 'invalid' });
+  const contents = parseHistory((req.body as { messages?: unknown } | null)?.messages);
+  if (!contents) return res.status(400).json({ error: 'invalid' });
   if (isRateLimited(`chat:${clientIp(req)}`, MESSAGES_PER_10_MIN, 10 * 60 * 1000)) {
     return res.status(429).json({ error: 'rate_limited' });
   }
@@ -58,65 +66,68 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   });
   const send = (event: ChatStreamEvent) => res.write(`${JSON.stringify(event)}\n`);
 
-  const client = new Anthropic();
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
   const controller = new AbortController();
   res.on('close', () => controller.abort());
 
   try {
+    let answered = false;
     for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
-      const stream = client.messages.stream(
-        {
-          model: MODEL,
-          max_tokens: 2048,
-          output_config: { effort: 'low' },
-          system: [
-            { type: 'text', text: CHAT_SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } },
-            { type: 'text', text: chatDateContext() },
-          ],
-          tools: CHAT_TOOLS,
-          messages,
+      const stream = await ai.models.generateContentStream({
+        model: MODEL,
+        contents,
+        config: {
+          systemInstruction: `${CHAT_SYSTEM_PROMPT}\n\n${chatDateContext()}`,
+          tools: [{ functionDeclarations: CHAT_TOOLS }],
+          maxOutputTokens: 2048,
+          thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
+          abortSignal: controller.signal,
         },
-        { signal: controller.signal }
-      );
-      stream.on('text', (delta) => send({ type: 'text', delta }));
-      const message = await stream.finalMessage();
+      });
 
-      if (message.stop_reason === 'refusal') {
-        send({ type: 'error' });
-        break;
+      // Every part goes back verbatim on the next round: thought signatures ride on them.
+      const modelParts: Part[] = [];
+      const calls: FunctionCall[] = [];
+      for await (const chunk of stream) {
+        for (const part of chunk.candidates?.[0]?.content?.parts ?? []) {
+          modelParts.push(part);
+          if (part.functionCall) calls.push(part.functionCall);
+          else if (part.text && !part.thought) {
+            answered = true;
+            send({ type: 'text', delta: part.text });
+          }
+        }
       }
-      if (message.stop_reason !== 'tool_use') break;
+      if (calls.length === 0) break;
 
-      messages.push({ role: 'assistant', content: message.content });
-      const results: Anthropic.ToolResultBlockParam[] = [];
-      for (const block of message.content) {
-        if (block.type !== 'tool_use') continue;
+      contents.push({ role: 'model', parts: modelParts });
+      const results: Part[] = [];
+      for (const call of calls) {
+        const name = call.name ?? '';
         try {
-          const content = await runChatTool(block.name, block.input, (action) =>
+          const output = await runChatTool(name, call.args, (action) =>
             send({ type: 'action', ...action })
           );
-          results.push({ type: 'tool_result', tool_use_id: block.id, content });
+          results.push({ functionResponse: { id: call.id, name, response: { output } } });
         } catch (err) {
-          console.error(`chat: tool ${block.name} failed`, err);
+          console.error(`chat: tool ${name} failed`, err);
           results.push({
-            type: 'tool_result',
-            tool_use_id: block.id,
-            content: 'The lookup failed. Suggest contacting the venue directly.',
-            is_error: true,
+            functionResponse: {
+              id: call.id,
+              name,
+              response: { error: 'The lookup failed. Suggest contacting the venue directly.' },
+            },
           });
         }
       }
-      messages.push({ role: 'user', content: results });
+      contents.push({ role: 'user', parts: results });
     }
-    send({ type: 'done' });
+    // A blocked or empty generation streams nothing; the visitor still needs a way forward.
+    send(answered ? { type: 'done' } : { type: 'error' });
   } catch (err) {
     if (!controller.signal.aborted) {
-      if (err instanceof Anthropic.AuthenticationError) {
-        console.error('chat: ANTHROPIC_API_KEY was rejected');
-      } else if (err instanceof Anthropic.RateLimitError) {
-        console.error('chat: Anthropic rate limit hit');
-      } else if (err instanceof Anthropic.APIError) {
-        console.error(`chat: Anthropic API error ${err.status}`, err.message);
+      if (err instanceof ApiError) {
+        console.error(`chat: Gemini API error ${err.status}`, err.message);
       } else {
         console.error('chat: failed', err);
       }
