@@ -24,7 +24,7 @@ type SlotsState = 'loading' | 'ready' | 'unavailable';
 const STEPS: Step[] = ['qualify', 'slots', 'details'];
 
 const inputClass =
-  'w-full border border-stone-200 bg-white px-3 py-3 text-sm text-stone-900 transition-colors duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
+  'w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
 const labelClass = 'block text-sm text-stone-600 mb-1.5';
 
 const pad = (n: number) => String(n).padStart(2, '0');

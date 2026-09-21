@@ -27,6 +27,8 @@ type ChatMessage = {
 };
 
 const MAX_SUGGESTIONS = 3;
+// Tailwind's `sm` breakpoint: below it the chat is a full-screen sheet.
+const PHONE_QUERY = '(max-width: 639px)';
 
 export const ChatWidget = () => {
   const { t } = useTranslation('chat');
@@ -37,6 +39,8 @@ export const ChatWidget = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [isPhone, setIsPhone] = useState(false);
+  const panelRef = useRef<HTMLElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -46,8 +50,46 @@ export const ChatWidget = () => {
   }, [messages]);
 
   useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
+    const query = window.matchMedia(PHONE_QUERY);
+    const sync = () => setIsPhone(query.matches);
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
+  }, []);
+
+  const visible = open && !modalOpen && !viewingOpen;
+
+  // Focusing on a phone would throw the keyboard over the greeting before they have read it.
+  useEffect(() => {
+    if (visible && !isPhone) inputRef.current?.focus();
+  }, [visible, isPhone]);
+
+  // The on-screen keyboard overlays fixed elements instead of resizing the page, so on phones the
+  // sheet tracks the visual viewport: the input always sits right above the keyboard.
+  useEffect(() => {
+    const panel = panelRef.current;
+    if (!visible || !isPhone || !panel) return;
+    const viewport = window.visualViewport;
+    const fit = () => {
+      if (viewport) {
+        panel.style.height = `${viewport.height}px`;
+        panel.style.top = `${viewport.offsetTop}px`;
+      }
+      logRef.current?.scrollTo({ top: logRef.current.scrollHeight });
+    };
+    fit();
+    viewport?.addEventListener('resize', fit);
+    viewport?.addEventListener('scroll', fit);
+    const { overflow } = document.body.style;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      viewport?.removeEventListener('resize', fit);
+      viewport?.removeEventListener('scroll', fit);
+      document.body.style.overflow = overflow;
+      panel.style.height = '';
+      panel.style.top = '';
+    };
+  }, [visible, isPhone]);
 
   const patchLast = (patch: (last: ChatMessage) => ChatMessage) =>
     setMessages((prev) => {
@@ -129,6 +171,7 @@ export const ChatWidget = () => {
   const showViewingChip =
     messages.length > 0 &&
     !messages.at(-1)?.viewingPrefill &&
+    !messages.at(-1)?.contact &&
     !messages.some((message) => message.booked);
 
   const formatWhen = (iso: string) =>
@@ -156,18 +199,20 @@ export const ChatWidget = () => {
           setOpen(true);
           trackEvent('chat_open', { event_category: 'engagement' });
         }}
-        className="fixed bottom-5 right-5 z-40 flex items-center gap-2 bg-brand-green-deep px-4 py-3 text-sm font-medium text-white shadow-elevate transition-colors duration-300 hover:bg-brand-green-ink"
+        aria-label={t('launcher')}
+        className="fixed bottom-4 right-4 z-40 flex h-14 w-14 items-center justify-center gap-2 bg-brand-green-deep text-sm font-medium text-white shadow-elevate transition-colors duration-300 hover:bg-brand-green-ink sm:bottom-5 sm:right-5 sm:h-auto sm:w-auto sm:px-4 sm:py-3"
       >
-        <ChatBubbleOutline fontSize="small" />
-        {t('launcher')}
+        <ChatBubbleOutline fontSize={isPhone ? 'medium' : 'small'} />
+        <span className="hidden sm:inline">{t('launcher')}</span>
       </button>
     );
   }
 
   return (
     <section
+      ref={panelRef}
       aria-label={t('title')}
-      className="fixed inset-x-3 bottom-3 z-40 flex max-h-[min(34rem,calc(100dvh-1.5rem))] flex-col border-t-2 border-brand-gold bg-white shadow-luxe sm:inset-x-auto sm:right-5 sm:bottom-5 sm:w-[24rem]"
+      className="fixed inset-x-0 top-0 z-[1200] flex h-dvh flex-col border-t-2 border-brand-gold bg-white shadow-luxe sm:inset-x-auto sm:top-auto sm:right-5 sm:bottom-5 sm:z-40 sm:h-auto sm:max-h-[min(34rem,calc(100dvh-2.5rem))] sm:w-[24rem]"
     >
       <header className="flex items-start justify-between gap-3 border-b border-stone-200 px-4 py-3">
         <div>
@@ -178,9 +223,9 @@ export const ChatWidget = () => {
           type="button"
           onClick={() => setOpen(false)}
           aria-label={t('close')}
-          className="p-1 text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-900"
+          className="-mr-2 -mt-1 flex h-11 w-11 shrink-0 items-center justify-center text-stone-500 transition-colors hover:bg-stone-100 hover:text-stone-900 sm:m-0 sm:h-auto sm:w-auto sm:p-1"
         >
-          <CloseIcon fontSize="small" />
+          <CloseIcon fontSize={isPhone ? 'medium' : 'small'} />
         </button>
       </header>
 
@@ -188,7 +233,7 @@ export const ChatWidget = () => {
         ref={logRef}
         role="log"
         aria-live="polite"
-        className="flex-1 space-y-3 overflow-y-auto px-4 py-4 text-sm leading-relaxed"
+        className="flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-4 text-[15px] leading-relaxed sm:text-sm"
       >
         <p className="mr-8 bg-stone-100 px-3 py-2 text-stone-800">{t('greeting')}</p>
 
@@ -206,7 +251,7 @@ export const ChatWidget = () => {
                 <button
                   type="button"
                   onClick={() => handleOpenViewing(message.viewingPrefill)}
-                  className="mt-2 bg-brand-gold px-3 py-2 text-xs font-medium uppercase tracking-[0.14em] text-brand-dark transition-colors hover:bg-brand-gold-dark"
+                  className="mt-2 bg-brand-gold px-4 py-3 text-xs font-medium uppercase sm:px-3 sm:py-2 tracking-[0.14em] text-brand-dark transition-colors hover:bg-brand-gold-dark"
                 >
                   {tViewing('cta.button')}
                 </button>
@@ -217,7 +262,7 @@ export const ChatWidget = () => {
                     <CheckCircleOutline fontSize="small" />
                     {t('booked.heading')}
                   </p>
-                  <p className="mt-1 text-xs text-stone-700">
+                  <p className="mt-1 text-sm text-stone-700 sm:text-xs">
                     {t('booked.body', {
                       when: formatWhen(message.booked.start),
                       email: message.booked.email,
@@ -233,7 +278,7 @@ export const ChatWidget = () => {
                       onClick={() =>
                         trackEvent('chat_call_click', { event_category: 'engagement' })
                       }
-                      className="flex items-center gap-1.5 bg-brand-green-deep px-3 py-2 text-xs font-medium text-white no-underline transition-colors hover:bg-brand-green-ink"
+                      className="flex items-center gap-1.5 bg-brand-green-deep px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs font-medium text-white no-underline transition-colors hover:bg-brand-green-ink"
                     >
                       <PhoneIcon sx={{ fontSize: 16 }} />
                       {t('call')}
@@ -247,7 +292,7 @@ export const ChatWidget = () => {
                       onClick={() =>
                         trackEvent('chat_whatsapp_click', { event_category: 'engagement' })
                       }
-                      className="flex items-center gap-1.5 bg-whatsapp px-3 py-2 text-xs font-medium text-brand-dark no-underline transition-colors hover:bg-whatsapp-ink hover:text-white"
+                      className="flex items-center gap-1.5 bg-whatsapp px-4 py-3 text-sm sm:px-3 sm:py-2 sm:text-xs font-medium text-brand-dark no-underline transition-colors hover:bg-whatsapp-ink hover:text-white"
                     >
                       <WhatsAppIcon sx={{ fontSize: 16 }} />
                       {t('whatsapp')}
@@ -260,7 +305,7 @@ export const ChatWidget = () => {
                         trackEvent('chat_contact_form_click', { event_category: 'engagement' });
                         handleOpenModal();
                       }}
-                      className="border border-brand-gold px-3 py-2 text-xs font-medium text-brand-gold-ink transition-colors hover:bg-brand-gold hover:text-brand-dark"
+                      className="border border-brand-gold px-4 py-3 text-sm font-medium text-brand-gold-ink sm:px-3 sm:py-2 sm:text-xs transition-colors hover:bg-brand-gold hover:text-brand-dark"
                     >
                       {t('contactForm')}
                     </button>
@@ -271,7 +316,7 @@ export const ChatWidget = () => {
                 <button
                   type="button"
                   onClick={() => handleOpenModal()}
-                  className="mt-2 border-b border-brand-gold pb-0.5 text-xs text-brand-green-ink hover:text-brand-green-deep"
+                  className="mt-2 border-b border-brand-gold py-2 text-sm text-brand-green-ink sm:py-0 sm:pb-0.5 sm:text-xs hover:text-brand-green-deep"
                 >
                   {t('contact')}
                 </button>
@@ -281,12 +326,12 @@ export const ChatWidget = () => {
         )}
 
         {!busy && (
-          <div className="flex flex-wrap gap-2">
+          <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 sm:mx-0 sm:flex-wrap sm:overflow-visible sm:px-0 sm:pb-0">
             {showViewingChip && (
               <button
                 type="button"
                 onClick={() => handleOpenViewing()}
-                className="border border-brand-gold bg-brand-gold/10 px-3 py-1.5 text-xs font-medium text-brand-gold-ink transition-colors hover:bg-brand-gold hover:text-brand-dark"
+                className="shrink-0 whitespace-nowrap border border-brand-gold bg-brand-gold/10 px-3.5 py-3 text-sm font-medium sm:px-3 sm:py-1.5 sm:text-xs text-brand-gold-ink transition-colors hover:bg-brand-gold hover:text-brand-dark"
               >
                 {tViewing('cta.button')}
               </button>
@@ -296,7 +341,7 @@ export const ChatWidget = () => {
                 key={suggestion}
                 type="button"
                 onClick={() => ask(suggestion)}
-                className="border border-stone-200 px-3 py-1.5 text-xs text-stone-700 transition-colors hover:border-brand-gold"
+                className="shrink-0 whitespace-nowrap border border-stone-200 px-3.5 py-3 text-sm text-stone-700 sm:px-3 sm:py-1.5 sm:text-xs transition-colors hover:border-brand-gold"
               >
                 {suggestion}
               </button>
@@ -318,15 +363,19 @@ export const ChatWidget = () => {
             }
           }}
           maxLength={1000}
+          enterKeyHint="send"
+          autoComplete="off"
           aria-label={t('inputLabel')}
           placeholder={t('placeholder')}
-          className="min-w-0 flex-1 border border-stone-200 px-3 py-2 text-sm text-stone-900 transition-colors hover:border-brand-gold focus:border-brand-green focus:outline-none"
+          className="min-w-0 flex-1 border border-stone-200 px-3 py-2.5 text-base text-stone-900 sm:py-2 sm:text-sm transition-colors hover:border-brand-gold focus:border-brand-green focus:outline-none"
         />
         <button
           type="submit"
           disabled={busy || !input.trim()}
           aria-label={t('send')}
-          className="bg-brand-green-deep p-2 text-white transition-colors hover:bg-brand-green-ink disabled:opacity-40"
+          // Keeps focus in the input so a phone's keyboard stays up between messages.
+          onMouseDown={(e) => e.preventDefault()}
+          className="flex h-11 w-11 shrink-0 items-center justify-center bg-brand-green-deep text-white sm:h-auto sm:w-auto sm:p-2 transition-colors hover:bg-brand-green-ink disabled:opacity-40"
         >
           <SendIcon fontSize="small" />
         </button>
