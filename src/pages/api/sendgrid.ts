@@ -1,5 +1,6 @@
 import sendgrid from '@sendgrid/mail';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { escapeHtml } from '../../server/html';
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY ?? '';
 if (SENDGRID_API_KEY) sendgrid.setApiKey(SENDGRID_API_KEY);
@@ -17,14 +18,6 @@ const MAX_LENGTHS = {
 } as const;
 
 type Field = keyof typeof MAX_LENGTHS;
-
-const escapeHtml = (value: string) =>
-  value
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
 
 const readField = (body: Record<string, unknown>, field: Field): string => {
   const raw = body[field];

@@ -102,6 +102,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
       'packages',
       'seo',
       'contact',
+      'viewing',
+      'chat',
     ])),
   },
   revalidate: EVENTS_REVALIDATE_SECONDS,

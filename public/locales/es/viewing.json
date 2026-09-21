@@ -1,0 +1,63 @@
+{
+  "cta": {
+    "button": "Reservar una visita",
+    "hint": "Elige un horario en línea — confirmación inmediata."
+  },
+  "modal": {
+    "eyebrow": "Visita al salón",
+    "heading": "Reserva una visita",
+    "subheading": "Unas preguntas rápidas y luego eliges el horario que prefieras. Sin llamadas.",
+    "closeAriaLabel": "Cerrar la reserva de visita",
+    "stepLabel": "Paso {{current}} de {{total}}",
+    "back": "Atrás",
+    "continue": "Continuar"
+  },
+  "qualify": {
+    "guests": "Número estimado de invitados",
+    "eventDate": "Fecha de tu evento",
+    "eventDateHint": "Una fecha aproximada está bien.",
+    "budgetAck": "He visto que el alquiler va de {{min}} a {{max}} según el número de invitados, más depósitos reembolsables.",
+    "checking": "Comprobando la fecha…",
+    "overCapacity": "Nuestro salón admite hasta {{max}} invitados, así que una visita quizá no sea el mejor siguiente paso. Cuéntanos sobre tu evento y veremos qué es posible.",
+    "dateBooked": "Esa fecha ya está reservada. Prueba con otra fecha o contáctanos para ver alternativas.",
+    "contactInstead": "Mejor contáctanos"
+  },
+  "slots": {
+    "heading": "Elige un horario",
+    "timezone": "Horarios en hora del Este. La visita dura unos {{minutes}} minutos.",
+    "loading": "Cargando horarios disponibles…",
+    "none": "No hay horarios de visita disponibles en las próximas semanas. Contáctanos y organizamos una.",
+    "unavailable": "La reserva en línea no está disponible en este momento. Contáctanos y organizamos una visita."
+  },
+  "details": {
+    "heading": "Tus datos",
+    "name": "Nombre completo",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "summary": "Visita el {{when}}",
+    "confirm": "Confirmar visita",
+    "booking": "Reservando…"
+  },
+  "errors": {
+    "invalid": "Revisa tus datos e inténtalo de nuevo.",
+    "slotTaken": "Alguien acaba de tomar ese horario. Elige otro, por favor.",
+    "rateLimited": "Demasiados intentos. Inténtalo de nuevo en un rato.",
+    "failed": "No pudimos completar la reserva. Inténtalo de nuevo o contáctanos."
+  },
+  "success": {
+    "heading": "Visita reservada",
+    "body": "Te esperamos el {{when}}. Enviamos una confirmación con invitación de calendario a {{email}}.",
+    "address": "Fellowship Event Hall · {{address}}",
+    "done": "Listo"
+  },
+  "email": {
+    "subject": "Tu visita a Fellowship Event Hall — {{when}}",
+    "heading": "Tu visita está confirmada",
+    "greeting": "Hola {{name}}:",
+    "body": "Será un gusto mostrarte Fellowship Event Hall.",
+    "whenLabel": "Cuándo",
+    "whereLabel": "Dónde",
+    "reschedule": "¿Necesitas cambiar o cancelar? Solo responde a este correo.",
+    "calendarTitle": "Visita a Fellowship Event Hall"
+  }
+}

@@ -112,7 +112,7 @@
     "getDirections": "Obține indicații →",
     "contactTitle": "Contact",
     "toursTitle": "Tururi cu programare",
-    "toursText": "Organizăm tururi private ale locației pe bază de programare — contactează-ne pentru a găsi un moment potrivit pentru tine."
+    "toursText": "Programează online un tur privat al sălii și alege ora care ți se potrivește — confirmarea este pe loc."
   },
   "faq": {
     "eyebrow": "Întrebări frecvente",
@@ -141,7 +141,7 @@
       },
       {
         "question": "Cum rezervăm un tur sau verificăm disponibilitatea?",
-        "answer": "Tururile private ale locației sunt disponibile cu programare. Folosește formularul de contact sau trimite un mesaj pe WhatsApp, iar noi îți vom răspunde prompt cu datele disponibile."
+        "answer": "Poți programa online un tur privat cu butonul Programează o vizionare: alegi o oră liberă și este confirmată pe loc. Pentru a verifica o dată, folosește calendarul de disponibilitate, formularul de contact sau WhatsApp."
       }
     ]
   },

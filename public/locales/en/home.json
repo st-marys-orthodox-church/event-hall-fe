@@ -112,7 +112,7 @@
     "getDirections": "Get Directions →",
     "contactTitle": "Contact",
     "toursTitle": "Tours by Appointment",
-    "toursText": "We schedule private venue tours by appointment — reach out to find a time that works for you."
+    "toursText": "Book a private venue tour online and pick a time that works for you — it's confirmed instantly."
   },
   "faq": {
     "eyebrow": "FAQ",
@@ -141,7 +141,7 @@
       },
       {
         "question": "How do we book a tour or check availability?",
-        "answer": "Private venue tours are available by appointment. Use the contact form or send a WhatsApp message and we will follow up promptly with open dates."
+        "answer": "You can book a private venue tour online with the Book a Viewing button — pick an open time and it is confirmed instantly. To check a date, use the availability calendar, the contact form, or WhatsApp."
       }
     ]
   },

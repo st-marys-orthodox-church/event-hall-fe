@@ -46,6 +46,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => ({
       'seo',
       'packages',
       'contact',
+      'viewing',
+      'chat',
     ])),
   },
 });

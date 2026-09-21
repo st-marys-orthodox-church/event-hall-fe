@@ -1,0 +1,63 @@
+{
+  "cta": {
+    "button": "Book a Viewing",
+    "hint": "Pick a time online — confirmed instantly."
+  },
+  "modal": {
+    "eyebrow": "Venue Tour",
+    "heading": "Book a viewing",
+    "subheading": "A few quick questions, then choose a time that suits you. No phone call needed.",
+    "closeAriaLabel": "Close viewing booking",
+    "stepLabel": "Step {{current}} of {{total}}",
+    "back": "Back",
+    "continue": "Continue"
+  },
+  "qualify": {
+    "guests": "Expected number of guests",
+    "eventDate": "Your event date",
+    "eventDateHint": "An estimate is fine.",
+    "budgetAck": "I've seen that rentals range from {{min}} to {{max}} depending on guest count, plus refundable deposits.",
+    "checking": "Checking the date…",
+    "overCapacity": "Our hall holds up to {{max}} guests, so a tour may not be the best next step. Tell us about your event and we'll see what's possible.",
+    "dateBooked": "That date is already booked. Try another date, or contact us to talk through alternatives.",
+    "contactInstead": "Contact us instead"
+  },
+  "slots": {
+    "heading": "Choose a time",
+    "timezone": "Times shown in Eastern Time. Tours take about {{minutes}} minutes.",
+    "loading": "Loading open times…",
+    "none": "There are no open tour times in the next few weeks. Contact us and we'll arrange one.",
+    "unavailable": "Online booking is unavailable right now. Contact us and we'll arrange a tour."
+  },
+  "details": {
+    "heading": "Your details",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone",
+    "summary": "Tour on {{when}}",
+    "confirm": "Confirm viewing",
+    "booking": "Booking…"
+  },
+  "errors": {
+    "invalid": "Please check your details and try again.",
+    "slotTaken": "Someone just took that time. Please pick another.",
+    "rateLimited": "Too many attempts. Please try again in a little while.",
+    "failed": "We couldn't complete the booking. Please try again or contact us."
+  },
+  "success": {
+    "heading": "You're booked",
+    "body": "We'll see you on {{when}}. A confirmation with a calendar invite is on its way to {{email}}.",
+    "address": "Fellowship Event Hall · {{address}}",
+    "done": "Done"
+  },
+  "email": {
+    "subject": "Your viewing at Fellowship Event Hall — {{when}}",
+    "heading": "Your viewing is confirmed",
+    "greeting": "Hi {{name}},",
+    "body": "We look forward to showing you Fellowship Event Hall.",
+    "whenLabel": "When",
+    "whereLabel": "Where",
+    "reschedule": "Need to change or cancel? Just reply to this email.",
+    "calendarTitle": "Viewing at Fellowship Event Hall"
+  }
+}

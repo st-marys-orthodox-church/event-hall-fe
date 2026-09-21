@@ -1,0 +1,63 @@
+{
+  "cta": {
+    "button": "Programează o vizionare",
+    "hint": "Alege o oră online — confirmare pe loc."
+  },
+  "modal": {
+    "eyebrow": "Turul sălii",
+    "heading": "Programează o vizionare",
+    "subheading": "Câteva întrebări scurte, apoi alegi ora care ți se potrivește. Fără telefoane.",
+    "closeAriaLabel": "Închide programarea vizionării",
+    "stepLabel": "Pasul {{current}} din {{total}}",
+    "back": "Înapoi",
+    "continue": "Continuă"
+  },
+  "qualify": {
+    "guests": "Numărul estimat de invitați",
+    "eventDate": "Data evenimentului",
+    "eventDateHint": "Este suficientă o dată aproximativă.",
+    "budgetAck": "Am văzut că închirierea costă între {{min}} și {{max}}, în funcție de numărul de invitați, plus garanții returnabile.",
+    "checking": "Verificăm data…",
+    "overCapacity": "Sala noastră primește până la {{max}} de invitați, așa că un tur s-ar putea să nu fie cel mai potrivit pas. Spune-ne despre eveniment și vedem ce se poate face.",
+    "dateBooked": "Data aceasta este deja rezervată. Încearcă altă dată sau contactează-ne pentru alternative.",
+    "contactInstead": "Contactează-ne"
+  },
+  "slots": {
+    "heading": "Alege o oră",
+    "timezone": "Orele sunt afișate în Eastern Time. Turul durează aproximativ {{minutes}} de minute.",
+    "loading": "Se încarcă orele disponibile…",
+    "none": "Nu există ore disponibile pentru tur în următoarele săptămâni. Contactează-ne și stabilim una.",
+    "unavailable": "Programarea online nu este disponibilă momentan. Contactează-ne și stabilim un tur."
+  },
+  "details": {
+    "heading": "Datele tale",
+    "name": "Nume complet",
+    "email": "Email",
+    "phone": "Telefon",
+    "summary": "Tur pe {{when}}",
+    "confirm": "Confirmă vizionarea",
+    "booking": "Se programează…"
+  },
+  "errors": {
+    "invalid": "Verifică datele și încearcă din nou.",
+    "slotTaken": "Cineva tocmai a luat această oră. Te rugăm să alegi alta.",
+    "rateLimited": "Prea multe încercări. Încearcă din nou puțin mai târziu.",
+    "failed": "Nu am putut finaliza programarea. Încearcă din nou sau contactează-ne."
+  },
+  "success": {
+    "heading": "Vizionare programată",
+    "body": "Te așteptăm pe {{when}}. Am trimis o confirmare cu invitație de calendar la {{email}}.",
+    "address": "Fellowship Event Hall · {{address}}",
+    "done": "Gata"
+  },
+  "email": {
+    "subject": "Vizionarea ta la Fellowship Event Hall — {{when}}",
+    "heading": "Vizionarea ta este confirmată",
+    "greeting": "Bună, {{name}},",
+    "body": "Abia așteptăm să îți arătăm Fellowship Event Hall.",
+    "whenLabel": "Când",
+    "whereLabel": "Unde",
+    "reschedule": "Trebuie să modifici sau să anulezi? Răspunde la acest email.",
+    "calendarTitle": "Vizionare la Fellowship Event Hall"
+  }
+}

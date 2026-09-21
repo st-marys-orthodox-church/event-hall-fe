@@ -112,7 +112,7 @@
     "getDirections": "Cómo llegar →",
     "contactTitle": "Contacto",
     "toursTitle": "Visitas con cita previa",
-    "toursText": "Programamos visitas privadas al espacio con cita previa — contáctanos para encontrar un horario que te convenga."
+    "toursText": "Reserva en línea una visita privada al salón y elige el horario que te convenga — se confirma al instante."
   },
   "faq": {
     "eyebrow": "Preguntas frecuentes",
@@ -141,7 +141,7 @@
       },
       {
         "question": "¿Cómo reservamos una visita o consultamos disponibilidad?",
-        "answer": "Las visitas privadas al espacio están disponibles con cita previa. Usa el formulario de contacto o envíanos un mensaje por WhatsApp y te responderemos rápidamente con las fechas disponibles."
+        "answer": "Puedes reservar en línea una visita privada con el botón Reservar una visita: elige un horario disponible y queda confirmada al instante. Para consultar una fecha, usa el calendario de disponibilidad, el formulario de contacto o WhatsApp."
       }
     ]
   },

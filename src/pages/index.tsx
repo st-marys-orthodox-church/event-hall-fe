@@ -51,7 +51,8 @@ const Index = ({ events }: Props) => {
   const { t: tHome } = useTranslation('home');
   const { t: tSeo } = useTranslation('seo');
   const { t: tPackages } = useTranslation('packages');
-  const { handleOpenModal } = useAppContext();
+  const { t: tViewing } = useTranslation('viewing');
+  const { handleOpenModal, handleOpenViewing } = useAppContext();
   const { ref: ctaRef, offset: ctaOffset } = useScrollParallax<HTMLDivElement>({
     speed: 0.3,
     max: 180,
@@ -343,6 +344,13 @@ const Index = ({ events }: Props) => {
                     {tHome('visit.toursTitle')}
                   </h3>
                   <p className="text-stone-600 leading-relaxed">{tHome('visit.toursText')}</p>
+                  <ModernButton
+                    buttonVariant="outline"
+                    size="small"
+                    onClick={() => handleOpenViewing()}
+                  >
+                    {tViewing('cta.button')}
+                  </ModernButton>
                 </div>
               </div>
             </Reveal>
@@ -412,6 +420,8 @@ export const getStaticProps: GetStaticProps<Props> = async ({ locale }) => ({
       'packages',
       'seo',
       'contact',
+      'viewing',
+      'chat',
     ])),
   },
   revalidate: EVENTS_REVALIDATE_SECONDS,
