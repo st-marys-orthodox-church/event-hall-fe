@@ -8,12 +8,18 @@ import { HERO_SLIDES } from '../../utils/HeroSlides';
 
 export const HeroCarousel = () => {
   const { t } = useTranslation('home');
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [{ currentIndex, previousIndex }, setSlide] = useState({
+    currentIndex: 0,
+    previousIndex: -1,
+  });
   const [hydrated, setHydrated] = useState(false);
   const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.35, max: 220 });
 
   const nextSlide = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % HERO_SLIDES.length);
+    setSlide((slide) => ({
+      currentIndex: (slide.currentIndex + 1) % HERO_SLIDES.length,
+      previousIndex: slide.currentIndex,
+    }));
   }, []);
 
   useEffect(() => {
@@ -36,7 +42,11 @@ export const HeroCarousel = () => {
         {HERO_SLIDES.map((slide, index) => {
           const isActive = index === currentIndex;
           const isPreload = hydrated && index === nextIndex;
-          if (!isActive && !isPreload) return null;
+          // The outgoing slide stays mounted so it can fade out under the
+          // incoming one; unmounting it exposed the bare backdrop for the
+          // length of the fade-in.
+          const isOutgoing = index === previousIndex;
+          if (!isActive && !isPreload && !isOutgoing) return null;
           return (
             <div
               key={slide.src}

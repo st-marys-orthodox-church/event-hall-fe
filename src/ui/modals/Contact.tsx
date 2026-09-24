@@ -6,13 +6,14 @@ import {
   IconButton,
   TextField,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
 import { useTranslation } from 'next-i18next/pages';
 import * as React from 'react';
-import { useContactForm, useWindowSize } from '../../hooks';
+import { useContactForm } from '../../hooks';
 import { useAppContext } from '../../stores/Global';
 import { COLORS, EASING } from '../../utils/DesignTokens';
 import { ModernButton } from '../components/ModernButton';
@@ -64,11 +65,11 @@ const fromInputDate = (value: string) => {
 
 export function ContactModal() {
   const { handleCloseModal, modalOpen, prefilledDate } = useAppContext();
-  const { width } = useWindowSize();
   const { t } = useTranslation('contact');
-  const isMobile = width < 768;
+  const isMobile = useMediaQuery('(max-width: 767px)');
 
-  const [showForm, setShowForm] = React.useState(!isMobile);
+  const [formToggle, setFormToggle] = React.useState<boolean | null>(null);
+  const showForm = formToggle ?? !isMobile;
   const {
     contactForm,
     updateContactForm,
@@ -79,19 +80,15 @@ export function ContactModal() {
     determineMessage,
   } = useContactForm();
 
-  React.useEffect(() => {
-    setShowForm(!isMobile);
-  }, [isMobile]);
-
   // biome-ignore lint/correctness/useExhaustiveDependencies: updateContactForm is unstable; prefill only when modal opens with a date
   React.useEffect(() => {
     if (modalOpen && prefilledDate) {
       updateContactForm('date', prefilledDate);
-      setShowForm(true);
+      setFormToggle(true);
     }
   }, [modalOpen, prefilledDate]);
 
-  const toggleForm = () => setShowForm((prev) => !prev);
+  const toggleForm = () => setFormToggle(!showForm);
 
   const [today, setToday] = React.useState('');
   React.useEffect(() => setToday(toInputDate(new Date())), []);
