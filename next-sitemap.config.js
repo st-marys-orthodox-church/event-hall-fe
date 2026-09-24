@@ -33,6 +33,10 @@ module.exports = {
       '/packages': 0.9,
       '/gallery': 0.8,
       '/events': 0.8,
+      '/weddings': 0.8,
+      '/quinceaneras': 0.8,
+      '/corporate-events': 0.8,
+      '/birthday-parties': 0.8,
     };
     return {
       loc: path,

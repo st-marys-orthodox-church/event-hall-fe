@@ -33,7 +33,14 @@
     "hoursTitle": "Hours",
     "hours": "Every day, 8 AM – 6 PM EST",
     "getDirections": "Get Directions",
-    "rentalAgreement": "Rental Agreement (PDF)"
+    "rentalAgreement": "Rental Agreement (PDF)",
+    "occasionsTitle": "Occasions",
+    "occasions": {
+      "wedding": "Weddings",
+      "quinceanera": "Quinceañeras",
+      "corporate": "Corporate Events",
+      "birthday": "Birthday Parties"
+    }
   },
   "logo": {
     "alt": "Fellowship Event Hall"
@@ -52,5 +59,12 @@
     "event": "Church event",
     "eventHint": "Everyone is welcome",
     "eventAria": "{{month}} {{day}}, {{year}}, church event: {{title}} — everyone is welcome, see details"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "heading": "That page does not exist",
+    "body": "The link may be old or mistyped. The venue, packages and gallery are one tap away.",
+    "home": "Back to the homepage",
+    "packages": "See packages"
   }
 }

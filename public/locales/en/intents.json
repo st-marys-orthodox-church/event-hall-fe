@@ -1,0 +1,255 @@
+{
+  "shared": {
+    "bookViewing": "Book a Viewing",
+    "askWhatsapp": "Ask on WhatsApp",
+    "glance": {
+      "capacity": "Capacity",
+      "price": "Packages from",
+      "space": "The space",
+      "location": "Location"
+    },
+    "glanceValues": {
+      "capacity": "Up to 250 seated guests",
+      "price": "$2,000",
+      "space": "5,000 sq ft hall on private grounds",
+      "location": "Dacula, GA — 45 min from Atlanta"
+    },
+    "galleryEyebrow": "Gallery",
+    "packagesEyebrow": "Pricing",
+    "packagesHeading": "Simple, transparent packages",
+    "packagesButton": "See Packages & Pricing",
+    "faqEyebrow": "Good to Know",
+    "relatedTitle": "Other occasions",
+    "ctaEyebrow": "Next Step",
+    "ctaHeading": "Come see it in person",
+    "ctaBody": "A 30-minute viewing is the fastest way to know if the hall is right for you. Pick a time online and we will meet you there."
+  },
+  "wedding": {
+    "hero": {
+      "eyebrow": "Weddings",
+      "heading": "A Wedding Venue Built for the Whole Family",
+      "subheading": "Ceremony and reception under one roof, 250 seats, and the freedom to bring your own caterer, decorator and traditions.",
+      "imageAlt": "Sweetheart table on the stage framed by a circular balloon and greenery arch at Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Your wedding here",
+      "heading": "One hall, your whole day",
+      "paragraphs": [
+        "Fellowship Event Hall is a new 5,000 square foot hall on the grounds of St. Mary Romanian Orthodox Church in Dacula, 45 minutes northeast of Atlanta. Vaulted ceilings, chandeliers and a sheer-curtained window wall give you an elegant backdrop that works with any color palette.",
+        "Hold the ceremony and the reception in the same room, or use the green space outside for the vows and come inside for dinner and dancing. Higher-tier packages include a bridal suite, upgraded sound and lighting, and a dedicated coordinator on the day."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Bring your own vendors",
+        "body": "Outside catering is welcome and there is no required vendor list. Your caterer gets a prep kitchen, and your decorator gets a blank, well-lit room."
+      },
+      {
+        "title": "Room for everyone",
+        "body": "Seat up to 250 guests at round or long tables with a dance floor still open. Standing receptions fit up to 300."
+      },
+      {
+        "title": "Parking that is not a problem",
+        "body": "A large private lot on site means no shuttles, no street parking and no stress for older relatives."
+      }
+    ],
+    "galleryHeading": "The hall dressed for a wedding",
+    "packagesBody": "Wedding packages start at $2,000 for 50 guests and include tables, chairs, linens, sound and an on-site coordinator. Deposits are fully refundable.",
+    "faq": {
+      "heading": "Wedding questions",
+      "items": [
+        {
+          "question": "Can we hold the ceremony and the reception at the hall?",
+          "answer": "Yes. Many couples set the ceremony at one end of the hall and turn the room during cocktails, or hold the vows on the green space outside. Either way you rent one venue for the whole day."
+        },
+        {
+          "question": "Is there a bridal suite?",
+          "answer": "Yes. The bridal suite is included in the higher-tier packages and can be added to others. It is a private room for getting ready, photos and a quiet moment before the entrance."
+        },
+        {
+          "question": "Can we bring our own caterer, DJ and decorator?",
+          "answer": "Yes. There is no required vendor list. Your caterer can use the prep kitchen, your DJ can connect to the house sound system, and decorators have access from the start of your rental window."
+        },
+        {
+          "question": "Is alcohol allowed at a wedding?",
+          "answer": "Yes, under the standard rental guidelines. We review the details with you before booking, including whether a licensed bartender or event insurance is needed for your setup."
+        },
+        {
+          "question": "How far ahead should we book?",
+          "answer": "Popular Saturdays in spring and fall book six to twelve months out. Check the live availability calendar, then book a viewing to hold a date with a signed agreement."
+        }
+      ]
+    }
+  },
+  "quinceanera": {
+    "hero": {
+      "eyebrow": "Quinceañeras",
+      "heading": "A Quinceañera Venue With Room to Dance",
+      "subheading": "A grand entrance, a real dance floor and space for 250 family and friends, with your own caterer and decorations welcome.",
+      "imageAlt": "Sweet sixteen celebration with balloon decorations and a decorated table in the main hall at Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Her big day",
+      "heading": "Made for the waltz, the surprise dance and everything after",
+      "paragraphs": [
+        "A quinceañera needs a hall that can hold the whole family and still leave the floor open for the vals and the baile sorpresa. Fellowship Event Hall gives you 5,000 square feet under vaulted ceilings and chandeliers, with a stage for the head table and a window wall that photographs beautifully.",
+        "The room is yours to decorate. Balloon arches, backdrops, uplighting and a candy table all fit, and your caterer, DJ and decorator can bring in exactly what the family wants. We are in Dacula, close to Lawrenceville, Buford and Duluth."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "A stage for the court",
+        "body": "Seat the quinceañera and her court on the stage under the chandeliers, with the dance floor directly in front for the waltz."
+      },
+      {
+        "title": "Your food, your traditions",
+        "body": "Bring the caterer the family trusts. The prep kitchen is yours, and there is no required vendor list."
+      },
+      {
+        "title": "Late-afternoon light",
+        "body": "The sheer-curtained window wall gives soft natural light for the entrance and photos before the party moves to the dance floor."
+      }
+    ],
+    "galleryHeading": "The hall dressed for a quinceañera",
+    "packagesBody": "Quinceañera packages start at $2,000 for 50 guests and include tables, chairs, linens and the sound system. Larger tiers cover up to 250 guests.",
+    "faq": {
+      "heading": "Quinceañera questions",
+      "items": [
+        {
+          "question": "Is there a dance floor and sound system?",
+          "answer": "Yes. The hall has an open floor in front of the stage and a house sound system that your DJ or mariachi can connect to. Higher-tier packages add enhanced sound and lighting."
+        },
+        {
+          "question": "Can we decorate the hall ourselves?",
+          "answer": "Yes. You and your decorator have access from the start of your rental window. Balloon arches, backdrops, uplighting, a candy table and centerpieces are all welcome."
+        },
+        {
+          "question": "Can we bring our own food and cake?",
+          "answer": "Yes. Outside catering is welcome and the prep kitchen is available to your caterer. There is no required vendor list."
+        },
+        {
+          "question": "How many guests fit?",
+          "answer": "Up to 250 seated guests with the dance floor open, or up to 300 for a standing reception."
+        },
+        {
+          "question": "Can the church be part of the day?",
+          "answer": "The hall sits on the grounds of St. Mary Romanian Orthodox Church. Ask us about the misa and we will point you to the parish office."
+        }
+      ]
+    }
+  },
+  "corporate": {
+    "hero": {
+      "eyebrow": "Corporate Events",
+      "heading": "A Private Venue for Meetings, Banquets and Company Parties",
+      "subheading": "5,000 square feet with Wi-Fi, a prep kitchen, flexible hours and a large private lot, minutes from Lawrenceville and Buford.",
+      "imageAlt": "Banquet tables and white folding chairs arranged around an open floor in the vaulted main hall at Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Your event here",
+      "heading": "One room that can be a boardroom in the morning and a banquet by night",
+      "paragraphs": [
+        "Fellowship Event Hall is a newly built hall in Dacula, Georgia, with the space and quiet that hotel ballrooms rarely offer. The open floor takes theater seating for a town hall, rounds for an awards dinner, or long tables for a training day, and the whole property is yours during your rental.",
+        "Bring the caterer your team likes, plug into the house sound system, and use the on-site parking lot so nobody circles the block. We are 45 minutes from downtown Atlanta and closer still to Gwinnett County offices in Lawrenceville, Duluth, Suwanee and Buford."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Flexible layouts",
+        "body": "Theater, classroom, banquet rounds or one long table. Tables and chairs are included and set up before you arrive."
+      },
+      {
+        "title": "Private and quiet",
+        "body": "No shared lobby, no other event next door. The hall and its green space are yours for the day."
+      },
+      {
+        "title": "Simple logistics",
+        "body": "Wi-Fi, a prep kitchen for your caterer, a large private lot and an on-site coordinator on the day."
+      }
+    ],
+    "galleryHeading": "The hall set for a corporate event",
+    "packagesBody": "Rentals start at $2,000 and include tables, chairs, linens, sound and an on-site coordinator. Weekday dates are often available on short notice.",
+    "faq": {
+      "heading": "Corporate event questions",
+      "items": [
+        {
+          "question": "Is Wi-Fi and AV available?",
+          "answer": "Yes. The hall has Wi-Fi and a house sound system. Bring your own projector or screen, or ask us about local AV rentals when you book."
+        },
+        {
+          "question": "Can we rent for a half day or a weekday?",
+          "answer": "Yes. Hours are flexible and weekday dates are often open on short notice. Tell us your schedule and we will quote the right rental window."
+        },
+        {
+          "question": "Do you handle catering?",
+          "answer": "We do not require a caterer, so you can bring the vendor your team prefers. The prep kitchen is available for staging and service."
+        },
+        {
+          "question": "How much parking is there?",
+          "answer": "A large private lot on the property, with no street parking or shuttles needed."
+        },
+        {
+          "question": "Can we get an invoice and a W-9?",
+          "answer": "Yes. We can invoice your company and provide the paperwork your accounts payable team needs."
+        }
+      ]
+    }
+  },
+  "birthday": {
+    "hero": {
+      "eyebrow": "Birthdays & Private Parties",
+      "heading": "A Party Venue You Can Make Your Own",
+      "subheading": "Birthdays, sweet 16s, baby showers and anniversaries in a private hall for up to 250 guests, with your own food and decorations welcome.",
+      "imageAlt": "Celebration backdrop with a pink, beige and white balloon garland and oversized paper flowers at Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Your celebration here",
+      "heading": "Big enough for the whole family, easy enough for a weekend",
+      "paragraphs": [
+        "Not every celebration needs a ballroom, but most need more room than a living room. Fellowship Event Hall in Dacula gives you a bright, new 5,000 square foot hall you can dress up or keep simple, with tables, chairs and linens already set when you arrive.",
+        "Bring the cake, the caterer and the balloon arch. Milestone birthdays, sweet 16s, baby showers, retirements and anniversaries all fit, and the private lot means guests park at the door."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Decorate your way",
+        "body": "A clean, well-lit room with a stage and a window wall. Backdrops, balloon garlands and photo walls all have a place."
+      },
+      {
+        "title": "Outside food welcome",
+        "body": "Bring your own caterer, family cooking or a food truck. The prep kitchen is available for staging."
+      },
+      {
+        "title": "Room to grow",
+        "body": "Packages run from 50 to 250 guests, so the price tracks your list instead of the other way around."
+      }
+    ],
+    "galleryHeading": "The hall dressed for a party",
+    "packagesBody": "Packages start at $2,000 for 50 guests and include tables, chairs, linens, sound and setup help. Deposits are fully refundable.",
+    "faq": {
+      "heading": "Party questions",
+      "items": [
+        {
+          "question": "What kinds of parties do you host?",
+          "answer": "Milestone birthdays, sweet 16s, baby showers, gender reveals, graduations, retirements and anniversaries. If it needs tables, a dance floor and parking, it fits."
+        },
+        {
+          "question": "Can we bring our own food?",
+          "answer": "Yes. Outside catering, family cooking and food trucks are all welcome, and the prep kitchen is available for staging."
+        },
+        {
+          "question": "How long do we get the hall?",
+          "answer": "Rental windows are flexible and include time for setup and cleanup. Tell us your plan and we will quote the right window."
+        },
+        {
+          "question": "Is there a minimum guest count?",
+          "answer": "Packages start at 50 guests. Smaller gatherings are welcome at the base package price."
+        },
+        {
+          "question": "Are deposits refundable?",
+          "answer": "Yes. The damage and cleaning deposits are returned in full when the hall is left clean and undamaged."
+        }
+      ]
+    }
+  }
+}

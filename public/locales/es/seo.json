@@ -60,5 +60,23 @@
   "events": {
     "title": "Eventos parroquiales — Iglesia Ortodoxa Rumana Santa María, Dacula GA",
     "description": "Próximos eventos públicos en la Iglesia Ortodoxa Rumana Santa María y Fellowship Event Hall en Dacula, GA: festivales, conciertos y celebraciones parroquiales abiertas a todos."
+  },
+  "intents": {
+    "wedding": {
+      "title": "Salón para bodas en Dacula, GA — Fellowship Event Hall",
+      "description": "Elegante salón de bodas cerca de Atlanta para ceremonias y recepciones de hasta 250 invitados. Suite nupcial, estacionamiento propio y catering externo bienvenido. Paquetes desde $2,000."
+    },
+    "quinceanera": {
+      "title": "Salón para quinceañeras en Dacula, GA — Fellowship Event Hall",
+      "description": "Salón para quinceañeras en el condado de Gwinnett con pista de baile, sistema de sonido y espacio para 250 invitados. Trae tu propio catering y decorador. Paquetes desde $2,000."
+    },
+    "corporate": {
+      "title": "Salón para eventos corporativos en Dacula, GA — Fellowship Event Hall",
+      "description": "Salón privado de 5,000 pies cuadrados para reuniones, banquetes y fiestas de empresa cerca de Lawrenceville y Buford. Wi-Fi, cocina de preparación y amplio estacionamiento."
+    },
+    "birthday": {
+      "title": "Salón para fiestas de cumpleaños en Dacula, GA — Fellowship Event Hall",
+      "description": "Renta un salón privado para cumpleaños, sweet 16, baby showers y aniversarios. Hasta 250 invitados, decora a tu manera y trae tu propia comida. Desde $2,000."
+    }
   }
 }

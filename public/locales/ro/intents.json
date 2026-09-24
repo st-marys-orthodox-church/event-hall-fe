@@ -1,0 +1,255 @@
+{
+  "shared": {
+    "bookViewing": "Programează o vizită",
+    "askWhatsapp": "Întreabă pe WhatsApp",
+    "glance": {
+      "capacity": "Capacitate",
+      "price": "Pachete de la",
+      "space": "Spațiul",
+      "location": "Locație"
+    },
+    "glanceValues": {
+      "capacity": "Până la 250 de invitați la mese",
+      "price": "$2,000",
+      "space": "Sală de 5.000 sq ft pe teren privat",
+      "location": "Dacula, GA — la 45 min de Atlanta"
+    },
+    "galleryEyebrow": "Galerie",
+    "packagesEyebrow": "Prețuri",
+    "packagesHeading": "Pachete simple și transparente",
+    "packagesButton": "Vezi pachetele și prețurile",
+    "faqEyebrow": "Bine de știut",
+    "relatedTitle": "Alte ocazii",
+    "ctaEyebrow": "Pasul următor",
+    "ctaHeading": "Vino să vezi sala",
+    "ctaBody": "O vizită de 30 de minute este cel mai rapid mod de a afla dacă sala ți se potrivește. Alege o oră online și ne vedem acolo."
+  },
+  "wedding": {
+    "hero": {
+      "eyebrow": "Nunți",
+      "heading": "O sală de nuntă gândită pentru toată familia",
+      "subheading": "Cununie și recepție sub același acoperiș, 250 de locuri și libertatea de a veni cu propriul catering, decorator și propriile tradiții.",
+      "imageAlt": "Masa mirilor pe scenă, încadrată de un arc circular din baloane și verdeață la Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Nunta ta aici",
+      "heading": "O singură sală, toată ziua ta",
+      "paragraphs": [
+        "Fellowship Event Hall este o sală nouă de 5.000 sq ft pe terenul Bisericii Ortodoxe Române Sfânta Maria din Dacula, la 45 de minute nord-est de Atlanta. Tavanele înalte, candelabrele și peretele de ferestre cu perdele transparente oferă un fundal elegant care se potrivește cu orice paletă de culori.",
+        "Ține cununia și recepția în aceeași sală sau folosește spațiul verde de afară pentru jurăminte și intră apoi la cină și dans. Pachetele superioare includ suită pentru mireasă, sunet și lumini îmbunătățite și un coordonator dedicat în ziua nunții."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Vino cu furnizorii tăi",
+        "body": "Cateringul extern este binevenit și nu există o listă obligatorie de furnizori. Cateringul are o bucătărie de pregătire, iar decoratorul o sală curată și bine luminată."
+      },
+      {
+        "title": "Loc pentru toți",
+        "body": "Până la 250 de invitați la mese rotunde sau lungi, cu ringul de dans liber. Recepțiile în picioare pot găzdui până la 300."
+      },
+      {
+        "title": "Parcare fără griji",
+        "body": "O parcare privată mare chiar la fața locului: fără transfer, fără parcare pe stradă și fără stres pentru rudele în vârstă."
+      }
+    ],
+    "galleryHeading": "Sala aranjată pentru nuntă",
+    "packagesBody": "Pachetele de nuntă pornesc de la $2,000 pentru 50 de invitați și includ mese, scaune, fețe de masă, sunet și un coordonator la fața locului. Garanțiile se returnează integral.",
+    "faq": {
+      "heading": "Întrebări despre nunți",
+      "items": [
+        {
+          "question": "Putem ține și cununia, și recepția în sală?",
+          "answer": "Da. Multe cupluri așază cununia la un capăt al sălii și rearanjează spațiul în timpul cocktailului, sau țin jurămintele pe spațiul verde de afară. În ambele cazuri închiriezi un singur loc pentru toată ziua."
+        },
+        {
+          "question": "Există o suită pentru mireasă?",
+          "answer": "Da. Suita pentru mireasă este inclusă în pachetele superioare și poate fi adăugată la celelalte. Este o cameră privată pentru pregătire, fotografii și un moment de liniște înainte de intrare."
+        },
+        {
+          "question": "Putem veni cu propriul catering, DJ și decorator?",
+          "answer": "Da. Nu există o listă obligatorie de furnizori. Cateringul poate folosi bucătăria de pregătire, DJ-ul se poate conecta la sistemul audio al sălii, iar decoratorii au acces de la începutul intervalului de închiriere."
+        },
+        {
+          "question": "Este permis alcoolul la nuntă?",
+          "answer": "Da, conform regulilor standard de închiriere. Discutăm detaliile înainte de rezervare, inclusiv dacă este nevoie de un barman autorizat sau de asigurare pentru eveniment."
+        },
+        {
+          "question": "Cu cât timp înainte ar trebui să rezervăm?",
+          "answer": "Sâmbetele căutate din primăvară și toamnă se rezervă cu șase până la douăsprezece luni înainte. Verifică calendarul de disponibilitate, apoi programează o vizită pentru a bloca data cu un contract semnat."
+        }
+      ]
+    }
+  },
+  "quinceanera": {
+    "hero": {
+      "eyebrow": "Quinceañera",
+      "heading": "O sală de quinceañera cu loc de dans",
+      "subheading": "O intrare grandioasă, un ring de dans adevărat și loc pentru 250 de rude și prieteni, cu propriul catering și decorațiuni binevenite.",
+      "imageAlt": "Petrecere de sweet sixteen cu decorațiuni din baloane și o masă decorată în sala principală de la Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Ziua ei cea mare",
+      "heading": "Făcută pentru vals, dansul-surpriză și tot ce urmează",
+      "paragraphs": [
+        "O quinceañera are nevoie de o sală care să încapă toată familia și să lase ringul liber pentru vals și baile sorpresa. Fellowship Event Hall îți oferă 5.000 sq ft sub tavane înalte și candelabre, cu o scenă pentru masa de onoare și un perete de ferestre care arată superb în fotografii.",
+        "Sala este a ta pentru decorat. Arcuri din baloane, fundaluri, lumini ambientale și o masă cu dulciuri încap toate, iar cateringul, DJ-ul și decoratorul pot aduce exact ce își dorește familia. Suntem în Dacula, aproape de Lawrenceville, Buford și Duluth."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "O scenă pentru curte",
+        "body": "Așază sărbătorita și curtea ei pe scenă, sub candelabre, cu ringul de dans chiar în față pentru vals."
+      },
+      {
+        "title": "Mâncarea și tradițiile voastre",
+        "body": "Vino cu cateringul în care are încredere familia. Bucătăria de pregătire este a voastră și nu există o listă obligatorie de furnizori."
+      },
+      {
+        "title": "Lumina după-amiezii",
+        "body": "Peretele de ferestre cu perdele transparente oferă o lumină naturală blândă pentru intrare și fotografii, înainte ca petrecerea să se mute pe ring."
+      }
+    ],
+    "galleryHeading": "Sala aranjată pentru o quinceañera",
+    "packagesBody": "Pachetele de quinceañera pornesc de la $2,000 pentru 50 de invitați și includ mese, scaune, fețe de masă și sistemul audio. Pachetele mai mari acoperă până la 250 de invitați.",
+    "faq": {
+      "heading": "Întrebări despre quinceañera",
+      "items": [
+        {
+          "question": "Există ring de dans și sistem audio?",
+          "answer": "Da. Sala are un spațiu liber în fața scenei și un sistem audio la care DJ-ul sau mariachi se pot conecta. Pachetele superioare adaugă sunet și lumini îmbunătățite."
+        },
+        {
+          "question": "Putem decora sala singuri?",
+          "answer": "Da. Tu și decoratorul aveți acces de la începutul intervalului de închiriere. Arcuri din baloane, fundaluri, lumini, masă cu dulciuri și aranjamente de masă sunt toate binevenite."
+        },
+        {
+          "question": "Putem aduce propria mâncare și tortul?",
+          "answer": "Da. Cateringul extern este binevenit, iar bucătăria de pregătire este la dispoziția cateringului vostru. Nu există o listă obligatorie de furnizori."
+        },
+        {
+          "question": "Câți invitați încap?",
+          "answer": "Până la 250 de invitați la mese, cu ringul de dans liber, sau până la 300 la o recepție în picioare."
+        },
+        {
+          "question": "Poate biserica să facă parte din zi?",
+          "answer": "Sala se află pe terenul Bisericii Ortodoxe Române Sfânta Maria. Întreabă-ne despre slujbă și te îndrumăm către biroul parohiei."
+        }
+      ]
+    }
+  },
+  "corporate": {
+    "hero": {
+      "eyebrow": "Evenimente corporate",
+      "heading": "O sală privată pentru ședințe, banchete și petreceri de firmă",
+      "subheading": "5.000 sq ft cu Wi-Fi, bucătărie de pregătire, program flexibil și o parcare privată mare, la câteva minute de Lawrenceville și Buford.",
+      "imageAlt": "Mese de banchet și scaune pliante albe aranjate în jurul unui spațiu liber în sala principală de la Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Evenimentul tău aici",
+      "heading": "O sală care dimineața e sală de consiliu, iar seara banchet",
+      "paragraphs": [
+        "Fellowship Event Hall este o sală nou construită în Dacula, Georgia, cu spațiul și liniștea pe care sălile de hotel le oferă rar. Podeaua liberă primește scaune în stil teatru pentru o adunare generală, mese rotunde pentru o cină de premiere sau mese lungi pentru o zi de training, iar toată proprietatea este a ta pe durata închirierii.",
+        "Vino cu cateringul preferat al echipei, conectează-te la sistemul audio al sălii și folosește parcarea de la fața locului ca nimeni să nu dea ture în jurul cvartalului. Suntem la 45 de minute de centrul Atlantei și chiar mai aproape de birourile din Gwinnett County din Lawrenceville, Duluth, Suwanee și Buford."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Aranjamente flexibile",
+        "body": "Teatru, clasă, mese rotunde sau o singură masă lungă. Mesele și scaunele sunt incluse și aranjate înainte să ajungi."
+      },
+      {
+        "title": "Privat și liniștit",
+        "body": "Fără hol comun, fără alt eveniment alături. Sala și spațiul verde sunt ale tale pentru toată ziua."
+      },
+      {
+        "title": "Logistică simplă",
+        "body": "Wi-Fi, bucătărie de pregătire pentru catering, parcare privată mare și un coordonator la fața locului în ziua evenimentului."
+      }
+    ],
+    "galleryHeading": "Sala pregătită pentru un eveniment corporate",
+    "packagesBody": "Închirierile pornesc de la $2,000 și includ mese, scaune, fețe de masă, sunet și un coordonator la fața locului. Datele din timpul săptămânii sunt adesea disponibile în scurt timp.",
+    "faq": {
+      "heading": "Întrebări despre evenimente corporate",
+      "items": [
+        {
+          "question": "Există Wi-Fi și echipament audio-video?",
+          "answer": "Da. Sala are Wi-Fi și un sistem audio propriu. Adu propriul proiector sau ecran, sau întreabă-ne la rezervare despre închirieri locale de echipament."
+        },
+        {
+          "question": "Putem închiria pentru o jumătate de zi sau în timpul săptămânii?",
+          "answer": "Da. Programul este flexibil, iar datele din timpul săptămânii sunt adesea libere în scurt timp. Spune-ne programul și îți facem o ofertă pentru intervalul potrivit."
+        },
+        {
+          "question": "Vă ocupați de catering?",
+          "answer": "Nu impunem un catering, așa că poți veni cu furnizorul preferat al echipei. Bucătăria de pregătire este disponibilă pentru aranjare și servire."
+        },
+        {
+          "question": "Câtă parcare există?",
+          "answer": "O parcare privată mare pe proprietate, fără parcare pe stradă și fără transfer."
+        },
+        {
+          "question": "Putem primi factură și W-9?",
+          "answer": "Da. Putem factura compania ta și furniza documentele de care are nevoie departamentul de plăți."
+        }
+      ]
+    }
+  },
+  "birthday": {
+    "hero": {
+      "eyebrow": "Aniversări și petreceri private",
+      "heading": "O sală de petreceri pe care o faci a ta",
+      "subheading": "Zile de naștere, sweet 16, baby shower și aniversări într-o sală privată pentru până la 250 de invitați, cu mâncarea și decorațiunile tale binevenite.",
+      "imageAlt": "Fundal de petrecere cu ghirlandă din baloane roz, bej și albe și flori uriașe din hârtie la Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Petrecerea ta aici",
+      "heading": "Destul de mare pentru toată familia, destul de simplă pentru un weekend",
+      "paragraphs": [
+        "Nu orice petrecere are nevoie de o sală de bal, dar cele mai multe au nevoie de mai mult spațiu decât o sufragerie. Fellowship Event Hall din Dacula îți oferă o sală nouă și luminoasă de 5.000 sq ft pe care o poți împodobi sau păstra simplă, cu mese, scaune și fețe de masă deja aranjate când ajungi.",
+        "Adu tortul, cateringul și arcul din baloane. Aniversările importante, sweet 16, baby shower, pensionările și aniversările de căsătorie încap toate, iar parcarea privată înseamnă că invitații parchează la ușă."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Decorezi cum vrei",
+        "body": "O sală curată și bine luminată, cu scenă și perete de ferestre. Fundalurile, ghirlandele din baloane și pereții foto își găsesc toate locul."
+      },
+      {
+        "title": "Mâncare adusă de tine",
+        "body": "Vino cu propriul catering, mâncare gătită în familie sau un food truck. Bucătăria de pregătire este disponibilă pentru aranjare."
+      },
+      {
+        "title": "Loc să crești",
+        "body": "Pachetele merg de la 50 la 250 de invitați, așa că prețul urmează lista ta, nu invers."
+      }
+    ],
+    "galleryHeading": "Sala aranjată pentru o petrecere",
+    "packagesBody": "Pachetele pornesc de la $2,000 pentru 50 de invitați și includ mese, scaune, fețe de masă, sunet și ajutor la aranjare. Garanțiile se returnează integral.",
+    "faq": {
+      "heading": "Întrebări despre petreceri",
+      "items": [
+        {
+          "question": "Ce fel de petreceri găzduiți?",
+          "answer": "Aniversări importante, sweet 16, baby shower, gender reveal, absolviri, pensionări și aniversări de căsătorie. Dacă are nevoie de mese, ring de dans și parcare, se potrivește."
+        },
+        {
+          "question": "Putem aduce propria mâncare?",
+          "answer": "Da. Cateringul extern, mâncarea gătită în familie și food truck-urile sunt toate binevenite, iar bucătăria de pregătire este disponibilă pentru aranjare."
+        },
+        {
+          "question": "Cât timp avem sala?",
+          "answer": "Intervalele de închiriere sunt flexibile și includ timp pentru aranjare și curățenie. Spune-ne planul și îți facem o ofertă pentru intervalul potrivit."
+        },
+        {
+          "question": "Există un număr minim de invitați?",
+          "answer": "Pachetele pornesc de la 50 de invitați. Grupurile mai mici sunt binevenite la prețul pachetului de bază."
+        },
+        {
+          "question": "Garanțiile se returnează?",
+          "answer": "Da. Garanțiile pentru daune și curățenie se returnează integral când sala este lăsată curată și nedeteriorată."
+        }
+      ]
+    }
+  }
+}

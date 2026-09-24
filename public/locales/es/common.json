@@ -33,7 +33,14 @@
     "hoursTitle": "Horario",
     "hours": "Todos los días, 8:00 – 18:00 EST",
     "getDirections": "Cómo llegar",
-    "rentalAgreement": "Contrato de alquiler (PDF)"
+    "rentalAgreement": "Contrato de alquiler (PDF)",
+    "occasionsTitle": "Ocasiones",
+    "occasions": {
+      "wedding": "Bodas",
+      "quinceanera": "Quinceañeras",
+      "corporate": "Eventos corporativos",
+      "birthday": "Fiestas de cumpleaños"
+    }
   },
   "logo": {
     "alt": "Fellowship Event Hall"
@@ -52,5 +59,12 @@
     "event": "Evento parroquial",
     "eventHint": "Todos son bienvenidos",
     "eventAria": "{{day}} de {{month}} de {{year}}, evento parroquial: {{title}} — todos son bienvenidos, ver detalles"
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "heading": "Esa página no existe",
+    "body": "El enlace puede ser antiguo o estar mal escrito. El salón, los paquetes y la galería están a un toque.",
+    "home": "Volver al inicio",
+    "packages": "Ver paquetes"
   }
 }

@@ -33,7 +33,14 @@
     "hoursTitle": "Program",
     "hours": "Zilnic, 8:00 – 18:00 EST",
     "getDirections": "Obține indicații",
-    "rentalAgreement": "Contract de închiriere (PDF)"
+    "rentalAgreement": "Contract de închiriere (PDF)",
+    "occasionsTitle": "Ocazii",
+    "occasions": {
+      "wedding": "Nunți",
+      "quinceanera": "Quinceañera",
+      "corporate": "Evenimente corporate",
+      "birthday": "Petreceri aniversare"
+    }
   },
   "logo": {
     "alt": "Fellowship Event Hall"
@@ -52,5 +59,12 @@
     "event": "Eveniment parohial",
     "eventHint": "Toată lumea este binevenită",
     "eventAria": "{{day}} {{month}} {{year}}, eveniment parohial: {{title}} — toată lumea este binevenită, vezi detalii"
+  },
+  "notFound": {
+    "title": "Pagina nu a fost găsită",
+    "heading": "Această pagină nu există",
+    "body": "Linkul poate fi vechi sau greșit. Sala, pachetele și galeria sunt la un click distanță.",
+    "home": "Înapoi la prima pagină",
+    "packages": "Vezi pachetele"
   }
 }

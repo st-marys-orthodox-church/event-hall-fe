@@ -1,0 +1,255 @@
+{
+  "shared": {
+    "bookViewing": "Reserva una visita",
+    "askWhatsapp": "Pregunta por WhatsApp",
+    "glance": {
+      "capacity": "Capacidad",
+      "price": "Paquetes desde",
+      "space": "El espacio",
+      "location": "Ubicación"
+    },
+    "glanceValues": {
+      "capacity": "Hasta 250 invitados sentados",
+      "price": "$2,000",
+      "space": "Salón de 5,000 pies cuadrados en terreno privado",
+      "location": "Dacula, GA — a 45 min de Atlanta"
+    },
+    "galleryEyebrow": "Galería",
+    "packagesEyebrow": "Precios",
+    "packagesHeading": "Paquetes simples y transparentes",
+    "packagesButton": "Ver paquetes y precios",
+    "faqEyebrow": "Bueno saber",
+    "relatedTitle": "Otras ocasiones",
+    "ctaEyebrow": "Siguiente paso",
+    "ctaHeading": "Ven a conocerlo en persona",
+    "ctaBody": "Una visita de 30 minutos es la forma más rápida de saber si el salón es para ti. Elige una hora en línea y te esperamos allí."
+  },
+  "wedding": {
+    "hero": {
+      "eyebrow": "Bodas",
+      "heading": "Un salón de bodas pensado para toda la familia",
+      "subheading": "Ceremonia y recepción bajo un mismo techo, 250 asientos y la libertad de traer tu propio catering, decorador y tradiciones.",
+      "imageAlt": "Mesa de novios sobre el escenario enmarcada por un arco circular de globos y follaje en Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Tu boda aquí",
+      "heading": "Un salón, todo tu día",
+      "paragraphs": [
+        "Fellowship Event Hall es un salón nuevo de 5,000 pies cuadrados en los terrenos de la Iglesia Ortodoxa Rumana Santa María en Dacula, a 45 minutos al noreste de Atlanta. Techos altos, candelabros y un ventanal con cortinas translúcidas crean un fondo elegante que combina con cualquier paleta de colores.",
+        "Celebra la ceremonia y la recepción en la misma sala, o usa el área verde exterior para los votos y entra para la cena y el baile. Los paquetes superiores incluyen suite nupcial, sonido e iluminación mejorados y un coordinador dedicado el día del evento."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Trae tus propios proveedores",
+        "body": "El catering externo es bienvenido y no hay lista obligatoria de proveedores. Tu caterer tiene cocina de preparación y tu decorador, un salón amplio y bien iluminado."
+      },
+      {
+        "title": "Espacio para todos",
+        "body": "Hasta 250 invitados sentados en mesas redondas o largas con la pista de baile libre. Las recepciones de pie admiten hasta 300."
+      },
+      {
+        "title": "Estacionamiento sin problemas",
+        "body": "Un amplio estacionamiento privado en el lugar: sin transporte extra, sin estacionar en la calle y sin estrés para los familiares mayores."
+      }
+    ],
+    "galleryHeading": "El salón vestido para una boda",
+    "packagesBody": "Los paquetes de boda comienzan en $2,000 para 50 invitados e incluyen mesas, sillas, mantelería, sonido y un coordinador en el lugar. Los depósitos son totalmente reembolsables.",
+    "faq": {
+      "heading": "Preguntas sobre bodas",
+      "items": [
+        {
+          "question": "¿Podemos hacer la ceremonia y la recepción en el salón?",
+          "answer": "Sí. Muchas parejas colocan la ceremonia en un extremo del salón y transforman la sala durante el cóctel, o hacen los votos en el área verde exterior. En ambos casos rentas un solo lugar para todo el día."
+        },
+        {
+          "question": "¿Hay suite nupcial?",
+          "answer": "Sí. La suite nupcial está incluida en los paquetes superiores y puede agregarse a los demás. Es un espacio privado para arreglarse, tomar fotos y respirar antes de la entrada."
+        },
+        {
+          "question": "¿Podemos traer nuestro propio catering, DJ y decorador?",
+          "answer": "Sí. No hay lista obligatoria de proveedores. Tu caterer puede usar la cocina de preparación, tu DJ puede conectarse al sistema de sonido y los decoradores tienen acceso desde el inicio de tu horario de renta."
+        },
+        {
+          "question": "¿Se permite alcohol en una boda?",
+          "answer": "Sí, bajo las normas estándar de renta. Revisamos los detalles contigo antes de reservar, incluido si tu montaje requiere bartender con licencia o seguro para el evento."
+        },
+        {
+          "question": "¿Con cuánta anticipación debemos reservar?",
+          "answer": "Los sábados populares de primavera y otoño se reservan con seis a doce meses de anticipación. Revisa el calendario de disponibilidad y reserva una visita para apartar la fecha con un contrato firmado."
+        }
+      ]
+    }
+  },
+  "quinceanera": {
+    "hero": {
+      "eyebrow": "Quinceañeras",
+      "heading": "Un salón de quinceañera con espacio para bailar",
+      "subheading": "Una gran entrada, una verdadera pista de baile y lugar para 250 familiares y amigos, con tu propio catering y decoración bienvenidos.",
+      "imageAlt": "Celebración de sweet sixteen con decoración de globos y una mesa decorada en el salón principal de Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Su gran día",
+      "heading": "Hecho para el vals, el baile sorpresa y todo lo que sigue",
+      "paragraphs": [
+        "Una quinceañera necesita un salón donde quepa toda la familia y aun así quede la pista libre para el vals y el baile sorpresa. Fellowship Event Hall te da 5,000 pies cuadrados bajo techos altos y candelabros, con un escenario para la mesa principal y un ventanal que luce precioso en las fotos.",
+        "La sala es tuya para decorar. Arcos de globos, fondos, iluminación y mesa de dulces caben perfectamente, y tu caterer, DJ y decorador pueden traer justo lo que la familia quiere. Estamos en Dacula, cerca de Lawrenceville, Buford y Duluth."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Un escenario para la corte",
+        "body": "Sienta a la quinceañera y su corte en el escenario bajo los candelabros, con la pista de baile justo enfrente para el vals."
+      },
+      {
+        "title": "Tu comida, tus tradiciones",
+        "body": "Trae al caterer de confianza de la familia. La cocina de preparación es tuya y no hay lista obligatoria de proveedores."
+      },
+      {
+        "title": "Luz de tarde",
+        "body": "El ventanal con cortinas translúcidas da una luz natural suave para la entrada y las fotos antes de que la fiesta pase a la pista."
+      }
+    ],
+    "galleryHeading": "El salón vestido para una quinceañera",
+    "packagesBody": "Los paquetes de quinceañera comienzan en $2,000 para 50 invitados e incluyen mesas, sillas, mantelería y sistema de sonido. Los niveles más grandes cubren hasta 250 invitados.",
+    "faq": {
+      "heading": "Preguntas sobre quinceañeras",
+      "items": [
+        {
+          "question": "¿Hay pista de baile y sistema de sonido?",
+          "answer": "Sí. El salón tiene un espacio abierto frente al escenario y un sistema de sonido al que tu DJ o mariachi puede conectarse. Los paquetes superiores agregan sonido e iluminación mejorados."
+        },
+        {
+          "question": "¿Podemos decorar el salón nosotros mismos?",
+          "answer": "Sí. Tú y tu decorador tienen acceso desde el inicio de tu horario de renta. Arcos de globos, fondos, iluminación, mesa de dulces y centros de mesa son bienvenidos."
+        },
+        {
+          "question": "¿Podemos traer nuestra propia comida y pastel?",
+          "answer": "Sí. El catering externo es bienvenido y la cocina de preparación está disponible para tu caterer. No hay lista obligatoria de proveedores."
+        },
+        {
+          "question": "¿Cuántos invitados caben?",
+          "answer": "Hasta 250 invitados sentados con la pista de baile libre, o hasta 300 en una recepción de pie."
+        },
+        {
+          "question": "¿La iglesia puede ser parte del día?",
+          "answer": "El salón está en los terrenos de la Iglesia Ortodoxa Rumana Santa María. Pregúntanos por la misa y te pondremos en contacto con la oficina parroquial."
+        }
+      ]
+    }
+  },
+  "corporate": {
+    "hero": {
+      "eyebrow": "Eventos corporativos",
+      "heading": "Un salón privado para reuniones, banquetes y fiestas de empresa",
+      "subheading": "5,000 pies cuadrados con Wi-Fi, cocina de preparación, horarios flexibles y un amplio estacionamiento privado, a minutos de Lawrenceville y Buford.",
+      "imageAlt": "Mesas de banquete y sillas plegables blancas alrededor de un espacio abierto en el salón principal de Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Tu evento aquí",
+      "heading": "Una sala que es sala de juntas por la mañana y banquete por la noche",
+      "paragraphs": [
+        "Fellowship Event Hall es un salón de construcción reciente en Dacula, Georgia, con el espacio y la tranquilidad que los salones de hotel rara vez ofrecen. El piso abierto admite sillas tipo auditorio para una reunión general, mesas redondas para una cena de premios o mesas largas para una jornada de capacitación, y toda la propiedad es tuya durante la renta.",
+        "Trae al caterer que le gusta a tu equipo, conéctate al sistema de sonido y usa el estacionamiento del lugar para que nadie dé vueltas a la manzana. Estamos a 45 minutos del centro de Atlanta y aún más cerca de las oficinas del condado de Gwinnett en Lawrenceville, Duluth, Suwanee y Buford."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Distribuciones flexibles",
+        "body": "Auditorio, aula, mesas redondas o una sola mesa larga. Mesas y sillas están incluidas y montadas antes de que llegues."
+      },
+      {
+        "title": "Privado y tranquilo",
+        "body": "Sin lobby compartido ni otro evento al lado. El salón y su área verde son tuyos durante el día."
+      },
+      {
+        "title": "Logística sencilla",
+        "body": "Wi-Fi, cocina de preparación para tu caterer, amplio estacionamiento privado y un coordinador en el lugar el día del evento."
+      }
+    ],
+    "galleryHeading": "El salón montado para un evento corporativo",
+    "packagesBody": "Las rentas comienzan en $2,000 e incluyen mesas, sillas, mantelería, sonido y un coordinador en el lugar. Las fechas entre semana suelen estar disponibles con poca anticipación.",
+    "faq": {
+      "heading": "Preguntas sobre eventos corporativos",
+      "items": [
+        {
+          "question": "¿Hay Wi-Fi y equipo audiovisual?",
+          "answer": "Sí. El salón tiene Wi-Fi y sistema de sonido. Trae tu propio proyector o pantalla, o pregúntanos por rentas de equipo locales al reservar."
+        },
+        {
+          "question": "¿Podemos rentar medio día o entre semana?",
+          "answer": "Sí. Los horarios son flexibles y las fechas entre semana suelen estar disponibles con poca anticipación. Cuéntanos tu agenda y cotizaremos el horario adecuado."
+        },
+        {
+          "question": "¿Ustedes se encargan del catering?",
+          "answer": "No exigimos un caterer, así que puedes traer al proveedor que prefiera tu equipo. La cocina de preparación está disponible para montaje y servicio."
+        },
+        {
+          "question": "¿Cuánto estacionamiento hay?",
+          "answer": "Un amplio estacionamiento privado en la propiedad, sin necesidad de estacionar en la calle ni de transporte adicional."
+        },
+        {
+          "question": "¿Pueden emitir factura y W-9?",
+          "answer": "Sí. Podemos facturar a tu empresa y entregar la documentación que necesite tu departamento de cuentas por pagar."
+        }
+      ]
+    }
+  },
+  "birthday": {
+    "hero": {
+      "eyebrow": "Cumpleaños y fiestas privadas",
+      "heading": "Un salón de fiestas que puedes hacer tuyo",
+      "subheading": "Cumpleaños, sweet 16, baby showers y aniversarios en un salón privado para hasta 250 invitados, con tu propia comida y decoración bienvenidas.",
+      "imageAlt": "Fondo de celebración con guirnalda de globos rosa, beige y blanco y flores de papel gigantes en Fellowship Event Hall"
+    },
+    "intro": {
+      "eyebrow": "Tu celebración aquí",
+      "heading": "Grande para toda la familia, fácil para un fin de semana",
+      "paragraphs": [
+        "No toda celebración necesita un gran salón de baile, pero casi todas necesitan más espacio que una sala de casa. Fellowship Event Hall en Dacula te ofrece un salón nuevo y luminoso de 5,000 pies cuadrados que puedes decorar a lo grande o mantener sencillo, con mesas, sillas y mantelería ya montadas cuando llegas.",
+        "Trae el pastel, el caterer y el arco de globos. Cumpleaños importantes, sweet 16, baby showers, jubilaciones y aniversarios caben perfectamente, y el estacionamiento privado permite que los invitados se estacionen en la puerta."
+      ]
+    },
+    "highlights": [
+      {
+        "title": "Decora a tu manera",
+        "body": "Una sala limpia y bien iluminada con escenario y ventanal. Fondos, guirnaldas de globos y paredes para fotos tienen su lugar."
+      },
+      {
+        "title": "Comida externa bienvenida",
+        "body": "Trae tu propio caterer, comida casera o un food truck. La cocina de preparación está disponible para el montaje."
+      },
+      {
+        "title": "Espacio para crecer",
+        "body": "Los paquetes van de 50 a 250 invitados, así que el precio sigue a tu lista y no al revés."
+      }
+    ],
+    "galleryHeading": "El salón vestido para una fiesta",
+    "packagesBody": "Los paquetes comienzan en $2,000 para 50 invitados e incluyen mesas, sillas, mantelería, sonido y ayuda con el montaje. Los depósitos son totalmente reembolsables.",
+    "faq": {
+      "heading": "Preguntas sobre fiestas",
+      "items": [
+        {
+          "question": "¿Qué tipo de fiestas reciben?",
+          "answer": "Cumpleaños importantes, sweet 16, baby showers, revelaciones de género, graduaciones, jubilaciones y aniversarios. Si necesita mesas, pista de baile y estacionamiento, cabe."
+        },
+        {
+          "question": "¿Podemos traer nuestra propia comida?",
+          "answer": "Sí. El catering externo, la comida casera y los food trucks son bienvenidos, y la cocina de preparación está disponible para el montaje."
+        },
+        {
+          "question": "¿Por cuánto tiempo tenemos el salón?",
+          "answer": "Los horarios de renta son flexibles e incluyen tiempo para montaje y limpieza. Cuéntanos tu plan y cotizaremos el horario adecuado."
+        },
+        {
+          "question": "¿Hay un mínimo de invitados?",
+          "answer": "Los paquetes comienzan en 50 invitados. Las reuniones más pequeñas son bienvenidas al precio del paquete base."
+        },
+        {
+          "question": "¿Los depósitos son reembolsables?",
+          "answer": "Sí. Los depósitos de daños y limpieza se devuelven completos cuando el salón se entrega limpio y sin daños."
+        }
+      ]
+    }
+  }
+}

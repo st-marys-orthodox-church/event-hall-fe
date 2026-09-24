@@ -60,5 +60,23 @@
   "events": {
     "title": "Evenimente parohiale — Biserica Ortodoxă Română Sfânta Maria, Dacula GA",
     "description": "Evenimente publice viitoare la Biserica Ortodoxă Română Sfânta Maria și Fellowship Event Hall din Dacula, GA: festivaluri, concerte și sărbători parohiale deschise tuturor."
+  },
+  "intents": {
+    "wedding": {
+      "title": "Sală de nuntă în Dacula, GA — Fellowship Event Hall",
+      "description": "Sală elegantă de nuntă lângă Atlanta pentru cununii și recepții de până la 250 de invitați. Suită pentru mireasă, parcare proprie, catering extern binevenit. Pachete de la $2,000."
+    },
+    "quinceanera": {
+      "title": "Sală pentru quinceañera în Dacula, GA — Fellowship Event Hall",
+      "description": "Sală pentru quinceañera în Gwinnett County, cu ring de dans, sistem audio și loc pentru 250 de invitați. Vino cu propriul catering și decorator. Pachete de la $2,000."
+    },
+    "corporate": {
+      "title": "Sală pentru evenimente corporate în Dacula, GA — Fellowship Event Hall",
+      "description": "Sală privată de 5.000 sq ft pentru ședințe, banchete și petreceri de firmă lângă Lawrenceville și Buford. Wi-Fi, bucătărie de pregătire, parcare mare."
+    },
+    "birthday": {
+      "title": "Sală pentru petreceri aniversare în Dacula, GA — Fellowship Event Hall",
+      "description": "Închiriază o sală privată pentru zile de naștere, sweet 16, baby shower și aniversări. Până la 250 de invitați, decorezi cum vrei, mâncare adusă de tine. De la $2,000."
+    }
   }
 }

@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { AppConfig } from '../../utils/AppConfig';
 import { SOCIALS, generateWhatsAppUrl } from '../../utils/Constants';
+import { INTENTS } from '../../utils/Intents';
 import { Section } from '../layout/Section';
 import { Logo } from './Logo';
 
@@ -113,6 +114,19 @@ const Footer = () => {
                     {t('nav.events')}
                   </Link>
                 </li>
+              </ul>
+              <span className="eyebrow text-brand-gold mt-2">{t('footer.occasionsTitle')}</span>
+              <ul className="flex flex-wrap justify-center md:flex-col items-center md:items-end gap-4 md:gap-2 text-sm">
+                {INTENTS.map((intent) => (
+                  <li key={intent.key}>
+                    <Link
+                      href={`/${intent.slug}`}
+                      className="hover:text-brand-gold transition-colors duration-300"
+                    >
+                      {t(`footer.occasions.${intent.key}`)}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </nav>
             <div className="flex flex-col items-center md:items-end gap-3">

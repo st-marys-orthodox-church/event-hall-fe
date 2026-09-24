@@ -60,5 +60,23 @@
   "events": {
     "title": "Church Events — St. Mary Romanian Orthodox Church, Dacula GA",
     "description": "Upcoming public events at St. Mary Romanian Orthodox Church and Fellowship Event Hall in Dacula, GA — festivals, concerts, and parish celebrations open to all."
+  },
+  "intents": {
+    "wedding": {
+      "title": "Wedding Venue in Dacula, GA — Fellowship Event Hall",
+      "description": "Elegant wedding venue near Atlanta for ceremonies and receptions up to 250 guests. Bridal suite, on-site parking, outside catering welcome. Packages from $2,000."
+    },
+    "quinceanera": {
+      "title": "Quinceañera Venue in Dacula, GA — Fellowship Event Hall",
+      "description": "Quinceañera venue in Gwinnett County with a dance floor, sound system and room for 250 guests. Bring your own caterer and decorator. Packages from $2,000."
+    },
+    "corporate": {
+      "title": "Corporate Event Venue in Dacula, GA — Fellowship Event Hall",
+      "description": "Private 5,000 sq ft venue for company meetings, banquets and holiday parties near Lawrenceville and Buford. Wi-Fi, prep kitchen, large parking lot."
+    },
+    "birthday": {
+      "title": "Birthday Party Venue in Dacula, GA — Fellowship Event Hall",
+      "description": "Rent a private hall for birthdays, sweet 16s, baby showers and anniversaries. Seats up to 250, decorate your way, outside food welcome. From $2,000."
+    }
   }
 }
