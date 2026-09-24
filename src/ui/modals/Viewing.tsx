@@ -8,6 +8,7 @@ import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
 import { AppConfig } from '../../utils/AppConfig';
 import { VENUE_TIMEZONE } from '../../utils/Events';
+import { getLeadSource } from '../../utils/LeadSource';
 import {
   VIEWING_CONFIG,
   type ViewingBookingRequest,
@@ -177,6 +178,7 @@ export function ViewingModal() {
       slot,
       locale,
       website,
+      leadSource: getLeadSource(),
     };
     try {
       const res = await fetch('/api/viewings/book', {

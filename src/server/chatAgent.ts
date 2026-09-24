@@ -4,6 +4,7 @@ import home from '../../public/locales/en/home.json';
 import packages from '../../public/locales/en/packages.json';
 import { AppConfig } from '../utils/AppConfig';
 import { EVENT_TYPES } from '../utils/Constants';
+import type { LeadSource } from '../utils/LeadSource';
 import { DEPOSIT_INFO } from '../utils/Packages';
 import { VIEWING_CONFIG, type ViewingDay, type ViewingPrefill } from '../utils/Viewings';
 import { isBookingsCalendarConfigured } from './bookedDates';
@@ -226,6 +227,8 @@ export type ChatAction =
 
 export type ChatToolContext = {
   ip: string;
+  /** Where the visitor's session came from, captured by the site on landing. */
+  leadSource: LeadSource | null;
   /** Site locale the widget is running in; the fallback when the model doesn't name a language. */
   locale: string;
   /** The assistant message the visitor just replied to, used to prove a read-back happened. */
@@ -305,6 +308,7 @@ const bookViewing = async (input: Record<string, unknown>, ctx: ChatToolContext)
       budgetAck: input.budget_acknowledged === true,
       slot: venueTimeToUtc(slotDate, slotTime).toISOString(),
       locale: language,
+      leadSource: ctx.leadSource ?? undefined,
     },
     ctx.ip,
     'chat'

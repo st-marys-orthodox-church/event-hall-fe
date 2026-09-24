@@ -1,5 +1,6 @@
 import { VIEWING_CONFIG, type ViewingErrorCode } from '../utils/Viewings';
 import { isValidIsoDate, isoInVenueTz } from './ics';
+import { describeLeadSource, readLeadSource } from './leadSource';
 import { isRateLimited } from './rateLimit';
 import { sendViewingEmails } from './viewingEmail';
 import { bookViewingSlot, isEventDateBooked, isSlotOpen, isViewingsConfigured } from './viewings';
@@ -42,6 +43,7 @@ export const submitViewingBooking = async (
   const requestedLocale = text(body.locale, 5);
   const locale = LOCALES.includes(requestedLocale) ? requestedLocale : 'en';
   const guests = typeof body.guests === 'number' ? Math.floor(body.guests) : Number.NaN;
+  const leadSource = readLeadSource(body.leadSource);
 
   if (
     !name ||
@@ -76,11 +78,24 @@ export const submitViewingBooking = async (
         `Phone: ${phone}`,
         `Guests: ${guests}`,
         `Event date: ${eventDate}`,
-      ].join('\n'),
+        describeLeadSource(leadSource),
+      ]
+        .filter(Boolean)
+        .join('\n'),
     });
 
     try {
-      await sendViewingEmails({ name, email, phone, guests, eventDate, locale, start, end });
+      await sendViewingEmails({
+        name,
+        email,
+        phone,
+        guests,
+        eventDate,
+        locale,
+        start,
+        end,
+        leadSource,
+      });
     } catch (err) {
       // The calendar entry is the booking; a failed email must not tell the visitor it didn't happen.
       console.error('viewings: booked but failed to send emails', err);

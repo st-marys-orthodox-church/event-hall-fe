@@ -28,6 +28,8 @@ export type ViewingDay = {
 
 export type ViewingSlotsResponse = { days: ViewingDay[] };
 
+import type { LeadSource } from './LeadSource';
+
 export type ViewingBookingRequest = {
   name: string;
   email: string;
@@ -38,6 +40,7 @@ export type ViewingBookingRequest = {
   slot: string;
   locale: string;
   website?: string;
+  leadSource?: LeadSource;
 };
 
 export type ViewingErrorCode =

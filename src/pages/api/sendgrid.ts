@@ -1,6 +1,7 @@
 import sendgrid from '@sendgrid/mail';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { escapeHtml } from '../../server/html';
+import { leadSourceRows, readLeadSource } from '../../server/leadSource';
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY ?? '';
 if (SENDGRID_API_KEY) sendgrid.setApiKey(SENDGRID_API_KEY);
@@ -48,6 +49,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
   const date = readField(body, 'date');
   const eventPackage = readField(body, 'package');
   const message = readField(body, 'message');
+  const leadSource = readLeadSource(body.leadSource);
 
   if (!name || !message) {
     return res.status(400).json({ error: 'Name and message are required' });
@@ -63,6 +65,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
     ['Guest count', cap],
     ['Package', eventPackage],
     ['Message', message],
+    ...leadSourceRows(leadSource),
   ];
 
   const html = `
@@ -85,7 +88,15 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     if (process.env.NEXT_PUBLIC_DEV) {
-      console.log('REQ.BODY', { name, email, cap, date, package: eventPackage, message });
+      console.log('REQ.BODY', {
+        name,
+        email,
+        cap,
+        date,
+        package: eventPackage,
+        message,
+        leadSource,
+      });
     } else {
       await sendgrid.send({
         to: VENUE_EMAIL,

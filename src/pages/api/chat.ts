@@ -15,6 +15,7 @@ import {
   chatDateContext,
   runChatTool,
 } from '../../server/chatAgent';
+import { readLeadSource } from '../../server/leadSource';
 import { clientIp, isRateLimited } from '../../server/rateLimit';
 
 export const config = { maxDuration: 60 };
@@ -53,7 +54,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!API_KEY) {
     return res.status(503).json({ error: 'not_configured' });
   }
-  const body = (req.body ?? {}) as { messages?: unknown; locale?: unknown };
+  const body = (req.body ?? {}) as { messages?: unknown; locale?: unknown; leadSource?: unknown };
   const contents = parseHistory(body.messages);
   if (!contents) return res.status(400).json({ error: 'invalid' });
   if (isRateLimited(`chat:${clientIp(req)}`, MESSAGES_PER_10_MIN, 10 * 60 * 1000)) {
@@ -70,6 +71,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const toolContext: ChatToolContext = {
     ip: clientIp(req),
+    leadSource: readLeadSource(body.leadSource),
     locale: typeof body.locale === 'string' ? body.locale : 'en',
     lastAssistantText: contents.at(-2)?.parts?.[0]?.text ?? '',
     emit: (action) => send({ type: 'action', ...action }),

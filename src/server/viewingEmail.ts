@@ -3,8 +3,10 @@ import en from '../../public/locales/en/viewing.json';
 import es from '../../public/locales/es/viewing.json';
 import ro from '../../public/locales/ro/viewing.json';
 import { AppConfig } from '../utils/AppConfig';
+import type { LeadSource } from '../utils/LeadSource';
 import { escapeHtml } from './html';
 import { VENUE_TZ } from './ics';
+import { leadSourceRows } from './leadSource';
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY ?? '';
 if (SENDGRID_API_KEY) sendgrid.setApiKey(SENDGRID_API_KEY);
@@ -60,6 +62,7 @@ export type ViewingEmailInput = {
   locale: string;
   start: Date;
   end: Date;
+  leadSource?: LeadSource | null;
 };
 
 export const sendViewingEmails = async (input: ViewingEmailInput): Promise<void> => {
@@ -86,6 +89,7 @@ export const sendViewingEmails = async (input: ViewingEmailInput): Promise<void>
     ['Guest count', String(input.guests)],
     ['Event date', input.eventDate],
     ['Language', locale],
+    ...leadSourceRows(input.leadSource ?? null),
   ];
   const staffHtml = `
     <div style="font-family: helvetica, sans-serif; max-width: 600px; margin: 0 auto;">

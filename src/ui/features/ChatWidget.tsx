@@ -13,6 +13,7 @@ import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
 import { PHONE_NUMBER, generateWhatsAppUrl } from '../../utils/Constants';
 import { VENUE_TIMEZONE } from '../../utils/Events';
+import { getLeadSource } from '../../utils/LeadSource';
 import type { ViewingPrefill } from '../../utils/Viewings';
 
 type ContactOptions = Omit<Extract<ChatAction, { action: 'contact' }>, 'action'>;
@@ -119,6 +120,7 @@ export const ChatWidget = () => {
         body: JSON.stringify({
           messages: history.map(({ role, content }) => ({ role, content })),
           locale,
+          leadSource: getLeadSource(),
         }),
       });
       if (!res.ok || !res.body) {

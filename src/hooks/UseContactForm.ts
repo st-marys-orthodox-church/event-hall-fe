@@ -2,6 +2,8 @@ import { useTranslation } from 'next-i18next/pages';
 import type React from 'react';
 import { useEffect, useState } from 'react';
 import { useAppContext } from '../stores/Global';
+import { trackEvent } from '../utils/Analytics';
+import { getLeadSource } from '../utils/LeadSource';
 
 export type ContactFormState = {
   name: string;
@@ -67,7 +69,7 @@ export const useContactForm = () => {
     e.preventDefault();
     setIsLoading(true);
     const res = await fetch('/api/sendgrid', {
-      body: JSON.stringify(contactForm),
+      body: JSON.stringify({ ...contactForm, leadSource: getLeadSource() }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -80,6 +82,7 @@ export const useContactForm = () => {
       setIsError(true);
       console.error(error);
     } else {
+      trackEvent('contact_form_submit', { event_category: 'conversion' });
       setIsSuccess(true);
       clearForm();
     }

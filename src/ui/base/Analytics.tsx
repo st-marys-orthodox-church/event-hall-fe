@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import { useEffect } from 'react';
 import { GA_MEASUREMENT_ID, isAnalyticsEnabled, trackPageView } from '../../utils/Analytics';
+import { captureLeadSource } from '../../utils/LeadSource';
 
 /**
  * Loads GA4 after hydration and reports client-side route changes. Renders
@@ -10,6 +11,10 @@ import { GA_MEASUREMENT_ID, isAnalyticsEnabled, trackPageView } from '../../util
  */
 export const Analytics = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    captureLeadSource();
+  }, []);
 
   useEffect(() => {
     if (!isAnalyticsEnabled()) return;
