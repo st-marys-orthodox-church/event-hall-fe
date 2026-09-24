@@ -308,7 +308,9 @@ export const getStaticPaths: GetStaticPaths = async () => ({
   paths: I18N_LOCALES.flatMap((locale) =>
     INTENTS.map((intent) => ({ params: { intent: intent.slug }, locale }))
   ),
-  fallback: false,
+  // Unknown slugs fall through to getStaticProps, which 404s in the request's
+  // locale; `false` would serve the default-locale 404 instead.
+  fallback: 'blocking',
 });
 
 export const getStaticProps: GetStaticProps<Props> = async ({ locale, params }) => {
