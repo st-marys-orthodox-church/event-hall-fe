@@ -12,6 +12,12 @@ const nextConfig = {
   compiler: {
     emotion: true,
   },
+  // Turbopack bundles MUI's ESM entry on the server with its own copy of
+  // Emotion, while app code gets Node's copy. Two copies mean two React
+  // contexts, so MUI never saw the SSR cache and hydration mismatched
+  // (`css-` on the server, `mui-` on the client). Bundling Emotion for app
+  // code as well keeps a single instance.
+  transpilePackages: ['@emotion/react', '@emotion/styled', '@emotion/cache'],
   i18n,
   images: {
     // Cloudflare image ids are immutable, so optimized copies can live a month.

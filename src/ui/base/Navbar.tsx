@@ -85,11 +85,10 @@ export const Navbar = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   size="small"
+                  className="w-10 h-10"
                   sx={{
                     borderRadius: 0,
                     color: COLORS.brand.green,
-                    width: 40,
-                    height: 40,
                     transition: `all 0.3s ${EASING.refined}`,
                     '&:hover': {
                       backgroundColor: COLORS.brand.green,
@@ -97,7 +96,7 @@ export const Navbar = () => {
                     },
                   }}
                 >
-                  <WhatsAppIcon fontSize="small" />
+                  <WhatsAppIcon fontSize="small" className="w-5 h-5" />
                 </IconButton>
               </Tooltip>
               <LanguageSwitcher size="small" />
@@ -111,9 +110,10 @@ export const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={t('whatsapp.chat')}
-                sx={{ borderRadius: 0, color: COLORS.brand.green, width: 48, height: 48 }}
+                className="w-12 h-12"
+                sx={{ borderRadius: 0, color: COLORS.brand.green }}
               >
-                <WhatsAppIcon sx={{ fontSize: 26 }} />
+                <WhatsAppIcon className="w-[26px] h-[26px]" sx={{ fontSize: 26 }} />
               </IconButton>
             </Tooltip>
             <IconButton
@@ -122,9 +122,10 @@ export const Navbar = () => {
               aria-controls="mobile-menu"
               aria-haspopup="dialog"
               aria-expanded={drawerOpen ? 'true' : undefined}
-              sx={{ borderRadius: 0, color: COLORS.neutral.darkText, width: 48, height: 48 }}
+              className="w-12 h-12"
+              sx={{ borderRadius: 0, color: COLORS.neutral.darkText }}
             >
-              <MenuIcon sx={{ fontSize: 30 }} />
+              <MenuIcon className="w-[30px] h-[30px]" sx={{ fontSize: 30 }} />
             </IconButton>
           </div>
         </nav>
@@ -160,9 +161,10 @@ export const Navbar = () => {
             <IconButton
               onClick={closeDrawer}
               aria-label={t('nav.closeMenu')}
-              sx={{ borderRadius: 0, color: COLORS.neutral.darkText, width: 48, height: 48 }}
+              className="w-12 h-12"
+              sx={{ borderRadius: 0, color: COLORS.neutral.darkText }}
             >
-              <CloseIcon sx={{ fontSize: 26 }} />
+              <CloseIcon className="w-[26px] h-[26px]" sx={{ fontSize: 26 }} />
             </IconButton>
           </div>
 
@@ -217,7 +219,7 @@ export const Navbar = () => {
               onClick={closeDrawer}
               className="eyebrow w-full inline-flex items-center justify-center gap-2 text-brand-green-deep border border-brand-green/40 py-3.5 hover:bg-brand-green hover:border-brand-green hover:text-white transition-colors duration-300 ease-refined"
             >
-              <WhatsAppIcon fontSize="small" />
+              <WhatsAppIcon fontSize="small" className="w-5 h-5" />
               {t('whatsapp.chat')}
             </a>
           </div>
