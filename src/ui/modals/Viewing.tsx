@@ -1,3 +1,4 @@
+import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'next-i18next/pages';
@@ -26,7 +27,7 @@ type SlotsState = 'loading' | 'ready' | 'unavailable';
 const STEPS: Step[] = ['qualify', 'slots', 'details'];
 
 const inputClass =
-  'w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
+  'h-[3.125rem] sm:h-11 w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
 const labelClass = 'block text-sm text-stone-600 mb-1.5';
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -56,6 +57,7 @@ export function ViewingModal() {
   const [step, setStep] = useState<Step>('qualify');
   const [guests, setGuests] = useState('');
   const [eventDate, setEventDate] = useState('');
+  const [dateFocused, setDateFocused] = useState(false);
   const [budgetAck, setBudgetAck] = useState(false);
   const [blocker, setBlocker] = useState<Blocker>(null);
   const [checking, setChecking] = useState(false);
@@ -324,19 +326,43 @@ export function ViewingModal() {
                   <label htmlFor="viewing-event-date" className={labelClass}>
                     {t('qualify.eventDate')}
                   </label>
-                  <input
-                    id="viewing-event-date"
-                    type="date"
-                    min={todayInput()}
-                    required
-                    value={eventDate}
-                    onChange={(e) => {
-                      setEventDate(e.target.value);
-                      setBlocker(null);
-                    }}
-                    aria-describedby="viewing-event-date-hint"
-                    className={inputClass}
-                  />
+                  <div className="relative">
+                    <input
+                      id="viewing-event-date"
+                      type="date"
+                      min={todayInput()}
+                      required
+                      value={eventDate}
+                      onChange={(e) => {
+                        setEventDate(e.target.value);
+                        setBlocker(null);
+                      }}
+                      onFocus={() => setDateFocused(true)}
+                      onBlur={() => setDateFocused(false)}
+                      onClick={(e) => {
+                        try {
+                          e.currentTarget.showPicker?.();
+                        } catch {}
+                      }}
+                      aria-describedby="viewing-event-date-hint"
+                      className={`${inputClass} date-input pr-11 ${
+                        !eventDate && !dateFocused ? 'date-input-empty' : ''
+                      }`}
+                    />
+                    {!eventDate && !dateFocused && (
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-base text-stone-400 sm:text-sm"
+                      >
+                        {t('qualify.eventDatePlaceholder')}
+                      </span>
+                    )}
+                    <CalendarMonth
+                      aria-hidden
+                      fontSize="small"
+                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-brand-gold"
+                    />
+                  </div>
                   <p id="viewing-event-date-hint" className="mt-1 text-xs text-stone-500">
                     {t('qualify.eventDateHint')}
                   </p>
