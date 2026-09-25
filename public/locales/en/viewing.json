@@ -59,5 +59,11 @@
     "whereLabel": "Where",
     "reschedule": "Need to change or cancel? Just reply to this email.",
     "calendarTitle": "Viewing at Fellowship Event Hall"
+  },
+  "fallback": {
+    "prefer": "Prefer to talk to a person? Call",
+    "or": "or message us on",
+    "call": "Call us",
+    "whatsapp": "WhatsApp"
   }
 }

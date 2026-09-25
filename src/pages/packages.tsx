@@ -20,7 +20,8 @@ import { breadcrumbJsonLd, faqPageJsonLd, offerCatalogJsonLd } from '../utils/St
 import { I18N_DEFAULT_LOCALE } from '../utils/i18nConfig';
 
 const Packages = () => {
-  const { handleOpenModal } = useAppContext();
+  const { handleOpenModal, handleOpenViewing } = useAppContext();
+  const { t: tViewing } = useTranslation('viewing');
   const { t } = useTranslation('packages');
   const { t: tHome } = useTranslation('home');
   const { ref: heroRef, offset: heroOffset } = useScrollParallax<HTMLDivElement>({
@@ -354,9 +355,16 @@ const Packages = () => {
               <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto leading-relaxed">
                 {t('cta.body')}
               </p>
-              <div className="mt-10">
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
                 <ModernButton
                   buttonVariant="secondary"
+                  size="large"
+                  onClick={() => handleOpenViewing()}
+                >
+                  {tViewing('cta.button')}
+                </ModernButton>
+                <ModernButton
+                  buttonVariant="outlineLight"
                   size="large"
                   onClick={() => handleOpenModal()}
                 >

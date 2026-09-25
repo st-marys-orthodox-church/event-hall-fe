@@ -7,6 +7,7 @@ import type { AvailabilityResponse } from '../../pages/api/availability';
 import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
 import { AppConfig } from '../../utils/AppConfig';
+import { generateWhatsAppUrl } from '../../utils/Constants';
 import { VENUE_TIMEZONE } from '../../utils/Events';
 import { getLeadSource } from '../../utils/LeadSource';
 import {
@@ -137,6 +138,33 @@ export function ViewingModal() {
   };
 
   const contactInstead = () => handleOpenModal();
+  const telHref = `tel:${AppConfig.telephone.replace(/[^\d+]/g, '')}`;
+  const whatsAppHref = generateWhatsAppUrl({
+    date: eventDate || undefined,
+    guests: guests || undefined,
+  });
+  const talkLinkClass =
+    'eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-0.5';
+
+  const talkInstead = (
+    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+      <button type="button" onClick={contactInstead} className={talkLinkClass}>
+        {t('qualify.contactInstead')}
+      </button>
+      <a href={telHref} onClick={() => trackEvent('viewing_call_click')} className={talkLinkClass}>
+        {t('fallback.call')}
+      </a>
+      <a
+        href={whatsAppHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackEvent('viewing_whatsapp_click')}
+        className={talkLinkClass}
+      >
+        {t('fallback.whatsapp')}
+      </a>
+    </div>
+  );
 
   const submitQualify = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -266,12 +294,10 @@ export function ViewingModal() {
           )}
 
           {error && (
-            <p
-              role="alert"
-              className="mb-5 border border-red-200 bg-red-50 p-3 text-sm text-red-800"
-            >
-              {error}
-            </p>
+            <div role="alert" className="mb-5 border border-red-200 bg-red-50 p-3">
+              <p className="text-sm text-red-800">{error}</p>
+              {talkInstead}
+            </div>
           )}
 
           {step === 'qualify' && (
@@ -339,13 +365,7 @@ export function ViewingModal() {
                       ? t('qualify.overCapacity', { max: VIEWING_CONFIG.maxGuests })
                       : t('qualify.dateBooked')}
                   </p>
-                  <button
-                    type="button"
-                    onClick={contactInstead}
-                    className="mt-3 eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-0.5"
-                  >
-                    {t('qualify.contactInstead')}
-                  </button>
+                  {talkInstead}
                 </div>
               )}
 
@@ -373,13 +393,7 @@ export function ViewingModal() {
                   <p className="text-sm text-stone-700 leading-relaxed">
                     {slotsState === 'unavailable' ? t('slots.unavailable') : t('slots.none')}
                   </p>
-                  <button
-                    type="button"
-                    onClick={contactInstead}
-                    className="mt-3 eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-0.5"
-                  >
-                    {t('qualify.contactInstead')}
-                  </button>
+                  {talkInstead}
                 </div>
               )}
 
@@ -530,6 +544,30 @@ export function ViewingModal() {
                 </ModernButton>
               </div>
             </div>
+          )}
+
+          {step !== 'success' && (
+            <p className="mt-8 pt-5 border-t border-stone-200 text-sm text-stone-500 leading-relaxed">
+              {t('fallback.prefer')}{' '}
+              <a
+                href={telHref}
+                onClick={() => trackEvent('viewing_call_click')}
+                className="text-brand-green-ink hover:text-brand-green-deep underline underline-offset-4 decoration-brand-gold"
+              >
+                {AppConfig.telephone}
+              </a>{' '}
+              {t('fallback.or')}{' '}
+              <a
+                href={whatsAppHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('viewing_whatsapp_click')}
+                className="text-brand-green-ink hover:text-brand-green-deep underline underline-offset-4 decoration-brand-gold"
+              >
+                {t('fallback.whatsapp')}
+              </a>
+              .
+            </p>
           )}
         </div>
       </div>

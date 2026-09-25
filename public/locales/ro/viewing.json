@@ -59,5 +59,11 @@
     "whereLabel": "Unde",
     "reschedule": "Trebuie să modifici sau să anulezi? Răspunde la acest email.",
     "calendarTitle": "Vizionare la Fellowship Event Hall"
+  },
+  "fallback": {
+    "prefer": "Preferați să vorbiți cu cineva? Sunați la",
+    "or": "sau scrieți-ne pe",
+    "call": "Sunați-ne",
+    "whatsapp": "WhatsApp"
   }
 }

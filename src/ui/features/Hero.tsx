@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
+import { useAppContext } from '../../stores/Global';
 import { HeroCarousel } from '../components/HeroCarousel';
 import { ModernButton } from '../components/ModernButton';
 import { WordmarkEvents, WordmarkMinimal } from '../components/Wordmark';
@@ -7,6 +8,8 @@ import { Section } from '../layout/Section';
 
 const Hero = () => {
   const { t } = useTranslation('home');
+  const { t: tViewing } = useTranslation('viewing');
+  const { handleOpenViewing } = useAppContext();
   return (
     <div className="relative min-h-screen flex items-center w-full overflow-hidden">
       <HeroCarousel />
@@ -38,8 +41,8 @@ const Hero = () => {
           </header>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-2 items-center">
-            <ModernButton component={Link} href="/gallery" buttonVariant="primary" size="large">
-              {t('hero.viewGallery')}
+            <ModernButton buttonVariant="primary" size="large" onClick={() => handleOpenViewing()}>
+              {tViewing('cta.button')}
             </ModernButton>
             <ModernButton
               component={Link}
