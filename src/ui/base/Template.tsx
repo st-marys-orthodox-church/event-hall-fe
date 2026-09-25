@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useWindowSize } from '../../hooks';
+import { useScrolledPast } from '../../hooks';
 import { Footer } from './Footer';
 import { Navbar } from './Navbar';
 
@@ -10,12 +10,12 @@ type ITemplateProps = {
 };
 
 export const Template = (props: ITemplateProps) => {
-  const { scrollY } = useWindowSize();
+  const isScrolled = useScrolledPast(0);
   return (
     <>
       <div
-        className={`w-full z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 ease-refined border-b border-stone-200/60 ${
-          scrollY > 0 ? 'fixed bg-white/95 backdrop-blur-sm shadow-soft' : 'absolute bg-white'
+        className={`fixed top-0 left-0 w-full z-50 backdrop-blur-sm transition-[background-color,box-shadow] duration-300 ease-refined border-b border-stone-200/60 ${
+          isScrolled ? 'bg-white/95 shadow-soft' : 'bg-white'
         }`}
       >
         <Navbar />

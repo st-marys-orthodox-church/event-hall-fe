@@ -6,7 +6,7 @@ import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { type MouseEvent, useEffect, useRef, useState } from 'react';
-import { useWindowSize } from '../../hooks';
+import { useScrolledPast } from '../../hooks';
 import { useAppContext } from '../../stores/Global';
 import { generateWhatsAppUrl } from '../../utils/Constants';
 import { COLORS, EASING } from '../../utils/DesignTokens';
@@ -20,14 +20,13 @@ const DRAWER_EXIT_MS = 280;
 
 export const Navbar = () => {
   const { handleOpenViewing } = useAppContext();
-  const { scrollY } = useWindowSize();
   const { t } = useTranslation('common');
   const router = useRouter();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const pendingNavigation = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const links = NAV_LINKS;
-  const isScrolled = scrollY > 50;
+  const isScrolled = useScrolledPast(50);
   const closeDrawer = () => setDrawerOpen(false);
   const isActive = (link: string) => router.pathname === link;
 

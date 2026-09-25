@@ -10,14 +10,6 @@ export const useWindowSize = () => {
     width: 0,
     height: 0,
   });
-  const [scrollY, setScrollY] = React.useState(0);
-
-  React.useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   useIsomorphicLayoutEffect(() => {
     const handleResize = () =>
@@ -28,5 +20,5 @@ export const useWindowSize = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return { ...windowSize, breakpoint, scrollY, isMobile: windowSize.width < breakpoint };
+  return { ...windowSize, breakpoint, isMobile: windowSize.width < breakpoint };
 };
