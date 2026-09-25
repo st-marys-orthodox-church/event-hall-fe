@@ -50,6 +50,33 @@
 }
 
 @layer utilities {
+  /* iOS Safari renders native date inputs inline-sized, vertically centred and blank when empty. */
+  .date-input {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    position: relative;
+    background-color: #ffffff;
+  }
+  .date-input::-webkit-date-and-time-value {
+    text-align: left;
+  }
+  .date-input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    transform: translateY(-50%);
+    opacity: 0;
+    cursor: pointer;
+  }
+  .date-input-empty {
+    color: transparent;
+  }
+  .date-input-empty::-webkit-datetime-edit {
+    color: transparent;
+  }
   .gold-rule {
     position: relative;
   }

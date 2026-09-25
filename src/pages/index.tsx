@@ -254,11 +254,18 @@ const Index = ({ events }: Props) => {
               <p className="mt-6 text-lg text-white/75 max-w-2xl mx-auto leading-relaxed">
                 {tHome('cta.body')}
               </p>
-              <div className="mt-10">
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 items-center justify-center">
+                <ModernButton
+                  buttonVariant="secondary"
+                  size="large"
+                  onClick={() => handleOpenViewing()}
+                >
+                  {tViewing('cta.button')}
+                </ModernButton>
                 <ModernButton
                   component={Link}
                   href="/packages"
-                  buttonVariant="secondary"
+                  buttonVariant="outlineLight"
                   size="large"
                 >
                   {tHome('cta.button')}

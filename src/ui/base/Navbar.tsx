@@ -19,7 +19,7 @@ const DRAWER_ENTER_MS = 360;
 const DRAWER_EXIT_MS = 280;
 
 export const Navbar = () => {
-  const { handleOpenModal } = useAppContext();
+  const { handleOpenViewing } = useAppContext();
   const { scrollY } = useWindowSize();
   const { t } = useTranslation('common');
   const router = useRouter();
@@ -73,12 +73,13 @@ export const Navbar = () => {
               </li>
             ))}
             <li className="flex items-center gap-3 pl-4 border-l border-stone-200">
-              <Link
-                href="/#availability"
-                className="eyebrow text-stone-700 hover:text-brand-green border border-stone-300 hover:border-brand-green px-4 py-2 transition-colors duration-300 ease-refined"
+              <button
+                type="button"
+                onClick={() => handleOpenViewing()}
+                className="eyebrow bg-brand-green-deep text-white hover:bg-brand-green-ink border border-brand-green-deep hover:border-brand-green-ink px-4 py-2 transition-colors duration-300 ease-refined"
               >
-                {t('nav.contactUs')}
-              </Link>
+                {t('nav.bookNow')}
+              </button>
               <Tooltip title={t('whatsapp.chat')}>
                 <IconButton
                   href={generateWhatsAppUrl()}
@@ -206,11 +207,11 @@ export const Navbar = () => {
               type="button"
               onClick={() => {
                 closeDrawer();
-                handleOpenModal();
+                handleOpenViewing();
               }}
               className="eyebrow w-full bg-brand-green-deep text-white py-3.5 hover:bg-brand-green-ink transition-colors duration-300 ease-refined"
             >
-              {t('nav.contactUs')}
+              {t('nav.bookNow')}
             </button>
             <a
               href={generateWhatsAppUrl()}

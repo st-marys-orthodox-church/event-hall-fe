@@ -16,6 +16,7 @@
     "guests": "Numărul estimat de invitați",
     "eventDate": "Data evenimentului",
     "eventDateHint": "Este suficientă o dată aproximativă.",
+    "eventDatePlaceholder": "Atingeți pentru a alege data",
     "budgetAck": "Am văzut că închirierea costă între {{min}} și {{max}}, în funcție de numărul de invitați, plus garanții returnabile.",
     "checking": "Verificăm data…",
     "overCapacity": "Sala noastră primește până la {{max}} de invitați, așa că un tur s-ar putea să nu fie cel mai potrivit pas. Spune-ne despre eveniment și vedem ce se poate face.",
@@ -59,5 +60,11 @@
     "whereLabel": "Unde",
     "reschedule": "Trebuie să modifici sau să anulezi? Răspunde la acest email.",
     "calendarTitle": "Vizionare la Fellowship Event Hall"
+  },
+  "fallback": {
+    "prefer": "Preferați să vorbiți cu cineva? Sunați la",
+    "or": "sau scrieți-ne pe",
+    "call": "Sunați-ne",
+    "whatsapp": "WhatsApp"
   }
 }

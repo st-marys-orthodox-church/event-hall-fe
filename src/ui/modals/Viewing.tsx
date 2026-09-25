@@ -1,3 +1,4 @@
+import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'next-i18next/pages';
@@ -7,6 +8,7 @@ import type { AvailabilityResponse } from '../../pages/api/availability';
 import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
 import { AppConfig } from '../../utils/AppConfig';
+import { generateWhatsAppUrl } from '../../utils/Constants';
 import { VENUE_TIMEZONE } from '../../utils/Events';
 import { getLeadSource } from '../../utils/LeadSource';
 import {
@@ -25,7 +27,7 @@ type SlotsState = 'loading' | 'ready' | 'unavailable';
 const STEPS: Step[] = ['qualify', 'slots', 'details'];
 
 const inputClass =
-  'w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
+  'h-[3.125rem] sm:h-11 w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
 const labelClass = 'block text-sm text-stone-600 mb-1.5';
 
 const pad = (n: number) => String(n).padStart(2, '0');
@@ -55,6 +57,7 @@ export function ViewingModal() {
   const [step, setStep] = useState<Step>('qualify');
   const [guests, setGuests] = useState('');
   const [eventDate, setEventDate] = useState('');
+  const [dateFocused, setDateFocused] = useState(false);
   const [budgetAck, setBudgetAck] = useState(false);
   const [blocker, setBlocker] = useState<Blocker>(null);
   const [checking, setChecking] = useState(false);
@@ -137,6 +140,33 @@ export function ViewingModal() {
   };
 
   const contactInstead = () => handleOpenModal();
+  const telHref = `tel:${AppConfig.telephone.replace(/[^\d+]/g, '')}`;
+  const whatsAppHref = generateWhatsAppUrl({
+    date: eventDate || undefined,
+    guests: guests || undefined,
+  });
+  const talkLinkClass =
+    'eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-0.5';
+
+  const talkInstead = (
+    <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+      <button type="button" onClick={contactInstead} className={talkLinkClass}>
+        {t('qualify.contactInstead')}
+      </button>
+      <a href={telHref} onClick={() => trackEvent('viewing_call_click')} className={talkLinkClass}>
+        {t('fallback.call')}
+      </a>
+      <a
+        href={whatsAppHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={() => trackEvent('viewing_whatsapp_click')}
+        className={talkLinkClass}
+      >
+        {t('fallback.whatsapp')}
+      </a>
+    </div>
+  );
 
   const submitQualify = async (e: SyntheticEvent) => {
     e.preventDefault();
@@ -266,12 +296,10 @@ export function ViewingModal() {
           )}
 
           {error && (
-            <p
-              role="alert"
-              className="mb-5 border border-red-200 bg-red-50 p-3 text-sm text-red-800"
-            >
-              {error}
-            </p>
+            <div role="alert" className="mb-5 border border-red-200 bg-red-50 p-3">
+              <p className="text-sm text-red-800">{error}</p>
+              {talkInstead}
+            </div>
           )}
 
           {step === 'qualify' && (
@@ -298,19 +326,43 @@ export function ViewingModal() {
                   <label htmlFor="viewing-event-date" className={labelClass}>
                     {t('qualify.eventDate')}
                   </label>
-                  <input
-                    id="viewing-event-date"
-                    type="date"
-                    min={todayInput()}
-                    required
-                    value={eventDate}
-                    onChange={(e) => {
-                      setEventDate(e.target.value);
-                      setBlocker(null);
-                    }}
-                    aria-describedby="viewing-event-date-hint"
-                    className={inputClass}
-                  />
+                  <div className="relative">
+                    <input
+                      id="viewing-event-date"
+                      type="date"
+                      min={todayInput()}
+                      required
+                      value={eventDate}
+                      onChange={(e) => {
+                        setEventDate(e.target.value);
+                        setBlocker(null);
+                      }}
+                      onFocus={() => setDateFocused(true)}
+                      onBlur={() => setDateFocused(false)}
+                      onClick={(e) => {
+                        try {
+                          e.currentTarget.showPicker?.();
+                        } catch {}
+                      }}
+                      aria-describedby="viewing-event-date-hint"
+                      className={`${inputClass} date-input pr-11 ${
+                        !eventDate && !dateFocused ? 'date-input-empty' : ''
+                      }`}
+                    />
+                    {!eventDate && !dateFocused && (
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-base text-stone-400 sm:text-sm"
+                      >
+                        {t('qualify.eventDatePlaceholder')}
+                      </span>
+                    )}
+                    <CalendarMonth
+                      aria-hidden
+                      fontSize="small"
+                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-brand-gold"
+                    />
+                  </div>
                   <p id="viewing-event-date-hint" className="mt-1 text-xs text-stone-500">
                     {t('qualify.eventDateHint')}
                   </p>
@@ -339,13 +391,7 @@ export function ViewingModal() {
                       ? t('qualify.overCapacity', { max: VIEWING_CONFIG.maxGuests })
                       : t('qualify.dateBooked')}
                   </p>
-                  <button
-                    type="button"
-                    onClick={contactInstead}
-                    className="mt-3 eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-0.5"
-                  >
-                    {t('qualify.contactInstead')}
-                  </button>
+                  {talkInstead}
                 </div>
               )}
 
@@ -373,13 +419,7 @@ export function ViewingModal() {
                   <p className="text-sm text-stone-700 leading-relaxed">
                     {slotsState === 'unavailable' ? t('slots.unavailable') : t('slots.none')}
                   </p>
-                  <button
-                    type="button"
-                    onClick={contactInstead}
-                    className="mt-3 eyebrow text-brand-green-ink hover:text-brand-green-deep border-b border-brand-gold pb-0.5"
-                  >
-                    {t('qualify.contactInstead')}
-                  </button>
+                  {talkInstead}
                 </div>
               )}
 
@@ -530,6 +570,30 @@ export function ViewingModal() {
                 </ModernButton>
               </div>
             </div>
+          )}
+
+          {step !== 'success' && (
+            <p className="mt-8 pt-5 border-t border-stone-200 text-sm text-stone-500 leading-relaxed">
+              {t('fallback.prefer')}{' '}
+              <a
+                href={telHref}
+                onClick={() => trackEvent('viewing_call_click')}
+                className="text-brand-green-ink hover:text-brand-green-deep underline underline-offset-4 decoration-brand-gold"
+              >
+                {AppConfig.telephone}
+              </a>{' '}
+              {t('fallback.or')}{' '}
+              <a
+                href={whatsAppHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent('viewing_whatsapp_click')}
+                className="text-brand-green-ink hover:text-brand-green-deep underline underline-offset-4 decoration-brand-gold"
+              >
+                {t('fallback.whatsapp')}
+              </a>
+              .
+            </p>
           )}
         </div>
       </div>
