@@ -4,6 +4,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'next-i18next/pages';
 import { useRouter } from 'next/router';
 import { type SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { useHoneypot } from '../../hooks/UseHoneypot';
 import type { AvailabilityResponse } from '../../pages/api/availability';
 import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
@@ -18,6 +19,7 @@ import {
   type ViewingErrorCode,
   type ViewingSlotsResponse,
 } from '../../utils/Viewings';
+import { HoneypotField } from '../base/HoneypotField';
 import { ModernButton } from '../components/ModernButton';
 
 type Step = 'qualify' | 'slots' | 'details' | 'success';
@@ -66,10 +68,11 @@ export function ViewingModal() {
   const [activeDate, setActiveDate] = useState('');
   const [slot, setSlot] = useState('');
 
+  const honeypot = useHoneypot();
+  const restartHoneypot = honeypot.restart;
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [website, setWebsite] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
@@ -79,10 +82,11 @@ export function ViewingModal() {
     setBlocker(null);
     setSlot('');
     setError('');
+    restartHoneypot();
     if (viewingPrefill?.guests) setGuests(String(viewingPrefill.guests));
     if (viewingPrefill?.eventDate) setEventDate(viewingPrefill.eventDate);
     dialogRef.current?.focus();
-  }, [viewingOpen, viewingPrefill]);
+  }, [viewingOpen, viewingPrefill, restartHoneypot]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: handleCloseViewing is a stable context callback
   useEffect(() => {
@@ -206,7 +210,7 @@ export function ViewingModal() {
       budgetAck,
       slot,
       locale,
-      website,
+      ...honeypot.payload(),
       leadSource: getLeadSource(),
     };
     try {
@@ -485,17 +489,7 @@ export function ViewingModal() {
                   {t('details.summary', { when: formatWhen(slot) })}
                 </p>
               </div>
-              {/* Honeypot — hidden from real users, bots that fill it are dropped server-side */}
-              <input
-                type="text"
-                name="website"
-                value={website}
-                onChange={(e) => setWebsite(e.target.value)}
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-                className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
-              />
+              <HoneypotField {...honeypot.fieldProps} />
               <div>
                 <label htmlFor="viewing-name" className={labelClass}>
                   {t('details.name')}

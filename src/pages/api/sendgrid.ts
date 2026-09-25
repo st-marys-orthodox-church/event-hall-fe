@@ -1,5 +1,6 @@
 import sendgrid from '@sendgrid/mail';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { isHoneypotTripped } from '../../server/honeypot';
 import { escapeHtml } from '../../server/html';
 import { leadSourceRows, readLeadSource } from '../../server/leadSource';
 
@@ -37,9 +38,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
     unknown
   >;
 
-  // Honeypot: real users never see this field, so a value means a bot.
-  // Report success so the bot has nothing to learn from.
-  if (typeof body.website === 'string' && body.website.length > 0) {
+  if (isHoneypotTripped(body, { form: 'contact' })) {
     return res.status(200).json({ error: '' });
   }
 

@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { isHoneypotTripped } from '../../../server/honeypot';
 import { clientIp } from '../../../server/rateLimit';
 import { submitViewingBooking } from '../../../server/viewingBooking';
 import { isViewingsConfigured } from '../../../server/viewings';
@@ -15,8 +16,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     unknown
   >;
 
-  // Honeypot, same contract as the contact form: pretend it worked.
-  if (typeof body.website === 'string' && body.website.length > 0) {
+  if (isHoneypotTripped(body, { form: 'viewing' })) {
     return res.status(200).json({ error: '' });
   }
 

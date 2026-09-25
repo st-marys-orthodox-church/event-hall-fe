@@ -29,6 +29,7 @@ export type ViewingDay = {
 
 export type ViewingSlotsResponse = { days: ViewingDay[] };
 
+import type { HoneypotFields } from './Honeypot';
 import type { LeadSource } from './LeadSource';
 
 export type ViewingBookingRequest = {
@@ -40,9 +41,8 @@ export type ViewingBookingRequest = {
   budgetAck: boolean;
   slot: string;
   locale: string;
-  website?: string;
   leadSource?: LeadSource;
-};
+} & Partial<HoneypotFields>;
 
 export type ViewingErrorCode =
   | 'invalid'

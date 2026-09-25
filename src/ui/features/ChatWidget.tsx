@@ -7,6 +7,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { useTranslation } from 'next-i18next/pages';
 import { useRouter } from 'next/router';
 import { type SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { useHoneypot } from '../../hooks/UseHoneypot';
 import type { ChatStreamEvent } from '../../pages/api/chat';
 import type { ChatAction } from '../../server/chatAgent';
 import { useAppContext } from '../../stores/Global';
@@ -15,6 +16,7 @@ import { PHONE_NUMBER, generateWhatsAppUrl } from '../../utils/Constants';
 import { VENUE_TIMEZONE } from '../../utils/Events';
 import { getLeadSource } from '../../utils/LeadSource';
 import type { ViewingPrefill } from '../../utils/Viewings';
+import { HoneypotField } from '../base/HoneypotField';
 
 type ContactOptions = Omit<Extract<ChatAction, { action: 'contact' }>, 'action'>;
 
@@ -44,6 +46,7 @@ export const ChatWidget = () => {
   const panelRef = useRef<HTMLElement>(null);
   const logRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const honeypot = useHoneypot();
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: scroll whenever the transcript changes
   useEffect(() => {
@@ -120,6 +123,7 @@ export const ChatWidget = () => {
         body: JSON.stringify({
           messages: history.map(({ role, content }) => ({ role, content })),
           locale,
+          ...honeypot.payload(),
           leadSource: getLeadSource(),
         }),
       });
@@ -352,7 +356,11 @@ export const ChatWidget = () => {
         )}
       </div>
 
-      <form onSubmit={onSubmit} className="flex items-center gap-2 border-t border-stone-200 p-3">
+      <form
+        onSubmit={onSubmit}
+        className="relative flex items-center gap-2 border-t border-stone-200 p-3"
+      >
+        <HoneypotField {...honeypot.fieldProps} />
         <input
           ref={inputRef}
           type="text"

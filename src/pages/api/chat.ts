@@ -15,6 +15,7 @@ import {
   chatDateContext,
   runChatTool,
 } from '../../server/chatAgent';
+import { isHoneypotTripped } from '../../server/honeypot';
 import { readLeadSource } from '../../server/leadSource';
 import { clientIp, isRateLimited } from '../../server/rateLimit';
 
@@ -26,6 +27,8 @@ const MAX_TURNS = 24;
 const MAX_MESSAGE_CHARS = 1000;
 const MAX_TOOL_ROUNDS = 4;
 const MESSAGES_PER_10_MIN = 20;
+// The chat's clock starts when the widget mounts, and a suggestion chip is one tap away.
+const CHAT_MIN_FILL_MS = 1000;
 
 export type ChatStreamEvent =
   | { type: 'text'; delta: string }
@@ -54,9 +57,16 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (!API_KEY) {
     return res.status(503).json({ error: 'not_configured' });
   }
-  const body = (req.body ?? {}) as { messages?: unknown; locale?: unknown; leadSource?: unknown };
+  const body = (typeof req.body === 'object' && req.body !== null ? req.body : {}) as Record<
+    string,
+    unknown
+  >;
   const contents = parseHistory(body.messages);
   if (!contents) return res.status(400).json({ error: 'invalid' });
+  if (isHoneypotTripped(body, { form: 'chat', minFillMs: CHAT_MIN_FILL_MS })) {
+    res.setHeader('Content-Type', 'application/x-ndjson; charset=utf-8');
+    return res.status(200).end(`${JSON.stringify({ type: 'done' } satisfies ChatStreamEvent)}\n`);
+  }
   if (isRateLimited(`chat:${clientIp(req)}`, MESSAGES_PER_10_MIN, 10 * 60 * 1000)) {
     return res.status(429).json({ error: 'rate_limited' });
   }

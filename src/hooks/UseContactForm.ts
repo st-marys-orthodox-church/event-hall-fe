@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useAppContext } from '../stores/Global';
 import { trackEvent } from '../utils/Analytics';
 import { getLeadSource } from '../utils/LeadSource';
+import { useHoneypot } from './UseHoneypot';
 
 export type ContactFormState = {
   name: string;
@@ -12,7 +13,6 @@ export type ContactFormState = {
   cap: string;
   email: string;
   package: string;
-  website: string;
 };
 
 export const useContactForm = () => {
@@ -21,6 +21,7 @@ export const useContactForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
   const { handleCloseModal } = useAppContext();
+  const honeypot = useHoneypot();
   const [contactForm, setContactForm] = useState<ContactFormState>({
     name: '',
     date: null,
@@ -28,7 +29,6 @@ export const useContactForm = () => {
     cap: '',
     email: '',
     package: '',
-    website: '',
   });
 
   const updateContactForm = <K extends keyof ContactFormState>(
@@ -41,7 +41,7 @@ export const useContactForm = () => {
     });
   };
 
-  const clearForm = () =>
+  const clearForm = () => {
     setContactForm({
       name: '',
       date: null,
@@ -49,8 +49,9 @@ export const useContactForm = () => {
       cap: '',
       email: '',
       package: '',
-      website: '',
     });
+    honeypot.restart();
+  };
 
   const determineMessage = () => {
     if (isLoading) return t('form.buttons.sending');
@@ -69,7 +70,11 @@ export const useContactForm = () => {
     e.preventDefault();
     setIsLoading(true);
     const res = await fetch('/api/sendgrid', {
-      body: JSON.stringify({ ...contactForm, leadSource: getLeadSource() }),
+      body: JSON.stringify({
+        ...contactForm,
+        ...honeypot.payload(),
+        leadSource: getLeadSource(),
+      }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -103,6 +108,7 @@ export const useContactForm = () => {
 
   return {
     contactForm,
+    honeypot,
     updateContactForm,
     handleSubmit,
     isLoading,
