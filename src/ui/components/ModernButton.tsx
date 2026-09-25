@@ -48,6 +48,11 @@ const StyledButton = styled(MuiButton, {
       transform: 'translateY(0)',
       boxShadow: '0 6px 18px -14px rgba(15, 23, 23, 0.45)',
     },
+    '&.Mui-disabled': {
+      color: '#ffffff',
+      opacity: 0.5,
+      boxShadow: 'none',
+    },
   }),
 
   ...(buttonVariant === 'secondary' && {
@@ -62,6 +67,11 @@ const StyledButton = styled(MuiButton, {
     '&:active': {
       transform: 'translateY(0)',
       boxShadow: '0 6px 18px -14px rgba(15, 23, 23, 0.45)',
+    },
+    '&.Mui-disabled': {
+      color: COLORS.brand.dark,
+      opacity: 0.5,
+      boxShadow: 'none',
     },
   }),
 
@@ -81,6 +91,11 @@ const StyledButton = styled(MuiButton, {
       background: COLORS.brand.greenInk,
       borderColor: COLORS.brand.greenInk,
     },
+    '&.Mui-disabled': {
+      color: '#3a4c41',
+      opacity: 0.5,
+      boxShadow: 'none',
+    },
   }),
 
   ...(buttonVariant === 'outlineLight' && {
@@ -98,6 +113,11 @@ const StyledButton = styled(MuiButton, {
     '&:active': {
       background: 'rgba(255, 255, 255, 0.9)',
     },
+    '&.Mui-disabled': {
+      color: '#ffffff',
+      opacity: 0.5,
+      boxShadow: 'none',
+    },
   }),
 
   ...(buttonVariant === 'ghost' && {
@@ -108,6 +128,11 @@ const StyledButton = styled(MuiButton, {
     },
     '&:active': {
       background: 'rgba(124, 152, 133, 0.14)',
+    },
+    '&.Mui-disabled': {
+      color: COLORS.brand.greenDeep,
+      opacity: 0.5,
+      boxShadow: 'none',
     },
   }),
 }));
