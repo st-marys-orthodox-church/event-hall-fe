@@ -19,6 +19,7 @@
     "build-types": "tsc --noEmit --pretty",
     "i18n:sync": "node scripts/i18n-sync.mjs",
     "i18n:check": "node scripts/i18n-sync.mjs --check",
+    "reviews:sync": "node scripts/reviews-sync.mjs",
     "prepare": "lefthook install"
   },
   "dependencies": {

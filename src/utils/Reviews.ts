@@ -1,7 +1,11 @@
+import avatars from './reviewAvatars.json';
+
 export const GOOGLE_REVIEWS_URL = 'https://maps.app.goo.gl/XMYyAKG9XSL24X259';
 
+export type ReviewKey = 'laura' | 'yuritzia' | 'ioana';
+
 export type IReviewMeta = {
-  key: 'laura' | 'yuritzia' | 'ioana';
+  key: ReviewKey;
   rating: 5;
   sourceUrl: string;
   datePublished: string;
@@ -27,3 +31,14 @@ export const REVIEWS: IReviewMeta[] = [
     datePublished: '2025-04-01',
   },
 ];
+
+/** Reviewer photos under public/reviews/, written by `pnpm reviews:sync`. */
+export const REVIEW_AVATARS: Partial<Record<ReviewKey, string>> = avatars;
+
+export const reviewerInitials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('');

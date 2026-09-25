@@ -1,7 +1,14 @@
 import { FormatQuote, Star } from '@mui/icons-material';
 import { useTranslation } from 'next-i18next/pages';
+import Image from 'next/image';
 import { TIMING } from '../../utils/DesignTokens';
-import { GOOGLE_REVIEWS_URL, type IReviewMeta, REVIEWS } from '../../utils/Reviews';
+import {
+  GOOGLE_REVIEWS_URL,
+  type IReviewMeta,
+  REVIEWS,
+  REVIEW_AVATARS,
+  reviewerInitials,
+} from '../../utils/Reviews';
 import { Reveal } from '../components/Reveal';
 
 const StarRow = ({ rating, label }: { rating: number; label: string }) => (
@@ -11,6 +18,31 @@ const StarRow = ({ rating, label }: { rating: number; label: string }) => (
     ))}
   </div>
 );
+
+const AVATAR_PX = 44;
+
+const Avatar = ({ src, name }: { src?: string; name: string }) => {
+  if (src) {
+    return (
+      <Image
+        src={src}
+        alt=""
+        width={AVATAR_PX}
+        height={AVATAR_PX}
+        className="shrink-0 m-0 rounded-full object-cover ring-2 ring-white shadow-sm"
+      />
+    );
+  }
+  return (
+    <div
+      aria-hidden
+      className="shrink-0 rounded-full bg-brand-green/15 text-brand-green-ink font-medium text-sm flex items-center justify-center ring-2 ring-white shadow-sm"
+      style={{ width: AVATAR_PX, height: AVATAR_PX }}
+    >
+      {reviewerInitials(name)}
+    </div>
+  );
+};
 
 const ReviewCard = ({ review, index }: { review: IReviewMeta; index: number }) => {
   const { t } = useTranslation('home');
@@ -29,9 +61,12 @@ const ReviewCard = ({ review, index }: { review: IReviewMeta; index: number }) =
         />
         <StarRow rating={review.rating} label={ratingLabel} />
         <blockquote className="mt-5 text-stone-700 leading-relaxed flex-1">{text}</blockquote>
-        <figcaption className="mt-6 pt-5 border-t border-stone-200/80">
-          <div className="font-medium text-stone-900">{name}</div>
-          <div className="mt-1 text-sm text-stone-500">{date}</div>
+        <figcaption className="mt-6 pt-5 border-t border-stone-200/80 flex items-center gap-3">
+          <Avatar src={REVIEW_AVATARS[review.key]} name={name} />
+          <div className="min-w-0">
+            <div className="font-medium text-stone-900 truncate">{name}</div>
+            <div className="mt-0.5 text-sm text-stone-500">{date}</div>
+          </div>
         </figcaption>
       </figure>
     </Reveal>

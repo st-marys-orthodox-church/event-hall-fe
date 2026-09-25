@@ -60,6 +60,7 @@ ANTHROPIC_API_KEY=<optional — enables auto-translation in scripts/i18n-sync.mj
 | `pnpm check`         | Lint + format + organize imports (one command)               |
 | `pnpm i18n:sync`     | Sync `es`/`ro` locales against `en`; translates via Claude   |
 | `pnpm i18n:check`    | CI mode — exit 1 if locales drift from `en`                  |
+| `pnpm reviews:sync`  | Download reviewer photos from Google Places into `public/reviews/` |
 
 ## Project layout
 
