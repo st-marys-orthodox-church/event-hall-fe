@@ -1,5 +1,4 @@
 import { useTranslation } from 'next-i18next/pages';
-import Link from 'next/link';
 import { useAppContext } from '../../stores/Global';
 import { HeroCarousel } from '../components/HeroCarousel';
 import { ModernButton } from '../components/ModernButton';
@@ -44,12 +43,7 @@ const Hero = () => {
             <ModernButton buttonVariant="primary" size="large" onClick={() => handleOpenViewing()}>
               {tViewing('cta.button')}
             </ModernButton>
-            <ModernButton
-              component={Link}
-              href="/packages"
-              buttonVariant="outlineLight"
-              size="large"
-            >
+            <ModernButton component="a" href="#packages" buttonVariant="outlineLight" size="large">
               {t('hero.explorePackages')}
             </ModernButton>
           </div>

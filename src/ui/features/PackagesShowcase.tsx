@@ -1,8 +1,8 @@
 import { Check, People } from '@mui/icons-material';
 import { useTranslation } from 'next-i18next/pages';
 import Image from 'next/image';
-import Link from 'next/link';
 import { useScrollParallax } from '../../hooks';
+import { useAppContext } from '../../stores/Global';
 import { TIMING } from '../../utils/DesignTokens';
 import type { IPackageMeta } from '../../utils/Packages';
 import { ModernButton } from '../components/ModernButton';
@@ -15,6 +15,7 @@ type IPackagesShowcaseProps = {
 
 const PackageItem = ({ pkg, index }: { pkg: IPackageMeta; index: number }) => {
   const { t } = useTranslation('packages');
+  const { handleOpenViewing } = useAppContext();
   const isEven = index % 2 === 0;
   const { ref, offset } = useScrollParallax<HTMLDivElement>({ speed: 0.2, max: 160 });
 
@@ -96,12 +97,11 @@ const PackageItem = ({ pkg, index }: { pkg: IPackageMeta; index: number }) => {
 
           <div className="pt-4">
             <ModernButton
-              component={Link}
-              href={`/packages?package=${index}`}
+              onClick={() => handleOpenViewing({ guests: pkg.guests })}
               buttonVariant={pkg.popular ? 'secondary' : 'outline'}
               size="large"
             >
-              {t('showcase.inquireButton')}
+              {t('showcase.bookButton')}
             </ModernButton>
           </div>
         </div>
@@ -116,23 +116,28 @@ const PackagesShowcase = ({ packages }: IPackagesShowcaseProps) => {
   const description = t('home:packagesSection.description');
 
   return (
-    <Section className="!py-24 !max-w-6xl">
-      <div className="text-center mb-8">
-        <span className="eyebrow text-brand-gold-ink">{t('packages:showcase.eyebrow')}</span>
-        <h2 className="mt-3 font-display text-4xl md:text-5xl text-stone-900 leading-tight">
-          {title}
-        </h2>
-        <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
-        <p className="mt-5 text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
-          {description}
-        </p>
-      </div>
-      <div className="flex flex-col">
-        {packages.map((pkg, index) => (
-          <PackageItem key={pkg.key} pkg={pkg} index={index} />
-        ))}
-      </div>
-    </Section>
+    <section id="packages" aria-labelledby="packages-heading" className="scroll-mt-16">
+      <Section className="!py-24 !max-w-6xl">
+        <div className="text-center mb-8">
+          <span className="eyebrow text-brand-gold-ink">{t('packages:showcase.eyebrow')}</span>
+          <h2
+            id="packages-heading"
+            className="mt-3 font-display text-4xl md:text-5xl text-stone-900 leading-tight"
+          >
+            {title}
+          </h2>
+          <div className="mx-auto mt-4 w-12 h-px bg-brand-gold" />
+          <p className="mt-5 text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
+            {description}
+          </p>
+        </div>
+        <div className="flex flex-col">
+          {packages.map((pkg, index) => (
+            <PackageItem key={pkg.key} pkg={pkg} index={index} />
+          ))}
+        </div>
+      </Section>
+    </section>
   );
 };
 

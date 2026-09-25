@@ -105,6 +105,13 @@ export const Navbar = () => {
           </ul>
 
           <div className="flex md:hidden items-center gap-1">
+            <button
+              type="button"
+              onClick={() => handleOpenViewing()}
+              className="eyebrow bg-brand-green-deep text-white hover:bg-brand-green-ink px-3.5 py-2.5 mr-1 transition-colors duration-300 ease-refined"
+            >
+              {t('nav.book')}
+            </button>
             <Tooltip title={t('whatsapp.chat')}>
               <IconButton
                 href={generateWhatsAppUrl()}

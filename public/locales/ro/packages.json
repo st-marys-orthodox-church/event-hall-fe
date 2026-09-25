@@ -115,7 +115,7 @@
     "eyebrow": "Pachete",
     "capacityLabel": "Capacitate · {{capacity}}",
     "perEvent": "/ eveniment",
-    "inquireButton": "Cere informații despre acest pachet",
+    "bookButton": "Rezervă acum",
     "mostPopular": "Cel mai popular"
   },
   "breadcrumb": {

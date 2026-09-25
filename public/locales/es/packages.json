@@ -115,7 +115,7 @@
     "eyebrow": "Paquetes",
     "capacityLabel": "Capacidad · {{capacity}}",
     "perEvent": "/ evento",
-    "inquireButton": "Consultar sobre este paquete",
+    "bookButton": "Reserva ahora",
     "mostPopular": "Más popular"
   },
   "breadcrumb": {
