@@ -50,7 +50,6 @@ const ERROR_KEYS: Partial<Record<ViewingErrorCode, string>> = {
 export function ViewingModal() {
   const { viewingOpen, viewingPrefill, handleCloseViewing, handleOpenModal } = useAppContext();
   const { t } = useTranslation('viewing');
-  const { t: tPackages } = useTranslation('packages');
   const { locale = 'en' } = useRouter();
   const dialogRef = useRef<HTMLDivElement>(null);
 
@@ -376,12 +375,7 @@ export function ViewingModal() {
                   onChange={(e) => setBudgetAck(e.target.checked)}
                   className="mt-1 h-4 w-4 accent-brand-green-deep"
                 />
-                <span>
-                  {t('qualify.budgetAck', {
-                    min: tPackages('tiers.intimate.price'),
-                    max: tPackages('tiers.majestic.price'),
-                  })}
-                </span>
+                <span>{t('qualify.budgetAck')}</span>
               </label>
 
               {blocker && (

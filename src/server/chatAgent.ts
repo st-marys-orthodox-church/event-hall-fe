@@ -38,7 +38,7 @@ const KNOWLEDGE = {
   viewings: {
     lengthMinutes: VIEWING_CONFIG.slotMinutes,
     bookableUpToDaysAhead: VIEWING_CONFIG.maxDaysAhead,
-    minimumNoticeHours: VIEWING_CONFIG.minLeadHours,
+    minimumNoticeDays: VIEWING_CONFIG.minLeadDays,
   },
 };
 

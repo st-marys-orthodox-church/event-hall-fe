@@ -13,7 +13,8 @@ export const VIEWING_HOURS: Record<number, IViewingWindow[]> = {
 
 export const VIEWING_CONFIG = {
   slotMinutes: 30,
-  minLeadHours: 24,
+  // Calendar days, venue-local: the first bookable day is today plus this many days.
+  minLeadDays: 2,
   maxDaysAhead: 30,
   // Standing-reception limit; anything larger goes to a conversation instead of a self-serve tour.
   maxGuests: 300,

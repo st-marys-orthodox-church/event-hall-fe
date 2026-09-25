@@ -17,7 +17,7 @@
     "eventDate": "Data evenimentului",
     "eventDateHint": "Este suficientă o dată aproximativă.",
     "eventDatePlaceholder": "Atingeți pentru a alege data",
-    "budgetAck": "Am văzut că închirierea costă între {{min}} și {{max}}, în funcție de numărul de invitați, plus garanții returnabile.",
+    "budgetAck": "Am văzut că închirierea costă $2k - $5k, în funcție de numărul de invitați, plus garanții returnabile.",
     "checking": "Verificăm data…",
     "overCapacity": "Sala noastră primește până la {{max}} de invitați, așa că un tur s-ar putea să nu fie cel mai potrivit pas. Spune-ne despre eveniment și vedem ce se poate face.",
     "dateBooked": "Data aceasta este deja rezervată. Încearcă altă dată sau contactează-ne pentru alternative.",

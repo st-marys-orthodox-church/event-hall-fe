@@ -17,7 +17,7 @@
     "eventDate": "Fecha de tu evento",
     "eventDateHint": "Una fecha aproximada está bien.",
     "eventDatePlaceholder": "Toca para elegir una fecha",
-    "budgetAck": "He visto que el alquiler va de {{min}} a {{max}} según el número de invitados, más depósitos reembolsables.",
+    "budgetAck": "He visto que el alquiler va de $2k - $5k según el número de invitados, más depósitos reembolsables.",
     "checking": "Comprobando la fecha…",
     "overCapacity": "Nuestro salón admite hasta {{max}} invitados, así que una visita quizá no sea el mejor siguiente paso. Cuéntanos sobre tu evento y veremos qué es posible.",
     "dateBooked": "Esa fecha ya está reservada. Prueba con otra fecha o contáctanos para ver alternativas.",

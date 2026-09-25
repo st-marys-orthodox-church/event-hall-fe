@@ -9,7 +9,6 @@ import {
   listViewingBusy,
 } from './zohoCalendar';
 
-const HOUR_MS = 60 * 60 * 1000;
 const SLOT_MS = VIEWING_CONFIG.slotMinutes * 60 * 1000;
 
 // Without Zoho credentials, local dev keeps bookings in memory so the whole flow can be exercised.
@@ -55,7 +54,7 @@ const overlaps = (start: number, end: number, busy: BusyInterval[]) =>
 export const loadOpenViewingDays = async (now = new Date()): Promise<ViewingDay[]> => {
   const today = isoInVenueTz(now);
   const lastDay = addDays(today, VIEWING_CONFIG.maxDaysAhead);
-  const earliest = now.getTime() + VIEWING_CONFIG.minLeadHours * HOUR_MS;
+  const firstDay = addDays(today, VIEWING_CONFIG.minLeadDays);
 
   const [bookedDates, busy] = await Promise.all([
     isBookingsCalendarConfigured()
@@ -68,7 +67,7 @@ export const loadOpenViewingDays = async (now = new Date()): Promise<ViewingDay[
   const booked = new Set(bookedDates);
 
   const days: ViewingDay[] = [];
-  for (let date = today; date <= lastDay; date = addDays(date, 1)) {
+  for (let date = firstDay; date <= lastDay; date = addDays(date, 1)) {
     // The hall is in use on booked days, so nobody is free to give a tour.
     if (booked.has(date)) continue;
     const weekday = new Date(`${date}T12:00:00Z`).getUTCDay();
@@ -80,7 +79,7 @@ export const loadOpenViewingDays = async (now = new Date()): Promise<ViewingDay[
         start + SLOT_MS <= windowEnd;
         start += SLOT_MS
       ) {
-        if (start >= earliest && !overlaps(start, start + SLOT_MS, busy)) {
+        if (!overlaps(start, start + SLOT_MS, busy)) {
           slots.push(new Date(start).toISOString());
         }
       }

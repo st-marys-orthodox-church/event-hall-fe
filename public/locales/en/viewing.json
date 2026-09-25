@@ -17,7 +17,7 @@
     "eventDate": "Your event date",
     "eventDateHint": "An estimate is fine.",
     "eventDatePlaceholder": "Tap to pick a date",
-    "budgetAck": "I've seen that rentals range from {{min}} to {{max}} depending on guest count, plus refundable deposits.",
+    "budgetAck": "I've seen that rentals range from $2k - $5k depending on guest count, plus refundable deposits.",
     "checking": "Checking the date…",
     "overCapacity": "Our hall holds up to {{max}} guests, so a tour may not be the best next step. Tell us about your event and we'll see what's possible.",
     "dateBooked": "That date is already booked. Try another date, or contact us to talk through alternatives.",
