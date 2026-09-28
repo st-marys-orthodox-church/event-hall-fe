@@ -3,11 +3,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { isHoneypotTripped } from '../../server/honeypot';
 import { escapeHtml } from '../../server/html';
 import { leadSourceRows, readLeadSource } from '../../server/leadSource';
+import { AppConfig } from '../../utils/AppConfig';
 
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY ?? '';
 if (SENDGRID_API_KEY) sendgrid.setApiKey(SENDGRID_API_KEY);
 
-const VENUE_EMAIL = 'events@saintmaryro.org';
+const VENUE_EMAIL = AppConfig.email;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const MAX_LENGTHS = {
@@ -98,7 +99,7 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       });
     } else {
       await sendgrid.send({
-        to: VENUE_EMAIL,
+        to: AppConfig.staffEmails,
         from: VENUE_EMAIL,
         replyTo: { email, name },
         subject: `Inquiry for Fellowship Event Hall — ${name}`,

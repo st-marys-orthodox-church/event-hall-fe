@@ -131,7 +131,7 @@ export const sendViewingEmails = async (input: ViewingEmailInput): Promise<void>
       ],
     }),
     sendgrid.send({
-      to: AppConfig.email,
+      to: AppConfig.staffEmails,
       from: AppConfig.email,
       replyTo: { email: input.email, name: input.name },
       subject: `Viewing booked — ${input.name}, ${whenEn}`,

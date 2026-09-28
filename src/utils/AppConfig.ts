@@ -15,6 +15,9 @@ export const AppConfig = {
   googleBusinessProfile: 'https://maps.app.goo.gl/XMYyAKG9XSL24X259',
   telephone: PHONE_NUMBER,
   email: 'events@saintmaryro.org',
+  // Recipients for inquiry/booking notifications. `email` above stays the single
+  // public-facing/reply-to address; this list is only ever used as SendGrid `to`.
+  staffEmails: ['events@saintmaryro.org', 'church@saintmaryro.org'],
   address: {
     street: '2875 Winder Hwy',
     city: 'Dacula',
