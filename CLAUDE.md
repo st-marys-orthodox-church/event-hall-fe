@@ -28,12 +28,14 @@ See `README.md` for the full layout.
 pnpm dev          # dev server on :3000 (Turbopack — fast HMR)
 pnpm build        # production build + sitemap (webpack, not Turbopack — stable)
 pnpm check        # Biome: lint + format + organize imports (autofix)
-pnpm build-types  # tsc --noEmit
+pnpm build-types  # tsc --noEmit, for the app and for tests/
+pnpm test         # Vitest: unit + component tests in tests/
+pnpm smoke:voice  # boots the app against stand-ins and plays a voice call through it
 pnpm i18n:sync    # sync es/ro locales against en (auto-translates if ANTHROPIC_API_KEY set)
 pnpm i18n:check   # CI check — fails if locales drift
 ```
 
-Always run `pnpm check` and `pnpm build-types` before finishing a change. If you touched any `en` locale string, also run `pnpm i18n:sync` (or at least `pnpm i18n:check`).
+Always run `pnpm check`, `pnpm build-types` and `pnpm test` before finishing a change. If you touched anything under `src/server/voice/`, `src/pages/api/voice/` or the chat loop, also run `pnpm smoke:voice`. If you touched any `en` locale string, also run `pnpm i18n:sync` (or at least `pnpm i18n:check`).
 
 ## Conventions
 
@@ -54,6 +56,9 @@ Always run `pnpm check` and `pnpm build-types` before finishing a change. If you
 - `@date-io/jalaali` and `moment-jalaali` were in the old deps. They are **Persian calendar adapters** and have no business being here. Do not reintroduce them.
 - `react-animation-on-scroll` is unmaintained and may warn under React 19 StrictMode. The old gallery libs (`react-photo-gallery`, `react-images`) have already been replaced with `react-photo-album` + `yet-another-react-lightbox` — don't bring the old ones back.
 - `postbuild` runs `next-sitemap`. Don't stub it — search engines need it.
+- `trailingSlash: true` means `/api/foo` answers with a redirect to `/api/foo/`. A browser follows it; an outside service calling us (BytePlus, for the voice agent) may not, so give such services the URL with the slash.
+- Tests live in `tests/`, never under `src/pages/` (every file there becomes a route). `tests/` has its own `tsconfig.json` and is excluded from the app's, because `next build` type-checks everything the app's config includes.
+- The voice agent (`docs/voice-agent.md`) is the chat agent reached by voice: `/api/voice/llm` runs the same `runChatLoop` and tools as `/api/chat`. Change booking or venue behaviour in `chatAgent.ts` / `viewingBooking.ts`, not in the voice code.
 - `scripts/i18n-sync.mjs` calls the Anthropic API when `ANTHROPIC_API_KEY` is set; without the key it falls back to `[ES]` / `[RO]` placeholders. Keep the model id in sync with what the account has access to.
 
 ## Style

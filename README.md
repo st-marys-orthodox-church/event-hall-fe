@@ -53,7 +53,9 @@ ANTHROPIC_API_KEY=<optional — enables auto-translation in scripts/i18n-sync.mj
 | `pnpm start`         | Start the production server                                  |
 | `pnpm clean`         | Remove `.next` and `out`                                     |
 | `pnpm build-stats`   | Build with the bundle analyzer enabled                       |
-| `pnpm build-types`   | Type-check without emitting (`tsc --noEmit`)                 |
+| `pnpm build-types`   | Type-check the app and the tests without emitting            |
+| `pnpm test`          | Run the unit and component tests (Vitest)                    |
+| `pnpm smoke:voice`   | Boot the app with stand-ins and play a voice call's traffic through it |
 | `pnpm lint`          | Lint with Biome                                              |
 | `pnpm lint:fix`      | Lint and auto-fix with Biome                                 |
 | `pnpm format`        | Format with Biome                                            |
