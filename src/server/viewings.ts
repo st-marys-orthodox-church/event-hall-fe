@@ -1,6 +1,7 @@
 import { VIEWING_CONFIG, VIEWING_HOURS, type ViewingDay } from '../utils/Viewings';
 import { isBookingsCalendarConfigured, loadBookedDates } from './bookedDates';
 import { VENUE_TZ, addDays, isoInVenueTz } from './ics';
+import { type PublicEvent, loadPublicEvents } from './publicEvents';
 import {
   type BusyInterval,
   type NewViewingEvent,
@@ -109,8 +110,16 @@ export const bookViewingSlot = async (
   return { start, end };
 };
 
+/** True when the hall cannot be rented that day: a private booking or a church event. */
 export const isEventDateBooked = async (eventDate: string): Promise<boolean> => {
-  if (!isBookingsCalendarConfigured()) return false;
-  const dates = await loadBookedDates(eventDate, addDays(eventDate, 1));
-  return dates.includes(eventDate);
+  const to = addDays(eventDate, 1);
+  const [booked, events] = await Promise.all([
+    isBookingsCalendarConfigured() ? loadBookedDates(eventDate, to) : ([] as string[]),
+    // The site calendar shows the day as open when this feed is down, so the answer here matches it.
+    loadPublicEvents(eventDate, to).catch((err) => {
+      console.error('viewings: failed to fetch public events', err);
+      return [] as PublicEvent[];
+    }),
+  ]);
+  return booked.includes(eventDate) || events.some((ev) => ev.dates.includes(eventDate));
 };
