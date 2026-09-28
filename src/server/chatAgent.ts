@@ -1,4 +1,3 @@
-import type { FunctionDeclaration } from '@google/genai';
 import common from '../../public/locales/en/common.json';
 import home from '../../public/locales/en/home.json';
 import packages from '../../public/locales/en/packages.json';
@@ -9,6 +8,7 @@ import { DEPOSIT_INFO } from '../utils/Packages';
 import { VIEWING_CONFIG, type ViewingDay, type ViewingPrefill } from '../utils/Viewings';
 import { isBookingsCalendarConfigured } from './bookedDates';
 import { VENUE_TZ, addDays, isValidIsoDate, isoInVenueTz } from './ics';
+import type { ChatTool } from './llm/types';
 import { submitViewingBooking } from './viewingBooking';
 import {
   isEventDateBooked,
@@ -117,7 +117,7 @@ const EVENT_TYPE_KEYS = (Object.keys(EVENT_TYPES) as (keyof typeof EVENT_TYPES)[
   (key) => key !== 'OTHER'
 );
 
-export const CHAT_TOOLS: FunctionDeclaration[] = [
+export const CHAT_TOOLS: ChatTool[] = [
   {
     name: 'check_date_availability',
     description:

@@ -1,11 +1,3 @@
-import {
-  ApiError,
-  type Content,
-  type FunctionCall,
-  GoogleGenAI,
-  type Part,
-  ThinkingLevel,
-} from '@google/genai';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   CHAT_SYSTEM_PROMPT,
@@ -17,12 +9,12 @@ import {
 } from '../../server/chatAgent';
 import { isHoneypotTripped } from '../../server/honeypot';
 import { readLeadSource } from '../../server/leadSource';
+import { type ChatTurn, getLlmProvider } from '../../server/llm';
+import type { LlmToolCall, LlmToolResult } from '../../server/llm/types';
 import { clientIp, isRateLimited } from '../../server/rateLimit';
 
 export const config = { maxDuration: 60 };
 
-const API_KEY = process.env.GEMINI_API_KEY;
-const MODEL = process.env.CHAT_MODEL || 'gemini-3.8-flash';
 const MAX_TURNS = 24;
 const MAX_MESSAGE_CHARS = 1000;
 const MAX_TOOL_ROUNDS = 4;
@@ -36,17 +28,17 @@ export type ChatStreamEvent =
   | { type: 'error' }
   | { type: 'done' };
 
-const parseHistory = (raw: unknown): Content[] | null => {
+const parseHistory = (raw: unknown): ChatTurn[] | null => {
   if (!Array.isArray(raw) || raw.length === 0) return null;
-  const contents: Content[] = [];
+  const turns: ChatTurn[] = [];
   for (const item of raw.slice(-MAX_TURNS)) {
     const { role, content } = (item ?? {}) as { role?: unknown; content?: unknown };
     if ((role !== 'user' && role !== 'assistant') || typeof content !== 'string') return null;
     const text = content.trim().slice(0, MAX_MESSAGE_CHARS);
-    if (text) contents.push({ role: role === 'user' ? 'user' : 'model', parts: [{ text }] });
+    if (text) turns.push({ role, content: text });
   }
-  while (contents[0]?.role === 'model') contents.shift();
-  return contents.at(-1)?.role === 'user' ? contents : null;
+  while (turns[0]?.role === 'assistant') turns.shift();
+  return turns.at(-1)?.role === 'user' ? turns : null;
 };
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -54,15 +46,16 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (!API_KEY) {
+  const provider = getLlmProvider();
+  if (!provider.configured()) {
     return res.status(503).json({ error: 'not_configured' });
   }
   const body = (typeof req.body === 'object' && req.body !== null ? req.body : {}) as Record<
     string,
     unknown
   >;
-  const contents = parseHistory(body.messages);
-  if (!contents) return res.status(400).json({ error: 'invalid' });
+  const history = parseHistory(body.messages);
+  if (!history) return res.status(400).json({ error: 'invalid' });
   if (isHoneypotTripped(body, { form: 'chat', minFillMs: CHAT_MIN_FILL_MS })) {
     res.setHeader('Content-Type', 'application/x-ndjson; charset=utf-8');
     return res.status(200).end(`${JSON.stringify({ type: 'done' } satisfies ChatStreamEvent)}\n`);
@@ -83,54 +76,41 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     ip: clientIp(req),
     leadSource: readLeadSource(body.leadSource),
     locale: typeof body.locale === 'string' ? body.locale : 'en',
-    lastAssistantText: contents.at(-2)?.parts?.[0]?.text ?? '',
+    lastAssistantText: history.at(-2)?.content ?? '',
     emit: (action) => send({ type: 'action', ...action }),
     state: { booked: false },
   };
 
-  const ai = new GoogleGenAI({ apiKey: API_KEY });
   const controller = new AbortController();
   res.on('close', () => controller.abort());
 
   try {
+    const session = provider.start({
+      system: `${CHAT_SYSTEM_PROMPT}\n\n${chatDateContext()}`,
+      history,
+      tools: CHAT_TOOLS,
+      signal: controller.signal,
+    });
     let answered = false;
     for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
-      const stream = await ai.models.generateContentStream({
-        model: MODEL,
-        contents,
-        config: {
-          systemInstruction: `${CHAT_SYSTEM_PROMPT}\n\n${chatDateContext()}`,
-          tools: [{ functionDeclarations: CHAT_TOOLS }],
-          maxOutputTokens: 2048,
-          thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
-          abortSignal: controller.signal,
-        },
-      });
-
-      // Every part goes back verbatim on the next round: thought signatures ride on them.
-      const modelParts: Part[] = [];
-      const calls: FunctionCall[] = [];
-      for await (const chunk of stream) {
-        for (const part of chunk.candidates?.[0]?.content?.parts ?? []) {
-          modelParts.push(part);
-          if (part.functionCall) calls.push(part.functionCall);
-          else if (part.text && !part.thought) {
-            answered = true;
-            send({ type: 'text', delta: part.text });
-          }
+      const calls: LlmToolCall[] = [];
+      for await (const event of session.stream()) {
+        if (event.type === 'tool_call') {
+          calls.push(event.call);
+        } else {
+          answered = true;
+          send({ type: 'text', delta: event.delta });
         }
       }
       if (calls.length === 0) break;
 
-      contents.push({ role: 'model', parts: modelParts });
-      const results: Part[] = [];
+      const results: LlmToolResult[] = [];
       for (const call of calls) {
-        const name = call.name ?? '';
         try {
-          const output = await runChatTool(name, call.args, toolContext);
-          results.push({ functionResponse: { id: call.id, name, response: { output } } });
+          const output = await runChatTool(call.name, call.args, toolContext);
+          results.push({ call, output, isError: false });
         } catch (err) {
-          console.error(`chat: tool ${name} failed`, err);
+          console.error(`chat: tool ${call.name} failed`, err);
           send({
             type: 'action',
             action: 'contact',
@@ -138,28 +118,20 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             whatsapp: {},
           });
           results.push({
-            functionResponse: {
-              id: call.id,
-              name,
-              response: {
-                error:
-                  'The tool failed and nothing was booked. Apologize; contact buttons are now shown.',
-              },
-            },
+            call,
+            output:
+              'The tool failed and nothing was booked. Apologize; contact buttons are now shown.',
+            isError: true,
           });
         }
       }
-      contents.push({ role: 'user', parts: results });
+      session.pushToolResults(results);
     }
     // A blocked or empty generation streams nothing; the visitor still needs a way forward.
     send(answered ? { type: 'done' } : { type: 'error' });
   } catch (err) {
     if (!controller.signal.aborted) {
-      if (err instanceof ApiError) {
-        console.error(`chat: Gemini API error ${err.status}`, err.message);
-      } else {
-        console.error('chat: failed', err);
-      }
+      console.error(`chat: ${provider.name} failed`, err);
       send({ type: 'error' });
     }
   } finally {
