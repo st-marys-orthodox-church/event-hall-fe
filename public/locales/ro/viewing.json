@@ -6,7 +6,6 @@
   "modal": {
     "eyebrow": "Turul sălii",
     "heading": "Programează o vizionare",
-    "subheading": "Câteva întrebări scurte, apoi alegi ora care ți se potrivește. Fără telefoane.",
     "closeAriaLabel": "Închide programarea vizionării",
     "stepLabel": "Pasul {{current}} din {{total}}",
     "back": "Înapoi",
@@ -14,7 +13,7 @@
   },
   "date": {
     "heading": "Când are loc evenimentul?",
-    "hint": "Aceasta este data evenimentului, nu a vizionării — ora vizionării o alegi în pasul următor. Datele rezervate nu pot fi selectate.",
+    "hint": "Aceasta este data evenimentului, nu a vizionării",
     "selected": "Data evenimentului: {{date}}"
   },
   "qualify": {

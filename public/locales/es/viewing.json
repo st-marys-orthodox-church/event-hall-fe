@@ -6,7 +6,6 @@
   "modal": {
     "eyebrow": "Visita al salón",
     "heading": "Reserva una visita",
-    "subheading": "Unas preguntas rápidas y luego eliges el horario que prefieras. Sin llamadas.",
     "closeAriaLabel": "Cerrar la reserva de visita",
     "stepLabel": "Paso {{current}} de {{total}}",
     "back": "Atrás",
@@ -14,7 +13,7 @@
   },
   "date": {
     "heading": "¿Cuándo es tu evento?",
-    "hint": "Es la fecha de tu celebración, no la de la visita: el horario de la visita lo eliges después. Las fechas reservadas no se pueden seleccionar.",
+    "hint": "Es la fecha de tu evento, no la de la visita",
     "selected": "Fecha de tu evento: {{date}}"
   },
   "qualify": {

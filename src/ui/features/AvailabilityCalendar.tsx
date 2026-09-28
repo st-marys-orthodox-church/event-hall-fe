@@ -58,6 +58,9 @@ const buildMonthCells = (year: number, month: number) => {
   return cells;
 };
 
+// A picker sits inside a modal, where square cells would push the last weeks off a phone screen.
+const cellShape = (picker?: boolean) => (picker ? 'h-10' : 'aspect-square');
+
 type DayStatus = 'available' | 'booked' | 'event' | 'past';
 type EventsByDate = Map<string, PublicEvent>;
 
@@ -106,7 +109,7 @@ const DayCell = ({
   const { t } = useTranslation('common');
 
   if (day === null || status === null) {
-    return <div aria-hidden className="aspect-square" />;
+    return <div aria-hidden className={cellShape(picker)} />;
   }
 
   const statusLabel = t(`calendar.${status}`);
@@ -121,7 +124,7 @@ const DayCell = ({
     return (
       <div
         aria-label={dayStatusAria}
-        className="aspect-square flex items-center justify-center rounded-lg text-stone-500 text-sm select-none"
+        className={`${cellShape(picker)} flex items-center justify-center rounded-lg text-stone-500 text-sm select-none`}
       >
         {day}
       </div>
@@ -133,7 +136,7 @@ const DayCell = ({
       <div
         aria-label={dayStatusAria}
         title={event.title}
-        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-gold/15 ring-1 ring-brand-gold/40 text-brand-gold-ink select-none overflow-hidden px-0.5"
+        className="h-10 flex flex-col items-center justify-center rounded-lg bg-brand-gold/15 ring-1 ring-brand-gold/40 text-brand-gold-ink select-none overflow-hidden px-0.5"
       >
         <span className="text-sm font-semibold leading-none">{day}</span>
         <span className="text-[9px] leading-tight mt-0.5 font-medium w-full text-center truncate">
@@ -165,7 +168,7 @@ const DayCell = ({
       <div
         aria-label={dayStatusAria}
         title={statusLabel}
-        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-ink select-none"
+        className={`${cellShape(picker)} flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-ink select-none`}
       >
         <span className="text-sm font-semibold leading-none">{day}</span>
         <span
@@ -186,10 +189,10 @@ const DayCell = ({
         aria-label={dayStatusAria}
         aria-pressed={Boolean(selected)}
         onClick={() => onSelect(new Date(year, month, day))}
-        className={`aspect-square flex items-center justify-center rounded-lg text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition cursor-pointer ${
+        className={`h-10 flex items-center justify-center rounded-lg text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition cursor-pointer ${
           selected
             ? 'bg-brand-green-deep text-white'
-            : 'bg-white text-stone-700 hover:bg-brand-gold/15 hover:text-brand-gold-deep hover:ring-1 hover:ring-brand-gold/40'
+            : 'bg-white text-stone-700 hover:bg-stone-100 hover:ring-1 hover:ring-stone-300'
         }`}
       >
         {day}
@@ -238,7 +241,7 @@ const MonthGrid = ({
     <div
       className={
         picker
-          ? 'bg-white border border-stone-200 p-3'
+          ? 'bg-white border border-stone-200 p-2 sm:p-3'
           : 'bg-white rounded-2xl border border-stone-200 shadow-sm p-4 sm:p-5'
       }
     >
@@ -268,6 +271,7 @@ const MonthGrid = ({
                 month={month}
                 monthName={monthName}
                 status={null}
+                picker={picker}
                 onSelect={onSelect}
               />
             );
@@ -299,10 +303,14 @@ const MonthGrid = ({
   );
 };
 
-const Legend = () => {
+const Legend = ({ picker }: { picker?: boolean }) => {
   const { t } = useTranslation('common');
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-stone-600 mt-6">
+    <div
+      className={`flex flex-wrap items-center justify-center text-stone-600 ${
+        picker ? 'gap-x-4 gap-y-1.5 text-xs mt-3' : 'gap-4 sm:gap-6 text-xs sm:text-sm mt-6'
+      }`}
+    >
       <span className="flex items-center gap-2">
         <span className="inline-block w-4 h-4 rounded bg-white border border-stone-300" />
         {t('calendar.available')}
@@ -315,12 +323,14 @@ const Legend = () => {
         <span className="inline-block w-4 h-4 rounded bg-brand-gold/15 ring-1 ring-brand-gold/40" />
         {t('calendar.event')}
       </span>
-      <span className="flex items-center gap-2">
-        <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-500 flex items-center justify-center text-[10px]">
-          •
+      {!picker && (
+        <span className="flex items-center gap-2">
+          <span className="inline-block w-4 h-4 rounded border border-stone-200 text-stone-500 flex items-center justify-center text-[10px]">
+            •
+          </span>
+          {t('calendar.past')}
         </span>
-        {t('calendar.past')}
-      </span>
+      )}
     </div>
   );
 };
@@ -328,13 +338,13 @@ const Legend = () => {
 const SkeletonGrid = ({ picker }: { picker?: boolean }) => (
   <div
     className={`bg-white border border-stone-200 animate-pulse ${
-      picker ? 'p-3' : 'rounded-2xl shadow-sm p-4 sm:p-5'
+      picker ? 'p-2 sm:p-3' : 'rounded-2xl shadow-sm p-4 sm:p-5'
     }`}
   >
     {!picker && <div className="h-6 w-32 bg-stone-200 rounded mx-auto mb-4" />}
     <div className="grid grid-cols-7 gap-1">
       {Array.from({ length: 42 }).map((_, i) => (
-        <div key={i} className="aspect-square bg-stone-100 rounded-lg" />
+        <div key={i} className={`${cellShape(picker)} bg-stone-100 rounded-lg`} />
       ))}
     </div>
   </div>
@@ -450,7 +460,7 @@ const AvailabilityCalendar = ({
 
   return (
     <div className={className}>
-      <div className="flex items-center justify-between mb-5">
+      <div className={`flex items-center justify-between ${picker ? 'mb-3' : 'mb-5'}`}>
         <button
           type="button"
           onClick={goPrev}
@@ -508,7 +518,7 @@ const AvailabilityCalendar = ({
         </div>
       )}
 
-      <Legend />
+      <Legend picker={picker} />
     </div>
   );
 };

@@ -26,6 +26,10 @@ type Blocker = 'overCapacity' | 'dateBooked' | null;
 type SlotsState = 'loading' | 'ready' | 'unavailable';
 
 const STEPS: Step[] = ['date', 'qualify', 'slots', 'details'];
+// Keeps the longest label, in any of the three languages, on one line beside Back on a phone.
+const footerButtonSx = { whiteSpace: 'nowrap', px: { xs: 2.5, sm: 4 } };
+const QUALIFY_FORM = 'viewing-qualify-form';
+const DETAILS_FORM = 'viewing-details-form';
 
 const inputClass =
   'h-[3.125rem] sm:h-11 w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
@@ -45,6 +49,7 @@ export function ViewingModal() {
   const { t } = useTranslation('viewing');
   const { locale = 'en' } = useRouter();
   const dialogRef = useRef<HTMLDivElement>(null);
+  const bodyRef = useRef<HTMLDivElement>(null);
 
   const [step, setStep] = useState<Step>('date');
   const [guests, setGuests] = useState('');
@@ -91,6 +96,11 @@ export function ViewingModal() {
       document.body.style.overflow = overflow;
     };
   }, [viewingOpen]);
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: each step starts at the top of the scroll area
+  useEffect(() => {
+    if (bodyRef.current) bodyRef.current.scrollTop = 0;
+  }, [step]);
 
   const rejectEventDate = useCallback(() => {
     setEventDate('');
@@ -248,10 +258,11 @@ export function ViewingModal() {
 
   const activeDay = days.find((d) => d.date === activeDate);
   const stepIndex = STEPS.indexOf(step);
+  const previousStep = stepIndex > 0 ? STEPS[stepIndex - 1] : undefined;
   const address = `${AppConfig.address.street}, ${AppConfig.address.city}, ${AppConfig.address.region} ${AppConfig.address.postalCode}`;
 
   return (
-    <div className="fixed inset-0 z-[1300] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[1300] flex items-center justify-center p-2 sm:p-4">
       <button
         type="button"
         aria-label={t('modal.closeAriaLabel')}
@@ -266,41 +277,41 @@ export function ViewingModal() {
         aria-modal="true"
         aria-labelledby="viewing-heading"
         tabIndex={-1}
-        className="relative bg-white shadow-luxe max-w-xl w-full max-h-[90vh] overflow-y-auto border-t-2 border-brand-gold outline-none"
+        className="relative flex flex-col bg-white shadow-luxe max-w-xl w-full max-h-[calc(100dvh-1rem)] sm:max-h-[calc(100dvh-2rem)] border-t-2 border-brand-gold outline-none"
       >
-        <div className="flex justify-between items-start px-8 pt-8 pb-5">
+        <div className="shrink-0 flex justify-between items-start px-5 pt-4 pb-3 sm:px-8 sm:pt-6 sm:pb-4">
           <div>
-            <span className="eyebrow text-brand-gold-ink">{t('modal.eyebrow')}</span>
+            <p className="eyebrow">
+              <span className="text-brand-gold-ink">{t('modal.eyebrow')}</span>
+              {stepIndex >= 0 && (
+                <span className="text-stone-500">
+                  {' · '}
+                  {t('modal.stepLabel', { current: stepIndex + 1, total: STEPS.length })}
+                </span>
+              )}
+            </p>
             <h2
               id="viewing-heading"
-              className="mt-2 font-display text-3xl md:text-4xl text-stone-900 leading-tight"
+              className="mt-1 sm:mt-2 font-display text-2xl sm:text-3xl md:text-4xl text-stone-900 leading-tight"
             >
               {step === 'success' ? t('success.heading') : t('modal.heading')}
             </h2>
-            <div className="mt-3 w-10 h-px bg-brand-gold" />
-            {step !== 'success' && (
-              <p className="mt-3 text-sm text-stone-500 leading-relaxed max-w-sm">
-                {t('modal.subheading')}
-              </p>
-            )}
+            <div className="mt-2 sm:mt-3 w-10 h-px bg-brand-gold" />
           </div>
           <button
             type="button"
             onClick={handleCloseViewing}
             aria-label={t('modal.closeAriaLabel')}
-            className="p-2 text-stone-500 hover:bg-stone-100 hover:text-stone-900 transition-colors"
+            className="-mr-2 -mt-1 p-2 text-stone-500 hover:bg-stone-100 hover:text-stone-900 transition-colors"
           >
             <CloseIcon />
           </button>
         </div>
 
-        <div className="px-8 pb-8">
-          {stepIndex >= 0 && (
-            <div className="eyebrow text-stone-500 mb-5">
-              {t('modal.stepLabel', { current: stepIndex + 1, total: STEPS.length })}
-            </div>
-          )}
-
+        <div
+          ref={bodyRef}
+          className="flex-1 min-h-0 overflow-y-auto px-5 pt-1 pb-3 sm:px-8 sm:pb-6"
+        >
           {error && (
             <div role="alert" className="mb-5 border border-red-200 bg-red-50 p-3">
               <p className="text-sm text-red-800">{error}</p>
@@ -311,7 +322,7 @@ export function ViewingModal() {
           {step === 'date' && (
             <div>
               <h3 className="font-display text-2xl text-stone-900">{t('date.heading')}</h3>
-              <p className="mt-1 text-xs text-stone-500">{t('date.hint')}</p>
+              <p className="mt-1 text-sm text-stone-500">{t('date.hint')}</p>
               <AvailabilityCalendar
                 variant="picker"
                 monthsVisible={1}
@@ -319,24 +330,17 @@ export function ViewingModal() {
                 onDateSelect={(date) => {
                   setEventDate(isoOfDate(date));
                   setBlocker(null);
+                  setStep('qualify');
                 }}
                 onSelectedDateUnavailable={rejectEventDate}
-                className="mx-auto mt-5 max-w-sm"
+                className="mx-auto mt-3 sm:mt-4 max-w-sm"
               />
-              <p aria-live="polite" className="mt-5 min-h-5 text-sm text-brand-green-ink">
-                {eventDate && t('date.selected', { date: formatEventDate(eventDate) })}
-              </p>
-              {blocker === 'dateBooked' && <div className="mt-3">{blockerNotice}</div>}
-              <div className="flex justify-end mt-4">
-                <ModernButton size="large" disabled={!eventDate} onClick={() => setStep('qualify')}>
-                  {t('modal.continue')}
-                </ModernButton>
-              </div>
+              {blocker === 'dateBooked' && <div className="mt-4">{blockerNotice}</div>}
             </div>
           )}
 
           {step === 'qualify' && (
-            <form onSubmit={submitQualify} className="flex flex-col gap-4">
+            <form id={QUALIFY_FORM} onSubmit={submitQualify} className="flex flex-col gap-4">
               <p className="text-sm text-brand-green-ink">
                 {t('date.selected', { date: formatEventDate(eventDate) })}
               </p>
@@ -369,15 +373,6 @@ export function ViewingModal() {
               </label>
 
               {blocker === 'overCapacity' && blockerNotice}
-
-              <div className="flex justify-between items-center mt-2">
-                <ModernButton buttonVariant="ghost" onClick={() => setStep('date')}>
-                  {t('modal.back')}
-                </ModernButton>
-                <ModernButton type="submit" size="large">
-                  {t('modal.continue')}
-                </ModernButton>
-              </div>
             </form>
           )}
 
@@ -442,27 +437,11 @@ export function ViewingModal() {
                   </div>
                 </>
               )}
-
-              <div className="flex justify-between items-center mt-6">
-                <ModernButton buttonVariant="ghost" onClick={() => setStep('qualify')}>
-                  {t('modal.back')}
-                </ModernButton>
-                <ModernButton
-                  size="large"
-                  disabled={!slot}
-                  onClick={() => {
-                    setError('');
-                    setStep('details');
-                  }}
-                >
-                  {t('modal.continue')}
-                </ModernButton>
-              </div>
             </div>
           )}
 
           {step === 'details' && (
-            <form onSubmit={submitBooking} className="flex flex-col gap-4">
+            <form id={DETAILS_FORM} onSubmit={submitBooking} className="flex flex-col gap-4">
               <div>
                 <h3 className="font-display text-2xl text-stone-900">{t('details.heading')}</h3>
                 <p className="mt-1 text-sm text-brand-green-ink">
@@ -514,14 +493,6 @@ export function ViewingModal() {
                   />
                 </div>
               </div>
-              <div className="flex justify-between items-center mt-2">
-                <ModernButton buttonVariant="ghost" onClick={() => setStep('slots')}>
-                  {t('modal.back')}
-                </ModernButton>
-                <ModernButton type="submit" size="large" disabled={submitting}>
-                  {submitting ? t('details.booking') : t('details.confirm')}
-                </ModernButton>
-              </div>
             </form>
           )}
 
@@ -532,21 +503,75 @@ export function ViewingModal() {
                 {t('success.body', { when: formatWhen(slot), email })}
               </p>
               <p className="text-sm text-stone-500">{t('success.address', { address })}</p>
-              <div className="self-end">
-                <ModernButton size="large" onClick={handleCloseViewing}>
-                  {t('success.done')}
-                </ModernButton>
-              </div>
             </div>
           )}
+        </div>
+
+        <div
+          data-viewing-footer
+          className="shrink-0 border-t border-stone-200 bg-white px-5 py-3 sm:px-8 sm:py-4"
+        >
+          <div className="flex items-center justify-between gap-3">
+            {previousStep ? (
+              <ModernButton buttonVariant="ghost" onClick={() => setStep(previousStep)}>
+                {t('modal.back')}
+              </ModernButton>
+            ) : (
+              <span />
+            )}
+            {step === 'date' && (
+              <ModernButton
+                size="large"
+                sx={footerButtonSx}
+                disabled={!eventDate}
+                onClick={() => setStep('qualify')}
+              >
+                {t('modal.continue')}
+              </ModernButton>
+            )}
+            {step === 'qualify' && (
+              <ModernButton type="submit" form={QUALIFY_FORM} size="large" sx={footerButtonSx}>
+                {t('modal.continue')}
+              </ModernButton>
+            )}
+            {step === 'slots' && (
+              <ModernButton
+                size="large"
+                sx={footerButtonSx}
+                disabled={!slot}
+                onClick={() => {
+                  setError('');
+                  setStep('details');
+                }}
+              >
+                {t('modal.continue')}
+              </ModernButton>
+            )}
+            {step === 'details' && (
+              <ModernButton
+                type="submit"
+                form={DETAILS_FORM}
+                size="large"
+                sx={footerButtonSx}
+                disabled={submitting}
+              >
+                {submitting ? t('details.booking') : t('details.confirm')}
+              </ModernButton>
+            )}
+            {step === 'success' && (
+              <ModernButton size="large" sx={footerButtonSx} onClick={handleCloseViewing}>
+                {t('success.done')}
+              </ModernButton>
+            )}
+          </div>
 
           {step !== 'success' && (
-            <p className="mt-8 pt-5 border-t border-stone-200 text-sm text-stone-500 leading-relaxed">
+            <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-stone-500 leading-relaxed">
               {t('fallback.prefer')}{' '}
               <a
                 href={telHref}
                 onClick={() => trackEvent('viewing_call_click')}
-                className="text-brand-green-ink hover:text-brand-green-deep underline underline-offset-4 decoration-brand-gold"
+                className="whitespace-nowrap text-brand-green-ink hover:text-brand-green-deep underline underline-offset-4 decoration-brand-gold"
               >
                 {AppConfig.telephone}
               </a>{' '}

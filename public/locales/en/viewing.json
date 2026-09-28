@@ -6,7 +6,6 @@
   "modal": {
     "eyebrow": "Venue Tour",
     "heading": "Book a viewing",
-    "subheading": "A few quick questions, then choose a time that suits you. No phone call needed.",
     "closeAriaLabel": "Close viewing booking",
     "stepLabel": "Step {{current}} of {{total}}",
     "back": "Back",
@@ -14,7 +13,7 @@
   },
   "date": {
     "heading": "When is your event?",
-    "hint": "This is the date of your celebration, not the tour — you'll pick a tour time next. Booked dates can't be selected.",
+    "hint": "This is the date of your event, not the tour",
     "selected": "Your event date: {{date}}"
   },
   "qualify": {

@@ -68,7 +68,7 @@ describe('ViewingModal — choosing the event date', () => {
   it('opens on the calendar and asks nothing else until a date is chosen', async () => {
     open();
     expect(screen.getByText(viewing.date.heading)).toBeTruthy();
-    expect(screen.getByText('Step 1 of 4')).toBeTruthy();
+    expect(screen.getByText(/Step 1 of 4/)).toBeTruthy();
     await day(/^September 28, 2026, Available$/);
     expect(screen.queryByLabelText(viewing.qualify.guests)).toBeNull();
     expect(continueButton().disabled).toBe(true);
@@ -89,8 +89,8 @@ describe('ViewingModal — choosing the event date', () => {
   it('carries the chosen date through to the booking', async () => {
     open();
     fireEvent.click(await day(/^September 28, 2026, Available$/));
+    expect(screen.getByText(/Step 2 of 4/)).toBeTruthy();
     expect(screen.getByText('Your event date: Monday, September 28, 2026')).toBeTruthy();
-    fireEvent.click(continueButton());
 
     fireEvent.change(screen.getByLabelText(viewing.qualify.guests), { target: { value: '120' } });
     fireEvent.click(screen.getByRole('checkbox'));
@@ -127,6 +127,29 @@ describe('ViewingModal — choosing the event date', () => {
     expect(requests.at(-1)).toContain('from=2026-12-01&to=2027-01-01');
   });
 
+  it('keeps the chosen date when the visitor goes back to the calendar', async () => {
+    open();
+    fireEvent.click(await day(/^September 28, 2026, Available$/));
+    fireEvent.click(screen.getByRole('button', { name: viewing.modal.back }));
+    const chosen = await day(/^September 28, 2026, Available$/);
+    expect(chosen.getAttribute('aria-pressed')).toBe('true');
+    fireEvent.click(continueButton());
+    expect(screen.getByText(/Step 2 of 4/)).toBeTruthy();
+  });
+
+  it('keeps the buttons and the ways to reach a person on screen at every step', async () => {
+    open();
+    const footerHas = (name: string) =>
+      screen.getByRole('button', { name }).closest('[data-viewing-footer]') !== null;
+    expect(footerHas(viewing.modal.continue)).toBe(true);
+    expect(
+      screen.getByText(/Prefer to talk to a person/).closest('[data-viewing-footer]')
+    ).not.toBe(null);
+    fireEvent.click(await day(/^September 28, 2026, Available$/));
+    expect(footerHas(viewing.modal.continue)).toBe(true);
+    expect(footerHas(viewing.modal.back)).toBe(true);
+  });
+
   it('keeps an open date handed over by the chat selected', async () => {
     open({ eventDate: '2026-12-12' });
     const chosen = await day(/^December 12, 2026, Available$/);
@@ -138,7 +161,6 @@ describe('ViewingModal — choosing the event date', () => {
     bookingReply = { error: 'date_booked' };
     open();
     fireEvent.click(await day(/^September 28, 2026, Available$/));
-    fireEvent.click(continueButton());
     fireEvent.change(screen.getByLabelText(viewing.qualify.guests), { target: { value: '120' } });
     fireEvent.click(screen.getByRole('checkbox'));
     fireEvent.click(continueButton());
