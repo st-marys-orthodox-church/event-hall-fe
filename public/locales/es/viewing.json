@@ -12,13 +12,14 @@
     "back": "Atrás",
     "continue": "Continuar"
   },
+  "date": {
+    "heading": "¿Cuándo es tu evento?",
+    "hint": "Es la fecha de tu celebración, no la de la visita: el horario de la visita lo eliges después. Las fechas reservadas no se pueden seleccionar.",
+    "selected": "Fecha de tu evento: {{date}}"
+  },
   "qualify": {
     "guests": "Número estimado de invitados",
-    "eventDate": "Fecha de tu evento",
-    "eventDateHint": "Una fecha aproximada está bien.",
-    "eventDatePlaceholder": "Toca para elegir una fecha",
     "budgetAck": "He visto que el alquiler va de $2k - $5k según el número de invitados, más depósitos reembolsables.",
-    "checking": "Comprobando la fecha…",
     "overCapacity": "Nuestro salón admite hasta {{max}} invitados, así que una visita quizá no sea el mejor siguiente paso. Cuéntanos sobre tu evento y veremos qué es posible.",
     "dateBooked": "Esa fecha ya está reservada. Prueba con otra fecha o contáctanos para ver alternativas.",
     "contactInstead": "Mejor contáctanos"

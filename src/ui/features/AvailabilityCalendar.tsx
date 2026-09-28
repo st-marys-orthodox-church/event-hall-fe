@@ -1,4 +1,5 @@
-import { ChevronLeft, ChevronRight } from '@mui/icons-material';
+import ChevronLeft from '@mui/icons-material/ChevronLeft';
+import ChevronRight from '@mui/icons-material/ChevronRight';
 import { useTranslation } from 'next-i18next/pages';
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
@@ -21,6 +22,12 @@ type Props = {
   monthsVisible?: number;
   onDateSelect?: (date: Date) => void;
   className?: string;
+  /** `picker` chooses a day inside a form: church event days are shown but lead nowhere. */
+  variant?: 'browse' | 'picker';
+  /** Picker only. The chosen day, YYYY-MM-DD; the calendar opens on its month. */
+  selectedDate?: string;
+  /** Picker only. Called when the chosen day turns out to be past, booked or a church event. */
+  onSelectedDateUnavailable?: () => void;
 };
 
 type MonthKey = { year: number; month: number };
@@ -82,6 +89,8 @@ const DayCell = ({
   monthName,
   status,
   event,
+  picker,
+  selected,
   onSelect,
 }: {
   day: number | null;
@@ -90,6 +99,8 @@ const DayCell = ({
   monthName: string;
   status: DayStatus | null;
   event?: PublicEvent;
+  picker?: boolean;
+  selected?: boolean;
   onSelect: (date: Date) => void;
 }) => {
   const { t } = useTranslation('common');
@@ -113,6 +124,21 @@ const DayCell = ({
         className="aspect-square flex items-center justify-center rounded-lg text-stone-500 text-sm select-none"
       >
         {day}
+      </div>
+    );
+  }
+
+  if (status === 'event' && event && picker) {
+    return (
+      <div
+        aria-label={dayStatusAria}
+        title={event.title}
+        className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-gold/15 ring-1 ring-brand-gold/40 text-brand-gold-ink select-none overflow-hidden px-0.5"
+      >
+        <span className="text-sm font-semibold leading-none">{day}</span>
+        <span className="text-[9px] leading-tight mt-0.5 font-medium w-full text-center truncate">
+          {event.title}
+        </span>
       </div>
     );
   }
@@ -142,10 +168,32 @@ const DayCell = ({
         className="aspect-square flex flex-col items-center justify-center rounded-lg bg-brand-green/15 ring-1 ring-brand-green/30 text-brand-green-ink select-none"
       >
         <span className="text-sm font-semibold leading-none">{day}</span>
-        <span className="text-[9px] uppercase tracking-wider mt-0.5 font-medium">
+        <span
+          className={`uppercase mt-0.5 font-medium ${
+            picker ? 'text-[8px] tracking-wide' : 'text-[9px] tracking-wider'
+          }`}
+        >
           {statusLabel}
         </span>
       </div>
+    );
+  }
+
+  if (picker) {
+    return (
+      <button
+        type="button"
+        aria-label={dayStatusAria}
+        aria-pressed={Boolean(selected)}
+        onClick={() => onSelect(new Date(year, month, day))}
+        className={`aspect-square flex items-center justify-center rounded-lg text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-gold transition cursor-pointer ${
+          selected
+            ? 'bg-brand-green-deep text-white'
+            : 'bg-white text-stone-700 hover:bg-brand-gold/15 hover:text-brand-gold-deep hover:ring-1 hover:ring-brand-gold/40'
+        }`}
+      >
+        {day}
+      </button>
     );
   }
 
@@ -169,6 +217,8 @@ const MonthGrid = ({
   bookedSet,
   eventsByDate,
   todayIso,
+  picker,
+  selectedDate,
   onSelect,
 }: {
   year: number;
@@ -178,15 +228,25 @@ const MonthGrid = ({
   bookedSet: Set<string>;
   eventsByDate: EventsByDate;
   todayIso: string;
+  picker?: boolean;
+  selectedDate?: string;
   onSelect: (date: Date) => void;
 }) => {
   const cells = useMemo(() => buildMonthCells(year, month), [year, month]);
 
   return (
-    <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-4 sm:p-5">
-      <h3 className="text-center text-lg font-bold text-stone-800 mb-4">
-        {monthName} {year}
-      </h3>
+    <div
+      className={
+        picker
+          ? 'bg-white border border-stone-200 p-3'
+          : 'bg-white rounded-2xl border border-stone-200 shadow-sm p-4 sm:p-5'
+      }
+    >
+      {!picker && (
+        <h3 className="text-center text-lg font-bold text-stone-800 mb-4">
+          {monthName} {year}
+        </h3>
+      )}
       <div className="grid grid-cols-7 gap-1 mb-1">
         {weekdayNames.map((wd) => (
           <div
@@ -228,6 +288,8 @@ const MonthGrid = ({
               monthName={monthName}
               status={status}
               event={event}
+              picker={picker}
+              selected={iso === selectedDate}
               onSelect={onSelect}
             />
           );
@@ -263,9 +325,13 @@ const Legend = () => {
   );
 };
 
-const SkeletonGrid = () => (
-  <div className="bg-white rounded-2xl border border-stone-200 shadow-sm p-4 sm:p-5 animate-pulse">
-    <div className="h-6 w-32 bg-stone-200 rounded mx-auto mb-4" />
+const SkeletonGrid = ({ picker }: { picker?: boolean }) => (
+  <div
+    className={`bg-white border border-stone-200 animate-pulse ${
+      picker ? 'p-3' : 'rounded-2xl shadow-sm p-4 sm:p-5'
+    }`}
+  >
+    {!picker && <div className="h-6 w-32 bg-stone-200 rounded mx-auto mb-4" />}
     <div className="grid grid-cols-7 gap-1">
       {Array.from({ length: 42 }).map((_, i) => (
         <div key={i} className="aspect-square bg-stone-100 rounded-lg" />
@@ -274,7 +340,15 @@ const SkeletonGrid = () => (
   </div>
 );
 
-const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Props) => {
+const AvailabilityCalendar = ({
+  monthsVisible = 2,
+  onDateSelect,
+  className,
+  variant = 'browse',
+  selectedDate,
+  onSelectedDateUnavailable,
+}: Props) => {
+  const picker = variant === 'picker';
   const { t, i18n } = useTranslation('common');
   const activeLocale = i18n.language || 'en';
   const weekdayNames = useMemo(() => buildWeekdayNames(activeLocale), [activeLocale]);
@@ -293,6 +367,15 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
     setBaseMonth(isoToMonthKey(iso));
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted || !selectedDate || selectedDate < todayIso) return;
+    const chosen = isoToMonthKey(selectedDate);
+    setBaseMonth((base) => {
+      const offset = (chosen.year - base.year) * 12 + chosen.month - base.month;
+      return offset >= 0 && offset < monthsVisible ? base : chosen;
+    });
+  }, [mounted, selectedDate, todayIso, monthsVisible]);
 
   useEffect(() => {
     if (!mounted) return;
@@ -322,6 +405,13 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
     };
   }, [mounted, baseMonth, monthsVisible]);
 
+  useEffect(() => {
+    if (!selectedDate || !todayIso || loading || error) return;
+    if (selectedDate < todayIso || bookedSet.has(selectedDate) || eventsByDate.has(selectedDate)) {
+      onSelectedDateUnavailable?.();
+    }
+  }, [selectedDate, todayIso, loading, error, bookedSet, eventsByDate, onSelectedDateUnavailable]);
+
   const handleSelect = (date: Date) => {
     if (onDateSelect) onDateSelect(date);
   };
@@ -342,16 +432,21 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
     [baseMonth, monthsVisible]
   );
 
+  const gridClass = `grid grid-cols-1 ${monthsVisible > 1 ? 'md:grid-cols-2' : ''} gap-4 sm:gap-6`;
+
   if (!mounted) {
     return (
       <div className={className}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-          <SkeletonGrid />
-          <SkeletonGrid />
+        <div className={gridClass}>
+          {visibleMonths.map((m) => (
+            <SkeletonGrid key={`${m.year}-${m.month}`} picker={picker} />
+          ))}
         </div>
       </div>
     );
   }
+
+  const firstMonth = visibleMonths[0];
 
   return (
     <div className={className}>
@@ -365,7 +460,13 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
         >
           <ChevronLeft />
         </button>
-        <p className="text-sm text-stone-500 font-medium">{t('calendar.clickHint')}</p>
+        {picker && firstMonth ? (
+          <p aria-live="polite" className="font-display text-xl text-stone-900 capitalize">
+            {monthNames[firstMonth.month]} {firstMonth.year}
+          </p>
+        ) : (
+          <p className="text-sm text-stone-500 font-medium">{t('calendar.clickHint')}</p>
+        )}
         <button
           type="button"
           onClick={goNext}
@@ -382,13 +483,13 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
           <p className="text-stone-600 text-sm">{t('calendar.errorBody')}</p>
         </div>
       ) : loading ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div className={gridClass}>
           {visibleMonths.map((m) => (
-            <SkeletonGrid key={`${m.year}-${m.month}`} />
+            <SkeletonGrid key={`${m.year}-${m.month}`} picker={picker} />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div className={gridClass}>
           {visibleMonths.map((m) => (
             <MonthGrid
               key={`${m.year}-${m.month}`}
@@ -399,6 +500,8 @@ const AvailabilityCalendar = ({ monthsVisible = 2, onDateSelect, className }: Pr
               bookedSet={bookedSet}
               eventsByDate={eventsByDate}
               todayIso={todayIso}
+              picker={picker}
+              selectedDate={selectedDate}
               onSelect={handleSelect}
             />
           ))}

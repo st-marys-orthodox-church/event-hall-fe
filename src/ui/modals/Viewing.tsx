@@ -1,11 +1,9 @@
-import CalendarMonth from '@mui/icons-material/CalendarMonth';
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
 import CloseIcon from '@mui/icons-material/Close';
 import { useTranslation } from 'next-i18next/pages';
 import { useRouter } from 'next/router';
-import { type SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { type SyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useHoneypot } from '../../hooks/UseHoneypot';
-import type { AvailabilityResponse } from '../../pages/api/availability';
 import { useAppContext } from '../../stores/Global';
 import { trackEvent } from '../../utils/Analytics';
 import { AppConfig } from '../../utils/AppConfig';
@@ -21,27 +19,20 @@ import {
 } from '../../utils/Viewings';
 import { HoneypotField } from '../base/HoneypotField';
 import { ModernButton } from '../components/ModernButton';
+import { AvailabilityCalendar } from '../features/AvailabilityCalendar';
 
-type Step = 'qualify' | 'slots' | 'details' | 'success';
+type Step = 'date' | 'qualify' | 'slots' | 'details' | 'success';
 type Blocker = 'overCapacity' | 'dateBooked' | null;
 type SlotsState = 'loading' | 'ready' | 'unavailable';
 
-const STEPS: Step[] = ['qualify', 'slots', 'details'];
+const STEPS: Step[] = ['date', 'qualify', 'slots', 'details'];
 
 const inputClass =
   'h-[3.125rem] sm:h-11 w-full border border-stone-200 bg-white px-3 py-3 text-base text-stone-900 transition-colors sm:text-sm duration-300 hover:border-brand-gold focus:border-brand-green focus:outline-none';
 const labelClass = 'block text-sm text-stone-600 mb-1.5';
 
 const pad = (n: number) => String(n).padStart(2, '0');
-const todayInput = () => {
-  const d = new Date();
-  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
-};
-const nextDay = (iso: string) => {
-  const d = new Date(`${iso}T00:00:00Z`);
-  d.setUTCDate(d.getUTCDate() + 1);
-  return d.toISOString().slice(0, 10);
-};
+const isoOfDate = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 
 const ERROR_KEYS: Partial<Record<ViewingErrorCode, string>> = {
   invalid: 'errors.invalid',
@@ -55,13 +46,11 @@ export function ViewingModal() {
   const { locale = 'en' } = useRouter();
   const dialogRef = useRef<HTMLDivElement>(null);
 
-  const [step, setStep] = useState<Step>('qualify');
+  const [step, setStep] = useState<Step>('date');
   const [guests, setGuests] = useState('');
   const [eventDate, setEventDate] = useState('');
-  const [dateFocused, setDateFocused] = useState(false);
   const [budgetAck, setBudgetAck] = useState(false);
   const [blocker, setBlocker] = useState<Blocker>(null);
-  const [checking, setChecking] = useState(false);
 
   const [slotsState, setSlotsState] = useState<SlotsState>('loading');
   const [days, setDays] = useState<ViewingDay[]>([]);
@@ -78,7 +67,7 @@ export function ViewingModal() {
 
   useEffect(() => {
     if (!viewingOpen) return;
-    setStep('qualify');
+    setStep('date');
     setBlocker(null);
     setSlot('');
     setError('');
@@ -103,8 +92,21 @@ export function ViewingModal() {
     };
   }, [viewingOpen]);
 
+  const rejectEventDate = useCallback(() => {
+    setEventDate('');
+    setBlocker('dateBooked');
+  }, []);
+
   if (!viewingOpen) return null;
 
+  const formatEventDate = (date: string) =>
+    new Intl.DateTimeFormat(locale, {
+      timeZone: 'UTC',
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(new Date(`${date}T12:00:00Z`));
   const formatDay = (date: string) =>
     new Intl.DateTimeFormat(locale, {
       timeZone: 'UTC',
@@ -171,27 +173,23 @@ export function ViewingModal() {
     </div>
   );
 
-  const submitQualify = async (e: SyntheticEvent) => {
+  const blockerNotice = blocker && (
+    <div role="alert" className="border border-stone-200 bg-stone-50 p-4">
+      <p className="text-sm text-stone-700 leading-relaxed">
+        {blocker === 'overCapacity'
+          ? t('qualify.overCapacity', { max: VIEWING_CONFIG.maxGuests })
+          : t('qualify.dateBooked')}
+      </p>
+      {talkInstead}
+    </div>
+  );
+
+  const submitQualify = (e: SyntheticEvent) => {
     e.preventDefault();
     setBlocker(null);
     if (Number(guests) > VIEWING_CONFIG.maxGuests) {
       setBlocker('overCapacity');
       return;
-    }
-    setChecking(true);
-    try {
-      const res = await fetch(`/api/availability?from=${eventDate}&to=${nextDay(eventDate)}`);
-      if (res.ok) {
-        const body = (await res.json()) as AvailabilityResponse;
-        if (body.dates.includes(eventDate)) {
-          setBlocker('dateBooked');
-          return;
-        }
-      }
-    } catch {
-      // The booking endpoint re-checks the date, so a failed pre-check should not block the visitor.
-    } finally {
-      setChecking(false);
     }
     setStep('slots');
     loadSlots();
@@ -225,8 +223,13 @@ export function ViewingModal() {
         setStep('success');
         return;
       }
-      if (body.error === 'date_booked' || body.error === 'over_capacity') {
-        setBlocker(body.error === 'date_booked' ? 'dateBooked' : 'overCapacity');
+      if (body.error === 'date_booked') {
+        rejectEventDate();
+        setStep('date');
+        return;
+      }
+      if (body.error === 'over_capacity') {
+        setBlocker('overCapacity');
         setStep('qualify');
         return;
       }
@@ -305,71 +308,54 @@ export function ViewingModal() {
             </div>
           )}
 
+          {step === 'date' && (
+            <div>
+              <h3 className="font-display text-2xl text-stone-900">{t('date.heading')}</h3>
+              <p className="mt-1 text-xs text-stone-500">{t('date.hint')}</p>
+              <AvailabilityCalendar
+                variant="picker"
+                monthsVisible={1}
+                selectedDate={eventDate}
+                onDateSelect={(date) => {
+                  setEventDate(isoOfDate(date));
+                  setBlocker(null);
+                }}
+                onSelectedDateUnavailable={rejectEventDate}
+                className="mx-auto mt-5 max-w-sm"
+              />
+              <p aria-live="polite" className="mt-5 min-h-5 text-sm text-brand-green-ink">
+                {eventDate && t('date.selected', { date: formatEventDate(eventDate) })}
+              </p>
+              {blocker === 'dateBooked' && <div className="mt-3">{blockerNotice}</div>}
+              <div className="flex justify-end mt-4">
+                <ModernButton size="large" disabled={!eventDate} onClick={() => setStep('qualify')}>
+                  {t('modal.continue')}
+                </ModernButton>
+              </div>
+            </div>
+          )}
+
           {step === 'qualify' && (
             <form onSubmit={submitQualify} className="flex flex-col gap-4">
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <label htmlFor="viewing-guests" className={labelClass}>
-                    {t('qualify.guests')}
-                  </label>
-                  <input
-                    id="viewing-guests"
-                    type="number"
-                    min={1}
-                    required
-                    value={guests}
-                    onChange={(e) => {
-                      setGuests(e.target.value);
-                      setBlocker(null);
-                    }}
-                    className={inputClass}
-                  />
-                </div>
-                <div className="flex-1">
-                  <label htmlFor="viewing-event-date" className={labelClass}>
-                    {t('qualify.eventDate')}
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="viewing-event-date"
-                      type="date"
-                      min={todayInput()}
-                      required
-                      value={eventDate}
-                      onChange={(e) => {
-                        setEventDate(e.target.value);
-                        setBlocker(null);
-                      }}
-                      onFocus={() => setDateFocused(true)}
-                      onBlur={() => setDateFocused(false)}
-                      onClick={(e) => {
-                        try {
-                          e.currentTarget.showPicker?.();
-                        } catch {}
-                      }}
-                      aria-describedby="viewing-event-date-hint"
-                      className={`${inputClass} date-input pr-11 ${
-                        !eventDate && !dateFocused ? 'date-input-empty' : ''
-                      }`}
-                    />
-                    {!eventDate && !dateFocused && (
-                      <span
-                        aria-hidden
-                        className="pointer-events-none absolute inset-y-0 left-3 flex items-center text-base text-stone-400 sm:text-sm"
-                      >
-                        {t('qualify.eventDatePlaceholder')}
-                      </span>
-                    )}
-                    <CalendarMonth
-                      aria-hidden
-                      fontSize="small"
-                      className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-brand-gold"
-                    />
-                  </div>
-                  <p id="viewing-event-date-hint" className="mt-1 text-xs text-stone-500">
-                    {t('qualify.eventDateHint')}
-                  </p>
-                </div>
+              <p className="text-sm text-brand-green-ink">
+                {t('date.selected', { date: formatEventDate(eventDate) })}
+              </p>
+              <div>
+                <label htmlFor="viewing-guests" className={labelClass}>
+                  {t('qualify.guests')}
+                </label>
+                <input
+                  id="viewing-guests"
+                  type="number"
+                  min={1}
+                  required
+                  value={guests}
+                  onChange={(e) => {
+                    setGuests(e.target.value);
+                    setBlocker(null);
+                  }}
+                  className={inputClass}
+                />
               </div>
               <label className="flex items-start gap-3 text-sm text-stone-600 leading-relaxed">
                 <input
@@ -382,20 +368,14 @@ export function ViewingModal() {
                 <span>{t('qualify.budgetAck')}</span>
               </label>
 
-              {blocker && (
-                <div role="alert" className="border border-stone-200 bg-stone-50 p-4">
-                  <p className="text-sm text-stone-700 leading-relaxed">
-                    {blocker === 'overCapacity'
-                      ? t('qualify.overCapacity', { max: VIEWING_CONFIG.maxGuests })
-                      : t('qualify.dateBooked')}
-                  </p>
-                  {talkInstead}
-                </div>
-              )}
+              {blocker === 'overCapacity' && blockerNotice}
 
-              <div className="flex justify-end mt-2">
-                <ModernButton type="submit" size="large" disabled={checking}>
-                  {checking ? t('qualify.checking') : t('modal.continue')}
+              <div className="flex justify-between items-center mt-2">
+                <ModernButton buttonVariant="ghost" onClick={() => setStep('date')}>
+                  {t('modal.back')}
+                </ModernButton>
+                <ModernButton type="submit" size="large">
+                  {t('modal.continue')}
                 </ModernButton>
               </div>
             </form>
