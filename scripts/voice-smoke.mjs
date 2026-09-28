@@ -223,7 +223,7 @@ const freePort = () =>
 const DIST_DIR = '.next-smoke';
 const NEXT_ENV_FILE = join(ROOT, 'next-env.d.ts');
 
-const bootApp = async (env) => {
+const bootApp = async (env, readyStatus = 405) => {
   const port = await freePort();
   const base = `http://127.0.0.1:${port}`;
   // Next rewrites this checked-in file to point at whichever build folder it runs from.
@@ -260,7 +260,7 @@ const bootApp = async (env) => {
     if (child.exitCode !== null) break;
     try {
       const res = await fetch(`${base}/api/voice/stop/`, { signal: AbortSignal.timeout(60_000) });
-      if (res.status === 405) {
+      if (res.status === readyStatus) {
         const stop = () =>
           new Promise((resolve) => {
             child.once('exit', () => resolve(tidy()));
@@ -548,6 +548,56 @@ const smokeLocal = async () => {
         sources.every((source) => !source.includes('onRoomBinaryMessageReceived')),
       `${scripts.length} scripts on the page`
     );
+
+    section('With the switch off');
+    await app.stop();
+    app = undefined;
+    const before = stubs.received.openApi.length;
+    // Every credential stays in place: the switch alone has to keep voice out of reach.
+    app = await bootApp({ ...STUB_ENV, ...stubs.env, NEXT_PUBLIC_VOICE_ENABLED: '' }, 404);
+    const session = sealSession(
+      {
+        roomId: 'hall_off',
+        taskId: 'task_off',
+        userId: 'visitor_off',
+        agentUserId: 'agent_off',
+        ip: '127.0.0.1',
+        leadSource: null,
+        expiresAt: Math.floor(Date.now() / 1000) + 120,
+      },
+      STUB_ENV.VOICE_LLM_SECRET
+    );
+    const closed = await Promise.all([
+      postJson(`${app.base}/api/voice/start/`, HUMAN),
+      postJson(`${app.base}/api/voice/stop/`, { session }),
+      postJson(
+        `${app.base}/api/voice/llm/`,
+        { messages: [{ role: 'user', content: 'hello' }] },
+        {
+          Authorization: `Bearer ${derive(STUB_ENV.VOICE_LLM_SECRET, 'bearer')}`,
+          'x-voice-session': session,
+        }
+      ),
+    ]);
+    check(
+      'start, stop and the model endpoint all answer 404, valid credentials or not',
+      closed.every((res) => res.status === 404),
+      closed.map((res) => `HTTP ${res.status}`).join(', ')
+    );
+    check('nothing reached BytePlus', stubs.received.openApi.length === before);
+    const chatStill = await postJson(`${app.base}/api/chat/`, {
+      ...HUMAN,
+      locale: 'en',
+      messages: [{ role: 'user', content: 'How many guests fit?' }],
+    });
+    const chatText = await chatStill.text();
+    check(
+      'the text chat still answers',
+      chatStill.status === 200 && chatText.includes('"type":"done"'),
+      `HTTP ${chatStill.status}`
+    );
+    const offPage = await fetch(`${app.base}/`);
+    check('the home page renders', offPage.status === 200, `HTTP ${offPage.status}`);
   } finally {
     await app?.stop();
     stubs.close();

@@ -8,6 +8,20 @@ Status: **built, not yet run against a real BytePlus account.** Everything up to
 boundary is covered by tests; the first call with real credentials is the step that remains
 (see [First call checklist](#first-call-checklist)).
 
+## Merged is not live
+
+The code can be merged and deployed without anything changing for visitors. One environment
+variable, `NEXT_PUBLIC_VOICE_ENABLED`, decides whether voice exists:
+
+| `NEXT_PUBLIC_VOICE_ENABLED` | What a visitor sees | `/api/voice/*` |
+|---|---|---|
+| unset (the default, and the state of production) | The chat widget as before, no "Talk to us" button | 404, whatever credentials are set |
+| `1` | The "Talk to us" button, in English | Working, if the credentials are set |
+
+Going live is: set the credentials, set the variable to `1`, redeploy. The redeploy matters,
+because the button's half of the switch is fixed when the site is built. Going back is: unset
+it, redeploy. `pnpm smoke:voice` checks both states on every run.
+
 ## How a call works
 
 ```
