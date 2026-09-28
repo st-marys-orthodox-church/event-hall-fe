@@ -5,19 +5,15 @@ import {
   type ChatAction,
   type ChatToolContext,
   chatDateContext,
-  runChatTool,
 } from '../../server/chatAgent';
+import { parseChatHistory, runChatLoop } from '../../server/chatLoop';
 import { isHoneypotTripped } from '../../server/honeypot';
 import { readLeadSource } from '../../server/leadSource';
-import { type ChatTurn, getLlmProvider } from '../../server/llm';
-import type { LlmToolCall, LlmToolResult } from '../../server/llm/types';
+import { getLlmProvider } from '../../server/llm';
 import { clientIp, isRateLimited } from '../../server/rateLimit';
 
 export const config = { maxDuration: 60 };
 
-const MAX_TURNS = 24;
-const MAX_MESSAGE_CHARS = 1000;
-const MAX_TOOL_ROUNDS = 4;
 const MESSAGES_PER_10_MIN = 20;
 // The chat's clock starts when the widget mounts, and a suggestion chip is one tap away.
 const CHAT_MIN_FILL_MS = 1000;
@@ -27,19 +23,6 @@ export type ChatStreamEvent =
   | ({ type: 'action' } & ChatAction)
   | { type: 'error' }
   | { type: 'done' };
-
-const parseHistory = (raw: unknown): ChatTurn[] | null => {
-  if (!Array.isArray(raw) || raw.length === 0) return null;
-  const turns: ChatTurn[] = [];
-  for (const item of raw.slice(-MAX_TURNS)) {
-    const { role, content } = (item ?? {}) as { role?: unknown; content?: unknown };
-    if ((role !== 'user' && role !== 'assistant') || typeof content !== 'string') return null;
-    const text = content.trim().slice(0, MAX_MESSAGE_CHARS);
-    if (text) turns.push({ role, content: text });
-  }
-  while (turns[0]?.role === 'assistant') turns.shift();
-  return turns.at(-1)?.role === 'user' ? turns : null;
-};
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
@@ -54,7 +37,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
     string,
     unknown
   >;
-  const history = parseHistory(body.messages);
+  const history = parseChatHistory(body.messages);
   if (!history) return res.status(400).json({ error: 'invalid' });
   if (isHoneypotTripped(body, { form: 'chat', minFillMs: CHAT_MIN_FILL_MS })) {
     res.setHeader('Content-Type', 'application/x-ndjson; charset=utf-8');
@@ -85,48 +68,15 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   res.on('close', () => controller.abort());
 
   try {
-    const session = provider.start({
+    const answered = await runChatLoop({
+      provider,
       system: `${CHAT_SYSTEM_PROMPT}\n\n${chatDateContext()}`,
       history,
       tools: CHAT_TOOLS,
       signal: controller.signal,
+      toolContext,
+      onText: (delta) => send({ type: 'text', delta }),
     });
-    let answered = false;
-    for (let round = 0; round <= MAX_TOOL_ROUNDS; round++) {
-      const calls: LlmToolCall[] = [];
-      for await (const event of session.stream()) {
-        if (event.type === 'tool_call') {
-          calls.push(event.call);
-        } else {
-          answered = true;
-          send({ type: 'text', delta: event.delta });
-        }
-      }
-      if (calls.length === 0) break;
-
-      const results: LlmToolResult[] = [];
-      for (const call of calls) {
-        try {
-          const output = await runChatTool(call.name, call.args, toolContext);
-          results.push({ call, output, isError: false });
-        } catch (err) {
-          console.error(`chat: tool ${call.name} failed`, err);
-          send({
-            type: 'action',
-            action: 'contact',
-            channels: ['call', 'whatsapp', 'form'],
-            whatsapp: {},
-          });
-          results.push({
-            call,
-            output:
-              'The tool failed and nothing was booked. Apologize; contact buttons are now shown.',
-            isError: true,
-          });
-        }
-      }
-      session.pushToolResults(results);
-    }
     // A blocked or empty generation streams nothing; the visitor still needs a way forward.
     send(answered ? { type: 'done' } : { type: 'error' });
   } catch (err) {

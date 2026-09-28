@@ -226,6 +226,8 @@ export type ChatAction =
   | { action: 'viewing_booked'; start: string; email: string };
 
 export type ChatToolContext = {
+  /** How the visitor is talking to the agent; a booking records it. Text chat when unset. */
+  channel?: 'chat' | 'voice';
   ip: string;
   /** Where the visitor's session came from, captured by the site on landing. */
   leadSource: LeadSource | null;
@@ -311,7 +313,7 @@ const bookViewing = async (input: Record<string, unknown>, ctx: ChatToolContext)
       leadSource: ctx.leadSource ?? undefined,
     },
     ctx.ip,
-    'chat'
+    ctx.channel ?? 'chat'
   );
 
   if (result.ok) {

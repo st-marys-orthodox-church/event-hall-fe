@@ -10,6 +10,7 @@ const PHONE_RE = /^[\d\s()+.-]{7,25}$/;
 // One bucket per IP, shared by the form and the chat agent.
 const BOOKINGS_PER_HOUR = 5;
 const LOCALES = ['en', 'es', 'ro'];
+const SOURCE_NOTES = { form: '', chat: ' (chat assistant)', voice: ' (voice assistant)' };
 
 export type ViewingBookingResult =
   | { ok: true; start: Date; end: Date }
@@ -19,13 +20,13 @@ const text = (value: unknown, max: number): string =>
   typeof value === 'string' ? value.trim().slice(0, max) : '';
 
 /**
- * The one way a viewing gets booked. The website form and the chat agent both land here, so the
- * input is treated as untrusted whichever side it came from.
+ * The one way a viewing gets booked. The website form, the chat agent and the voice agent all
+ * land here, so the input is treated as untrusted whichever side it came from.
  */
 export const submitViewingBooking = async (
   body: Record<string, unknown>,
   ip: string,
-  source: 'form' | 'chat'
+  source: 'form' | 'chat' | 'voice'
 ): Promise<ViewingBookingResult> => {
   const fail = (status: number, error: ViewingErrorCode): ViewingBookingResult => ({
     ok: false,
@@ -72,7 +73,7 @@ export const submitViewingBooking = async (
     const { start, end } = await bookViewingSlot(slot, {
       title: `Viewing — ${name} (${guests} guests)`,
       description: [
-        `Booked online via events.saintmaryro.org${source === 'chat' ? ' (chat assistant)' : ''}`,
+        `Booked online via events.saintmaryro.org${SOURCE_NOTES[source]}`,
         `Name: ${name}`,
         `Email: ${email}`,
         `Phone: ${phone}`,

@@ -25,5 +25,55 @@
   "booked": {
     "heading": "Tour booked",
     "body": "{{when}} (Eastern Time). A confirmation with a calendar invite is on its way to {{email}}."
+  },
+  "voice": {
+    "launch": "Talk to us",
+    "title": "Talk with our assistant",
+    "back": "Back to chat",
+    "consent": {
+      "heading": "Before we start",
+      "body": "This is a live voice call with our AI assistant. Your voice is sent to our speech provider, BytePlus, where it is turned into text and processed on servers outside the United States so the assistant can answer. We do not record the call or keep the audio ourselves.",
+      "booking": "If you book a tour, the details you give are saved the same way as on our booking form.",
+      "limit": "Calls last up to {{minutes}} minutes.",
+      "accept": "I agree, start the call",
+      "decline": "Use the text chat instead"
+    },
+    "status": {
+      "requestingMic": "Waiting for your microphone…",
+      "connecting": "Connecting…",
+      "listening": "Listening",
+      "thinking": "Thinking…",
+      "speaking": "Speaking",
+      "muted": "Your microphone is muted"
+    },
+    "timeLeft": "{{time}} left",
+    "mute": "Mute microphone",
+    "unmute": "Unmute microphone",
+    "end": "End call",
+    "unblockAudio": "Tap to hear the assistant",
+    "typed": {
+      "label": "Type your email or phone number",
+      "placeholder": "Type it here instead of saying it",
+      "send": "Send"
+    },
+    "ended": {
+      "heading": "Call ended",
+      "body": "Thanks for talking with us.",
+      "timeUp": "That was the longest a call can run. You can start another, or carry on in the text chat.",
+      "again": "Call again"
+    },
+    "errors": {
+      "micDenied": "We could not use your microphone. Allow microphone access in your browser settings and try again, or use the text chat.",
+      "noMic": "No microphone was found on this device. The text chat works without one.",
+      "unsupported": "Voice calls do not work in this browser. The text chat does.",
+      "busy": "Our voice line is busy right now. Please use the text chat, or call us.",
+      "rateLimited": "You have reached the limit for voice calls today. The text chat is still here.",
+      "failed": "The call could not connect. Please try again, or use the text chat.",
+      "dropped": "The call was cut off. You can call again, or carry on in the text chat."
+    },
+    "spoken": {
+      "welcome": "Hi, I'm the AI assistant for Fellowship Event Hall. What can I help you with?",
+      "fallback": "Sorry, I could not answer that just now. You can call or message us with the buttons on your screen."
+    }
   }
 }

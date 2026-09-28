@@ -25,5 +25,55 @@
   "booked": {
     "heading": "Tur programat",
     "body": "{{when}} (ora Coastei de Est). Îți trimitem o confirmare cu invitație de calendar la {{email}}."
+  },
+  "voice": {
+    "launch": "Vorbește cu noi",
+    "title": "Vorbește cu asistentul nostru",
+    "back": "Înapoi la chat",
+    "consent": {
+      "heading": "Înainte să începem",
+      "body": "Acesta este un apel vocal în direct cu asistentul nostru AI. Vocea ta este trimisă furnizorului nostru de servicii vocale, BytePlus, unde este transformată în text și prelucrată pe servere din afara Statelor Unite, pentru ca asistentul să poată răspunde. Noi nu înregistrăm apelul și nu păstrăm sunetul.",
+      "booking": "Dacă programezi un tur, datele pe care ni le dai sunt salvate la fel ca în formularul nostru de programare.",
+      "limit": "Apelurile durează cel mult {{minutes}} minute.",
+      "accept": "Sunt de acord, începe apelul",
+      "decline": "Prefer chatul scris"
+    },
+    "status": {
+      "requestingMic": "Așteptăm microfonul tău…",
+      "connecting": "Se conectează…",
+      "listening": "Ascultă",
+      "thinking": "Se gândește…",
+      "speaking": "Vorbește",
+      "muted": "Microfonul tău este oprit"
+    },
+    "timeLeft": "Au rămas {{time}}",
+    "mute": "Oprește microfonul",
+    "unmute": "Pornește microfonul",
+    "end": "Încheie apelul",
+    "unblockAudio": "Atinge pentru a auzi asistentul",
+    "typed": {
+      "label": "Scrie adresa de email sau numărul de telefon",
+      "placeholder": "Scrie aici în loc să spui",
+      "send": "Trimite"
+    },
+    "ended": {
+      "heading": "Apel încheiat",
+      "body": "Îți mulțumim că ai vorbit cu noi.",
+      "timeUp": "Aceasta este durata maximă a unui apel. Poți începe altul sau poți continua în chatul scris.",
+      "again": "Sună din nou"
+    },
+    "errors": {
+      "micDenied": "Nu am putut folosi microfonul tău. Permite accesul la microfon din setările browserului și încearcă din nou, sau folosește chatul scris.",
+      "noMic": "Nu am găsit niciun microfon pe acest dispozitiv. Chatul scris funcționează și fără el.",
+      "unsupported": "Apelurile vocale nu funcționează în acest browser. Chatul scris funcționează.",
+      "busy": "Linia noastră vocală este ocupată acum. Te rugăm să folosești chatul scris sau să ne suni.",
+      "rateLimited": "Ai atins limita de apeluri vocale pentru azi. Chatul scris este în continuare disponibil.",
+      "failed": "Apelul nu s-a putut conecta. Încearcă din nou sau folosește chatul scris.",
+      "dropped": "Apelul s-a întrerupt. Poți suna din nou sau poți continua în chatul scris."
+    },
+    "spoken": {
+      "welcome": "Bună, sunt asistentul AI al Fellowship Event Hall. Cu ce te pot ajuta?",
+      "fallback": "Ne pare rău, nu am putut răspunde acum. Ne poți suna sau scrie folosind butoanele de pe ecran."
+    }
   }
 }

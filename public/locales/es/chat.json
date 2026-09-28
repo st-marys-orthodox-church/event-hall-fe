@@ -25,5 +25,55 @@
   "booked": {
     "heading": "Visita reservada",
     "body": "{{when}} (hora del Este). Te enviamos una confirmación con invitación de calendario a {{email}}."
+  },
+  "voice": {
+    "launch": "Habla con nosotros",
+    "title": "Habla con nuestro asistente",
+    "back": "Volver al chat",
+    "consent": {
+      "heading": "Antes de empezar",
+      "body": "Esta es una llamada de voz en directo con nuestro asistente de IA. Tu voz se envía a nuestro proveedor de voz, BytePlus, donde se convierte en texto y se procesa en servidores fuera de Estados Unidos para que el asistente pueda responder. Nosotros no grabamos la llamada ni conservamos el audio.",
+      "booking": "Si reservas una visita, los datos que nos des se guardan igual que en nuestro formulario de reserva.",
+      "limit": "Las llamadas duran como máximo {{minutes}} minutos.",
+      "accept": "Acepto, iniciar la llamada",
+      "decline": "Prefiero el chat de texto"
+    },
+    "status": {
+      "requestingMic": "Esperando tu micrófono…",
+      "connecting": "Conectando…",
+      "listening": "Escuchando",
+      "thinking": "Pensando…",
+      "speaking": "Hablando",
+      "muted": "Tu micrófono está silenciado"
+    },
+    "timeLeft": "Quedan {{time}}",
+    "mute": "Silenciar micrófono",
+    "unmute": "Activar micrófono",
+    "end": "Terminar llamada",
+    "unblockAudio": "Toca para escuchar al asistente",
+    "typed": {
+      "label": "Escribe tu correo o tu teléfono",
+      "placeholder": "Escríbelo aquí en vez de decirlo",
+      "send": "Enviar"
+    },
+    "ended": {
+      "heading": "Llamada terminada",
+      "body": "Gracias por hablar con nosotros.",
+      "timeUp": "Ese es el tiempo máximo de una llamada. Puedes iniciar otra o seguir en el chat de texto.",
+      "again": "Llamar de nuevo"
+    },
+    "errors": {
+      "micDenied": "No pudimos usar tu micrófono. Permite el acceso al micrófono en los ajustes del navegador e inténtalo de nuevo, o usa el chat de texto.",
+      "noMic": "No se encontró ningún micrófono en este dispositivo. El chat de texto funciona sin él.",
+      "unsupported": "Las llamadas de voz no funcionan en este navegador. El chat de texto sí.",
+      "busy": "Nuestra línea de voz está ocupada ahora mismo. Usa el chat de texto o llámanos.",
+      "rateLimited": "Has alcanzado el límite de llamadas de voz por hoy. El chat de texto sigue disponible.",
+      "failed": "No se pudo conectar la llamada. Inténtalo de nuevo o usa el chat de texto.",
+      "dropped": "La llamada se cortó. Puedes llamar de nuevo o seguir en el chat de texto."
+    },
+    "spoken": {
+      "welcome": "Hola, soy el asistente de IA de Fellowship Event Hall. ¿En qué puedo ayudarte?",
+      "fallback": "Lo siento, no pude responder en este momento. Puedes llamarnos o escribirnos con los botones de tu pantalla."
+    }
   }
 }
