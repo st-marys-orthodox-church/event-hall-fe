@@ -12,7 +12,8 @@ const SUBTITLES_FROM_REPLY = 1;
 const SILENCE_BEFORE_REPLY_MS = 800;
 
 export const VOICE_SESSION_HEADER = 'x-voice-session';
-export const VOICE_LLM_PATH = '/api/voice/llm';
+// With the trailing slash: the site redirects paths without one, and BytePlus does not follow.
+export const VOICE_LLM_PATH = '/api/voice/llm/';
 
 type Json = Record<string, unknown>;
 

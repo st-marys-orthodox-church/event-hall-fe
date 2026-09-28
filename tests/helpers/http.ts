@@ -4,6 +4,7 @@ type RequestInput = {
   method?: string;
   headers?: Record<string, string | undefined>;
   body?: unknown;
+  query?: Record<string, string>;
   ip?: string;
 };
 
@@ -11,12 +12,14 @@ export const fakeRequest = ({
   method = 'POST',
   headers = {},
   body = {},
+  query = {},
   ip = '203.0.113.7',
 }: RequestInput = {}): NextApiRequest =>
   ({
     method,
     headers: { 'x-forwarded-for': ip, ...headers },
     body,
+    query,
     socket: { remoteAddress: ip },
   }) as unknown as NextApiRequest;
 

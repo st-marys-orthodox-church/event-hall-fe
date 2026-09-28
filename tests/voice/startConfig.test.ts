@@ -45,7 +45,8 @@ describe('buildStartVoiceChat', () => {
     const { LLMConfig } = build().Config;
     expect(LLMConfig).toMatchObject({
       Mode: 'CustomLLM',
-      Url: 'https://hall.example.test/api/voice/llm',
+      // The trailing slash matters: without it the site answers with a redirect.
+      Url: 'https://hall.example.test/api/voice/llm/',
       ExtraHeader: { 'x-voice-session': 'sealed.session' },
     });
     expect(JSON.parse(LLMConfig.Custom)).toEqual({ session: 'sealed.session' });

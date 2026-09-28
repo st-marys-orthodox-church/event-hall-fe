@@ -6,6 +6,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // The voice smoke test boots its own server and must not share a build folder with a dev
+  // server that is already running.
+  distDir: process.env.NEXT_DIST_DIR || '.next',
   poweredByHeader: false,
   trailingSlash: true,
   reactStrictMode: true,

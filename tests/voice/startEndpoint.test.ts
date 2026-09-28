@@ -81,7 +81,7 @@ describe('POST /api/voice/start', () => {
     });
     const sent = sentToBytePlus();
     expect(sent.RoomId).toMatch(/^hall_/);
-    expect(sent.Config.LLMConfig.Url).toBe('https://hall.example.test/api/voice/llm');
+    expect(sent.Config.LLMConfig.Url).toBe('https://hall.example.test/api/voice/llm/');
     expect(JSON.stringify(sent)).not.toContain('pirate');
   });
 

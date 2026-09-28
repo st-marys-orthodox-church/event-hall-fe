@@ -200,6 +200,20 @@ describe('POST /api/voice/llm — who may call it', () => {
     expect(res.statusCode).toBe(200);
   });
 
+  it("accepts the session from the URL, which is all BytePlus's validator can send", async () => {
+    const { handler, bearer, seal } = await load();
+    const res = fakeResponse();
+    await handler(
+      fakeRequest({
+        headers: { authorization: bearer },
+        query: { session: seal() },
+        body: { messages: [{ role: 'user', content: 'hello' }] },
+      }),
+      res
+    );
+    expect(res.statusCode).toBe(200);
+  });
+
   it('is not there at all while the feature is off', async () => {
     vi.stubEnv('NEXT_PUBLIC_VOICE_ENABLED', '');
     expect((await ask()).statusCode).toBe(404);

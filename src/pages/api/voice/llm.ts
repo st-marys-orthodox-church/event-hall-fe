@@ -20,9 +20,12 @@ const MODEL = 'fellowship-event-hall';
 const refuse = (res: NextApiResponse, status: number, Code: string, Message: string) =>
   res.status(status).json({ Error: { Code, Message } });
 
+// BytePlus can carry the session three ways. Calls use the header; the body is the fallback if
+// headers are not passed on; the query string is for BytePlus's validator, which sends neither.
 const sessionToken = (req: NextApiRequest, body: Record<string, unknown>): unknown => {
   const header = req.headers[VOICE_SESSION_HEADER];
   if (typeof header === 'string' && header) return header;
+  if (typeof req.query?.session === 'string') return req.query.session;
   if (typeof body.custom !== 'string') return undefined;
   try {
     return (JSON.parse(body.custom) as { session?: unknown }).session;
