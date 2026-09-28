@@ -34,7 +34,7 @@
       "heading": "Antes de empezar",
       "body": "Esta es una llamada de voz en directo con nuestro asistente de IA. Tu voz se envía a nuestro proveedor de voz, BytePlus, donde se convierte en texto y se procesa en servidores fuera de Estados Unidos para que el asistente pueda responder. Nosotros no grabamos la llamada ni conservamos el audio.",
       "booking": "Si reservas una visita, los datos que nos des se guardan igual que en nuestro formulario de reserva.",
-      "limit": "Las llamadas duran como máximo {{minutes}} minutos.",
+      "limit": "Las llamadas duran solo unos minutos.",
       "accept": "Acepto, iniciar la llamada",
       "decline": "Prefiero el chat de texto"
     },

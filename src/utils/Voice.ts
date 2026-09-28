@@ -29,6 +29,22 @@ export type VoiceErrorCode =
   | 'busy'
   | 'failed';
 
+/** What the widget can tell the visitor went wrong; each has a message in chat.json. */
+export type VoiceCallError =
+  | 'micDenied'
+  | 'noMic'
+  | 'unsupported'
+  | 'busy'
+  | 'rateLimited'
+  | 'failed'
+  | 'dropped';
+
+export const callErrorFor = (code: unknown): VoiceCallError => {
+  if (code === 'rate_limited') return 'rateLimited';
+  if (code === 'busy') return 'busy';
+  return 'failed';
+};
+
 /*
  * The voice pipeline only carries text, so an on-screen action (contact buttons, the booked
  * card) rides inside the reply as a bracketed tag. Text-to-speech is told to skip square

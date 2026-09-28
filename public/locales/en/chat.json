@@ -34,7 +34,7 @@
       "heading": "Before we start",
       "body": "This is a live voice call with our AI assistant. Your voice is sent to our speech provider, BytePlus, where it is turned into text and processed on servers outside the United States so the assistant can answer. We do not record the call or keep the audio ourselves.",
       "booking": "If you book a tour, the details you give are saved the same way as on our booking form.",
-      "limit": "Calls last up to {{minutes}} minutes.",
+      "limit": "Calls are kept to a few minutes.",
       "accept": "I agree, start the call",
       "decline": "Use the text chat instead"
     },

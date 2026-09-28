@@ -34,7 +34,7 @@
       "heading": "Înainte să începem",
       "body": "Acesta este un apel vocal în direct cu asistentul nostru AI. Vocea ta este trimisă furnizorului nostru de servicii vocale, BytePlus, unde este transformată în text și prelucrată pe servere din afara Statelor Unite, pentru ca asistentul să poată răspunde. Noi nu înregistrăm apelul și nu păstrăm sunetul.",
       "booking": "Dacă programezi un tur, datele pe care ni le dai sunt salvate la fel ca în formularul nostru de programare.",
-      "limit": "Apelurile durează cel mult {{minutes}} minute.",
+      "limit": "Apelurile durează doar câteva minute.",
       "accept": "Sunt de acord, începe apelul",
       "decline": "Prefer chatul scris"
     },
