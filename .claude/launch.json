@@ -55,6 +55,21 @@
         "3002"
       ],
       "port": 3002
+    },
+    {
+      "name": "event-hall-admin-dev",
+      "runtimeExecutable": "env",
+      "runtimeArgs": [
+        "ADMIN_PASSCODE=local-hub-passcode",
+        "ADMIN_DIRECTORY_JSON={\"yelp\":{\"owner\":\"Sample Owner\",\"backupOwner\":\"Sample Backup\",\"credentialsIn\":\"Password manager\",\"reviewedOn\":\"2026-10-01\"},\"facebook\":{\"owner\":\"Same Person\",\"backupOwner\":\"Same Person\"}}",
+        "npx",
+        "next",
+        "dev",
+        "--turbopack",
+        "-p",
+        "3003"
+      ],
+      "port": 3003
     }
   ]
 }

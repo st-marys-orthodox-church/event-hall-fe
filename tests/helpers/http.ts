@@ -53,6 +53,12 @@ export const fakeResponse = (): FakeResponse => {
       for (const [name, value] of Object.entries(headers)) res.headers[name.toLowerCase()] = value;
       return res;
     },
+    redirect(code: number, location: string) {
+      res.statusCode = code;
+      res.headers.location = location;
+      res.ended = true;
+      return res;
+    },
     write(chunk: string) {
       res.text += chunk;
       return true;

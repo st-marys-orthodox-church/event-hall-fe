@@ -5,6 +5,7 @@ Allow: /
 # *
 User-agent: *
 Disallow: /api/
+Disallow: /admin/
 
 # GPTBot
 User-agent: GPTBot

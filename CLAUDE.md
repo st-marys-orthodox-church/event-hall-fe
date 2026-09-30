@@ -31,7 +31,7 @@ pnpm check        # Biome: lint + format + organize imports (autofix)
 pnpm build-types  # tsc --noEmit, for the app and for tests/
 pnpm test         # Vitest: unit + component tests in tests/
 pnpm smoke:voice  # boots the app against stand-ins and plays a voice call through it
-pnpm i18n:sync    # sync es/ro locales against en (auto-translates if ANTHROPIC_API_KEY set)
+pnpm i18n:sync    # sync es/ro locales against en (auto-translates if GEMINI_API_KEY set)
 pnpm i18n:check   # CI check — fails if locales drift
 ```
 
@@ -48,7 +48,7 @@ Always run `pnpm check`, `pnpm build-types` and `pnpm test` before finishing a c
 - **i18n is non-optional.** User-facing copy belongs in `public/locales/en/*.json` and is pulled in with `next-i18next`'s `useTranslation`. Do not hardcode English strings in JSX. After changing `en`, run `pnpm i18n:sync`.
 - **SEO is first-class.** Any new page must use `<Meta>` from `src/ui/base/Meta.tsx` and should be added to `next-sitemap.config.js` if it needs a custom priority or exclusion.
 - **Site-wide copy** (name, description, URL, social handles) lives in `src/utils/AppConfig.ts`. Do not hardcode.
-- **No secrets in code.** `SENDGRID_API_KEY`, `ANTHROPIC_API_KEY`, and similar must stay in `.env.local` / host env vars.
+- **No secrets in code.** `SENDGRID_API_KEY`, `GEMINI_API_KEY`, and similar must stay in `.env.local` / host env vars.
 
 ## Things to watch out for
 
@@ -59,7 +59,8 @@ Always run `pnpm check`, `pnpm build-types` and `pnpm test` before finishing a c
 - `trailingSlash: true` means `/api/foo` answers with a redirect to `/api/foo/`. A browser follows it; an outside service calling us (BytePlus, for the voice agent) may not, so give such services the URL with the slash.
 - Tests live in `tests/`, never under `src/pages/` (every file there becomes a route). `tests/` has its own `tsconfig.json` and is excluded from the app's, because `next build` type-checks everything the app's config includes.
 - The voice agent (`docs/voice-agent.md`) is the chat agent reached by voice: `/api/voice/llm` runs the same `runChatLoop` and tools as `/api/chat`. Change booking or venue behaviour in `chatAgent.ts` / `viewingBooking.ts`, not in the voice code.
-- `scripts/i18n-sync.mjs` calls the Anthropic API when `ANTHROPIC_API_KEY` is set; without the key it falls back to `[ES]` / `[RO]` placeholders. Keep the model id in sync with what the account has access to.
+- `/admin/` is the internal team hub (account owners, listing details, how-tos), gated by `ADMIN_PASSCODE` and English-only on purpose, so it is the one page that skips the i18n rule. The repo is public: owner names live in the `ADMIN_DIRECTORY_JSON` env var, never in code, and no password ever goes in the hub. SOP text is in `src/utils/AdminSops.ts`; the account list is in `src/utils/AdminAccounts.ts`.
+- `scripts/i18n-sync.mjs` calls the Gemini API when `GEMINI_API_KEY` is set; without the key it falls back to `[ES]` / `[RO]` placeholders. It uses `I18N_MODEL`, else `CHAT_MODEL`, else `gemini-3.8-flash`.
 
 ## Style
 

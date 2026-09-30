@@ -7,11 +7,11 @@ module.exports = {
   changefreq: 'monthly',
   priority: 0.7,
   trailingSlash: true,
-  exclude: ['/api/*', '/404', '/500'],
+  exclude: ['/api/*', '/admin', '/404', '/500'],
   robotsTxtOptions: {
     policies: [
       { userAgent: '*', allow: '/' },
-      { userAgent: '*', disallow: ['/api/'] },
+      { userAgent: '*', disallow: ['/api/', '/admin/'] },
       { userAgent: 'GPTBot', allow: '/' },
       { userAgent: 'OAI-SearchBot', allow: '/' },
       { userAgent: 'ChatGPT-User', allow: '/' },
