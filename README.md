@@ -39,10 +39,10 @@ Copy `.env.local` and set:
 
 ```
 SENDGRID_API_KEY=<your-sendgrid-key>
-ANTHROPIC_API_KEY=<optional — enables auto-translation in scripts/i18n-sync.mjs>
+GEMINI_API_KEY=<powers the chat agent; also enables auto-translation in scripts/i18n-sync.mjs>
 ```
 
-`SENDGRID_API_KEY` is used by `src/pages/api/sendgrid.ts` to deliver the contact form. `ANTHROPIC_API_KEY` is only needed locally when running `pnpm i18n:sync` to translate new strings.
+`SENDGRID_API_KEY` is used by `src/pages/api/sendgrid.ts` to deliver the contact form. `GEMINI_API_KEY` also powers `pnpm i18n:sync`, which translates new strings locally.
 
 ## Scripts
 
@@ -101,7 +101,7 @@ scripts/
 
 - Configured in `next-i18next.config.js`; wired into Next via `next.config.js`.
 - `en` is the default and the source of truth. Only edit `en/*.json` directly.
-- After changing any `en` string, run `pnpm i18n:sync` to propagate. With `ANTHROPIC_API_KEY` set the script translates new strings; without it they land as `[ES] …` / `[RO] …` placeholders so gaps are visible in the browser.
+- After changing any `en` string, run `pnpm i18n:sync` to propagate. With `GEMINI_API_KEY` set the script translates new strings; without it they land as `[ES] …` / `[RO] …` placeholders so gaps are visible in the browser.
 - `pnpm i18n:check` runs in CI (no writes) and fails if locales are out of sync.
 - The `<LanguageSwitcher>` in `src/ui/base/` handles locale switching.
 

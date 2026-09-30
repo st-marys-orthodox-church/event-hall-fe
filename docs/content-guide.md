@@ -92,7 +92,7 @@ User-facing strings are translated via `next-i18next`. The source of truth is `p
 
 - Venue facts (name, address, phone, etc.) live in `src/utils/AppConfig.ts` first, then may be referenced from locale files.
 - Static content collections — features, packages, hero slides, nav items — live in `src/utils/` (`Features.ts`, `Packages.ts`, `HeroSlides.ts`, `Navigation.ts`). These reference i18n keys rather than raw strings.
-- After any change to `en/*.json`, run `pnpm i18n:sync` to refresh `es` and `ro`. With `ANTHROPIC_API_KEY` set the script auto-translates; otherwise new strings appear as `[ES] …` / `[RO] …` until a human translates them.
+- After any change to `en/*.json`, run `pnpm i18n:sync` to refresh `es` and `ro`. With `GEMINI_API_KEY` set the script auto-translates; otherwise new strings appear as `[ES] …` / `[RO] …` until a human translates them.
 
 ## Copy length targets
 

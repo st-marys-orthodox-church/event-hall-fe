@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 // Syncs non-default locale files against the default (en) locale.
-// - Adds missing keys from en, optionally translating them via the Claude API.
+// - Adds missing keys from en, optionally translating them via the Gemini API.
 // - Removes keys that no longer exist in en.
 // - Preserves existing translations.
 //
-// With ANTHROPIC_API_KEY set (e.g., in .env.local), missing strings are
-// translated by Claude. Without it, missing strings fall back to a bracketed
+// With GEMINI_API_KEY set (e.g., in .env.local), missing strings are
+// translated by Gemini. Without it, missing strings fall back to a bracketed
 // placeholder ("[ES] Hello") so untranslated copy is visible in the browser.
 //
 // Flags:
@@ -16,21 +16,21 @@
 import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenAI } from '@google/genai';
 
 const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), '..');
 const LOCALES_DIR = join(ROOT, 'public', 'locales');
 const DEFAULT_LOCALE = 'en';
 const TARGET_LOCALES = ['es', 'ro'];
 const LOCALE_NAMES = { es: 'Spanish (Spain)', ro: 'Romanian' };
-const MODEL = 'claude-opus-4-7';
 
 const CHECK_MODE = process.argv.includes('--check');
 const RETRANSLATE = process.argv.includes('--retranslate');
 const NO_TRANSLATE = process.argv.includes('--no-translate');
 
 loadEnvLocal();
-const API_KEY = process.env.ANTHROPIC_API_KEY;
+const API_KEY = process.env.GEMINI_API_KEY;
+const MODEL = process.env.I18N_MODEL || process.env.CHAT_MODEL || 'gemini-3.8-flash';
 const USE_API = !NO_TRANSLATE && !!API_KEY;
 
 const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
@@ -81,7 +81,7 @@ const isPlaceholder = (locale, value) =>
   typeof value === 'string' && value.startsWith(`[${locale.toUpperCase()}] `);
 
 // Recursively reconcile `target` against `source`. Missing slots are filled
-// with TRANSLATE_SENTINEL; a second pass either calls Claude or swaps in a
+// with TRANSLATE_SENTINEL; a second pass either calls Gemini or swaps in a
 // placeholder string.
 const reconcile = (source, target, locale, path = []) => {
   const out = Array.isArray(source) ? [] : {};
@@ -218,58 +218,36 @@ Follow these rules exactly:
 async function translateBatch(locale, items) {
   if (items.length === 0) return new Map();
 
-  const client = new Anthropic({ apiKey: API_KEY });
+  const ai = new GoogleGenAI({ apiKey: API_KEY });
   const targetName = LOCALE_NAMES[locale] ?? locale;
 
-  // We key each string by its index so the model doesn't have to echo our
-  // full dotted paths (which can contain array indices and are noisy). The
-  // response schema forces a map from these short IDs back to strings.
+  // Keyed by short index so the model doesn't have to echo noisy dotted paths.
   const inputs = {};
   items.forEach((item, i) => {
     inputs[`t${i}`] = item.english;
   });
 
-  const response = await client.messages.create({
+  const response = await ai.models.generateContent({
     model: MODEL,
-    max_tokens: 16000,
-    thinking: { type: 'adaptive' },
-    system: [
-      {
-        type: 'text',
-        text: SYSTEM_PROMPT,
-        // Stable across all invocations and both locales — cache it.
-        cache_control: { type: 'ephemeral' },
-      },
-    ],
-    messages: [
-      {
-        role: 'user',
-        content: `Translate every value below into ${targetName}. Respond with ONLY a JSON object mapping each id to its translated string — no prose, no markdown code fence. Every id in the input must appear in the output. Preserve placeholders exactly per the rules.\n\nInput:\n${JSON.stringify(inputs, null, 2)}`,
-      },
-    ],
+    contents: `Translate every value below into ${targetName}. Respond with ONLY a JSON object mapping each id to its translated string. Every id in the input must appear in the output. Preserve placeholders exactly per the rules.\n\nInput:\n${JSON.stringify(inputs, null, 2)}`,
+    config: {
+      systemInstruction: SYSTEM_PROMPT,
+      responseMimeType: 'application/json',
+      maxOutputTokens: 16000,
+    },
   });
 
-  const textBlock = response.content.find((b) => b.type === 'text');
-  if (!textBlock) {
-    throw new Error('Claude returned no text block');
+  if (!response.text) {
+    throw new Error('Gemini returned no text');
   }
-  const translations = extractJsonObject(textBlock.text);
+  const translations = extractJsonObject(response.text);
   const out = new Map();
   items.forEach((item, i) => {
     const t = translations[`t${i}`];
     if (typeof t === 'string') out.set(pathKey(item.path), t);
   });
 
-  const usage = response.usage;
-  if (usage) {
-    const cacheRead = usage.cache_read_input_tokens ?? 0;
-    const cacheWrite = usage.cache_creation_input_tokens ?? 0;
-    const input = usage.input_tokens ?? 0;
-    const output = usage.output_tokens ?? 0;
-    console.log(
-      `  ${locale}: ${items.length} string${items.length === 1 ? '' : 's'} translated — tokens in ${input} (cache read ${cacheRead}, write ${cacheWrite}), out ${output}`
-    );
-  }
+  console.log(`  ${locale}: ${out.size} of ${items.length} string${items.length === 1 ? '' : 's'} translated`);
 
   return out;
 }
@@ -299,11 +277,11 @@ async function main() {
     .map((f) => f.replace(/\.json$/, ''));
 
   if (USE_API) {
-    console.log(`Translating via Claude (${MODEL}).`);
+    console.log(`Translating via Gemini (${MODEL}).`);
   } else if (NO_TRANSLATE) {
     console.log('API translation disabled via --no-translate — using placeholders.');
   } else {
-    console.log('No ANTHROPIC_API_KEY found — using placeholders. (Set one in .env.local to enable Claude translation.)');
+    console.log('No GEMINI_API_KEY found — using placeholders. (Set one in .env.local to enable Gemini translation.)');
   }
   if (RETRANSLATE) console.log('Re-translating existing [LOCALE] placeholders.');
 

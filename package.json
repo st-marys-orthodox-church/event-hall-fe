@@ -26,7 +26,6 @@
     "prepare": "lefthook install"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.90.0",
     "@byteplus/rtc": "~4.69.2",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
